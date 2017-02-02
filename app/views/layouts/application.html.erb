@@ -58,6 +58,16 @@
 
       <%= yield %>
 
+      <% if Rails.env.development? %>
+        <div class="row">
+
+          <pre>current_user = <%= current_user.inspect %></pre>
+          
+        </div>
+      <% end %>
+
+      
+
     </div><!-- /.container -->
 
 
