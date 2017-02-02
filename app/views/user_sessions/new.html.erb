@@ -1,0 +1,24 @@
+<div class="row">
+	<h1>Se connecter</h1>
+</div>
+
+<div class="row">
+  <%= form_for @user_session do |f| %>
+
+    <%= render 'shared/errors_form', model: @user_session %>
+
+    <div class="form-group">
+      <%= f.label :username %>
+      <%= f.text_field :username, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'form-control' %>
+    </div>
+    
+    <%= f.submit 'se connecter', class: 'btn btn-primary' %>
+  <% end %>
+
+  <p class="alert alert-info" role="alert">Pas encore de compte? <%= link_to "Créer un compte", signup_path, class: "alert-link" %></p>
+
+</div>
