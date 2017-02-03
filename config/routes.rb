@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
 
-  get "signup" => "users#new"
-  get "signin" => "user_sessions#new"
-  post "signin" => "user_sessions#create"
+  resources :resumes
+  resources :users
+  resources :user_sessions, only: [:create, :destroy]
 
   get "home" => "pages#home"
 
-  resources :users
-  resources :user_sessions
+
+  delete 'signout', to: 'user_sessions#destroy'
+  get 'signin', to: 'user_sessions#new'
+  get "signup" => "users#new"
+
   root "pages#home"
 end

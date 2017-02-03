@@ -3,11 +3,6 @@
   <%= render 'shared/errors_form', model: user %>
 
   <div class="form-group">
-    <%= f.label :username %>
-    <%= f.text_field :username, class: 'form-control' %>
-  </div>
-
-  <div class="form-group">
     <%= f.label :firstname %>
     <%= f.text_field :firstname, class: 'form-control' %>
   </div>
@@ -19,7 +14,7 @@
 
   <div class="form-group">
     <%= f.label :email %>
-    <%= f.text_field :email, class: 'form-control' %>
+    <%= f.email_field :email, class: 'form-control' %>
   </div>
 
   <div class="form-group">

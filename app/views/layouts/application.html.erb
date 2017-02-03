@@ -44,8 +44,12 @@
           </ul>
 
           <ul class="nav navbar-nav nav navbar-right">
-            <li><%= link_to "se connecter", signin_path %></li>
-            <li><%= link_to "créer un compte", signup_path %></li>
+            <% if current_user %>
+              <li><%= link_to current_user.email, current_user %></li>
+            <% else %>
+              <li><%= link_to "se connecter", signin_path %></li>
+              <li><%= link_to "créer un compte", signup_path %></li>
+            <% end %>
           </ul>
 
         </div><!--/.nav-collapse -->

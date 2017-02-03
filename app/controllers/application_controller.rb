@@ -13,4 +13,11 @@ class ApplicationController < ActionController::Base
     return @current_user if defined?(@current_user)
     @current_user = current_user_session && current_user_session.user
   end
+
+  def check_login
+    redirect_to home_path  unless current_user_session
+  end
+
+  helper_method :current_user_session, :current_user
+
 end
