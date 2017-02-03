@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170203115503) do
+ActiveRecord::Schema.define(version: 20170203120658) do
 
   create_table "resumes", force: :cascade do |t|
     t.string   "name"
@@ -24,10 +24,17 @@ ActiveRecord::Schema.define(version: 20170203115503) do
     t.string   "crypted_password"
     t.string   "password_salt"
     t.string   "persistence_token"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.string   "firstname"
     t.string   "lastname"
+    t.integer  "login_count",        default: 0, null: false
+    t.integer  "failed_login_count", default: 0, null: false
+    t.datetime "last_request_at"
+    t.datetime "current_login_at"
+    t.datetime "last_login_at"
+    t.string   "current_login_ip"
+    t.string   "last_login_ip"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
