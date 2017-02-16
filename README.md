@@ -1,24 +1,23 @@
-# README
+Fooder
+======
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Cn CMS qui permettra à un restaurateur de créer son site en mode SASS. Par exemple: 
 
-Things you may want to cover:
+* http://la-cuisine-de-michou.fooder.com avec le mode gratuit
+* http://la-cuisine-de-michou.com avec le mode payant
 
-* Ruby version
+Il pourra ensuite:
 
-* System dependencies
+* ajouter les menus qu'il propose et les lier / partager avec Facebook / Instagram / etc..
+* créer un blog s'il le souhaite
+* ajouter un système de notation de ses recettes
 
-* Configuration
+Licence
+-------
 
-* Database creation
+[Apache License 2.0](https://choosealicense.com/licenses/apache-2.0/#)
 
-* Database initialization
+Author
+------
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+[Rousseau Alexandre](http:µ//rousseau-alexandre.fr)
