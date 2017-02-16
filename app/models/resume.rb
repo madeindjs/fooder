@@ -1,2 +1,0 @@
-class Resume < ApplicationRecord
-end
