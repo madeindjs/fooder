@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :restaurants
   resources :resumes
   resources :users
   resources :user_sessions, only: [:create, :destroy]
