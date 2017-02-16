@@ -1,5 +1,5 @@
 class RestaurantsController < ApplicationController
-  before_action :set_restaurant :check_login
+  before_action :check_login
   before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
 
   # GET /restaurants
@@ -26,6 +26,7 @@ class RestaurantsController < ApplicationController
   # POST /restaurants.json
   def create
     @restaurant = Restaurant.new(restaurant_params)
+    @restaurant.user_id = current_user.id
 
     respond_to do |format|
       if @restaurant.save

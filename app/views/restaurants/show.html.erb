@@ -1,29 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @restaurant.name %>
-</p>
+<h1><%= @restaurant.name %></h1>
 
-<p>
-  <strong>Address:</strong>
-  <%= @restaurant.address %>
-</p>
+<p><%= glyphicon 'home' %> <%= @restaurant.complete_address %></p>
 
-<p>
-  <strong>Zip code:</strong>
-  <%= @restaurant.zip_code %>
-</p>
+<p><%= glyphicon 'user' %> <%= link_to @restaurant.user.complete_name, @restaurant.user %></p>
 
-<p>
-  <strong>City:</strong>
-  <%= @restaurant.city %>
-</p>
 
-<p>
-  <strong>User:</strong>
-  <%= @restaurant.user_id %>
-</p>
+<div class="btn-group" role="toolbar" aria-label="...">
+  <%= link_to 'Edit', edit_restaurant_path(@restaurant), class: "btn btn-default" %>
+  <%= link_to 'Back', restaurants_path, class: "btn btn-default" %>
+</div>
 
-<%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
-<%= link_to 'Back', restaurants_path %>
