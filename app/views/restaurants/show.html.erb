@@ -3,12 +3,19 @@
 <h1><%= @restaurant.name %></h1>
 
 <p><%= glyphicon 'home' %> <%= @restaurant.complete_address %></p>
-
 <p><%= glyphicon 'user' %> <%= link_to @restaurant.user.complete_name, @restaurant.user %></p>
 
 
 <div class="btn-group" role="toolbar" aria-label="...">
+  <%= link_to 'ajouter un plat', new_dish_path, class: "btn btn-primary" %>
   <%= link_to 'Edit', edit_restaurant_path(@restaurant), class: "btn btn-default" %>
   <%= link_to 'Back', restaurants_path, class: "btn btn-default" %>
 </div>
 
+<h2>Plats</h2>
+
+<ul>
+  <% @restaurant.dishes.each do |dish| %>
+    <li><%= dish.name %></li>
+  <% end %> 
+</ul>
