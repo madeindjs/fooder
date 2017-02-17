@@ -1,29 +1,23 @@
-<p id="notice"><%= notice %></p>
+<h1><%= @dish.name %> <small><%= @dish.category.name %></small></h1>
 
-<p>
-  <strong>Name:</strong>
-  <%= @dish.name %>
-</p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @dish.description %>
-</p>
+<blockquote>
+  <p><%= @dish.description %></p>
+  <footer><cite><%= @dish.user.complete_name %></cite></footer>
+</blockquote>
 
-<p>
-  <strong>Category:</strong>
-  <%= @dish.category_id %>
-</p>
+<div class="btn-group" role="group" aria-label="...">
+  <a href="#" class="btn btn-primary"><%= glyphicon 'pencil' %> Noter ce plat</a>
+</div>
 
-<p>
-  <strong>User:</strong>
-  <%= @dish.user_id %>
-</p>
 
-<p>
-  <strong>Restaurant:</strong>
-  <%= @dish.restaurant_id %>
-</p>
+<% if current_user == @dish.user %>
 
-<%= link_to 'Edit', edit_dish_path(@dish) %> |
-<%= link_to 'Back', dishes_path %>
+  <h2>Admin</h2>
+
+  <div class="btn-group" role="group" aria-label="...">
+    <%= link_to 'Editer', edit_dish_path(@dish), class: 'btn btn-warning' %>
+    <%= link_to 'Supprimer', @dish, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+  </div>
+
+<% end %>

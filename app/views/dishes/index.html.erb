@@ -2,7 +2,7 @@
 
 <h1>Dishes</h1>
 
-<table>
+<table class='table table-striped'>
   <thead>
     <tr>
       <th>Name</th>
@@ -19,12 +19,14 @@
       <tr>
         <td><%= dish.name %></td>
         <td><%= dish.description %></td>
-        <td><%= dish.category_id %></td>
-        <td><%= dish.user_id %></td>
+        <td><%= dish.category.name %></td>
+        <td><%= link_to dish.user.complete_name, dish.user %></td>
         <td><%= dish.restaurant_id %></td>
-        <td><%= link_to 'Show', dish %></td>
-        <td><%= link_to 'Edit', edit_dish_path(dish) %></td>
-        <td><%= link_to 'Destroy', dish, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <%= link_to 'Show', dish, class: 'btn btn-primary' %>
+          <%= link_to 'Edit', edit_dish_path(dish), class: 'btn btn-warning' %>
+          <%= link_to 'Destroy', dish, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
