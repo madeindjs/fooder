@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   resources :categories
   resources :dishes
   resources :restaurants
-  resources :resumes
   resources :users
   resources :user_sessions, only: [:create, :destroy]
 

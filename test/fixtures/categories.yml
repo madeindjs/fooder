@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
+  name: category one
   user_id: 1
 
 two:
-  name: MyString
+  name: category two
   user_id: 1

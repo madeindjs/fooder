@@ -1,14 +1,14 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
+  name: Poulet roti
   description: MyString
   category_id: 1
   user_id: 1
   restaurant_id: 1
 
 two:
-  name: MyString
+  name: Pizza
   description: MyString
   category_id: 1
   user_id: 1

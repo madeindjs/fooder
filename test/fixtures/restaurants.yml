@@ -1,14 +1,14 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
+  name: Au Lagon Bleu
   address: MyString
   zip_code: MyString
   city: MyString
   user_id: 1
 
 two:
-  name: MyString
+  name: Pzeria les trois saucisses
   address: MyString
   zip_code: MyString
   city: MyString

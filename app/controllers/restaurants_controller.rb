@@ -1,6 +1,6 @@
 class RestaurantsController < ApplicationController
-  before_action :check_login
-  before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
+  before_action :check_login, only: [:new, :create, :edit, :update, :destroy]
+  before_action :set_restaurant, only: [:show, :create, :edit, :update, :destroy]
   before_action :check_owner, only: [:edit, :update, :destroy]
 
   # GET /restaurants
