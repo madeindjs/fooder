@@ -6,11 +6,17 @@
 <p><%= glyphicon 'user' %> <%= link_to @restaurant.user.complete_name, @restaurant.user %></p>
 
 
-<div class="btn-group" role="toolbar" aria-label="...">
-  <%= link_to 'ajouter un plat', new_dish_path, class: "btn btn-primary" %>
-  <%= link_to 'Edit', edit_restaurant_path(@restaurant), class: "btn btn-default" %>
-  <%= link_to 'Back', restaurants_path, class: "btn btn-default" %>
-</div>
+<% if current_user == @restaurant.user %>
+
+	<h2>Administration</h2>
+
+	<div class="btn-group" role="toolbar" aria-label="...">
+	  <%= link_to 'ajouter un plat', new_restaurant_dish_path(@restaurant), class: "btn btn-primary" %>
+	  <%= link_to 'editer ce restaurant', edit_restaurant_path(@restaurant), class: "btn btn-warning" %>
+	  <%= link_to 'supprimer ce restaurant', @restaurant, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'  %>
+	</div>
+
+<% end %>
 
 <h2>Plats</h2>
 
