@@ -27,20 +27,10 @@
     <%= render 'layouts/navigation' %>
 
     <div class="container" style="padding-top: 50px">
-
       <%= yield %>
-
-      <% if Rails.env.development? %>
-        <div class="row">
-
-          <pre>current_user = <%= current_user.inspect %></pre>
-          
-        </div>
-      <% end %>
-
-      
-
     </div><!-- /.container -->
+
+    <%= render 'layouts/footer' %>
 
 
     <!-- Bootstrap core JavaScript
