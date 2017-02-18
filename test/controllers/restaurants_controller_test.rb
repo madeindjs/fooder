@@ -1,9 +1,6 @@
 require 'test_helper'
-require "authlogic/test_case"
 
 class RestaurantsControllerTest < ActionDispatch::IntegrationTest
-
-  setup :activate_authlogic
 
   setup do
     @restaurant = restaurants(:one)
@@ -21,7 +18,7 @@ class RestaurantsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get new" do
-    UserSession.create(users(:me))
+    login(users(:me))
     get new_restaurant_url
     assert_response :success
   end
@@ -35,7 +32,7 @@ class RestaurantsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create restaurant" do
-    UserSession.create(users(:me))
+    login(users(:me))
     assert_difference('Restaurant.count') do
       post restaurants_url, params: { restaurant: { address: @restaurant.address, city: @restaurant.city, name: "new restaurant", zip_code: @restaurant.zip_code } }
     end
@@ -49,7 +46,7 @@ class RestaurantsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get edit" do
-    UserSession.create(users(:me))
+    login(users(:me))
     get edit_restaurant_url(@restaurant)
     assert_response :success
   end
@@ -60,7 +57,7 @@ class RestaurantsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update restaurant" do
-    UserSession.create(users(:me))
+    login(users(:me))
     patch restaurant_url(@restaurant), params: { restaurant: { address: @restaurant.address, city: @restaurant.city, name: @restaurant.name, user_id: @restaurant.user_id, zip_code: @restaurant.zip_code } }
     assert_redirected_to restaurant_url(@restaurant)
   end
@@ -79,7 +76,7 @@ class RestaurantsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy restaurant" do
-    UserSession.create(users(:me))
+    login(users(:me))
     assert_difference('Restaurant.count', -1) do
       delete restaurant_url(@restaurant)
     end

@@ -6,6 +6,10 @@ class User < ApplicationRecord
 
   after_create :generate_categories
 
+  acts_as_authentic do |c|
+    c.crypto_provider = Authlogic::CryptoProviders::Sha512
+  end
+
   def complete_name
     "#{self.lastname} #{self.firstname}"
   end

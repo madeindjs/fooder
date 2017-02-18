@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :dishes
+  resources :categories, only: [:create, :new, :edit, :update, :destroy]
 
   resources :restaurants do
     resources :dishes

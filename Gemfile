@@ -36,7 +36,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 
-gem 'authlogic'
+gem 'authlogic', '>= 3.5'
 gem 'devise'
 
 group :development, :test do

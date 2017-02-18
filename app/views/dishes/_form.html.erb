@@ -1,4 +1,4 @@
-<%= form_for(dish) do |f| %>
+<%= form_for [@restaurant, dish] do |f| %>
   <%= render 'shared/errors_form', model: dish %>
 
   <div class="form-group">
@@ -15,18 +15,6 @@
     <%= f.label :category_id, 'Catégorie' %>
     <%= collection_select :dish, :category_id, current_user.categories, :id, :name, {}, { class: "form-control" }  %>
   </div>
-
-  <% if params[:restaurant_id] # we insert an hidden field if restaurant_id exists%>
-    <%= f.hidden_field :restaurant_id, value: params[:restaurant_id].to_i %>
-
-  <% else %>
-    <div class="form-group">
-      <%= f.label :restaurant_id %>
-      <%= collection_select :dish, :restaurant_id, current_user.restaurants, :id, :name, {}, { class: "form-control" }  %>
-    </div>
-
-  <% end %>
-
 
   <div class="actions">
     <%= f.submit 'Ajouter ce plat', class: 'btn btn-primary' %>

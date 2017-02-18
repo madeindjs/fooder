@@ -23,9 +23,9 @@
         <td><%= link_to dish.user.complete_name, dish.user %></td>
         <td><%= dish.restaurant_id %></td>
         <td>
-          <%= link_to 'Show', dish, class: 'btn btn-primary' %>
-          <%= link_to 'Edit', edit_dish_path(dish), class: 'btn btn-warning' %>
-          <%= link_to 'Destroy', dish, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+          <%= link_to 'Show', restaurant_dish_path(dish, restaurant_id: dish.restaurant), class: 'btn btn-primary' %>
+          <%= link_to 'Edit', edit_restaurant_dish_path(dish, restaurant_id: dish.restaurant), class: 'btn btn-warning' %>
+          <%= link_to 'Destroy', restaurant_dish_path(dish, restaurant_id: dish.restaurant), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
         </td>
       </tr>
     <% end %>
@@ -34,4 +34,4 @@
 
 <br>
 
-<%= link_to 'New Dish', new_dish_path %>
+<%= link_to 'New Dish', new_restaurant_dish_path %>

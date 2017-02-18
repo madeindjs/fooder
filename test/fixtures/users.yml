@@ -3,9 +3,13 @@
 me:
   id: 1
   email: madeindjs@gmail.com
+  firstname: Alexandre 
+  lastname: Rousseau
   password_salt: <%= salt = Authlogic::Random.hex_token %>
-  crypted_password: <%= Authlogic::CryptoProviders::Sha512.encrypt("madeindjs" + salt) %>
+  crypted_password: <%= Authlogic::CryptoProviders::Sha512.encrypt("20462046" + salt) %>
   persistence_token: <%= Authlogic::Random.hex_token %>
+
+       
 
 my_girlfriend:
   email: lorene.odet@orange.fr

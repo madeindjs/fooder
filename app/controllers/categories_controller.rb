@@ -20,7 +20,7 @@ class CategoriesController < ApplicationController
     @category.user_id = current_user.id
 
     if @category.save
-      redirect_to dishes_path, notice: 'Category was successfully created.'
+      redirect_to current_user, notice: 'Category was successfully created.'
     else
       render :new
     end
@@ -30,7 +30,7 @@ class CategoriesController < ApplicationController
   # PATCH/PUT /categories/1.json
   def update
       if @category.update(category_params)
-        redirect_to dishes_path, notice: 'Category was successfully updated.'
+        redirect_to current_user, notice: 'Category was successfully updated.'
       else
         render :edit
       end
@@ -40,7 +40,7 @@ class CategoriesController < ApplicationController
   # DELETE /categories/1.json
   def destroy
     @category.destroy
-      redirect_to dishes_path, notice: 'Category was successfully destroyed.'
+      redirect_to current_user, notice: 'Category was successfully destroyed.'
   end
 
   private
