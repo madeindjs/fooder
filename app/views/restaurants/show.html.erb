@@ -1,10 +1,12 @@
-<p id="notice"><%= notice %></p>
-
 <h1><%= @restaurant.name %></h1>
 
 <p><%= glyphicon 'home' %> <%= @restaurant.complete_address %></p>
 <p><%= glyphicon 'user' %> <%= link_to @restaurant.user.complete_name, @restaurant.user %></p>
 
+
+<div class="btn-group" role="toolbar" aria-label="...">
+  <%= link_to 'Voir la carte', restaurant_dishes_path(@restaurant), class: "btn btn-primary" %>
+</div>
 
 <% if current_user == @restaurant.user %>
 
@@ -17,11 +19,3 @@
 	</div>
 
 <% end %>
-
-<h2>Plats</h2>
-
-<ul>
-  <% @restaurant.dishes.each do |dish| %>
-    <li><%= link_to dish.name, restaurant_dish_path(dish, restaurant_id: dish.restaurant_id) %></li>
-  <% end %> 
-</ul>

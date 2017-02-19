@@ -13,4 +13,13 @@
         zip_code: Faker::Address.zip_code, 
         city: Faker::Address.city
 
+
+    10.times do
+        Dish.create name: Faker::Food.ingredient,
+            description: Faker::Food.ingredient + " & " + Faker::Food.ingredient + " & "  + Faker::Food.ingredient,
+            category_id: u.categories.order("RANDOM()").first.id,
+            user_id: u.id,
+            restaurant_id: r.id
+    end
+
 end

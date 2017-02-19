@@ -1,0 +1,17 @@
+<% categories =  dishes.map{|d| d.category }.uniq %>
+
+
+<div class="row">
+  <% categories.each do |category| %>
+
+    <section class="col-sm-6">
+      <h2><%= category.name %></h2>
+
+      <% dishes.select{|d| d.category_id == category.id}.each do |dish| %>
+        <p><strong><%= link_to dish.name, restaurant_dish_path(dish, restaurant_id: dish.restaurant_id) %></strong> <%= dish.description %></p>
+      <% end %>
+
+    </section>
+
+  <% end %> 
+</div>

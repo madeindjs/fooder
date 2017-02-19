@@ -1,4 +1,4 @@
-<h1><%= @dish.name %> <small><%= @dish.category.name %></small></h1>
+<h1><%= @dish.name %> <small><%= @dish.category.name if @dish.category%></small></h1>
 
 <blockquote>
   <p><%= @dish.description %></p>

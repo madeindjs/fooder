@@ -17,14 +17,13 @@
 
       <ul class="nav navbar-nav nav navbar-left">
         <% if @restaurant && @restaurant.id %>
-          <li><%=  link_to "Plats",  restaurant_dishes_path(restaurant_id: @restaurant.id) %></li>
+          <li><%=  link_to "Carte",  restaurant_dishes_path(restaurant_id: @restaurant.id) %></li>
         <% else %>
           <li><%= link_to "Restaurants", restaurants_path %></li>
           <li><%= link_to "Utilisateurs", users_path %></li>
         <% end %>
         <li><a href="#">Actualités</a></li>
-        <li><a href="#">Menus</a></li>
-        <li><a href="#">Blog</a></li>
+        <li><a href="#">Réservation</a></li>
         <li><a href="#">Contact</a></li>
       </ul>
 
