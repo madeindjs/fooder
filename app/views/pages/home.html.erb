@@ -1,24 +1,43 @@
-<div class="page-header">
-  <h1>Fooder <small>web-site generator</small></h1>
-  <p>Vous posséder un restaurant et vous chercher à le <strong>valoriser</strong> avec un beau site mais:</p>
-</div>
 
+<section class="col-xs-12">
+  <h1>Créez LE site pour votre restaurant</h1>
 
-<section>
-  <h2>Vous pensez que <strong>HTML</strong> et <strong>CSS</strong> sont des organismes de l'<strong>URSSAF</strong></h2>
-  <p>Perdu! Mais ça aurait pu...</p>
-</section>
+  <p class="lead">Vous pensez que <strong>HTML</strong> et <strong>CSS</strong> sont des organismes de l'<strong>URSSAF</strong>? Votre <strong>beau-frère</strong> n'est pas spécialement bon en <strong>informatique</strong> non plus? Vous n'avez <strong>pas de temps</strong> à perdre avec ces conneries?</p>
 
-<section>
-  <h2>Votre <strong>beau-frère</strong> n'est pas spécialement bon en <strong>informatique</strong> non plus</h2>
-  <p>Il à préféré travailler dans la fonction publique le salaud!</p>
+  <p class="lead"></p>
 </section>
 
 
-<section>
-  <h2>Vous n'avez pas de temps à perdre avec tout ça</h2>
-  <p>Et moi je suis prêt à le perdre pour vous!</p>
+<section class="col-xs-6">
+  <h2>Vous avez dit rapide?</h2>
+  <%= image_tag '/assets/icons/rocket.svg', class: 'home-icons' %>
+  <p class="lead">Créez votre site en moins de cinq minutes. Ajoutez par exemple un module de réservation ou de blog en un clic!</p>
+</section>
+
+<section class="col-xs-6">
+  <h2>C'est vous le chef!</h2>
+  <%= image_tag '/assets/icons/pantone.svg', class: 'home-icons' %>
+  <p class="lead">Choisissez vos couleurs principales, vos phrases d'accroches, votre agencement: tout ce qui rend votre restaurant unique.</p>
+</section>
+
+<section class="col-xs-6">
+  <h2>Gestion de vos plats</h2>
+  <%= image_tag '/assets/icons/pencil.svg', class: 'home-icons' %>
+  <p class="lead">Ajoutez vos plats, composez vos menus et actualisez vos services n'importe quand Vous pouvez même spécifier et créer votre carte d'allergènes.</p>
+</section>
+
+<section class="col-xs-6">
+  <h2>Soyez le premier</h2>
+  <%= image_tag '/assets/icons/target.svg', class: 'home-icons' %>
+  <p class="lead">Bénéficiez d'un meilleur réferencement chez Google, Yahoo, Bing!</p>
+</section>
+
+<section class="col-xs-12">
+  <h2>Essayez maintenant</h2>
+  <p class="lead">Convaincu? Jettez un coup d'oeil à la démo ou créez vous un compte maintenant. </p>
   <p>
-    <%= link_to "voir l'exemple", restaurant_path(2812), class: 'btn btn-primary' %>
+    <%= link_to "voir l'exemple", restaurant_path(2812), class: 'btn btn-default' %>
+    <%= link_to "se créer un compte", signup_path, class: 'btn btn-default' %>
   </p>
 </section>
+
