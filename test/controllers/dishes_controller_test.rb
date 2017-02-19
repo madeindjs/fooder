@@ -45,13 +45,13 @@ class DishesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should redirect on get edit" do
-    get restaurant_dish_url(@dish, restaurant_id: @dish.restaurant_id)
+    get edit_restaurant_dish_url(@dish, restaurant_id: @dish.restaurant_id)
     assert_response 302
   end
 
   test "should get edit" do
     login(users(:me))
-    get restaurant_dish_url(@dish, restaurant_id: @dish.restaurant_id)
+    get edit_restaurant_dish_url(@dish, restaurant_id: @dish.restaurant_id)
     assert_response :success
   end
 

@@ -1,0 +1,18 @@
+<%= form_for([@restaurant, section]) do |f| %>
+
+  <%= render 'shared/errors_form', model: section %>
+
+  <div class="form-group">
+    <%= f.label :title, 'Titre' %>
+    <%= f.text_field :title, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :content, 'Contenu' %>
+    <%= f.text_area :content, class: 'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Ajouter cette section', class: 'btn btn-primary' %>
+  </div>
+<% end %>

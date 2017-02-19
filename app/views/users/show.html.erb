@@ -2,4 +2,6 @@
 
 <p><%= glyphicon 'envelope' %> <%= @user.email %></p>
 
+<h2>Ses restaurants</h2>
+
 <%= render 'restaurants/table', restaurants: @user.restaurants %>

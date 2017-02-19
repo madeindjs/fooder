@@ -1,0 +1,27 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th>User</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% restaurants.each do |restaurant| %>
+      <tr>
+        <td><%= link_to restaurant.name, restaurant %></td>
+        <td><%= restaurant.complete_address %></td>
+        <td><%= restaurant.user.complete_name %></td>
+        <td>
+            <% if current_user == restaurant.user %>
+                <%= link_to 'Show', restaurant , class: 'btn btn-primary' %>
+                <%= link_to 'Edit', edit_restaurant_path(restaurant) , class: 'btn btn-warning' %>
+                <%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'  %>
+            <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

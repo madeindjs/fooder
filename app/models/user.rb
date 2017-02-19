@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_many :restaurants
   has_many :dishes
   has_many :categories
+  has_many :sections
 
   after_create :generate_categories
 
