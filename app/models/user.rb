@@ -18,7 +18,7 @@ class User < ApplicationRecord
   private 
 
   def generate_categories
-  	['Entrée', 'Plat', 'Dessrt', 'Boisson', 'Sauce'].each do |category_name|
+  	['Entrée', 'Plat', 'Dessert', 'Boisson', 'Sauce'].each do |category_name|
   		Category.create name: category_name, user_id: self.id
   	end
   end

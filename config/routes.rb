@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
   
+  get 'pages/what'
+
   resources :categories, only: [:create, :new, :edit, :update, :destroy]
 
   resources :restaurants do
