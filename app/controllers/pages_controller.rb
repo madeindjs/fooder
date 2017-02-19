@@ -4,4 +4,7 @@ class PagesController < ApplicationController
     @title = "Home"
   end
 
+  def cost
+  end
+
 end
