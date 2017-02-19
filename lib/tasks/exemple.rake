@@ -71,8 +71,10 @@ namespace :example do
       Dish.create name: name,
             description: description,
             category_id: cat_entree.id,
+            price: rand(11.2...25.9).ceil(2),
             user_id: user.id,
-            restaurant_id: restaurant.id
+            restaurant_id: restaurant.id,
+            tags: 'sans gluten;fait maison'
     end
 
     { "Gras Double Sauté" => "oignons confits, pommes vapeur",
@@ -86,6 +88,7 @@ namespace :example do
       Dish.create name: name,
             description: description,
             category_id: cat_plat.id,
+            price: rand(11.2...25.9).ceil(2),
             user_id: user.id,
             restaurant_id: restaurant.id
     end
@@ -99,6 +102,7 @@ namespace :example do
       Dish.create name: name,
             description: description,
             category_id: cat_dessert.id,
+            price: rand(11.2...25.9).ceil(2),
             user_id: user.id,
             restaurant_id: restaurant.id
     end  

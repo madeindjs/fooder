@@ -19,7 +19,8 @@
             description: Faker::Food.ingredient + " & " + Faker::Food.ingredient + " & "  + Faker::Food.ingredient,
             category_id: u.categories.order("RANDOM()").first.id,
             user_id: u.id,
-            restaurant_id: r.id
+            restaurant_id: r.id,
+            price: rand(11.2...25.9)..ceil(2)
     end
 
 end

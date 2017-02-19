@@ -4,14 +4,22 @@
 <div class="row">
   <% categories.each do |category| %>
 
-    <section class="col-sm-6">
       <h2><%= category.name %></h2>
 
       <% dishes.select{|d| d.category_id == category.id}.each do |dish| %>
-        <p><strong><%= link_to dish.name, restaurant_dish_path(dish, restaurant_id: dish.restaurant_id) %></strong> <%= dish.description %></p>
+        <p><strong><%= link_to dish.name, restaurant_dish_path(dish, restaurant_id: dish.restaurant_id) %></strong> <%= dish.description %>
+          <span class="text-right"><strong><%= dish.price %>€</strong></span>
+          <% if dish.tags %>
+            <br/>
+            <% dish.tags.split(';').each do |tag| %>
+              <span class="label label-info"><%= tag %></span>
+            <% end %>
+          <% end %>
+          <br/>
+          
+        </p>
       <% end %>
 
-    </section>
 
   <% end %> 
 </div>

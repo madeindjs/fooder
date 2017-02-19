@@ -12,6 +12,17 @@
   </div>
 
   <div class="form-group">
+    <%= f.label :tags %>
+    <%= f.text_field :tags, class: "form-control" %>
+    <span class="help-block">Séparez vos tags par ";". <i>Exemple: "sans gluten;fait maison"</i></span>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :price, 'Prix' %>
+    <%= f.text_field :price, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
     <%= f.label :category_id, 'Catégorie' %>
     <%= collection_select :dish, :category_id, current_user.categories, :id, :name, {}, { class: "form-control" }  %>
   </div>
