@@ -17,7 +17,9 @@ class ApplicationController < ActionController::Base
   end
 
   def check_login
-    redirect_to home_path  unless current_user_session
+    unless current_user_session
+      redirect_to @restautant ? restaurant_path(@restautant) : home_path  
+    end
   end
 
   def found_restaurant

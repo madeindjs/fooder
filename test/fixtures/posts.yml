@@ -1,0 +1,16 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: 1
+  title: MyString
+  content: MyString
+  tags: MyString
+  user_id: 1
+  restaurant_id: 1
+
+two:
+  title: MyString
+  content: MyString
+  tags: MyString
+  user_id: 1
+  restaurant_id: 1

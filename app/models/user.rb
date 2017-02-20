@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :dishes
   has_many :categories
   has_many :sections
+  has_many :posts
 
   after_create :generate_categories
 
