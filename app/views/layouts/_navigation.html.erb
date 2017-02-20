@@ -19,7 +19,9 @@
         <% if @restaurant && @restaurant.id %>
           <li><%=  link_to "Carte",  restaurant_dishes_path(restaurant_id: @restaurant.id) %></li>
           <li><a href="#">Menus</a></li>
-          <li><a href="#">Actualités</a></li>
+          <% if @restaurant.module_blog %>
+            <li><%= link_to "Actualités", restaurant_posts_path(@restaurant) %></li>
+          <% end %>
           <li><a href="#">Réservation</a></li>
           <li><a href="#">Contact</a></li>
         <% else %>

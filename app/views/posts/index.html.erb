@@ -1,37 +1,17 @@
-<p id="notice"><%= notice %></p>
+<h1>Actualité</h1>
 
-<h1>Posts</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Content</th>
-      <th>Tags</th>
-      <th>User</th>
-      <th>Restaurant</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<% @posts.each do |post| %>
 
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.title %></td>
-        <td><%= post.content %></td>
-        <td><%= post.tags %></td>
-        <td><%= post.user_id %></td>
-        <td><%= post.restaurant_id %></td>
-        <td><%= link_to 'Show', restaurant_post_url(@restaurant, post) %></td>
-        <td><%= link_to 'Edit', edit_restaurant_post_path(@restaurant, post) %></td>
-        <td><%= link_to 'Destroy', restaurant_post_url(@restaurant, post), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <section>
+    <h2><%= post.title %></h2>
+    <p class="text-justify"><%= tags post.tags %><br/>
 
-<br>
+    <%= post.content %></p>
+  </section>
+
+<% end %>
 
 <% if current_user == @restaurant.user %>
-  <%= link_to 'New Post', new_restaurant_post_path(@restaurant) %>
+  <%= link_to 'Ajouter un article', new_restaurant_post_path(@restaurant), class: 'btn btn-primary' %>
 <% end %>

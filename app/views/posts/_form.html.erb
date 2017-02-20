@@ -1,42 +1,24 @@
 <%= form_for([@restaurant, post]) do |f| %>
-  <% if post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+  <%= render 'shared/errors_form', model: post %>
 
-      <ul>
-      <% post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
+  <div class="form-group">
+    <%= f.label :title, 'Titre' %>
+    <%= f.text_field :title, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= f.label :content %>
-    <%= f.text_field :content %>
+  <div class="form-group">
+    <%= f.label :content, 'Contenu' %>
+    <%= f.text_area :content, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :tags %>
-    <%= f.text_field :tags %>
+    <%= f.text_field :tags, class: 'form-control' %>
+    <span class="help-block">Séparez vos tags par ";". <i>Exemple: "sans gluten;fait maison"</i></span>
   </div>
 
-  <div class="field">
-    <%= f.label :user_id %>
-    <%= f.number_field :user_id %>
-  </div>
-
-  <div class="field">
-    <%= f.label :restaurant_id %>
-    <%= f.number_field :restaurant_id %>
-  </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Confirmer', class: 'btn btn-primary' %>
   </div>
 <% end %>

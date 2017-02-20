@@ -34,13 +34,8 @@
           <div class="col-xs-9">
             <p>
               <strong><%= link_to dish.name, restaurant_dish_path(dish, restaurant_id: dish.restaurant_id) %></strong><br/>
-              <%= dish.description %>
-              <% if dish.tags %>
-                <br/>
-                <% dish.tags.split(';').each do |tag| %>
-                  <span class="label label-info"><%= tag %></span>
-                <% end %>
-              <% end %>
+              <%= dish.description %><br/>
+              <%= tags dish.tags %>
             </p>
           </div><!--! .col-xs-10 -->
 

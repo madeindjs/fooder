@@ -9,6 +9,6 @@ class CreatePosts < ActiveRecord::Migration[5.0]
 
       t.timestamps
     end
-    add_column :restaurants, :tags, :boolean
+    add_column :restaurants, :module_blog, :boolean
   end
 end

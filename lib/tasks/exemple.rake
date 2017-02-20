@@ -109,8 +109,31 @@ namespace :example do
 
   end
 
+  desc "Build blog"
+  task :blog => [:environment] do 
+    user = User.find(2812)
+    restaurant = Restaurant.find(2812)
+    restaurant.module_blog = true
+    restaurant.save
+
+    restaurant.posts.each{|s| s.destroy}
+
+    20.times do
+
+      departements = ""
+      rand(0..5).times { departements += Faker::Commerce.department }
+
+      Post.create title: Faker::Book.title,
+          content: Faker::Lorem.paragraphs(3, true).join("\n\n"),
+          tags: departements,
+          user_id: user.id,
+          restaurant_id: restaurant.id
+    end
+        
+  end
+
   desc "Build the complete example"
-  task :all => [:user, :restaurant, :sections, :dishes] do 
+  task :build => [:user, :restaurant, :sections, :dishes, :blog] do 
   end
   
 end

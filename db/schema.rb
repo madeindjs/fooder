@@ -12,16 +12,6 @@
 
 ActiveRecord::Schema.define(version: 20170220112519) do
 
-  create_table "blogs", force: :cascade do |t|
-    t.string   "title"
-    t.string   "content"
-    t.string   "tags"
-    t.integer  "user_id"
-    t.integer  "restaurant_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-  end
-
   create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.integer  "user_id"
@@ -57,9 +47,9 @@ ActiveRecord::Schema.define(version: 20170220112519) do
     t.string   "zip_code"
     t.string   "city"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.boolean  "tags"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.boolean  "module_blog"
   end
 
   create_table "resumes", force: :cascade do |t|
