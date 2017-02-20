@@ -11,7 +11,7 @@
 <section class="col-xs-6">
   <h2>Vous avez dit rapide?</h2>
   <%= image_tag '/assets/icons/rocket.svg', class: 'home-icons' %>
-  <p class="lead">Créez votre site en moins de cinq minutes. Ajoutez par exemple un module de réservation ou de blog en un clic!</p>
+  <p class="lead">Créez votre site en moins de cinq minutes. Sans aucune conaissance en dévelopement web.</p>
 </section>
 
 <section class="col-xs-6">
@@ -23,13 +23,25 @@
 <section class="col-xs-6">
   <h2>Gestion de vos plats</h2>
   <%= image_tag '/assets/icons/pencil.svg', class: 'home-icons' %>
-  <p class="lead">Ajoutez vos plats, composez vos menus et actualisez vos services n'importe quand Vous pouvez même spécifier et créer votre carte d'allergènes.</p>
+  <p class="lead">Gerez vos plats et menus et actualisez-les quand vous voulez! Vous pouvez même spécifier et créer votre carte d'allergènes.</p>
 </section>
 
 <section class="col-xs-6">
-  <h2>Soyez le premier</h2>
-  <%= image_tag '/assets/icons/target.svg', class: 'home-icons' %>
-  <p class="lead">Bénéficiez d'un meilleur réferencement chez Google, Yahoo, Bing!</p>
+  <h2>Module</h2>
+  <%= image_tag '/assets/icons/settings.svg', class: 'home-icons' %>
+  <p class="lead">Ajoutez les modules qui vous intéresse. Blog d'actualité, réservation en ligne, notation de vos plat.</p>
+</section>
+
+<section class="col-xs-6">
+  <h2>Faites vous connaitre</h2>
+  <%= image_tag '/assets/icons/megaphone.svg', class: 'home-icons' %>
+  <p class="lead">Bénéficiez d'un meilleur réferencement chez Google, Yahoo, Bing et atteignez d'autres clients.</p>
+</section>
+
+<section class="col-xs-6">
+  <h2>Gratuit sans limite d'essai</h2>
+  <%= image_tag '/assets/icons/piggy-bank.svg', class: 'home-icons' %>
+  <p class="lead">Décidez de passer au compte premium seulement quand vous êtes convaincu.</p>
 </section>
 
 <section class="col-xs-12">
@@ -38,6 +50,7 @@
   <p>
     <%= link_to "voir l'exemple", restaurant_path(2812), class: 'btn btn-default' %>
     <%= link_to "se créer un compte", signup_path, class: 'btn btn-default' %>
+    <%= link_to "combien ça va me couter?", cost_path, class: 'btn btn-default' %>
   </p>
 </section>
 
