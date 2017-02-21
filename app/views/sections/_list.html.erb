@@ -8,7 +8,7 @@
       <h2><%= section.title %></h2>
       <p><%= section.content %></p>
       
-        <% if current_user == @restaurant.user %>
+        <% if check_admin %>
           <p class="text-right">
               <%= link_to 'editer', edit_restaurant_section_path(@restaurant, section), class: "btn btn-default" %>
               <%= link_to 'supprimer', restaurant_admin_path(@restaurant), class: "btn btn-default" %>

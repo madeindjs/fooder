@@ -15,6 +15,6 @@
 
 <% end %>
 
-<% if current_user == @restaurant.user %>
+<% if check_admin %>
   <%= link_to 'Ajouter un article', new_restaurant_post_path(@restaurant), class: 'btn btn-primary' %>
 <% end %>

@@ -1,5 +1,3 @@
-<% admin = @restaurant && @restaurant.user == current_user %>
-
 <% categories =  dishes.map{|d| d.category }.uniq %>
 
 
@@ -17,7 +15,7 @@
       <% dishes.select{|d| d.category_id == category.id}.each do |dish| %>
         <div class="row">
 
-          <% if admin %>
+          <% if check_admin %>
             <div class="col-xs-1" style="margin-top: 33px">
               <div class="btn-group-vertical btn-group-xs" role="group" aria-label="...">
                 <%= link_to "Editer", edit_restaurant_dish_path(@restaurant, dish), class: 'btn btn-default btn-xs' %>
