@@ -24,13 +24,24 @@
 
   <body>
 
-    <%= render 'layouts/navigation' %>
+    <div class="main-container container-fluid">
+      
+      <%= render 'layouts/navigation' %>
 
-    <div class="container" style="padding-top: 50px">
-      <%= yield %>
-    </div><!-- /.container -->
+      <div id="admin-panel" class="col-md-4 col-sm-2" style="padding-top: 50px">
+        <% if @restaurant && current_user && @restaurant.user_id == current_user.id %>
+          <%= render 'layouts/admin_panel' %>
+        <% end %>
+      </div>
 
-    <%= render 'layouts/footer' %>
+      <div id="main-container" class=" col-md-8  col-sm-10" style="padding-top: 50px">
+        <%= yield %>
+      </div><!-- /.container -->
+
+      <%= render 'layouts/footer' %>
+
+    </div>
+    
 
 
     <!-- Bootstrap core JavaScript
