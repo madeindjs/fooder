@@ -12,4 +12,8 @@ module ApplicationHelper
       html.html_safe
     end
 
+    def check_admin
+      @restaurant && current_user && @restaurant.user_id == current_user.id
+    end
+
 end
