@@ -1,29 +1,8 @@
-<p id="notice"><%= notice %></p>
+<h1><%= @post.title %></h1>
 
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
+<p><%= @post.user.complete_name %> dans <%= tags @post.tags %></p>
+<p class="text-justify"><%= @post.content %></p>
 
-<p>
-  <strong>Content:</strong>
-  <%= @post.content %>
-</p>
-
-<p>
-  <strong>Tags:</strong>
-  <%= @post.tags %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @post.user_id %>
-</p>
-
-<p>
-  <strong>Restaurant:</strong>
-  <%= @post.restaurant_id %>
-</p>
 
 <% if current_user == @post.user %>
   <%= link_to 'Edit', edit_restaurant_post_path(@restaurant, @post) %> |
