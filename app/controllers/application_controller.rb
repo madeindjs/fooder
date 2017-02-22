@@ -16,14 +16,14 @@ class ApplicationController < ActionController::Base
     @current_user = current_user_session && current_user_session.user
   end
 
-  def check_login
-    unless current_user_session
-      redirect_to @restautant ? restaurant_path(@restautant) : home_path  
-    end
-  end
-
   def found_restaurant
     @restaurant = Restaurant.find(params[:restaurant_id]) if params[:restaurant_id]
+  end
+
+  def check_login
+    unless current_user_session
+      redirect_to params[:restaurant_id] ? restaurant_path(params[:restaurant_id]) : home_path  
+    end
   end
 
   helper_method :current_user_session, :current_user

@@ -5,6 +5,7 @@ class DishesControllerTest < ActionDispatch::IntegrationTest
 
   setup do
     @dish = dishes(:one)
+    @restaurant = restaurants(:one)
   end
 
   test "should get index" do
@@ -37,7 +38,7 @@ class DishesControllerTest < ActionDispatch::IntegrationTest
       post restaurant_dishes_url(restaurant_id: 1), params: { dish: { category_id: @dish.category_id, description: @dish.description, name: @dish.name, restaurant_id: @dish.restaurant_id, user_id: @dish.user_id } }
     end
 
-    assert_redirected_to home_path
+    assert_redirected_to restaurant_url(@restaurant)
   end
 
   test "should show dish" do
@@ -57,7 +58,7 @@ class DishesControllerTest < ActionDispatch::IntegrationTest
 
   test "should not update dish" do
     patch restaurant_dish_url(@dish, restaurant_id: 1), params: { dish: { category_id: @dish.category_id, description: @dish.description, name: @dish.name, restaurant_id: @dish.restaurant_id, user_id: @dish.user_id } }
-    assert_redirected_to home_path
+    assert_redirected_to restaurant_url(@restaurant)
   end
 
   test "should update dish" do
@@ -71,7 +72,7 @@ class DishesControllerTest < ActionDispatch::IntegrationTest
       delete restaurant_dish_url(@dish, restaurant_id: @dish.restaurant_id)
     end
 
-    assert_redirected_to home_path
+    assert_redirected_to restaurant_url(@restaurant)
   end
 
   test "should destroy dish" do

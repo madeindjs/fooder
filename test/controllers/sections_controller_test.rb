@@ -44,7 +44,7 @@ class SectionsControllerTest < ActionDispatch::IntegrationTest
 
   test "should not update section" do
     patch restaurant_section_url(@section, restaurant_id: @section.restaurant_id), params: { section: { content: @section.content, restaurant_id: @section.restaurant_id, title: @section.title, user_id: @section.user_id } }
-    assert_redirected_to home_url
+    assert_redirected_to restaurant_url(1)
   end
 
   test "should update section" do

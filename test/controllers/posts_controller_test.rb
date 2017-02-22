@@ -56,7 +56,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
 
   test "should recirect update post" do
     patch restaurant_post_url(@restaurant, @post), params: { post: { content: @post.content, tags: @post.tags, title: @post.title } }
-    assert_redirected_to restaurant_post_url(@restaurant, @post)
+    assert_redirected_to restaurant_url(@restaurant)
   end
 
   test "should update post" do
@@ -70,7 +70,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
       delete restaurant_post_url(@restaurant, @post)
     end
 
-    assert_redirected_to restaurant_post_url(@restaurant, @post)
+    assert_redirected_to restaurant_url(@restaurant)
   end
 
   test "should destroy post" do
