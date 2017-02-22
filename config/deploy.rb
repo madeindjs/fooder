@@ -1,8 +1,10 @@
 # config valid only for current version of Capistrano
 lock "3.7.2"
 
-set :application, "my_app_name"
-set :repo_url, "git@example.com:me/my_repo.git"
+set :default_env, { rvm_bin_path: '~/.rvm/bin' }
+
+set :application, "fooder"
+set :repo_url, 'https://github.com/madeindjs/fooder.git'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
@@ -21,7 +23,7 @@ set :repo_url, "git@example.com:me/my_repo.git"
 # set :pty, true
 
 # Default value for :linked_files is []
-# append :linked_files, "config/database.yml", "config/secrets.yml"
+append :linked_files, "config/database.yml", "config/secrets.yml"
 
 # Default value for linked_dirs is []
 # append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
