@@ -1,37 +1,3 @@
-<p id="notice"><%= notice %></p>
+<h1><%= @menu.name %> <small><%= @menu.description %></small></h1>
 
-<p>
-  <strong>Name:</strong>
-  <%= @menu.name %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @menu.description %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= @menu.content %>
-</p>
-
-<p>
-  <strong>Tags:</strong>
-  <%= @menu.tags %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @menu.price %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @menu.user_id %>
-</p>
-
-<p>
-  <strong>Restaurant:</strong>
-  <%= @menu.restaurant_id %>
-</p>
-
+<%= render 'details', menu: @menu %>

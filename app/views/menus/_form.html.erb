@@ -1,33 +1,33 @@
 <%= form_for [@restaurant, menu] do |f| %>
   <%= render 'shared/errors_form', model: menu %>
 
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+  <div class="form-group col-xs-12">
+    <%= f.label :name, 'Nom' %>
+    <%= f.text_field :name, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group col-xs-12">
     <%= f.label :description %>
-    <%= f.text_field :description %>
+    <%= f.text_field :description, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= f.label :content %>
-    <%= f.text_field :content %>
+  <div class="form-group col-xs-12">
+    <%= f.label :content, 'Contenu' %>
+    <%= f.text_area :content, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group col-sm-9">
     <%= f.label :tags %>
-    <%= f.text_field :tags %>
+    <%= f.text_field :tags, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= f.label :price %>
-    <%= f.number_field :price %>
+  <div class="form-group col-sm-3">
+    <%= f.label :price, 'Prix' %>
+    <%= f.number_field :price, class: 'form-control' %>
   </div>
 
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Créer le menu', class: 'btn btn-primary' %>
   </div>
 <% end %>

@@ -1,0 +1,17 @@
+<p class="">
+  <%= menu.content %><br/>
+  <%= tags menu.tags %>
+</p>
+
+
+<p>
+  <strong>Price:</strong>
+  <%= menu.price %>
+</p>
+
+<% if check_admin %>
+  <p class="text-right">
+      <%= link_to 'editer', edit_restaurant_menu_path(@restaurant, menu), class: "btn btn-default" %>
+      <%= link_to 'Supprimer', restaurant_menu_path(@restaurant, menu), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'  %>
+  </p>
+<% end %>

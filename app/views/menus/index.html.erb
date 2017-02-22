@@ -1,37 +1,7 @@
 <h1>Menus</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Content</th>
-      <th>Tags</th>
-      <th>Price</th>
-      <th>User</th>
-      <th>Restaurant</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<% @menus.each do |menu| %>
+  <h2><%= menu.name %> <small><%= menu.description %></small></h2>
 
-  <tbody>
-    <% @menus.each do |menu| %>
-      <tr>
-        <td><%= menu.name %></td>
-        <td><%= menu.description %></td>
-        <td><%= menu.content %></td>
-        <td><%= menu.tags %></td>
-        <td><%= menu.price %></td>
-        <td><%= menu.user_id %></td>
-        <td><%= menu.restaurant_id %></td>
-        <td><%= link_to 'Show', restaurant_menu_path(@restaurant, menu) %></td>
-        <td><%= link_to 'Edit', edit_restaurant_menu_path(@restaurant, menu) %></td>
-        <td><%= link_to 'Destroy', restaurant_menu_path(@restaurant, menu), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Menu', new_restaurant_menu_path(@restaurant) %>
+  <%= render 'details', menu:  menu %>
+<% end %>
