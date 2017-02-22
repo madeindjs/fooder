@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   resources :categories, only: [:create, :new, :edit, :update, :destroy]
 
   resources :restaurants do
+    get 'contact'
+
     resources :menus
     resources :posts
     resources :dishes

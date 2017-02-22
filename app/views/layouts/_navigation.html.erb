@@ -28,7 +28,7 @@
           <% end %>
 
           <li><a href="#">Réservation</a></li>
-          <li><a href="#">Contact</a></li>
+          <li><%= link_to "Contact", restaurant_contact_path(@restaurant) %></li>
         <% else %>
           <li><%= link_to "Nos clients", restaurants_path %></li>
           <li><%= link_to "Tarifs", cost_path %></li>

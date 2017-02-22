@@ -1,0 +1,21 @@
+<h1>Contact</h1>
+
+<h2>Adresse</h2>
+
+<p>
+  <address>
+    <%= @restaurant.name.upcase %><br/>
+    <%= @restaurant.address %><br/>
+    <%= @restaurant.zip_code %>, <%= @restaurant.city %>
+  </address>
+</p>
+
+
+
+<h2>Gérant</h2>
+
+<p>
+  <%= @restaurant.user.complete_name %><br/>
+  <%= glyphicon 'envelope' %> <%= mail_to @restaurant.user.email %>
+</p>
+

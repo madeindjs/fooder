@@ -65,6 +65,11 @@ class RestaurantsController < ApplicationController
   end
 
 
+  # GET /restaurants/1/contact
+  def contact
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_restaurant
