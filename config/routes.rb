@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   resources :restaurants do
     get 'contact'
+    post 'activate_module'
 
     resources :menus
     resources :posts

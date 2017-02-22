@@ -1,6 +1,6 @@
 class RestaurantsController < ApplicationController
-  before_action :check_login, only: [:new, :create, :edit, :update, :destroy]
-  before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
+  before_action :check_login, only: [:activate, :new, :create, :edit, :update, :destroy]
+  before_action :set_restaurant, only: [:activate, :show, :edit, :update, :destroy]
   before_action :check_owner, only: [:edit, :update, :destroy]
 
   # GET /restaurants
@@ -61,6 +61,17 @@ class RestaurantsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to restaurants_url, notice: 'Restaurant was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+
+  # POST /restaurants/1/activate_module
+  def activate_module
+    @restaurant.module_blog = !@restaurant.module_blog
+    if @restaurant.save
+      redirect_to @restaurant, notice: 'La module à été activé.'
+    else
+      redirect_to @restaurant, notice: 'Une erreur est survenue.'
     end
   end
 

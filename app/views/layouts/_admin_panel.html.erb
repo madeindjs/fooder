@@ -66,9 +66,13 @@
         <%= glyphicon "pencil" %> gérer les articles
       <% end %>
 
-    <% else %>
+      <%= link_to restaurant_activate_module_path(@restaurant), class: "btn btn-default", method: :post do %>
+        <%= glyphicon "unchecked" %> désactiver le blog
+      <% end %>
 
-      <%= link_to edit_restaurant_path(@restaurant), class: "btn btn-default" do %>
+    <% else %>
+      
+      <%= link_to restaurant_activate_module_path(@restaurant), class: "btn btn-default", method: :post do %>
         <%= glyphicon "unchecked" %> activer le blog
       <% end %>
 
