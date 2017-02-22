@@ -1,6 +1,7 @@
 class Restaurant < ApplicationRecord
   belongs_to :user
   has_many :dishes
+  has_many :menus
   has_many :sections
   has_many :posts
 

@@ -1,15 +1,5 @@
-<%= form_for(menu) do |f| %>
-  <% if menu.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(menu.errors.count, "error") %> prohibited this menu from being saved:</h2>
-
-      <ul>
-      <% menu.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_for [@restaurant, menu] do |f| %>
+  <%= render 'shared/errors_form', model: menu %>
 
   <div class="field">
     <%= f.label :name %>
@@ -36,15 +26,6 @@
     <%= f.number_field :price %>
   </div>
 
-  <div class="field">
-    <%= f.label :user_id %>
-    <%= f.number_field :user_id %>
-  </div>
-
-  <div class="field">
-    <%= f.label :restaurant_id %>
-    <%= f.number_field :restaurant_id %>
-  </div>
 
   <div class="actions">
     <%= f.submit %>
