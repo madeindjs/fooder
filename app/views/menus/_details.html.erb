@@ -1,12 +1,11 @@
-<p class="">
+<p>
   <%= menu.content %><br/>
   <%= tags menu.tags %>
 </p>
 
 
-<p>
-  <strong>Price:</strong>
-  <%= menu.price %>
+<p class="text-right lead">
+  <%= price menu.price %>
 </p>
 
 <% if check_admin %>

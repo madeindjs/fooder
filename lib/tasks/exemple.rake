@@ -3,8 +3,11 @@ require 'rake'
 
 namespace :example do
 
-  desc "Build the user example"
-  task :user => [:environment] do
+
+  desc "Build the complete example"
+  task :build => [:environment] do
+
+    # build user
     user = User.exists?(2812) ? User.find(2812) : User.new
 
     user.id = 2812
@@ -14,10 +17,8 @@ namespace :example do
     user.lastname = 'Aubert'
 
     user.save
-  end
 
-  desc "Build the restaurant example"
-  task :restaurant => [:environment, :user ] do
+    # build restaurant
     restaurant = Restaurant.exists?(2812) ? Restaurant.find(2812) : Restaurant.new
     restaurant.id = 2812
     restaurant.user_id = 2812
@@ -25,17 +26,16 @@ namespace :example do
     restaurant.address = '2 rue des Lilas'
     restaurant.zip_code = '69001'
     restaurant.city = 'Lyon'
+    restaurant.module_blog = true
 
     restaurant.save
-  end
 
-  desc "Build three sections"
-  task :sections => [:environment] do 
-    restaurant = Restaurant.find(2812)
-    user = User.find(2812)
-
+    restaurant.posts.each{|s| s.destroy}
     restaurant.sections.each{|s| s.destroy}
+    restaurant.menus.each{|s| s.destroy}
 
+
+    # build section
     Section.create title: "En ferme auberge",
         content: "Découvrez l'authenticité d'un restaurant à la ferme, dégustez les produits du terroir et les spécialités régionales issus des productions de la ferme",
         user_id: user.id,
@@ -50,13 +50,9 @@ namespace :example do
         content: "Reçu par le fermier aubergiste et sa famille, vous apprécierez la convivialité d'un accueil chaleureux dans un cadre architectural authentique et un environnement naturel préservé. N'oubliez pas de réserver votre table avant de vous déplacer ! Et sachez que certains fermiers peuvent aussi vous héberger (en chambres d'hôtes ou gîtes). ",
         user_id: user.id,
         restaurant_id: restaurant.id
-  end
 
-  desc "Build dishes example"
-  task :dishes => [:environment] do
-    restaurant = Restaurant.find(2812)
-    user = User.find(2812)
 
+    # Build dish
     cat_entree = Category.where(name: 'Entrée', user_id: user.id).first
     cat_plat = Category.where(name: 'Plat', user_id: user.id).first
     cat_dessert = Category.where(name: 'Dessert', user_id: user.id).first
@@ -105,19 +101,10 @@ namespace :example do
             price: rand(11.2...25.9).ceil,
             user_id: user.id,
             restaurant_id: restaurant.id
-    end  
+    end 
 
-  end
 
-  desc "Build blog"
-  task :blog => [:environment] do 
-    user = User.find(2812)
-    restaurant = Restaurant.find(2812)
-    restaurant.module_blog = true
-    restaurant.save
-
-    restaurant.posts.each{|s| s.destroy}
-
+    # build blog
     20.times do
 
       departements = ""
@@ -129,11 +116,18 @@ namespace :example do
           user_id: user.id,
           restaurant_id: restaurant.id
     end
-        
-  end
 
-  desc "Build the complete example"
-  task :build => [:user, :restaurant, :sections, :dishes, :blog] do 
+    # Build menus
+    3.times do
+      Menu.create name: Faker::Book.title,
+          description: Faker::Lorem.paragraph,
+          content: Faker::Lorem.paragraphs(4).join("\n\n"),
+          tags: Faker::Lorem.words(rand(0..4)).join(';'),
+          user_id: user.id,
+          restaurant_id: restaurant.id,
+          price: rand(20.1...50.9).ceil
+    end
+
   end
   
 end

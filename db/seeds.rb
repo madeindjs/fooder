@@ -20,7 +20,18 @@
             category_id: u.categories.order("RANDOM()").first.id,
             user_id: u.id,
             restaurant_id: r.id,
-            price: rand(11.2...25.9).ceil
+            price: rand(11.2...25.9).ceil,
+            tags: Faker::Lorem.words(rand(0..4)).join(';')
+    end
+
+    3.times do
+        Menu.create name: Faker::Book.title,
+            description: Faker::Lorem.paragraph,
+            content: Faker::Lorem.paragraphs(4).join("\n\n"),
+            tags: Faker::Lorem.words(rand(0..4)).join(';'),
+            user_id: u.id,
+            restaurant_id: r.id,
+            price: rand(20.1...50.9).ceil
     end
 
 end

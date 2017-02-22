@@ -12,6 +12,10 @@ module ApplicationHelper
       html.html_safe
     end
 
+    def price number
+      number_to_currency number, locale: :fr, unit: "€", format: "%n %u"
+    end
+
     def check_admin
       @restaurant && current_user && @restaurant.user_id == current_user.id
     end
