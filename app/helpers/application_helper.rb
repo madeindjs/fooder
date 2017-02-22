@@ -13,7 +13,7 @@ module ApplicationHelper
     end
 
     def price number
-      number_to_currency number, locale: :fr, unit: "€", format: "%n %u"
+      number_to_currency number, unit: "€", format: "%n %u"
     end
 
     def check_admin
