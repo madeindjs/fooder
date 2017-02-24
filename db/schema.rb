@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170222105809) do
+ActiveRecord::Schema.define(version: 20170223161038) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20170222105809) do
   create_table "menus", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
-    t.string   "content"
+    t.text     "content"
     t.string   "tags"
     t.integer  "price"
     t.integer  "user_id"
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20170222105809) do
 
   create_table "posts", force: :cascade do |t|
     t.string   "title"
-    t.string   "content"
+    t.text     "content"
     t.string   "tags"
     t.integer  "user_id"
     t.integer  "restaurant_id"
@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(version: 20170222105809) do
 
   create_table "sections", force: :cascade do |t|
     t.string   "title"
-    t.string   "content"
+    t.text     "content"
     t.integer  "user_id"
     t.integer  "restaurant_id"
     t.datetime "created_at",    null: false
