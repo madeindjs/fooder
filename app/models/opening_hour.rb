@@ -11,6 +11,20 @@ class OpeningHour < ApplicationRecord
   validates_uniqueness_of :opens, scope: [:restaurant_id, :day]
   validates_uniqueness_of :closes, scope: [:restaurant_id, :day]
 
+
+  DAYS = [ ['Lundi', 1], ['Mardi', 2], ['Mercredi', 3], ['Jeudi', 4], ['Vendredi', 5], ['Samedi', 6], ['Dimanche', 7]]
+
+  def to_s
+    "%s: ouvert de %s à %s" % [pretty_day, self.opens.to_s(:time) , self.closes.to_s(:time) ]
+  end
+
+
+  def pretty_day
+    DAYS.each{ |day_name|
+      return day_name[0] if day_name[1] == self.day 
+    }
+  end
+
   protected
   def opens_before_closes
     errors.add(:closes, I18n.t('errors.opens_before_closes')) if opens && closes && opens >= closes
