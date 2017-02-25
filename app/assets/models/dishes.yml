@@ -1,0 +1,249 @@
+# data from http://www.delarte.fr
+
+- name: Pollo pomodoro
+  description: Filet de poulet (viande française**), sauce concassé de tomates et jus de volaille au vinaigre balsamique, oignons rouges
+  price: 5
+  category_name: Viandes et poissons
+  tags: sans gluten
+
+- name: Escalope au marsala
+  description: Escalopines de veau, sauce crème au marsala, champignons
+  price: 10
+  category_name: Viandes et poissons
+
+- name: Escalope Firenze
+  description: Escalope de veau panée, speck*, crèmes fraîche, mozzarella et fromage italien râpé gratinés
+  price: 10
+  category_name: Viandes et poissons
+
+- name: Pièce du boucher (charolais)
+  description: "Belle pièce de bœuf à la fois tendre et savoureuse Sauce au choix : gorgonzola, napolitaine ou pesto vert"
+  price: 10
+  category_name: Viandes et poissons
+  tags: viande française
+
+- name: Escalope à la milanaise
+  description: Escalope de veau panée et dorée
+  price: 10
+  category_name: Viandes et poissons
+
+- name: Osso Buco
+  description: Jarret de veau cuisiné dans sa sauce tomatée aux légumes
+  price: 10
+  category_name: Viandes et poissons
+
+- name: Gambas à la sambuca
+  description: Gambas à la Sambuca (liqueur italienne anisée), accompagnées d’un risotto aux légumes (tomates séchées, asperges vertes et olives noires)
+  price: 10
+  category_name: Viandes et poissons
+
+- name: Cabillaud sauce vierge
+  description: Cabillaud, sauce vierge (huile d’olive, tomates confites, olives noires, pignons de pin et câpres), citron, ciboulette
+  price: 10
+  category_name: Viandes et poissons
+
+
+
+
+- name: Caesar
+  description: Bacon, émincés de poulet, sauce caesar Del Arte, salade iceberg, roquette, pains Del Arte, copeaux de fromage italien
+  price: 10
+  category_name: Grande salade
+
+- name: Terra e mare
+  description: Gambas poêlées, bacon, asperges vertes, tomates cerises marinées, salade iceberg, pains Del Arte agrementés de crème ricotta aux herbes et de saumon fumé, salade
+  price: 10
+  category_name: Grande salade
+
+- name: Piadines roma
+  description: Piadines (rouleaux de fine pâte à pizza garnis de crème ricotta aux herbes, salade iceberg, tomates confites et bacon), émincés de poulet, salade iceberg, salade de saison, artichaut, tomates confites, copeaux de fromage italien, oignons rouges, crème de balsamique
+  price: 10
+  category_name: Grande salade
+
+- name: Grande assiette de cicchetti
+  description: Tartines (pain ciabatta aux olives, crème ricotta aux herbes ou pesto vert, roquette) agrémentées de mozzarella di Bufala Campana, émincé de poulet et tomate confite, gorgonzola et noisettes concassées, speck* et artichaut et accompagnées de carpaccio de courgette, tomates fraîches, mozzarella di Bufala Campana, salade
+  price: 10
+  category_name:
+
+- name: Freschezza
+  description: Saumon fumé, tomates cerise marinées, artichaut, carpaccio de courgette, croûtons de pain ciabatta aux olives, salade iceberg, roquette, sauce au fromage blanc, citron et basilic
+  price: 10
+  category_name: Grande salade
+
+
+
+
+
+- name: Martini tonic
+  description: Martini Bianco, Schweppes Indian Tonic 14cl
+  price: 10
+  category_name: Cocktail
+
+- name: Paradisio
+  description: Prosecco Martini DOC, limoncello, sirop de pamplemousse rose 17cl
+  price: 10
+  category_name: Cocktail
+
+- name: Martini Prosecco
+  description: Martini bianco, Prosecco Martini DOC 15cl
+  price: 10
+  category_name: Cocktail
+
+- name: Mojito
+  description: Rhum Bacardi, sirop de Mojito Mint, Perrier, citron vert, sucre roux, feuilles de menthe fraîche 13cl
+  price: 10
+  category_name: Cocktail
+
+- name: Gin tonic verde
+  description: Gin Bombay Original, préparation au citron, Schweppes Indian Tonic, sirop de basilic 19cl
+  price: 10
+  category_name: Cocktail
+
+
+
+
+
+- name: Tutti frutti
+  description: Jus d’orange, sirop de pamplemousse rose, citron vert 15cl
+  price: 10
+  category_name: Cocktail sans alcool
+
+- name: Rosso verde
+  description: Perrier, préparation au citron, coulis de fraises, sirop de basilic 16,5cl
+  price: 10
+  category_name: Cocktail sans alcool
+
+- name: Virgin Mojito
+  description: Sirop saveur rhum, sirop de Mojito Mint, Perrier, citron vert, sucre roux, feuilles de menthe fraîche 10cl
+  price: 10
+  category_name: Cocktail sans alcool
+
+
+
+
+
+- name: Jus de fruits Pampryl
+  description: Orange, Pomme, Tomate, 25cl
+  price: 10
+  category_name: Sodas et Jus de fruits
+
+- name: Nectar Pampryl
+  description: Abricot, Ananas, Cocktail de fruits et fraise, 25cl
+  price: 10
+  category_name: Sodas et Jus de fruits
+
+- name: Sodas 25cl
+  description: Schweppes (Indian Tonic, Agrum’), Orangina, Lipton Ice Tea
+  price: 10
+  category_name: Sodas et Jus de fruits
+
+- name: Sodas 33cl
+  description: Pepsi Cola, Pepsi Max (sans sucre), Seven up
+  price: 10
+  category_name: Sodas et Jus de fruits
+
+
+
+
+
+
+- name: Heineken pression
+  description: Bière blonde premium
+  price: 10
+  category_name: Bières
+
+- name: Affligem
+  description: Bière Blonde d’Abbaye Belge
+  price: 10
+  category_name: Bières
+
+- name: Panaché
+  description: Panaché
+  price: 10
+  category_name: Bières
+
+- name: Moretti
+  description: Moretti
+  price: 10
+  category_name: Bières
+
+
+
+
+
+
+
+- name: La véritable burrata
+  description: Burrata (mozzarella au cœur crémeux), roquette, poivrons marinés, crème de balsamique
+  price: 10
+  category_name: Entrée
+  tags: charcuterie italienne
+
+- name: Chèvre chaud à l’italienne
+  description: Tartines de pain ciabatta aux olives agrémentées de crème ricotta aux herbes, mozzarella et fromage de chèvre, salade de saison, copeaux de fromage italien
+  price: 10
+  category_name: Entrée
+  tags: charcuterie italienne
+
+- name: Carpaccio de bœuf à l'italienne
+  description: Fines tranches de boeuf cru (viande française*) marinées, copeaux de fromage italien
+  price: 10
+  category_name: Entrée
+  tags: charcuterie italienne
+
+- name: Piccolina Caesar
+  description: Bacon, émincés de poulet, sauce caesar Del Arte, salade iceberg, roquette, pains Del Arte, copeaux de fromage italien
+  price: 10
+  category_name: Entrée
+  tags: charcuterie italienne
+
+
+
+
+
+
+
+
+- name: Panna cotta
+  description: La vraie crème à l’italienne à agrémenter de coulis de fruits rouges, lait caramélisé ou sauce au chocolat
+  price: 10
+  category_name: Desserts
+  tags: sans gluten
+
+- name: Tiramisù
+  description: La vraie recette avec le mascarpone, le café, le Marsala et ses biscuits
+  price: 10
+  category_name: Desserts
+
+- name: Mousse au chocolat-noisette
+  description: Mousse au chocolat et à la noisette, noisettes concassées
+  price: 10
+  category_name: Desserts
+
+- name: Tarte citron meringuée
+  price: 10
+  category_name: Desserts
+
+- name: Crème brûlée Delizia al limone
+  price: 10
+  category_name: Desserts
+
+- name: Fondant tiède au chocolat et glace vanille
+  description: Servi avec un coulis de fruits rouges
+  price: 10
+  category_name: Desserts
+
+- name: Baba limoncello
+  description: Service avec de la crème fouettée
+  price: 10
+  category_name: Desserts
+
+
+
+
+- name: Pizza Nutella
+  description: Crème mascarpone, Nutella
+  price: 10
+  category_name: Pizzas sucrées
+
+

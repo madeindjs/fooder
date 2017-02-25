@@ -2,6 +2,33 @@
 
 <p><%= glyphicon 'envelope' %> <%= @user.email %></p>
 
-<h2>Ses restaurants</h2>
 
-<%= render 'restaurants/table', restaurants: @user.restaurants %>
+<% if @user == current_user and @user.restaurants.empty?%>
+
+  <%= form_for(Restaurant.new) do |f| %>
+
+    <div class="form-group col-sm-12">
+      <%= alert 'warning', "Vous n'avez pas encore de restaurant. Créer en un en cinq minutes!" %>
+    </div>
+
+    <div class="form-group col-sm-12">
+      <%= f.label :name, 'Nom' %>
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+
+    <div class="form-group col-sm-12">
+      <%= f.submit 'Créer ce magnifique restaurant', class: 'btn btn-primary' %>
+    </div>
+
+  <% end %>
+
+<% elsif  @user == current_user %>
+  <h2>Mes restaurants</h2>
+  <%= render 'restaurants/table', restaurants: @user.restaurants %>
+
+<% else %>
+  <h2>Ses restaurants</h2>
+  <%= render 'restaurants/table', restaurants: @user.restaurants %>
+
+<% end %>
+

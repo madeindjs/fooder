@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170222105809) do
+ActiveRecord::Schema.define(version: 20170225153827) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20170222105809) do
   create_table "menus", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
-    t.string   "content"
+    t.text     "content"
     t.string   "tags"
     t.integer  "price"
     t.integer  "user_id"
@@ -43,9 +43,21 @@ ActiveRecord::Schema.define(version: 20170222105809) do
     t.datetime "updated_at",    null: false
   end
 
+  create_table "opening_hours", force: :cascade do |t|
+    t.integer  "restaurant_id"
+    t.integer  "user_id"
+    t.integer  "day"
+    t.time     "closes"
+    t.time     "opens"
+    t.datetime "valid_from"
+    t.datetime "valid_through"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string   "title"
-    t.string   "content"
+    t.text     "content"
     t.string   "tags"
     t.integer  "user_id"
     t.integer  "restaurant_id"
@@ -73,7 +85,7 @@ ActiveRecord::Schema.define(version: 20170222105809) do
 
   create_table "sections", force: :cascade do |t|
     t.string   "title"
-    t.string   "content"
+    t.text     "content"
     t.integer  "user_id"
     t.integer  "restaurant_id"
     t.datetime "created_at",    null: false
