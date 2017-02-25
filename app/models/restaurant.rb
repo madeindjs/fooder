@@ -9,6 +9,7 @@ class Restaurant < ApplicationRecord
 
   after_create :generate_dishes
   after_create :generate_menus
+  after_create :generate_sections
 
   def complete_address
     "#{self.address}, #{self.zip_code}, #{self.city}"
@@ -33,6 +34,23 @@ class Restaurant < ApplicationRecord
   end
 
   def generate_menus
+    yaml_file = Rails.root.join 'app', 'assets', 'models', 'menus.yml'
+    YAML.load_file( yaml_file ).each do |menu_data|
+      menu = Menu.new menu_data
+      menu.user_id = self.user_id
+      menu.restaurant_id = self.id
+      menu.save
+    end
+  end
+
+  def generate_sections
+    yaml_file = Rails.root.join 'app', 'assets', 'models', 'sections.yml'
+    YAML.load_file( yaml_file ).each do |section_data|
+      section = Section.new section_data
+      section.user_id = self.user_id
+      section.restaurant_id = self.id
+      section.save
+    end
   end
 
 end

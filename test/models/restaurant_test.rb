@@ -15,4 +15,10 @@ class RestaurantTest < ActiveSupport::TestCase
     restaurant = Restaurant.create name: "Good Pizza", user_id: 1
     assert_not_empty restaurant.menus
   end
+
+  test "should create sections" do
+    restaurant = Restaurant.create name: "Good Pizza", user_id: 1
+    assert_not_empty restaurant.menus
+  end
+
 end
