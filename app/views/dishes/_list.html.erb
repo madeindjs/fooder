@@ -1,4 +1,4 @@
-<% categories =  dishes.map{|d| d.category }.uniq %>
+<% categories =  dishes.map{|d| d.category }.uniq.compact %>
 
 <% categories.each do |category| %>
 

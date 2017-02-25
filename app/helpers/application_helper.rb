@@ -5,6 +5,11 @@ module ApplicationHelper
     end
 
 
+    def alert type, content
+      "<div class=\"alert alert-#{type}\" role=\"alert\">#{content}</div>".html_safe
+    end
+
+
     def tags tags
       return nil unless tags
       html = ""
