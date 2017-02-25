@@ -1,7 +1,7 @@
 class RestaurantsController < ApplicationController
-  before_action :check_login, only: [:activate, :new, :create, :edit, :update, :destroy]
-  before_action :set_restaurant, only: [:activate, :show, :edit, :update, :destroy]
-  before_action :check_owner, only: [:edit, :update, :destroy]
+  before_action :check_login, only: [:activate, :new, :create, :edit, :update, :destroy, :opening_hours]
+  before_action :set_restaurant, only: [:activate, :show, :edit, :update, :destroy, :opening_hours]
+  before_action :check_owner, only: [:edit, :update, :destroy, :opening_hours]
 
   # GET /restaurants
   # GET /restaurants.json
@@ -81,6 +81,20 @@ class RestaurantsController < ApplicationController
   end
 
 
+  # POST /restaurant/1/opening_hours
+  def opening_hours
+    @opening_hour = OpeningHour.new opening_hour_params
+    @opening_hour.user_id = current_user.id
+    @opening_hour.restaurant_id = @restaurant.id
+
+    if @opening_hour.save
+      redirect_to edit_restaurant_path(@restaurant), notice: 'Restaurant was successfully created.' 
+    else
+      render :edit
+    end
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_restaurant
@@ -90,6 +104,10 @@ class RestaurantsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def restaurant_params
       params.require(:restaurant).permit(:name, :address, :zip_code, :city, :module_blog)
+    end
+
+    def opening_hour_params
+      params.require(:opening_hour).permit(:day, :opens, :closes, :valid_from, :valid_through)
     end
 
     def check_owner
