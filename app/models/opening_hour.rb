@@ -15,7 +15,12 @@ class OpeningHour < ApplicationRecord
   DAYS = [ ['Lundi', 1], ['Mardi', 2], ['Mercredi', 3], ['Jeudi', 4], ['Vendredi', 5], ['Samedi', 6], ['Dimanche', 7]]
 
   def to_s
-    "%s: ouvert de %s à %s" % [pretty_day, self.opens.to_s(:time) , self.closes.to_s(:time) ]
+    "%s: ouvert %s" % [pretty_day, pretty_hours ]
+  end
+
+
+  def pretty_hours
+    "%s à %s" % [self.opens.to_s(:time) , self.closes.to_s(:time)]
   end
 
 

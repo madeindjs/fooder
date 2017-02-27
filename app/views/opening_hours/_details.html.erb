@@ -1,5 +1,17 @@
-<ul>
-  <% opening_hours.each do |opening_hour| %>
-    <li><%= opening_hour.to_s %></li>
-  <% end %>
-</ul>
+<table class="table">
+  
+    <% opening_hours.group_by{|op| op.day}.each do |k, opening_hours_grouped| %>
+      <tr>
+        <th><%= opening_hours_grouped.first.pretty_day %></th>
+
+        <td>
+          <% opening_hours_grouped.each do |opening_hour| %>
+            <%= opening_hour.pretty_hours %>
+            <%= ' et ' unless  opening_hours_grouped.last == opening_hour %>
+          <% end %>
+
+        </td>
+      </tr>
+    <% end %>
+  
+</table>
