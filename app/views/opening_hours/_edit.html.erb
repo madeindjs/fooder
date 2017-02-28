@@ -12,8 +12,16 @@
     <%= form_for [@restaurant, opening_hour], method: 'PATCH' do |f| %>
       <tr>
         <td><%= f.select :day , options_for_select(OpeningHour::DAYS , opening_hour.day), {}, class: 'form-control' %></td>
-        <td><%= f.text_field :opens , class: 'form-control' %></td>
-        <td><%= f.text_field :closes , class: 'form-control' %></td>
+        <td>
+          <div class='input-group date'>
+            <%= f.text_field :opens , class: 'form-control timepicker' %>
+          </div>
+        </td>
+        <td>
+          <div class='input-group date'>
+            <%= f.text_field :closes , class: 'form-control timepicker' %>
+          </div>
+        </td>
         <td><%= f.text_field :valid_from , class: 'form-control' %></td>
         <td><%= f.text_field :valid_through , class: 'form-control' %></td>
         <td>
