@@ -9,9 +9,7 @@ Rails.application.routes.draw do
     get 'contact'
     post 'activate_module'
 
-    post 'opening_hours' => 'restaurants#opening_hours'
-    patch 'opening_hour' => 'restaurants#opening_hours'
-
+    resources :opening_hours, only: [:create, :update, :destroy]
     resources :menus
     resources :posts
     resources :dishes

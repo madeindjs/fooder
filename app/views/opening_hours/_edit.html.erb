@@ -1,0 +1,41 @@
+<table class="table">
+
+  <tr>
+    <th>Jour</th>
+    <th>Ouverture</th>
+    <th>Fermeture</th>
+    <th>Valable à partir de</th>
+    <th></th>
+  </tr>
+  
+  <% opening_hours.each do |opening_hour| %>
+    <%= form_for [@restaurant, opening_hour], method: 'PATCH' do |f| %>
+      <tr>
+        <td><%= f.select :day , options_for_select(OpeningHour::DAYS , opening_hour.day), {}, class: 'form-control' %></td>
+        <td><%= f.text_field :opens , class: 'form-control' %></td>
+        <td><%= f.text_field :closes , class: 'form-control' %></td>
+        <td><%= f.text_field :valid_from , class: 'form-control' %></td>
+        <td><%= f.text_field :valid_through , class: 'form-control' %></td>
+        <td>
+          <%= f.submit 'modifier', class: 'btn btn-primary' %>
+        </td>
+      </tr>
+    <% end %>
+    
+  <% end %>
+
+  <%= form_for [@restaurant, OpeningHour.new] do |f| %>
+    <tr>
+      <td><%= f.select :day , options_for_select(OpeningHour::DAYS), {}, class: 'form-control' %></td>
+      <td><%= f.text_field :opens , class: 'form-control' %></td>
+      <td><%= f.text_field :closes , class: 'form-control' %></td>
+      <td><%= f.text_field :valid_from , class: 'form-control' %></td>
+      <td><%= f.text_field :valid_through , class: 'form-control' %></td>
+      <td>
+        <%= f.submit 'Ajouter', class: 'btn btn-primary' %>
+      </td>
+    </tr>
+  <% end %>
+    
+  
+</table>
