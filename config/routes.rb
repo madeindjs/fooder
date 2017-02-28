@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     post 'activate_module'
 
     post 'opening_hours' => 'restaurants#opening_hours'
+    patch 'opening_hour' => 'restaurants#opening_hours'
 
     resources :menus
     resources :posts

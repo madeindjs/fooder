@@ -1,21 +1,33 @@
 <h1>Contact</h1>
 
-<h2>Adresse</h2>
 
-<p>
-  <address>
-    <%= @restaurant.name.upcase %><br/>
-    <%= @restaurant.address %><br/>
-    <%= @restaurant.zip_code %>, <%= @restaurant.city %>
-  </address>
-</p>
+<div class="row">
+  <div class="col-xs-12">
+    <h2>Adresse</h2>
 
+    <p>
+      <address>
+        <%= @restaurant.name.upcase %><br/>
+        <%= @restaurant.address %><br/>
+        <%= @restaurant.zip_code %>, <%= @restaurant.city %>
+      </address>
+    </p>
+  </div>
+</div>
 
+<div class="row">
+  <div class="col-xs-12">
+    <h2>Gérant</h2>
 
-<h2>Gérant</h2>
+    <p>
+      <%= @restaurant.user.complete_name %><br/>
+      <%= glyphicon 'envelope' %> <%= mail_to @restaurant.user.email %>
+    </p>
+  </div>
+</div>
 
-<p>
-  <%= @restaurant.user.complete_name %><br/>
-  <%= glyphicon 'envelope' %> <%= mail_to @restaurant.user.email %>
-</p>
-
+<div class="row">
+  <div class="col-xs-12">
+    <%= render 'opening_hours/details', opening_hours: @restaurant.opening_hours %>
+  </div>
+</div>
