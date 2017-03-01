@@ -2,20 +2,18 @@
   
   <% sections.each do |section| %>
 
-  <div class="row">
     
-    <div class="jumbotron">
+    <div class="jumbotron header">
       <h2><%= section.title %></h2>
       <p><%= section.content %></p>
       
-        <% if check_admin %>
-          <p class="text-right">
-              <%= link_to 'editer', edit_restaurant_section_path(@restaurant, section), class: "btn btn-default" %>
-              <%= link_to 'Supprimer', restaurant_section_path(@restaurant, section), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'  %>
-          </p>
-        <% end %>
-      </div>
-  </div>
+      <% if check_admin %>
+        <p class="text-right">
+            <%= link_to 'editer', edit_restaurant_section_path(@restaurant, section), class: "btn btn-default" %>
+            <%= link_to 'Supprimer', restaurant_section_path(@restaurant, section), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'  %>
+        </p>
+      <% end %>
+    </div>
 
 
   <% end %>

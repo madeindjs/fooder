@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   get "home" => "pages#home"
 
-  delete 'signout', to: 'user_sessions#destroy'
+  get 'signout', to: 'user_sessions#destroy'
   get 'signin', to: 'user_sessions#new'
   get "signup" => "users#new"
 
