@@ -32,11 +32,11 @@ class OpeningHour < ApplicationRecord
 
   protected
   def opens_before_closes
-    errors.add(:closes, I18n.t('errors.opens_before_closes')) if opens && closes && opens >= closes
+    errors.add(:closes, "Opening time can't be after closed time") if opens && closes && opens >= closes
   end
 
   def valid_from_before_valid_through
-    errors.add(:valid_through, I18n.t('errors.valid_from_before_valid_through')) if valid_from && valid_through && valid_from >= valid_through
+    errors.add(:valid_through, "Valif From can't be after Valid Throught") if valid_from && valid_through && valid_from >= valid_through
   end
 
 end

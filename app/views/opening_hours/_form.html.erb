@@ -1,0 +1,31 @@
+<%= form_for [@restaurant, opening_hour] do |f| %>
+  <td><%= f.select :day , options_for_select(OpeningHour::DAYS , opening_hour.day), {}, class: 'form-control' %></td>
+
+  <td>
+    <div class='input-group date'>
+      <%= f.time_field :opens , class: 'form-control timepicker' %>
+    </div>
+  </td>
+
+  <td>
+    <div class='input-group date'>
+      <%= f.time_field :closes , class: 'form-control timepicker' %>
+    </div>
+  </td>
+
+  <td>
+    <div class='input-group date'>
+      <%= f.date_field :valid_from , class: 'form-control' %>
+    </div>
+  </td>
+
+  <td>
+    <div class='input-group date'>
+      <%= f.date_field :valid_through , class: 'form-control' %>
+    </div>
+  </td>
+  
+  <td>
+    <%= f.submit 'modifier', class: 'btn btn-primary' %>
+  </td>
+<% end %>

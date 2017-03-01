@@ -13,6 +13,7 @@ class OpeningHoursController < ApplicationController
     if @opening_hour.save
       redirect_to edit_restaurant_path(@restaurant), notice: "Horraire d'ouverture crée."
     else
+      puts @opening_hour.errors.inspect
       redirect_to edit_restaurant_path(@restaurant), notice: "Une erreur est survenue."
     end
   end
@@ -22,6 +23,7 @@ class OpeningHoursController < ApplicationController
     if @opening_hour.update(opening_hour_params)
       redirect_to edit_restaurant_path(@restaurant), notice: "Horraire d'ouverture mise à jour."
     else
+      puts @opening_hour.errors.inspect
       redirect_to edit_restaurant_path(@restaurant), notice: "Une erreur est survenue."
     end
   end
@@ -41,7 +43,7 @@ class OpeningHoursController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def opening_hour_params
-      params.require(:opening_hour).permit(:closes, :opens, :valid_from, :valid_through)
+      params.require(:opening_hour).permit(:day, :closes, :opens, :valid_from, :valid_through)
     end
 
     def check_owner

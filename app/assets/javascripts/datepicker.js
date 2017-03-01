@@ -1,5 +1,5 @@
 $(function () {
     $('.timepicker').datetimepicker({
-        format: 'h:mm'
+        format: 'HH:mm'
     });
 });
