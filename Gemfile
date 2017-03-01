@@ -35,6 +35,10 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+# for upload picture
+gem 'carrierwave'
+gem 'rmagick' # sudo apt-get install libmagickwand-dev
+
 # Bootsrap dattime picker
 gem "therubyracer"
 gem "less-rails"
