@@ -1,9 +1,14 @@
 <h1><%= @post.title %></h1>
 
+<%= image_tag @post.picture.thumb, class: 'img-circle section-img' if @post.picture? %>
+
 <p><%= @post.user.complete_name %> dans <%= tags @post.tags %></p>
 <p class="text-justify"><%= @post.content %></p>
 
 
-<% if current_user == @post.user %>
-  <%= link_to 'Edit', edit_restaurant_post_path(@restaurant, @post) %> |
+<% if check_admin %>
+  <p class="text-right">
+      <%= link_to 'editer', edit_restaurant_post_path(@restaurant, @post), class: "btn btn-default" %>
+      <%= link_to 'Supprimer', restaurant_post_path(@restaurant, @post), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'  %>
+  </p>
 <% end %>
