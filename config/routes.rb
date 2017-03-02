@@ -9,8 +9,7 @@ Rails.application.routes.draw do
     get 'contact'
     post 'activate_module'
 
-    post 'opening_hours' => 'restaurants#opening_hours'
-
+    resources :opening_hours, only: [:create, :update, :destroy]
     resources :menus
     resources :posts
     resources :dishes
@@ -23,7 +22,7 @@ Rails.application.routes.draw do
 
   get "home" => "pages#home"
 
-  delete 'signout', to: 'user_sessions#destroy'
+  get 'signout', to: 'user_sessions#destroy'
   get 'signin', to: 'user_sessions#new'
   get "signup" => "users#new"
 

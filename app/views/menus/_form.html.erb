@@ -11,6 +11,8 @@
     <%= f.text_field :description, class: 'form-control' %>
   </div>
 
+  <%= render 'shared/form_input_picture.html', form: f, model: menu %>
+
   <div class="form-group col-xs-12">
     <%= f.label :content, 'Contenu' %>
     <%= f.text_area :content, class: 'form-control' %>

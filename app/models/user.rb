@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   acts_as_authentic
+  has_many :opening_hours
   has_many :restaurants
   has_many :menus
   has_many :dishes
@@ -8,6 +9,8 @@ class User < ApplicationRecord
   has_many :posts
 
   after_create :generate_categories
+
+  mount_uploader :picture, PictureUploader
 
   acts_as_authentic do |c|
     c.crypto_provider = Authlogic::CryptoProviders::Sha512

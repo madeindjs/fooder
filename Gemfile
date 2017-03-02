@@ -35,8 +35,16 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+# for upload picture
+gem 'carrierwave'
+gem 'rmagick' # sudo apt-get install libmagickwand-dev
+
+# Bootsrap dattime picker
+gem "therubyracer"
+gem "less-rails"
+gem "twitter-bootstrap-rails"
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.14.30'
 
 
 gem 'authlogic', '>= 3.5'

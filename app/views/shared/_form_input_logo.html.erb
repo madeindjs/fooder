@@ -1,0 +1,5 @@
+<div class="form-group">
+  <%= form.label :logo  %>
+  <%= image_tag model.logo.url, size:50,  class: 'img-circle' if model.logo? %>
+  <%= form.file_field :logo %>
+</div>

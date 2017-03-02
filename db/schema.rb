@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170225173218) do
+ActiveRecord::Schema.define(version: 20170302111358) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20170225173218) do
     t.datetime "updated_at",    null: false
     t.float    "price"
     t.string   "tags"
+    t.string   "picture"
   end
 
   create_table "menus", force: :cascade do |t|
@@ -41,6 +42,7 @@ ActiveRecord::Schema.define(version: 20170225173218) do
     t.integer  "restaurant_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.string   "picture"
   end
 
   create_table "opening_hours", force: :cascade do |t|
@@ -63,6 +65,7 @@ ActiveRecord::Schema.define(version: 20170225173218) do
     t.integer  "restaurant_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.string   "picture"
   end
 
   create_table "restaurants", force: :cascade do |t|
@@ -74,6 +77,8 @@ ActiveRecord::Schema.define(version: 20170225173218) do
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.boolean  "module_blog", default: false
+    t.string   "logo"
+    t.string   "picture"
   end
 
   create_table "resumes", force: :cascade do |t|
@@ -90,6 +95,7 @@ ActiveRecord::Schema.define(version: 20170225173218) do
     t.integer  "restaurant_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.string   "picture"
   end
 
   create_table "users", force: :cascade do |t|
@@ -108,6 +114,7 @@ ActiveRecord::Schema.define(version: 20170225173218) do
     t.datetime "last_login_at"
     t.string   "current_login_ip"
     t.string   "last_login_ip"
+    t.string   "picture"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

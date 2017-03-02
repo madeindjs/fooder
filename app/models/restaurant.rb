@@ -12,6 +12,9 @@ class Restaurant < ApplicationRecord
   after_create :generate_menus
   after_create :generate_sections
 
+  mount_uploader :logo, PictureUploader
+  mount_uploader :picture, PictureUploader
+
   def complete_address
     "#{self.address}, #{self.zip_code}, #{self.city}"
   end

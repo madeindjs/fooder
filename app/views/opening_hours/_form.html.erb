@@ -1,46 +1,31 @@
-  <%= render 'opening_hours/details', opening_hours: restaurant.opening_hours %>
+<%= form_for [@restaurant, opening_hour] do |f| %>
+  <td><%= f.select :day , options_for_select(OpeningHour::DAYS , opening_hour.day), {}, class: 'form-control' %></td>
 
+  <td>
+    <div class='input-group date'>
+      <%= f.time_field :opens , class: 'form-control timepicker' %>
+    </div>
+  </td>
 
+  <td>
+    <div class='input-group date'>
+      <%= f.time_field :closes , class: 'form-control timepicker' %>
+    </div>
+  </td>
 
+  <td>
+    <div class='input-group date'>
+      <%= f.date_field :valid_from , class: 'form-control' %>
+    </div>
+  </td>
 
-<%= form_for([restaurant, OpeningHour.new ]) do |f| %>
-
-  <h3>Ajouter une horraire d'ouverture</h3>
+  <td>
+    <div class='input-group date'>
+      <%= f.date_field :valid_through , class: 'form-control' %>
+    </div>
+  </td>
   
-  <%= render 'shared/errors_form', model: restaurant %>
-
-  <div class="row">
-
-    <div class="form-group col-xs-4">
-      <%= f.label :day, 'Jour' %>
-      <%= f.select  :day, options_for_select(OpeningHour::DAYS) , {}, class: 'form-control' %>
-    </div>
-
-
-    <div class="form-group col-xs-4">
-      <%= f.label :opens, 'Ouverture' %>
-      <%= f.date_field  :opens, class: 'form-control' %>
-    </div>
-
-    <div class="form-group col-xs-4">
-      <%= f.label :closes, 'Fermeture' %>
-      <%= f.date_field  :closes, class: 'form-control' %>
-    </div>
-
-
-    <div class="form-group col-xs-6">
-      <%= f.label :valid_from, 'Valable à partir de' %>
-      <%= f.date_field  :valid_from, class: 'form-control' %>
-    </div>
-
-    <div class="form-group col-xs-6">
-      <%= f.label :valid_through, "Valable jusqu'à" %>
-      <%= f.date_field  :valid_through, class: 'form-control' %>
-    </div>
-
-
-    <div class="col-sm-12">
-      <%= f.submit 'Ajouter cette horraire', class: 'btn btn-primary' %>
-    </div>
-
+  <td>
+    <%= f.submit 'modifier', class: 'btn btn-primary' %>
+  </td>
 <% end %>
