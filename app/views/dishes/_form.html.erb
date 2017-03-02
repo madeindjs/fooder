@@ -8,6 +8,7 @@
 
   <div class="form-group">
     <%= f.label :picture  %>
+    <%= image_tag dish.picture.url, alt: "photo du #{dish.name}", size:50,  class: 'img-circle' if dish.picture? %>
     <%= f.file_field :picture %>
   </div>
 
