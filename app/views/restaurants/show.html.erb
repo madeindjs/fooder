@@ -2,6 +2,8 @@
   <div class="page-header">
     <h1><%= @restaurant.name %></h1>
   </div>
+
+  <%= image_tag @restaurant.picture, class: 'col-xs-12 img-responsive' if @restaurant.picture? %>
 </div>
 
 <%= render 'sections/list', sections: @restaurant.sections %>

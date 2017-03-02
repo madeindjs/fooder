@@ -10,6 +10,8 @@ class User < ApplicationRecord
 
   after_create :generate_categories
 
+  mount_uploader :picture, PictureUploader
+
   acts_as_authentic do |c|
     c.crypto_provider = Authlogic::CryptoProviders::Sha512
   end

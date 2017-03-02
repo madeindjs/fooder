@@ -12,6 +12,8 @@
     <%= f.text_area :content, class: 'form-control' %>
   </div>
 
+  <%= render 'shared/form_input_picture.html', form: f, model: section %>
+
   <div class="actions">
     <%= f.submit 'Ajouter cette section', class: 'btn btn-primary' %>
   </div>

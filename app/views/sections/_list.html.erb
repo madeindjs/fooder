@@ -4,6 +4,7 @@
 
     
     <div class="jumbotron header">
+      <%= image_tag section.picture.thumb, class: 'img-circle section-img' if section.picture? %>
       <h2><%= section.title %></h2>
       <p><%= section.content %></p>
       
