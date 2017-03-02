@@ -6,11 +6,7 @@
     <%= f.text_field :name, class: "form-control" %>
   </div>
 
-  <div class="form-group">
-    <%= f.label :picture  %>
-    <%= image_tag dish.picture.url, alt: "photo du #{dish.name}", size:50,  class: 'img-circle' if dish.picture? %>
-    <%= f.file_field :picture %>
-  </div>
+  <%= render 'shared/form_input_picture.html', form: f, model: dish %>
 
   <div class="form-group">
     <%= f.label :description %>
