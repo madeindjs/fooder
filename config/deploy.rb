@@ -26,10 +26,21 @@ set :repo_url, 'https://github.com/madeindjs/fooder.git'
 append :linked_files, "config/database.yml", "config/secrets.yml"
 
 # Default value for linked_dirs is []
-# append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
+append :linked_dirs, "public/uploads", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 
 # Default value for keep_releases is 5
 # set :keep_releases, 5
+
+namespace :deploy do
+
+  desc "Tell Apache to restart the app."
+  task :restart do
+    run "sudo /etc/init.d/apache2 restart"
+  end
+  
+end
+
+after 'deploy:migrate', 'deploy:compile_assets', 'deploy:restart'
