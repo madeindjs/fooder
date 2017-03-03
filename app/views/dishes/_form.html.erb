@@ -29,7 +29,30 @@
     <%= collection_select :dish, :category_id, current_user.categories, :id, :name, {}, { class: "form-control" }  %>
   </div>
 
+
+  <h2>Allergènes</h2>
+
+
+  <table class="table table-striped">
+  
+    <% Dish::ALLERGENS.each do |sym, allergen| %>
+      <tr>
+          <td><%= f.label sym, allergen  %></td>
+        <% Dish::ALLERGEN_VALUES.each do |value, label| %>
+        <td>
+          <div class="radio">
+            <%= f.radio_button sym, value %>
+            <%= f.label sym, label, value: value %>
+          </div>
+        </td>
+        <% end %>
+      </tr>
+    <% end %>
+
+  </table>
+
+
   <div class="actions">
-    <%= f.submit 'Ajouter ce plat', class: 'btn btn-primary' %>
+    <%= f.submit 'Confirmer', class: 'btn btn-primary' %>
   </div>
 <% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170302111358) do
+ActiveRecord::Schema.define(version: 20170303111155) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -25,11 +25,19 @@ ActiveRecord::Schema.define(version: 20170302111358) do
     t.integer  "category_id"
     t.integer  "user_id"
     t.integer  "restaurant_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.float    "price"
     t.string   "tags"
     t.string   "picture"
+    t.integer  "gluten_free",    default: 0
+    t.integer  "crustacea_free", default: 0
+    t.integer  "egg_free",       default: 0
+    t.integer  "fish_free",      default: 0
+    t.integer  "peanut_free",    default: 0
+    t.integer  "lactose_free",   default: 0
+    t.integer  "nut_free",       default: 0
+    t.integer  "sulphite_free",  default: 0
   end
 
   create_table "menus", force: :cascade do |t|
