@@ -10,6 +10,11 @@ module ApplicationHelper
     end
 
 
+    def bootstrap_label color, content
+      "<span class=\"label label-#{color}\">#{content}</span>".html_safe
+    end 
+
+
     def tags tags
       return nil unless tags
       html = ""

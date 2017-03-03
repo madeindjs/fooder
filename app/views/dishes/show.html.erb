@@ -2,10 +2,16 @@
 
 <%= image_tag @dish.picture.url, alt: "photo du #{@dish.name}", size:200,  class: 'img-circle' if @dish.picture? %>
 
-<blockquote>
-  <p><%= @dish.description %></p>
-  <footer><cite><%= @dish.user.complete_name %></cite></footer>
-</blockquote>
+  
+
+<div class="row">
+  <p class="lead"><%= @dish.description %></p>
+</div>
+
+
+<div class="row">
+  <p class="lead"><%= render 'allergens', dish: @dish %></p>
+</div>
 
 <div class="btn-group" role="group" aria-label="...">
   <a href="#" class="btn btn-primary"><%= glyphicon 'pencil' %> Noter ce plat</a>
