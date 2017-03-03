@@ -66,14 +66,8 @@
         <%= glyphicon "pencil" %> gérer les articles
       <% end %>
 
-      <%= link_to restaurant_activate_module_path(@restaurant), class: "btn btn-default", method: :post do %>
+      <%= link_to restaurant_activate_module_path(@restaurant), class: "btn btn-default", method: :patch do %>
         <%= glyphicon "unchecked" %> désactiver le blog
-      <% end %>
-
-    <% else %>
-      
-      <%= link_to restaurant_activate_module_path(@restaurant), class: "btn btn-default", method: :post do %>
-        <%= glyphicon "unchecked" %> activer le blog
       <% end %>
 
     <% end %>
@@ -112,6 +106,24 @@
 
     <%= link_to edit_restaurant_path(@restaurant), class: "btn btn-default" do %>
       <%= glyphicon "pencil" %> editer ce restaurant
+    <% end %>
+
+  </div> 
+</div>
+
+
+<div class="col-md-12 col-sm-6">
+  <h3>Modules</h3>
+
+  <div class="btn-group-vertical col-xs-12" role="toolbar" aria-label="...">
+
+      
+    <%= link_to restaurant_activate_module_path(@restaurant, module: 'blog'), class: "btn btn-default", method: :patch do %>
+      <%= glyphicon "unchecked" %> <%= @restaurant.module_blog ? "désactiver" : "activer"  %> le blog
+    <% end %>
+
+    <%= link_to restaurant_activate_module_path(@restaurant, module: 'allergens'), class: "btn btn-default", method: :patch do %>
+      <%= glyphicon "unchecked" %> <%= @restaurant.module_allergens ? "désactiver" : "activer"  %> les allergènes
     <% end %>
 
   </div> 

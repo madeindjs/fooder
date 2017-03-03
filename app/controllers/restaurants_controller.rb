@@ -67,8 +67,11 @@ class RestaurantsController < ApplicationController
 
   # POST /restaurants/1/activate_module
   def activate_module
-    @restaurant.module_blog = !@restaurant.module_blog
-    if @restaurant.save
+    # get module
+    key = "module_#{params['module']}"
+    status = @restaurant.send key
+
+    if @restaurant.update({ key => !status })
       redirect_to @restaurant, notice: 'La module à été activé.'
     else
       redirect_to @restaurant, notice: 'Une erreur est survenue.'
