@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170303111155) do
+ActiveRecord::Schema.define(version: 20170303123351) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -82,11 +82,12 @@ ActiveRecord::Schema.define(version: 20170303111155) do
     t.string   "zip_code"
     t.string   "city"
     t.integer  "user_id"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-    t.boolean  "module_blog", default: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.boolean  "module_blog",      default: false
     t.string   "logo"
     t.string   "picture"
+    t.boolean  "module_allergens", default: false
   end
 
   create_table "resumes", force: :cascade do |t|

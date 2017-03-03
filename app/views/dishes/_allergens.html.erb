@@ -1,0 +1,7 @@
+<% Dish::ALLERGENS.each do |sym, allergen| %>
+
+  <% case dish.send(sym) 
+     when 1 %><%= bootstrap_label 'warning', "#{allergen} <small>(traces)</small>"   %>
+  <% when 2 %><%= bootstrap_label 'success', allergen   %>
+  <% end %>
+<% end  %>

@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :restaurants do
     get 'contact'
-    post 'activate_module'
+    patch 'activate_module'
 
     resources :opening_hours, only: [:create, :update, :destroy]
     resources :menus
