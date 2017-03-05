@@ -17,14 +17,17 @@ Rails.application.routes.draw do
   end
 
 
+
   resources :users
   resources :user_sessions, only: [:create, :destroy]
 
-  get "home" => "pages#home"
 
   get 'signout', to: 'user_sessions#destroy'
   get 'signin', to: 'user_sessions#new'
   get "signup" => "users#new"
 
-  root "pages#home"
+  get "home" => "pages#home"
+  get '/' => 'restaurants#show', constraints: { subdomain: /.+/ }
+
+  root 'pages#home'
 end
