@@ -12,6 +12,9 @@ class User < ApplicationRecord
 
   mount_uploader :picture, PictureUploader
 
+  extend FriendlyId
+  friendly_id :firstname, use: :slugged
+
   acts_as_authentic do |c|
     c.crypto_provider = Authlogic::CryptoProviders::Sha512
   end

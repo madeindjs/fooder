@@ -68,7 +68,7 @@ class DishesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_dish
-      @dish = Dish.find(params[:id])
+      @dish = Dish.friendly.find(params[:id])
       redirect_to home_path unless @dish 
     end
 
