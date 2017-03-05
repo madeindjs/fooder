@@ -17,7 +17,7 @@
 
       <ul class="nav navbar-nav nav navbar-left">
         <% if @restaurant && @restaurant.id %>
-          <li><%=  link_to "Carte",  restaurant_dishes_path(restaurant_id: @restaurant.id) %></li>
+          <li><%=  link_to "Carte",  dishes_path %></li>
 
           <% if @restaurant.module_blog %>
             <li><%= link_to "Menus", restaurant_menus_path(@restaurant) %></li>

@@ -49,8 +49,11 @@
   <h2>Essayez maintenant</h2>
   <p class="lead">Convaincu? Jettez un coup d'oeil à la démo ou créez vous un compte maintenant. </p>
   <p>
-    <%= link_to "voir l'exemple", restaurant_path(2812), class: 'btn btn-default' %>
+
+
+    <%= link_to "voir l'exemple", example_url, class: 'btn btn-default' %>
     <%= link_to "se créer un compte", signup_path, class: 'btn btn-default' %>
+    <%= link_to "se créer un compte", example_url, class: 'btn btn-default' %>
     <%= link_to "combien ça va me couter?", cost_path, class: 'btn btn-default' %>
   </p>
 </section>

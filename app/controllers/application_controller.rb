@@ -18,14 +18,12 @@ class ApplicationController < ActionController::Base
 
   def found_restaurant
     begin
-      
       if request.subdomain
         @restaurant = Restaurant.friendly.find request.subdomain
       elsif params[:restaurant_id]
         @restaurant = Restaurant.friendly.find params[:restaurant_id]
       end
     rescue ActiveRecord::RecordNotFound => e
-      redirect_to home_path  
     end
   end
 

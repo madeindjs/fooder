@@ -5,6 +5,9 @@ Rails.application.routes.draw do
 
   resources :categories, only: [:create, :new, :edit, :update, :destroy]
 
+
+
+
   resources :restaurants do
     get 'contact'
     patch 'activate_module'
@@ -12,8 +15,12 @@ Rails.application.routes.draw do
     resources :opening_hours, only: [:create, :update, :destroy]
     resources :menus
     resources :posts
-    resources :dishes
     resources :sections
+  end
+
+
+  constraints subdomain: /.+/  do
+    resources :dishes
   end
 
 
@@ -28,6 +35,7 @@ Rails.application.routes.draw do
 
   get "home" => "pages#home"
   get '/' => 'restaurants#show', constraints: { subdomain: /.+/ }
+  get '/', to:  'restaurants#show', constraints: { subdomain: 'le-petit-lagon-bleu'}, as: :example
 
   root 'pages#home'
 end
