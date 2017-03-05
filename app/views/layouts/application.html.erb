@@ -30,16 +30,17 @@
       
       <%= render 'layouts/navigation' %>
 
-      <div id="admin-panel" class="col-lg-3 col-md-4 col-sm-12" style="padding-top: 50px">
-        <% if check_admin %>
-          <%= render 'layouts/admin_panel' %>
-        <% end %>
-      </div>
 
       
       <div id="main-container" class="col-md-8  col-sm-10 <%= "col-md-offset-2 col-sm-offset-1" if !check_admin %>" style="padding-top: 50px">
         <%= yield %>
       </div><!-- /.container -->
+
+      <div id="admin-panel" class="col-md-4 col-sm-12" style="padding-top: 50px">
+        <% if check_admin %>
+          <%= render 'layouts/admin_panel' %>
+        <% end %>
+      </div>
 
       <%= render 'layouts/footer' %>
 
