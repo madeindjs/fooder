@@ -6,7 +6,7 @@
 
   <h3>Page d'acceuil</h3>
   <div>
-      <%= link_to new_restaurant_section_path(@restaurant), class: "btn btn-default" do %>
+      <%= link_to new_section_path, class: "btn btn-default" do %>
         <%= glyphicon "plus" %> Ajouter du texte
       <% end %>
   </div>
@@ -14,11 +14,11 @@
   <h3>Carte</h3>
   <div>
     <div class="btn-group-vertical col-xs-12" role="toolbar" aria-label="...">
-      <%= link_to new_restaurant_dish_path(@restaurant), class: "btn btn-default" do %>
+      <%= link_to new_dish_path, class: "btn btn-default" do %>
         <%= glyphicon "plus" %> ajouter un plat
       <% end %>
 
-      <%= link_to restaurant_dishes_path(@restaurant), class: "btn btn-default" do %>
+      <%= link_to dishes_path, class: "btn btn-default" do %>
         <%= glyphicon "pencil" %> gérer les plats
       <% end %>
 
@@ -31,11 +31,11 @@
   <div>
     <div class="btn-group-vertical col-xs-12 " role="toolbar" aria-label="...">
 
-      <%= link_to new_restaurant_menu_path(@restaurant), class: "btn btn-default" do %>
+      <%= link_to new_menu_path, class: "btn btn-default" do %>
         <%= glyphicon "plus" %> ajouter un menu
       <% end %>
 
-      <%= link_to restaurant_menus_path(@restaurant), class: "btn btn-default" do %>
+      <%= link_to menus_path, class: "btn btn-default" do %>
         <%= glyphicon "pencil" %> gérer les menus
       <% end %>
 
@@ -48,21 +48,21 @@
 
       <% if @restaurant.module_blog %>
 
-        <%= link_to new_restaurant_post_path(@restaurant), class: "btn btn-default" do %>
+        <%= link_to new_post_path, class: "btn btn-default" do %>
           <%= glyphicon "plus" %> ajouter un article
         <% end %>
 
-        <%= link_to restaurant_posts_path(@restaurant), class: "btn btn-default" do %>
+        <%= link_to posts_path, class: "btn btn-default" do %>
           <%= glyphicon "pencil" %> gérer les articles
         <% end %>
 
-        <%= link_to restaurant_activate_module_path(@restaurant), class: "btn btn-default", method: :patch do %>
+        <%= link_to activate_module_path(module: 'blog'), class: "btn btn-default", method: :patch do %>
           <%= glyphicon "unchecked" %> désactiver le blog
         <% end %>
 
       <% else %>
 
-        <%= link_to restaurant_activate_module_path(@restaurant, module: 'blog'), class: "btn btn-default", method: :patch do %>
+        <%= link_to activate_module_path(module: 'blog'), class: "btn btn-default", method: :patch do %>
           <%= glyphicon "unchecked" %> <%= @restaurant.module_blog ? "désactiver" : "activer"  %> le blog
         <% end %>
 
@@ -107,11 +107,11 @@
     <div class="btn-group-vertical col-xs-12" role="toolbar" aria-label="...">
 
         
-      <%= link_to restaurant_activate_module_path(@restaurant, module: 'blog'), class: "btn btn-default", method: :patch do %>
+      <%= link_to activate_module_path(module: 'blog'), class: "btn btn-default", method: :patch do %>
         <%= glyphicon "unchecked" %> <%= @restaurant.module_blog ? "désactiver" : "activer"  %> le blog
       <% end %>
 
-      <%= link_to restaurant_activate_module_path(@restaurant, module: 'allergens'), class: "btn btn-default", method: :patch do %>
+      <%= link_to activate_module_path(module: 'allergens'), class: "btn btn-default", method: :patch do %>
         <%= glyphicon "unchecked" %> <%= @restaurant.module_allergens ? "désactiver" : "activer"  %> les allergènes
       <% end %>
 

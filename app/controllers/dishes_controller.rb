@@ -32,7 +32,7 @@ class DishesController < ApplicationController
 
     respond_to do |format|
       if @dish.save
-        format.html { redirect_to restaurant_dish_path(@dish, restaurant_id: @dish.restaurant), notice: 'Dish was successfully created.' }
+        format.html { redirect_to @dish, notice: 'Dish was successfully created.' }
         format.json { render :show, status: :created, location: @dish }
       else
         format.html { render :new }
@@ -46,7 +46,7 @@ class DishesController < ApplicationController
   def update
     respond_to do |format|
       if @dish.update(dish_params)
-        format.html { redirect_to restaurant_dish_path(@dish, restaurant_id: @dish.restaurant), notice: 'Dish was successfully updated.' }
+        format.html { redirect_to @dish, notice: 'Dish was successfully updated.' }
         format.json { render :show, status: :ok, location: @dish }
       else
         format.html { render :edit }

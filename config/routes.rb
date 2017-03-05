@@ -4,25 +4,20 @@ Rails.application.routes.draw do
   get 'cost' => 'pages#cost'
 
   resources :categories, only: [:create, :new, :edit, :update, :destroy]
+  resources :restaurants # TODO: remove it
 
 
-
-
-  resources :restaurants do
-    get 'contact'
-    patch 'activate_module'
+  constraints subdomain: /.+/  do
+    get 'contact' => "restaurants#contact"
+    patch 'activate_module' => "restaurants#activate_module"
 
     resources :opening_hours, only: [:create, :update, :destroy]
     resources :menus
     resources :posts
     resources :sections
-  end
 
-
-  constraints subdomain: /.+/  do
     resources :dishes
   end
-
 
 
   resources :users

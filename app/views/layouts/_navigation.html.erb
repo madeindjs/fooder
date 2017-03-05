@@ -20,15 +20,15 @@
           <li><%=  link_to "Carte",  dishes_path %></li>
 
           <% if @restaurant.module_blog %>
-            <li><%= link_to "Menus", restaurant_menus_path(@restaurant) %></li>
+            <li><%= link_to "Menus", menus_path %></li>
           <% end %>
 
           <% if @restaurant.module_blog %>
-            <li><%= link_to "Actualités", restaurant_posts_path(@restaurant) %></li>
+            <li><%= link_to "Actualités", posts_path %></li>
           <% end %>
 
           <li><a href="#">Réservation</a></li>
-          <li><%= link_to "Contact", restaurant_contact_path(@restaurant) %></li>
+          <li><%= link_to "Contact", contact_path %></li>
         <% else %>
           <li><%= link_to "Nos clients", restaurants_path %></li>
           <li><%= link_to "Tarifs", cost_path %></li>
