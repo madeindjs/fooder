@@ -1,6 +1,9 @@
 Fooder
 ======
 
+
+![Fooder Logo](https://github.com/madeindjs/fooder/blob/master/public/assets/fooder.svg)
+
 Cn CMS qui permettra à un restaurateur de créer son site en mode SASS. Par exemple: 
 
 * http://la-cuisine-de-michou.fooder.com avec le mode gratuit
