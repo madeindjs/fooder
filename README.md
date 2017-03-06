@@ -2,7 +2,7 @@ Fooder
 ======
 
 
-![Fooder Logo](https://github.com/madeindjs/fooder/blob/master/public/assets/fooder.svg)
+![Fooder Logo](https://github.com/madeindjs/fooder/blob/master/public/assets/fooder.png)
 
 Cn CMS qui permettra à un restaurateur de créer son site en mode SASS. Par exemple: 
 
