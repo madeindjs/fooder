@@ -13,7 +13,7 @@ $.getJSON("https://bootswatch.com/api/3.json", function (data) {
   
   select.change(function(){
     $("link").attr("href", $(this).val());
-  }).change();
+  });
 
 }, "json").fail(function(){
   // do something here
