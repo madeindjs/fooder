@@ -11,7 +11,7 @@
   <tbody>
     <% restaurants.each do |restaurant| %>
       <tr>
-        <td><%= link_to restaurant.name, restaurant %></td>
+        <td><%= render 'restaurants/link', restaurant: restaurant %></td>
         <td><%= restaurant.complete_address %></td>
         <td><%= restaurant.user.complete_name %></td>
         <td>

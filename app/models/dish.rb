@@ -5,6 +5,9 @@ class Dish < ApplicationRecord
 
   mount_uploader :picture, PictureUploader
 
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+
   ALLERGEN_VALUES = { 0 => "Non", 1 => "Traces éventuelles", 2 => "Pas de traces" }
 
   ALLERGENS = {

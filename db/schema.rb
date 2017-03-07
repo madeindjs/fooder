@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170303123351) do
+ActiveRecord::Schema.define(version: 20170305162006) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -38,6 +38,8 @@ ActiveRecord::Schema.define(version: 20170303123351) do
     t.integer  "lactose_free",   default: 0
     t.integer  "nut_free",       default: 0
     t.integer  "sulphite_free",  default: 0
+    t.string   "slug"
+    t.index ["slug"], name: "index_dishes_on_slug", unique: true
   end
 
   create_table "menus", force: :cascade do |t|
@@ -51,6 +53,8 @@ ActiveRecord::Schema.define(version: 20170303123351) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.string   "picture"
+    t.string   "slug"
+    t.index ["slug"], name: "index_menus_on_slug", unique: true
   end
 
   create_table "opening_hours", force: :cascade do |t|
@@ -74,6 +78,8 @@ ActiveRecord::Schema.define(version: 20170303123351) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.string   "picture"
+    t.string   "slug"
+    t.index ["slug"], name: "index_posts_on_slug", unique: true
   end
 
   create_table "restaurants", force: :cascade do |t|
@@ -88,6 +94,8 @@ ActiveRecord::Schema.define(version: 20170303123351) do
     t.string   "logo"
     t.string   "picture"
     t.boolean  "module_allergens", default: false
+    t.string   "slug"
+    t.index ["slug"], name: "index_restaurants_on_slug", unique: true
   end
 
   create_table "resumes", force: :cascade do |t|
@@ -124,7 +132,9 @@ ActiveRecord::Schema.define(version: 20170303123351) do
     t.string   "current_login_ip"
     t.string   "last_login_ip"
     t.string   "picture"
+    t.string   "slug"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["slug"], name: "index_users_on_slug", unique: true
   end
 
 end
