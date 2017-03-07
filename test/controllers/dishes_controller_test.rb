@@ -1,5 +1,4 @@
 require 'test_helper'
-require 'capybara/rails'
 
 class DishesControllerTest < ActionDispatch::IntegrationTest
 
@@ -7,11 +6,11 @@ class DishesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @dish = dishes(:one)
     @restaurant = restaurants(:one)
+    # host! "example.com" 
   end
 
   test "should get index" do
     # get dishes_url
-    Capybara.app_host = 'http://sudbomain.lvh.me:3000'
     get dishes_url
     assert_response :success
   end
