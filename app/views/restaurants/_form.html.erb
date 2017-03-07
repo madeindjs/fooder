@@ -26,14 +26,24 @@
     </div>
   </div>
 
-  <%= render 'shared/form_input_logo.html', form: f, model: restaurant %>
 
-  <%= render 'shared/form_input_picture.html', form: f, model: restaurant %>
+  <div class="row">
+    <h2>Thème</h2>
+    <div class="form-group col-sm-6">
+      <%= f.label :css, 'Thème' %>
+      <%= f.select :css, {}, {}, class: 'form-control' %>
+    </div>
+  </div>
 
+  <div class="row">
+    <h2>Logo</h2>
+    <%= render 'shared/form_input_logo.html', form: f, model: restaurant %>
+    <%= render 'shared/form_input_picture.html', form: f, model: restaurant %>
+  </div>
   
   <div class="row">
     <div class="col-sm-12">
-      <%= f.submit 'Créer ce magnifique restaurant', class: 'btn btn-primary' %>
+      <%= f.submit 'Confirmer', class: 'btn btn-primary' %>
     </div>
   </div>
 
