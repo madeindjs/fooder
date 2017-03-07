@@ -17,7 +17,14 @@ class ApplicationController < ActionController::Base
   end
 
   def found_restaurant
-    @restaurant = Restaurant.find(params[:restaurant_id]) if params[:restaurant_id]
+    begin
+      if request.subdomain
+        @restaurant = Restaurant.friendly.find request.subdomain
+      elsif params[:restaurant_id]
+        @restaurant = Restaurant.friendly.find params[:restaurant_id]
+      end
+    rescue ActiveRecord::RecordNotFound => e
+    end
   end
 
   def check_login

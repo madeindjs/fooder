@@ -11,18 +11,18 @@
 
       <article class="col-sm-6">
         <% if true and dish.picture? # TODO activate picture module %>
-          <%= link_to restaurant_dish_path(dish, restaurant_id: dish.restaurant_id) do %>
+          <%= link_to dish do %>
             <%= image_tag dish.picture.url, alt: "photo du #{dish.name}", size:50,  class: 'img-circle dish-picture'  %>
           <% end %>
         <% end %>
         <p>
-          <strong><%= link_to dish.name, restaurant_dish_path(dish, restaurant_id: dish.restaurant_id) %></strong><br/>
+          <strong><%= link_to dish.name, dish %></strong><br/>
           <%= dish.description %>  <strong><%= price dish.price %></strong><br/>
           <%= tags dish.tags %>
 
            <% if check_admin %>
-            <%= link_to "Editer", edit_restaurant_dish_path(@restaurant, dish), class: 'btn btn-default btn-xs' %>
-            <%= link_to "Supprimer", restaurant_dish_path(@restaurant, dish), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default btn-xs' %>
+            <%= link_to "Editer", edit_dish_path( dish), class: 'btn btn-default btn-xs' %>
+            <%= link_to "Supprimer",  dish, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default btn-xs' %>
           <% end %>
         </p>
 

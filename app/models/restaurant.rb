@@ -15,6 +15,9 @@ class Restaurant < ApplicationRecord
   mount_uploader :logo, PictureUploader
   mount_uploader :picture, PictureUploader
 
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+
   def complete_address
     "#{self.address}, #{self.zip_code}, #{self.city}"
   end
@@ -55,6 +58,11 @@ class Restaurant < ApplicationRecord
       section.restaurant_id = self.id
       section.save
     end
+  end
+
+  # method to tell if friendly id should regenrate the slud
+  def should_generate_new_friendly_id?
+    slug.nil? || name_changed?
   end
 
 end
