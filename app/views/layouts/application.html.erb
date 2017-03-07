@@ -37,22 +37,17 @@
           <%= yield %>
         </div><!-- /.container -->
 
-        <div id="admin-panel" class="container-fluid col-lg-3 col-md-4 col-sm-12 sidebar" style="padding-top: 50px">
-          <% if check_admin %>
+        <% if @restaurant && check_admin %>
+          <div id="admin-panel" class="container-fluid col-lg-3 col-md-4 col-sm-12 sidebar" style="padding-top: 50px">
             <%= render 'layouts/admin_panel' %>
-          <% end %>
-        </div>
+          </div>
+        <% end %>
         
       </div>
 
       <div class="row">
-        
         <%= render 'layouts/footer' %>
       </div>
-
-
-      
-
 
     </div>
     
