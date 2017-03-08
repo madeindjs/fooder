@@ -18,7 +18,7 @@ module ApplicationHelper
     def tags tags
       return nil unless tags
       html = ""
-      tags.split(';').each { |tag| html += "<span class=\"label label-info\">#{tag}</span>" }
+      tags.split(',').each { |tag| html += "<span class=\"label label-info\">#{tag}</span>" }
       html.html_safe
     end
 
