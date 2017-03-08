@@ -2,28 +2,21 @@
 
 <%= image_tag @dish.picture.url, alt: "photo du #{@dish.name}", size:200,  class: 'img-circle' if @dish.picture? %>
 
-  
+<p class="lead"><%= @dish.description %></p>
 
-<div class="row">
-  <p class="lead"><%= @dish.description %></p>
-</div>
-
-
-<div class="row">
+<% if @restaurant.module_allergens %>
   <p class="lead"><%= render 'allergens', dish: @dish %></p>
-</div>
+<% end %>
 
-<div class="btn-group" role="group" aria-label="...">
+<p>
   <a href="#" class="btn btn-primary"><%= glyphicon 'pencil' %> Noter ce plat</a>
-</div>
+</p>
 
 <% if current_user == @dish.user %>
 
-  <h2>Admin</h2>
-
-  <div class="btn-group" role="group" aria-label="...">
-    <%= link_to 'Editer', edit_restaurant_dish_path(@dish, restaurant_id: @dish.restaurant_id ), class: 'btn btn-warning' %>
-    <%= link_to 'Supprimer',restaurant_dish_path(@dish, restaurant_id: @dish.restaurant_id ), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
-  </div>
+  <p class="text-right">
+    <%= link_to 'Editer', edit_dish_path(@dish), class: 'btn btn-warning' %>
+    <%= link_to 'Supprimer', @dish, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+  </p>
 
 <% end %>

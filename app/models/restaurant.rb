@@ -11,9 +11,13 @@ class Restaurant < ApplicationRecord
   after_create :generate_dishes
   after_create :generate_menus
   after_create :generate_sections
+  after_create :generate_opening_hours
 
   mount_uploader :logo, PictureUploader
   mount_uploader :picture, PictureUploader
+
+  extend FriendlyId
+  friendly_id :name, use: :slugged
 
   def complete_address
     "#{self.address}, #{self.zip_code}, #{self.city}"
@@ -55,6 +59,27 @@ class Restaurant < ApplicationRecord
       section.restaurant_id = self.id
       section.save
     end
+  end
+
+  def generate_opening_hours
+
+    (1..6).each do |day_number|
+      {'12:00:00'=>'14:00:00','19:30:00'=>'22:30:00'}.each do |open, close|
+        opening_hour = OpeningHour.create day: day_number,
+          user_id: self.user_id,
+          restaurant_id: self.id,
+          opens: open,
+          closes: close
+
+        opening_hour.save
+      end
+    end
+    
+  end
+
+  # method to tell if friendly id should regenrate the slud
+  def should_generate_new_friendly_id?
+    slug.nil? || name_changed?
   end
 
 end

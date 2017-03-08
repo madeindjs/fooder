@@ -32,7 +32,7 @@ class DishesController < ApplicationController
 
     respond_to do |format|
       if @dish.save
-        format.html { redirect_to restaurant_dish_path(@dish, restaurant_id: @dish.restaurant), notice: 'Dish was successfully created.' }
+        format.html { redirect_to @dish, notice: 'Dish was successfully created.' }
         format.json { render :show, status: :created, location: @dish }
       else
         format.html { render :new }
@@ -46,7 +46,7 @@ class DishesController < ApplicationController
   def update
     respond_to do |format|
       if @dish.update(dish_params)
-        format.html { redirect_to restaurant_dish_path(@dish, restaurant_id: @dish.restaurant), notice: 'Dish was successfully updated.' }
+        format.html { redirect_to @dish, notice: 'Dish was successfully updated.' }
         format.json { render :show, status: :ok, location: @dish }
       else
         format.html { render :edit }
@@ -60,7 +60,7 @@ class DishesController < ApplicationController
   def destroy
     @dish.destroy
     respond_to do |format|
-      format.html { redirect_to restaurant_path( @dish.restaurant_id), notice: 'Dish was successfully destroyed.' }
+      format.html { redirect_to dishes_path, notice: 'Dish was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -68,7 +68,7 @@ class DishesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_dish
-      @dish = Dish.find(params[:id])
+      @dish = Dish.friendly.find(params[:id])
       redirect_to home_path unless @dish 
     end
 
