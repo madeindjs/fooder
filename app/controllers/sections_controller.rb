@@ -50,7 +50,7 @@ class SectionsController < ApplicationController
   def destroy
     @section.destroy
     respond_to do |format|
-      format.html { redirect_to restaurant_url(@restaurant), notice: 'Section was successfully destroyed.' }
+      format.html { redirect_to @restaurant, notice: 'Section was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

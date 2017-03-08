@@ -60,7 +60,7 @@ class DishesController < ApplicationController
   def destroy
     @dish.destroy
     respond_to do |format|
-      format.html { redirect_to restaurant_path( @dish.restaurant_id), notice: 'Dish was successfully destroyed.' }
+      format.html { redirect_to dishes_path, notice: 'Dish was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

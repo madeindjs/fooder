@@ -4,7 +4,7 @@
 
   <div class="row">
 
-    <h2><%= category.name %></h2>
+    <h2 class="col-xs-12"><%= category.name %></h2>
       
 
     <% dishes.select{|d| d.category_id == category.id}.each do |dish| %>
@@ -16,15 +16,18 @@
           <% end %>
         <% end %>
         <p>
-          <strong><%= link_to dish.name, dish %></strong><br/>
+          <h3><%= link_to dish.name, dish %></h3>
           <%= dish.description %>  <strong><%= price dish.price %></strong><br/>
           <%= tags dish.tags %>
-
-           <% if check_admin %>
-            <%= link_to "Editer", edit_dish_path( dish), class: 'btn btn-default btn-xs' %>
-            <%= link_to "Supprimer",  dish, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default btn-xs' %>
-          <% end %>
+          <%= render 'allergens', dish: dish if @restaurant.module_allergens %>
         </p>
+
+        <% if check_admin %>
+          <p class="text-right">
+            <%= link_to "Editer", edit_dish_path( dish), class: 'btn btn-default btn-xs' %>
+            <%= link_to "Supprimer",  dish, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-warning btn-xs' %>
+          </p>
+        <% end %>
 
       </article><!--! .col-xs-6 -->
 

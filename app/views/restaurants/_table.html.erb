@@ -16,7 +16,7 @@
         <td><%= restaurant.user.complete_name %></td>
         <td>
             <% if current_user == restaurant.user %>
-                <%= link_to 'Show', restaurant , class: 'btn btn-primary' %>
+                <%= link_to 'Voir le site', root_url(subdomain: restaurant.slug), class: 'btn btn-primary' %>
                 <%= link_to 'Edit', edit_restaurant_path(restaurant) , class: 'btn btn-warning' %>
                 <%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'  %>
             <% end %>
