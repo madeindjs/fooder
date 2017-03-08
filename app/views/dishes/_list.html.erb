@@ -19,12 +19,13 @@
           <h3><%= link_to dish.name, dish %></h3>
           <%= dish.description %>  <strong><%= price dish.price %></strong><br/>
           <%= tags dish.tags %>
+          <%= render 'allergens', dish: dish if @restaurant.module_allergens %>
         </p>
 
         <% if check_admin %>
           <p class="text-right">
             <%= link_to "Editer", edit_dish_path( dish), class: 'btn btn-default btn-xs' %>
-            <%= link_to "Supprimer",  dish, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default btn-xs' %>
+            <%= link_to "Supprimer",  dish, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-warning btn-xs' %>
           </p>
         <% end %>
 

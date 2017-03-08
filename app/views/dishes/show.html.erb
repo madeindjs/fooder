@@ -4,7 +4,9 @@
 
 <p class="lead"><%= @dish.description %></p>
 
-<p class="lead"><%= render 'allergens', dish: @dish %></p>
+<% if @restaurant.module_allergens %>
+  <p class="lead"><%= render 'allergens', dish: @dish %></p>
+<% end %>
 
 <p>
   <a href="#" class="btn btn-primary"><%= glyphicon 'pencil' %> Noter ce plat</a>
