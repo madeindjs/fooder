@@ -1,20 +1,24 @@
+var select = $("select#themes");
 
-$.getJSON("https://bootswatch.com/api/3.json", function (data) {
-  var themes = data.themes;
-  var select = $("select");
-  select.show();
+if(select.length){
   
-  themes.forEach(function(value, index){
-    console.log(value);
-    select.append($("<option />")
-          .val(value.cssCdn)
-          .text(value.name));
-  });
-  
-  select.change(function(){
-    $("link").attr("href", $(this).val());
-  });
+  $.getJSON("https://bootswatch.com/api/3.json", function (data) {
+    var themes = data.themes;
+    select.show();
+    
+    themes.forEach(function(value, index){
+      console.log(value);
+      select.append($("<option />")
+            .val(value.cssCdn)
+            .text(value.name));
+    });
+    
+    select.change(function(){
+      $("link").attr("href", $(this).val());
+    });
 
-}, "json").fail(function(){
-  // do something here
-});
+  }, "json").fail(function(){
+    // do something here
+  });
+}
+

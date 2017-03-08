@@ -32,7 +32,6 @@
 
   <h2>Allergènes</h2>
 
-
   <table class="table table-striped">
   
     <% Dish::ALLERGENS.each do |sym, allergen| %>
@@ -51,6 +50,7 @@
 
   </table>
 
+  <%= alert 'warning', "Le module des allergènes n'est pas activé, ces information seront enregistrés mais pas elles ne seont pas affichées."  unless @restaurant.module_allergens %>
 
   <div class="actions">
     <%= f.submit 'Confirmer', class: 'btn btn-primary' %>
