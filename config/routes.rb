@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   
+  resources :links
   get 'cost' => 'pages#cost'
 
   resources :categories, only: [:create, :new, :edit, :update, :destroy]
