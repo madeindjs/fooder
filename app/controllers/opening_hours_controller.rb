@@ -11,20 +11,20 @@ class OpeningHoursController < ApplicationController
     @opening_hour.restaurant_id = @restaurant.id
 
     if @opening_hour.save
-      redirect_to edit_restaurant_path(@restaurant), notice: "Horraire d'ouverture crée."
+      redirect_to root_path, notice: "Horraire d'ouverture crée."
     else
       puts @opening_hour.errors.inspect
-      redirect_to edit_restaurant_path(@restaurant), notice: "Une erreur est survenue."
+      redirect_to root_path, notice: "Une erreur est survenue."
     end
   end
 
   # PATCH/PUT /restaurant/1/opening_hours/1
   def update
     if @opening_hour.update(opening_hour_params)
-      redirect_to edit_restaurant_path(@restaurant), notice: "Horraire d'ouverture mise à jour."
+      redirect_to root_path, notice: "Horraire d'ouverture mise à jour."
     else
       puts @opening_hour.errors.inspect
-      redirect_to edit_restaurant_path(@restaurant), notice: "Une erreur est survenue."
+      redirect_to root_path, notice: "Une erreur est survenue."
     end
   end
 
@@ -32,7 +32,7 @@ class OpeningHoursController < ApplicationController
   # DELETE /opening_hours/1.json
   def destroy
     @opening_hour.destroy
-    redirect_to edit_restaurant_path(@restaurant), notice: "Horraire d'ouverture supprimée."
+    redirect_to root_path, notice: "Horraire d'ouverture supprimée."
   end
 
   private

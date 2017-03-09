@@ -81,7 +81,7 @@ class DishesControllerTest < ActionDispatch::IntegrationTest
     setup_restaurant_host
     login(users(:me))
     patch dish_url(@dish), params: { dish: { category_id: @dish.category_id, description: @dish.description, name: @dish.name, restaurant_id: @dish.restaurant_id, user_id: @dish.user_id } }
-    assert_redirected_to @dish
+    assert_redirected_to dish_url(@dish)
   end
 
   test "should not destroy dish" do
