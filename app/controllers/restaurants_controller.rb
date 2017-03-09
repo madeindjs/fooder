@@ -2,6 +2,7 @@ class RestaurantsController < ApplicationController
   before_action :check_login, only: [:activate, :new, :create, :edit, :update, :destroy, :opening_hours]
   before_action :set_restaurant, only: [:activate, :show, :edit, :update, :destroy, :opening_hours]
   before_action :check_owner, only: [:edit, :update, :destroy, :opening_hours]
+  before_action :check_restaurant, only: [:contact]
 
   # GET /restaurants
   # GET /restaurants.json
