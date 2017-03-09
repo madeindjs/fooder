@@ -2,6 +2,7 @@ class DishesController < ApplicationController
   before_action :set_dish, only: [:show, :edit, :update, :destroy]
   before_action :check_login, only: [:new, :create, :edit, :update, :destroy]
   before_action :check_owner, only: [:edit, :update, :destroy]
+  before_action :check_restaurant
 
   # GET /dishes
   # GET /dishes.json

@@ -27,9 +27,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def check_restaurant
+    redirect_to home_url(subdomain: '') unless @restaurant
+  end
+
   def check_login
     unless current_user_session
-      redirect_to params[:restaurant_id] ? restaurant_path(params[:restaurant_id]) : home_path  
+      redirect_to root_path  
     end
   end
 
