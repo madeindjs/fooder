@@ -1,15 +1,157 @@
 <%= alert 'warning', "Le projet est en cours de construction. Si vous êtes intéressé par le projet, soyez patient, " %>
 
 
+<header>
+  <%= image_tag '/assets/fooder.svg', size: 50 %>
+  <h1>Fooder</h1>
+  <p>Génerez votre site pour votre restaurant</p>
+
+  <%= link_to "Commencez maintenant", signin_url, class: 'btn btn-lg btn-primary' %>
+
+</header>
+
+
+
+<div class="row">
+  <div class="col-xs-12">
+    <h2>Rapidité, simplicité</h2>
+    <p>Créez votre votre site pour votre restaurant en quelques minutes sans aucune connaissance en développement web</p>
+    <p>Vous pensiez que HTML et CSS sont des organismes de l'URSSAF?</p>
+    <p>On s'occuppe de tout.</p>
+    <%= link_to "Commencez maintenant", signin_url, class: 'btn btn-lg btn-dafault' %>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-xs-12">
+    <h2>Comment ça fonctionne</h2>
+    <ol>
+      <li>Créez votre compte sur Fooder</li>
+      <li>Créez votre restaurant</li>
+      <li>Votre site est prêt</li>
+    </ol>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <h2>Fonctionnalités</h2>
+    <p>Votre site dispose de plusieurs modules que vous pouvez choisir d'activer ou non: c'est vous le chef!</p>
+    <il>
+      <li><strong>Allergènes.</strong> Renseignez les allergènes présents dans vos plats. Une carte des allergènes est automatiquement génerée.</li>
+      <li><strong>Menus.</strong> Composez vos menus avec les plats que vous avez déjà renseignés.</li>
+      <li><strong>Blog.</strong> Communiquez autour de l'actualité de votre restaurant.</li>
+      <li><strong>Thèmes.</strong> Choisissez un thème parmis les nombreux proposées.</li>
+    </il>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <h2>FAQ <small>Foire aux questions</small></h2>
+
+    <div>
+      <h3>Hébergement</h3>
+      <p>On s'occupe de tout.</p>
+    </div>
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <h2>Prix</h2>
+
+    <table class="table">
+
+      <thead>
+        <tr>
+          <th></th>
+          <th>compte gratuit</th>
+          <th>compte premium</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>Création du site</td>
+          <td><%= glyphicon 'ok' %></td>
+          <td><%= glyphicon 'ok' %></td>
+        </tr>
+
+        <tr>
+          <td>Gestion des plats à la carte</td>
+          <td><%= glyphicon 'ok' %></td>
+          <td><%= glyphicon 'ok' %></td>
+        </tr>
+
+        <tr>
+          <td>Gestion des menus</td>
+          <td><%= glyphicon 'ok' %></td>
+          <td><%= glyphicon 'ok' %></td>
+        </tr>
+
+        <tr>
+          <td>Module de blog</td>
+          <td><%= glyphicon 'ok' %></td>
+          <td><%= glyphicon 'ok' %></td>
+        </tr>
+
+        <tr>
+          <td>Module de réservation</td>
+          <td><%= glyphicon 'ok' %></td>
+          <td><%= glyphicon 'ok' %></td>
+        </tr>
+
+        <tr>
+          <td>Module de notation de plat</td>
+          <td><%= glyphicon 'ok' %></td>
+          <td><%= glyphicon 'ok' %></td>
+        </tr>
+
+        <tr>
+          <td>Module de notation de plat</td>
+          <td><%= glyphicon 'ok' %></td>
+          <td><%= glyphicon 'ok' %></td>
+        </tr>
+
+        <tr>
+          <td>URL</td>
+          <td>votre-restaurant.fooder.fr</td>
+          <td>votre-restaurant.fr</td>
+        </tr>
+      </tbody>
+
+      <tfoot>
+        <tr>
+          <td></td>
+          <td>0 € / mois</td>
+          <td>9.99 € / mois</td>
+        </tr>
+
+        <tr>
+          <td></td>
+          <td><%= link_to "Compte gratuit", signup_path, class: 'btn btn-default' %></td>
+          <td><%= link_to "Compte premium", signup_path, class: 'btn btn-primary' %></td>
+        </tr>
+      </tfoot>
+      
+    </table>
+    
+  </div>
+</div>
+
+
+<hr/>
+
 <div class="col-xs-12">
 
-  <div id="logo" class="img-circle">
-    <%= image_tag '/assets/fooder.svg', size: 200 %>
+  <div id="logo">
   </div>
 
 
 
-  <h1>Créez votre site pour votre restaurant</h1>
 
   <p class="lead">Vous pensez que <strong>HTML</strong> et <strong>CSS</strong> sont des organismes de l'<strong>URSSAF</strong></p>
   <%= link_to "voir l'exemple", example_url, class: 'btn btn-primary' %>
