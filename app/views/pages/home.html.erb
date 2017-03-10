@@ -1,13 +1,11 @@
-<%= alert 'warning', "Le projet est en cours de construction. Si vous êtes intéressé par le projet, soyez patient, " %>
 
 <header>
   <%= image_tag '/assets/fooder.svg', size: 50 %>
   <h1>Fooder</h1>
   <p>Génerez votre site pour votre restaurant.</p>
-
   <hr>
-
   <p style="font-size: 1.8em; color: gray">Vous pensiez que HTML et CSS sont des organismes de l'URSSAF? On s'occuppe de tout!</p>
+  <%= alert 'warning', "Le projet est en cours de construction. Si vous êtes intéressé par le projet, soyez patient, " %>
 
   <%= link_to "C'est partit!", signin_url, class: 'btn btn-lg btn-primary' %>
 </header>
@@ -38,18 +36,18 @@
       <p>Vous n'avez besoin d'aucune connaissance particulière, c'est très simple</p>
 
       <div class="col-sm-4">
-        <h3>1</h3>
+        <h3>Etape 1</h3>
         <p><%= link_to "Créez votre compte", signin_url %> sur Fooder.</p>
       </div>
 
       <div class="col-sm-4">
-        <h3>2</h3>
+        <h3>Etape 2</h3>
         <p>Ajoutez les produits que vous proposez.</p>
       </div>
 
       <div class="col-sm-4">
-        <h3>3</h3>
-        <p>Votre site est prêt.</p>
+        <h3>Etape 3</h3>
+        <p>Choisissez un thème.</p>
       </div>
 
       <div class="col-xs-12" style="margin-top: 80px">
@@ -71,7 +69,7 @@
 
     <div class="col-sm-6">
       <h3>Allergènes.</h3>
-      <p>Renseignez les allergènes présents dans vos plats. Une carte des allergènes est automatiquement génerée.</p>
+      <p>Renseignez les allergènes présents dans vos plats et proposez  une carte des allergènes.</p>
     </div>
 
     <div class="col-sm-6">
@@ -89,6 +87,16 @@
       <p>Choisissez un thème parmis les nombreux proposées.</p>
     </div>
 
+    <div class="col-sm-6">
+      <h3>Notations.</h3>
+      <p>Laissez vos clients noter vos plats.</p>
+    </div>
+
+    <div class="col-sm-6">
+      <h3>Notations.</h3>
+      <p>Laissez vos clients noter vos plats.</p>
+    </div>
+
   </div>
 </div>
 </section>
@@ -99,19 +107,15 @@
 <div class="row">
   <div class="col-xs-12">
     <h2>Prix</h2>
-
     <p>Créez votre site gratuitement et décidez de basculer sur un compte premium quand vous les souhaitez.</p>
-
     <%= render 'cost_table' %>
-    
   </div>
 </div>
 </section>
 
 <hr>
 
-<section>
-<div class="row">
+<section class="faq">
   <div class="col-xs-12">
     <h2>FAQ <small>Foire aux questions</small></h2>
 
