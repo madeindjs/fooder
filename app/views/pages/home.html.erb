@@ -1,6 +1,5 @@
 <%= alert 'warning', "Le projet est en cours de construction. Si vous êtes intéressé par le projet, soyez patient, " %>
 
-
 <header>
   <%= image_tag '/assets/fooder.svg', size: 50 %>
   <h1>Fooder</h1>
@@ -68,103 +67,48 @@
   <div class="col-xs-12">
     <h2>Fonctionnalités</h2>
     <p>Votre site dispose de plusieurs modules que vous pouvez choisir d'activer ou non: c'est vous le chef!</p>
-    <il>
-      <li><strong>Allergènes.</strong> Renseignez les allergènes présents dans vos plats. Une carte des allergènes est automatiquement génerée.</li>
-      <li><strong>Menus.</strong> Composez vos menus avec les plats que vous avez déjà renseignés.</li>
-      <li><strong>Blog.</strong> Communiquez autour de l'actualité de votre restaurant.</li>
-      <li><strong>Thèmes.</strong> Choisissez un thème parmis les nombreux proposées.</li>
-    </il>
+
+
+    <div class="col-sm-6">
+      <h3>Allergènes.</h3>
+      <p>Renseignez les allergènes présents dans vos plats. Une carte des allergènes est automatiquement génerée.</p>
+    </div>
+
+    <div class="col-sm-6">
+      <h3>Menus.</h3>
+      <p>Composez vos menus avec les plats que vous avez déjà renseignés.</p>
+    </div>
+
+    <div class="col-sm-6">
+      <h3>Blog.</h3>
+      <p>Communiquez autour de l'actualité de votre restaurant.</p>
+    </div>
+
+    <div class="col-sm-6">
+      <h3>Thèmes.</h3>
+      <p>Choisissez un thème parmis les nombreux proposées.</p>
+    </div>
+
   </div>
 </div>
 </section>
 
+<hr>
 
 <section>
 <div class="row">
   <div class="col-xs-12">
     <h2>Prix</h2>
 
-    <table class="table">
+    <p>Créez votre site gratuitement et décidez de basculer sur un compte premium quand vous les souhaitez.</p>
 
-      <thead>
-        <tr>
-          <th></th>
-          <th>compte gratuit</th>
-          <th>compte premium</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <tr>
-          <td>Création du site</td>
-          <td><%= glyphicon 'ok' %></td>
-          <td><%= glyphicon 'ok' %></td>
-        </tr>
-
-        <tr>
-          <td>Gestion des plats à la carte</td>
-          <td><%= glyphicon 'ok' %></td>
-          <td><%= glyphicon 'ok' %></td>
-        </tr>
-
-        <tr>
-          <td>Gestion des menus</td>
-          <td><%= glyphicon 'ok' %></td>
-          <td><%= glyphicon 'ok' %></td>
-        </tr>
-
-        <tr>
-          <td>Module de blog</td>
-          <td><%= glyphicon 'ok' %></td>
-          <td><%= glyphicon 'ok' %></td>
-        </tr>
-
-        <tr>
-          <td>Module de réservation</td>
-          <td><%= glyphicon 'ok' %></td>
-          <td><%= glyphicon 'ok' %></td>
-        </tr>
-
-        <tr>
-          <td>Module de notation de plat</td>
-          <td><%= glyphicon 'ok' %></td>
-          <td><%= glyphicon 'ok' %></td>
-        </tr>
-
-        <tr>
-          <td>Module de notation de plat</td>
-          <td><%= glyphicon 'ok' %></td>
-          <td><%= glyphicon 'ok' %></td>
-        </tr>
-
-        <tr>
-          <td>URL</td>
-          <td>votre-restaurant.fooder.fr</td>
-          <td>votre-restaurant.fr</td>
-        </tr>
-      </tbody>
-
-      <tfoot>
-        <tr>
-          <td></td>
-          <td>0 € / mois</td>
-          <td>9.99 € / mois</td>
-        </tr>
-
-        <tr>
-          <td></td>
-          <td><%= link_to "Compte gratuit", signup_path, class: 'btn btn-default' %></td>
-          <td><%= link_to "Compte premium", signup_path, class: 'btn btn-primary' %></td>
-        </tr>
-      </tfoot>
-      
-    </table>
+    <%= render 'cost_table' %>
     
   </div>
 </div>
 </section>
 
-
+<hr>
 
 <section>
 <div class="row">
@@ -172,38 +116,26 @@
     <h2>FAQ <small>Foire aux questions</small></h2>
 
 
-    <div>
+    <div class="col-sm-6">
       <h3>Il y a t-il une limite au compte gratuit?</h3>
       <p><strong>Non.</strong> Vous pouvez choisir de basculer sur un compte premium à tout moment (et vice versa).</p>
     </div>
 
-    <div>
+    <div class="col-sm-6">
       <h3>Il y a t-il un engagement pour le mode premium?</h3>
       <p><strong>Non.</strong> Vous pouvez choisir de résillier à tout moment et rebasculer sur le mode gratuit.</p>
     </div>
 
-    <div>
+    <div class="col-sm-6">
       <h3>Est-il possible d'avoir un coup de main pour démarrer?</h3>
-      <p><strong>Oui.</strong> Nous vous proposons d'importer vos données pour tout abonnement au service premium de plus de 12 mois. Contacter-nous si vous le souhaitezpour la mise en place votre contenu. </p>
+      <p><strong>Oui.</strong> pour tout abonnement au service premium de plus de 12 mois. Contacter-nous pour la mise en place votre contenu.</p>
     </div>
 
-    <div>
+    <div class="col-sm-6">
       <h3>Dois-je m'occuper de l'hébergement?</h3>
-      <p><strong>Non.</strong> Vous n'avez pas à vous occuper de l'hébergement du site, on s'occuppe de tout.</p>
-    </div>
-
-    <div>
-      <h3></h3>
-      <p>Vous n'avez pas à vous occuper de l'hébergement du site, on s'occuppe de tout.</p>
+      <p><strong>Non.</strong> On s'occuppe de tout.</p>
     </div>
 
   </div>
 </div>
 </section>
-
-
-
-<%= link_to "se créer un compte", signup_path, class: 'btn btn-default' %>
-<%= link_to "se créer un compte", example_url, class: 'btn btn-default' %>
-<%= link_to "combien ça va me couter?", cost_path, class: 'btn btn-default' %>
-
