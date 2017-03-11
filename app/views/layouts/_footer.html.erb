@@ -2,9 +2,13 @@
       <div class="container">
 
         <ul class="list-inline">
-          <li><%= link_to "Acceuil", home_url(subdomain: nil) %></li>
-          <li><%= link_to 'Contactez-moi' , "mailto:RousseauAlexandre.Lyon@gmail.com?subject=Fooder" %></li>
-          <li><%= link_to 'Apache License 2.0' , "http://www.apache.org/licenses/LICENSE-2.0.html" %></li>
+          <% if @restaurant %>
+            <%= render "layouts/navigation_restaurant" %>
+          <% else %>
+            <li><%= link_to "Acceuil", home_url(subdomain: nil) %></li>
+            <li><%= link_to 'Contactez-moi' , "mailto:RousseauAlexandre.Lyon@gmail.com?subject=Fooder" %></li>
+            <li><%= link_to 'Apache License 2.0' , "http://www.apache.org/licenses/LICENSE-2.0.html" %></li>
+          <% end %>
         </ul>
 
       </div>

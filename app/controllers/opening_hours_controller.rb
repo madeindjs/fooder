@@ -47,6 +47,6 @@ class OpeningHoursController < ApplicationController
     end
 
     def check_owner
-      redirect_to restaurant_path(@restaurant) unless current_user.opening_hours.include? @opening_hour
+      redirect_to root_path unless current_user.opening_hours.include? @opening_hour
     end
 end

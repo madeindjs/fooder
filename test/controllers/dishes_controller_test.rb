@@ -17,7 +17,7 @@ class DishesControllerTest < ActionDispatch::IntegrationTest
 
   test "should redirect get index at pages#home" do
     get dishes_url
-    assert_redirected_to home_url(subdomain: '')
+    assert_redirected_to root_url(subdomain: '')
   end
 
 

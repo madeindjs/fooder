@@ -48,7 +48,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   test "should redirect update user" do
     patch user_url(@user), params: { user: { email: @user.email, firstname: @user.firstname, lastname: @user.lastname } }
-    assert_redirected_to home_url
+    assert_redirected_to root_url
   end
 
   test "should update user" do
@@ -62,7 +62,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
       delete user_url(@user)
     end
 
-    assert_redirected_to home_url
+    assert_redirected_to root_url
   end
 
   test "should destroy user" do

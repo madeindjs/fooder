@@ -78,6 +78,6 @@ class MenusController < ApplicationController
     end
 
     def check_owner
-      redirect_to home_path unless current_user.menus.include? @menu
+      redirect_to root_path unless current_user.menus.include? @menu
     end
 end

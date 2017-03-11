@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @title "Actualité"
+    @title = "Actualité"
     @posts = @restaurant.posts
   end
 
@@ -80,6 +80,6 @@ class PostsController < ApplicationController
     end
 
     def check_owner
-      redirect_to @restaurant unless current_user.posts.include? @post
+      redirect_to root_path unless current_user.posts.include? @post
     end
 end

@@ -73,7 +73,7 @@ class DishesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_dish
       @dish = Dish.friendly.find(params[:id])
-      redirect_to home_path unless @dish 
+      redirect_to root_path unless @dish 
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
@@ -83,6 +83,6 @@ class DishesController < ApplicationController
     end
 
     def check_owner
-      redirect_to home_path unless current_user.dishes.include? @dish
+      redirect_to root_path unless current_user.dishes.include? @dish
     end
 end
