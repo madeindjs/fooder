@@ -1,0 +1,31 @@
+<div class="col-xs-12">
+  <h1>Liste des allergènes</h1>
+</div>
+
+<div class="col-xs-12">
+  <table class="table table-striped text-center">
+
+    <tr>
+      <th></th>
+      <% Dish::ALLERGENS.each do |value, name| %>
+        <th><%= name %></th>
+      <% end %>
+    </tr>
+
+    <% @restaurant.dishes.each do |dish| %>
+      <tr>
+        <td><%= link_to dish.name, dish %></td>
+        <% Dish::ALLERGENS.each do |value, name| %>
+          <td>
+            <% if dish.send(value) == 2 %>
+              <%= glyphicon 'ok' %>
+            <% elsif dish.send(value) == 1 %>
+              Traces
+            <% end %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+
+  </table>
+</div>
