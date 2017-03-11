@@ -1,5 +1,11 @@
 <footer class="footer">
       <div class="container">
-        <%= link_to "Fooder", home_path(subdomain: nil) %>
+
+        <ul class="list-inline">
+          <li><%= link_to "Acceuil", home_path(subdomain: nil) %></li>
+          <li><%= link_to 'Contactez-moi' , "mailto:RousseauAlexandre.Lyon@gmail.com?subject=Fooder" %></li>
+          <li><%= link_to 'Apache License 2.0' , "http://www.apache.org/licenses/LICENSE-2.0.html" %></li>
+        </ul>
+
       </div>
 </footer>
