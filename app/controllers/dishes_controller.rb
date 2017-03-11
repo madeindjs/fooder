@@ -1,6 +1,6 @@
 class DishesController < ApplicationController
   before_action :set_dish, only: [:show, :edit, :update, :destroy]
-  before_action :check_login, only: [:new, :create, :edit, :update, :destroy]
+  before_action :check_login, only: [:new, :create, :edit, :edits, :update, :destroy]
   before_action :check_owner, only: [:edit, :update, :destroy]
   before_action :check_restaurant
 
@@ -25,6 +25,12 @@ class DishesController < ApplicationController
 
   # GET /dishes/1/edit
   def edit
+  end
+
+  # GET /edits
+  # POST /edits
+  def edits
+    redirect_to root_path unless current_user.restaurants.include? @restaurant
   end
 
   # POST /dishes
