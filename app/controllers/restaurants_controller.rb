@@ -89,6 +89,11 @@ class RestaurantsController < ApplicationController
     @title = "Contact"
   end
 
+  # GET /allergens
+  def allergens
+    @title = "Carte des allergènes"
+  end
+
 
   # POST /restaurant/1/opening_hours
   def opening_hours
