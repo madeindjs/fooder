@@ -10,7 +10,8 @@
 
     <link rel="icon" type="image/png" href="/assets/favicon.png" />
 
-    <title><%= @title || "Fooder" %></title>
+    <title><%= @restaurant ? @restaurant.name : "Fooder" %><%= " - #{@title}" if @title %></title>
+
     <%= csrf_meta_tags %>
 
 

@@ -5,12 +5,14 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
+    @title = "Nos clients"
     @users = User.all
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
+    @title = @user.complete_name
   end
 
   # GET /users/new

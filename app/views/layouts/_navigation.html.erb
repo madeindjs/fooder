@@ -20,10 +20,7 @@
       <ul class="nav navbar-nav nav navbar-left">
         <% if @restaurant && @restaurant.id %>
           <li><%=  link_to "Carte",  dishes_path %></li>
-
-          <% if @restaurant.module_blog %>
-            <li><%= link_to "Menus", menus_path %></li>
-          <% end %>
+          <li><%= link_to "Menus", menus_path %></li>
 
           <% if @restaurant.module_blog %>
             <li><%= link_to "Actualités", posts_path %></li>

@@ -6,11 +6,13 @@ class SectionsController < ApplicationController
 
   # GET /sections/new
   def new
+    @title = "Nouveau contenu"
     @section = Section.new
   end
 
   # GET /sections/1/edit
   def edit
+    @title = "Editer page d'acceuil"
   end
 
   # POST /sections

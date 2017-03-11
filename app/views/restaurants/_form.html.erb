@@ -3,7 +3,10 @@
   <%= render 'shared/errors_form', model: restaurant %>
 
   <div class="row">
-    <h2>Informations</h2>
+
+    <div class="col-xs-12">
+      <h2>Informations</h2>
+    </div>
 
     <div class="form-group col-sm-12">
       <%= f.label :name, 'Nom' %>
@@ -28,7 +31,11 @@
 
 
   <div class="row">
-    <h2>Thème</h2>
+
+    <div class="col-xs-12">
+      <h2>Thème</h2>
+    </div>
+
     <div class="form-group col-sm-6">
       <%= f.label :css, 'Thème' %>
       <%= f.select :css, {}, {}, class: 'form-control', id: 'themes' %>
@@ -36,9 +43,15 @@
   </div>
 
   <div class="row">
-    <h2>Logo</h2>
-    <%= render 'shared/form_input_logo.html', form: f, model: restaurant %>
-    <%= render 'shared/form_input_picture.html', form: f, model: restaurant %>
+    <div class="col-xs-12">
+      <h2>Logo</h2>
+    </div>
+    <div class="col-sm-6">
+      <%= render 'shared/form_input_logo.html', form: f, model: restaurant %>
+    </div>
+    <div class="col-sm-6">
+      <%= render 'shared/form_input_picture.html', form: f, model: restaurant %>
+    </div>
   </div>
   
   <div class="row">

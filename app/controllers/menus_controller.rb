@@ -5,12 +5,14 @@ class MenusController < ApplicationController
   # GET /menus
   # GET /menus.json
   def index
+    @title = "Menus"
     @menus = Menu.all
   end
 
   # GET /menus/1
   # GET /menus/1.json
   def show
+    @title = @menu.name
   end
 
   # GET /menus/new

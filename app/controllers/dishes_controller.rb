@@ -7,16 +7,19 @@ class DishesController < ApplicationController
   # GET /dishes
   # GET /dishes.json
   def index
+    @title = "Carte"
     @dishes = @restaurant ? @restaurant.dishes :  Dish.all
   end
 
   # GET /dishes/1
   # GET /dishes/1.json
   def show
+    @title = @dish.name
   end
 
   # GET /dishes/new
   def new
+    @title = "Nouveau plat"
     @dish = Dish.new
   end
 

@@ -1,6 +1,7 @@
 # template from https://www.sitepoint.com/rails-authentication-with-authlogic/
 class UserSessionsController < ApplicationController
   def new
+    @title = "Se connecter"
     @user_session = UserSession.new
   end
 

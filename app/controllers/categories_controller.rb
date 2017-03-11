@@ -6,6 +6,7 @@ class CategoriesController < ApplicationController
 
   # GET /categories/new
   def new
+    @title = "Nouvelle catégorie"
     @category = Category.new
   end
 

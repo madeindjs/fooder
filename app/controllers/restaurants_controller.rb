@@ -7,21 +7,25 @@ class RestaurantsController < ApplicationController
   # GET /restaurants
   # GET /restaurants.json
   def index
+    @title = "nos clients"
     @restaurants = Restaurant.all
   end
 
   # GET /restaurants/1
   # GET /restaurants/1.json
   def show
+    @title = @restaurant.name
   end
 
   # GET /restaurants/new
   def new
+    @title = "Nouveau restaurant"
     @restaurant = Restaurant.new
   end
 
   # GET /restaurants/1/edit
   def edit
+    @title = "Editer votre restaurant"
   end
 
   # POST /restaurants
@@ -82,6 +86,7 @@ class RestaurantsController < ApplicationController
 
   # GET /restaurants/1/contact
   def contact
+    @title = "Contact"
   end
 
 
