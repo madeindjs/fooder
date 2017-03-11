@@ -13,16 +13,7 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= link_to user.complete_name, user %></td>
-        <td><%= user.email %></td>
-        <td>
-          <%= link_to 'Edit', edit_user_path(user), class: 'btn btn-warning' %>
-          <%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
-        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New User', new_user_path, class:"btn btn-primary" %>
