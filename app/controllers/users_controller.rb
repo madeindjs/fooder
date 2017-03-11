@@ -5,12 +5,14 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
+    @title = "Nos clients"
     @users = User.all
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
+    @title = @user.complete_name
   end
 
   # GET /users/new
@@ -74,6 +76,6 @@ class UsersController < ApplicationController
     end
 
     def check_owner
-      redirect_to home_path unless current_user == @user
+      redirect_to root_path unless current_user == @user
     end
 end

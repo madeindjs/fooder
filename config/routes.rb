@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   constraints subdomain: /.+/  do
     get 'contact' => "restaurants#contact"
+    get 'allergens' => "restaurants#allergens"
     patch 'activate_module' => "restaurants#activate_module"
 
     resources :opening_hours, only: [:create, :update, :destroy]

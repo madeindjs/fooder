@@ -19,5 +19,9 @@ class ActiveSupport::TestCase
     assert session[:user_credentials].blank?
   end
 
+  def setup_restaurant_host
+    host! "http://au-lagon-bleu.example.com/"
+  end
+
   # Add more helper methods to be used by all tests here...
 end

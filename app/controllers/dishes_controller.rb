@@ -2,20 +2,24 @@ class DishesController < ApplicationController
   before_action :set_dish, only: [:show, :edit, :update, :destroy]
   before_action :check_login, only: [:new, :create, :edit, :update, :destroy]
   before_action :check_owner, only: [:edit, :update, :destroy]
+  before_action :check_restaurant
 
   # GET /dishes
   # GET /dishes.json
   def index
+    @title = "Carte"
     @dishes = @restaurant ? @restaurant.dishes :  Dish.all
   end
 
   # GET /dishes/1
   # GET /dishes/1.json
   def show
+    @title = @dish.name
   end
 
   # GET /dishes/new
   def new
+    @title = "Nouveau plat"
     @dish = Dish.new
   end
 
@@ -69,7 +73,7 @@ class DishesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_dish
       @dish = Dish.friendly.find(params[:id])
-      redirect_to home_path unless @dish 
+      redirect_to root_path unless @dish 
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
@@ -79,6 +83,6 @@ class DishesController < ApplicationController
     end
 
     def check_owner
-      redirect_to home_path unless current_user.dishes.include? @dish
+      redirect_to root_path unless current_user.dishes.include? @dish
     end
 end

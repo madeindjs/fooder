@@ -2,6 +2,9 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -22,9 +25,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.24748737"
-     inkscape:cx="410.7913"
-     inkscape:cy="759.33277"
+     inkscape:zoom="0.49497474"
+     inkscape:cx="86.792924"
+     inkscape:cy="563.53933"
      inkscape:document-units="px"
      inkscape:current-layer="root"
      showgrid="false"
@@ -37,7 +40,16 @@
   <metadata
      id="fooder_logo"
      author="ROUSSEAU Alexandre"
-     email="rousseaualexandre.lyon@gmail.com" />
+     email="rousseaualexandre.lyon@gmail.com">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
   <g
      inkscape:label="Calque 1"
      inkscape:groupmode="layer"
@@ -96,16 +108,12 @@
        d="m 965.3395,1017.1931 0,14.0676 c 0,11.6566 -13.28156,21.1015 -29.673,21.1015 l -820.95121,0 c -16.391438,0 -29.672996,-9.4449 -29.672996,-21.1015 l 0,-14.0676 c 0,-11.6565 13.281558,-21.10152 29.672996,-21.10152 l 820.95121,0 c 16.39144,0 29.673,9.44782 29.673,21.10152 z"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="sssssssss"
-       style="fill:#2c3e50;fill-opacity:1" />
+       style="fill:#f1c40f;fill-opacity:1" />
     <g
        id="bell"
-
-onmouseover="setAttribute('transform', 'rotate(-10) translate(-100, 100) ');"
-onmouseout="setAttribute('transform', '');"
-transform="translate(1.5,5.5)" 
-
-      >
-
+       onmouseover="setAttribute('transform', 'rotate(-10) translate(-100, 100) ');"
+       onmouseout="setAttribute('transform', '');"
+       >
       <path
          style="fill:#f1c40f;fill-opacity:1"
          sodipodi:nodetypes="sssscssscs"
@@ -116,7 +124,7 @@ transform="translate(1.5,5.5)"
          inkscape:connector-curvature="0"
          id="light"
          d="m 144.96946,598.67698 c -12.85079,-6.39726 -22.36019,-34.10889 -28.71873,-83.69009 -10.6714,-83.21116 14.88207,-162.29356 77.65477,-240.32454 45.2829,-56.28991 68.78573,-69.50293 87.74037,-49.32665 14.4061,15.33459 11.11941,24.69952 -20.55542,58.56949 -81.659,87.31817 -107.55069,171.96877 -81.80353,267.44937 7.59202,28.1542 7.55278,29.73632 -0.98243,39.60736 -9.57092,11.06883 -21.19415,13.75892 -33.33503,7.71506 z"
-         style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#e5dee6;stroke-width:4.04061031;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+         style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:4.04061031;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     </g>
   </g>
 </svg>

@@ -2,25 +2,30 @@ class RestaurantsController < ApplicationController
   before_action :check_login, only: [:activate, :new, :create, :edit, :update, :destroy, :opening_hours]
   before_action :set_restaurant, only: [:activate, :show, :edit, :update, :destroy, :opening_hours]
   before_action :check_owner, only: [:edit, :update, :destroy, :opening_hours]
+  before_action :check_restaurant, only: [:contact]
 
   # GET /restaurants
   # GET /restaurants.json
   def index
+    @title = "nos clients"
     @restaurants = Restaurant.all
   end
 
   # GET /restaurants/1
   # GET /restaurants/1.json
   def show
+    @title = @restaurant.name
   end
 
   # GET /restaurants/new
   def new
+    @title = "Nouveau restaurant"
     @restaurant = Restaurant.new
   end
 
   # GET /restaurants/1/edit
   def edit
+    @title = "Editer votre restaurant"
   end
 
   # POST /restaurants
@@ -81,6 +86,12 @@ class RestaurantsController < ApplicationController
 
   # GET /restaurants/1/contact
   def contact
+    @title = "Contact"
+  end
+
+  # GET /allergens
+  def allergens
+    @title = "Carte des allergènes"
   end
 
 
@@ -114,6 +125,6 @@ class RestaurantsController < ApplicationController
     end
 
     def check_owner
-      redirect_to home_path unless current_user.restaurants.include? @restaurant
+      redirect_to root_path unless current_user.restaurants.include? @restaurant
     end
 end

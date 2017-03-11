@@ -2,6 +2,7 @@
 
 one:
   name: Poulet roti
+  slug: poulet-roti
   description: MyString
   category_id: 1
   user_id: 1

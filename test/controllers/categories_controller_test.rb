@@ -44,12 +44,12 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
 
   test "should update category" do
     patch category_url(@category), params: { category: { name: @category.name } }
-    assert_redirected_to home_url
+    assert_redirected_to root_url
   end
 
   test "should redirect on update category" do
     patch category_url(@category), params: { category: { name: @category.name } }
-    assert_redirected_to home_path
+    assert_redirected_to root_url
   end
 
   test "should not destroy category" do
@@ -57,7 +57,7 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
       delete category_url(@category)
     end
 
-    assert_redirected_to home_url
+    assert_redirected_to root_url
   end
 
   test "should destroy category" do

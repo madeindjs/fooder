@@ -1,0 +1,13 @@
+<li><%=  link_to "Carte",  dishes_path %></li>
+<li><%= link_to "Menus", menus_path %></li>
+
+<% if @restaurant.module_blog %>
+  <li><%= link_to "Actualités", posts_path %></li>
+<% end %>
+
+<% if @restaurant.module_allergens %>
+  <li><%= link_to "Allergènes", allergens_path %></li>
+<% end %>
+
+<li><a href="#">Réservation</a></li>
+<li><%= link_to "Contact", contact_path %></li>

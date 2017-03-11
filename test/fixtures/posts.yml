@@ -3,6 +3,7 @@
 one:
   id: 1
   title: MyString
+  slug: mystring
   content: MyString
   tags: MyString
   user_id: 1
