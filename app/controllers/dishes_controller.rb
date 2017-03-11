@@ -8,7 +8,7 @@ class DishesController < ApplicationController
   # GET /dishes.json
   def index
     @title = "Carte"
-    @dishes = @restaurant ? @restaurant.dishes :  Dish.all
+    @dishes = @restaurant.dishes
   end
 
   # GET /dishes/1
@@ -31,6 +31,8 @@ class DishesController < ApplicationController
   # POST /edits
   def edits
     redirect_to root_path unless current_user.restaurants.include? @restaurant
+    @dishes = @restaurant.dishes
+    puts params.inspect
   end
 
   # POST /dishes
