@@ -21,7 +21,7 @@
       <tr>
         <td><%= text_field_tag "dish[#{dish.id}][name]" , dish.name, class: 'form-control' %></td>
         <!-- TODO: set tag selected -->
-        <td><%= collection_select "dish[#{dish.id}][category]" , :category_id, current_user.categories, :id, :name, {}, { class: "form-control", selected: dish.category_id }  %></td>
+        <td><%= collection_select "dish[#{dish.id}][category]" , :category_id, current_user.categories, :id, :name, {selected: dish.category_id}, { class: "form-control" }  %></td>
         <td><%= text_field_tag "dish[#{dish.id}][price]" , dish.price, class: 'form-control' %></td>
         <td>
           <%= link_to 'en voir plus' , edit_dish_path(dish) , class: 'btn btn-default' %>

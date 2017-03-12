@@ -32,13 +32,15 @@ class DishesController < ApplicationController
   def edits
     redirect_to root_path unless current_user.restaurants.include? @restaurant
     @dishes = @restaurant.dishes
-    params.require(:dish).each do |id, data|
-      # we get dish and verify author is the user
-      if dish = Dish.find(id) and dish.user_id == current_user.id
-        dish.name = data['name']
-        dish.category_id = data['category']['category_id']
-        dish.price = data['price']
-        dish.save if dish.changed? 
+    if request.post?
+      params.require(:dish).each do |id, data|
+        # we get dish and verify author is the user
+        if dish = Dish.find(id) and dish.user_id == current_user.id
+          dish.name = data['name']
+          dish.category_id = data['category']['category_id']
+          dish.price = data['price']
+          dish.save if dish.changed? 
+        end
       end
     end
   end
