@@ -33,9 +33,11 @@ class MenusController < ApplicationController
 
     respond_to do |format|
       if @menu.save
-        format.html { redirect_to @menu, notice: 'Menu was successfully created.' }
+        flash[:success] = "Votre menu a été supprimé."
+        format.html { redirect_to @menu }
         format.json { render :show, status: :created, location: @menu }
       else
+        flash[:danger] = "Une erreur est survenue."
         format.html { render :new }
         format.json { render json: @menu.errors, status: :unprocessable_entity }
       end
@@ -47,9 +49,11 @@ class MenusController < ApplicationController
   def update
     respond_to do |format|
       if @menu.update(menu_params)
-        format.html { redirect_to @menu, notice: 'Menu was successfully updated.' }
+        flash[:success] = "Votre menu a été mise à jour."
+        format.html { redirect_to @menu }
         format.json { render :show, status: :ok, location: @menu }
       else
+        flash[:danger] = "Une erreur est survenue."
         format.html { render :edit }
         format.json { render json: @menu.errors, status: :unprocessable_entity }
       end
@@ -60,8 +64,9 @@ class MenusController < ApplicationController
   # DELETE /menus/1.json
   def destroy
     @menu.destroy
+    flash[:success] = "Votre categorie a été mise à jour."
     respond_to do |format|
-      format.html { redirect_to menus_path, notice: 'Menu was successfully destroyed.' }
+      format.html { redirect_to menus_path }
       format.json { head :no_content }
     end
   end

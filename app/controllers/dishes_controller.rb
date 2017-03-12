@@ -71,7 +71,7 @@ class DishesController < ApplicationController
     respond_to do |format|
       if @dish.save
         flash[:success] = "Votre plat a l'air délicieux!"
-        format.html { redirect_to @dish, notice: 'Dish was successfully created.' }
+        format.html { redirect_to @dish}
         format.json { render :show, status: :created, location: @dish }
       else
         flash[:danger] = "Une erreur est survenue."
@@ -103,7 +103,7 @@ class DishesController < ApplicationController
     @dish.destroy
     respond_to do |format|
       flash[:success] = "Votre plat a été supprimé."
-      format.html { redirect_to dishes_path, notice: 'Dish was successfully destroyed.' }
+      format.html { redirect_to dishes_path }
       format.json { head :no_content }
     end
   end

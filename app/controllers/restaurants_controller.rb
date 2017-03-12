@@ -36,9 +36,11 @@ class RestaurantsController < ApplicationController
 
     respond_to do |format|
       if @restaurant.save
-        format.html { redirect_to @restaurant, notice: 'Restaurant was successfully created.' }
+        flash[:success] = "Votre magnifique restaurant a été crée, commencez à sublimez votre site!"
+        format.html { redirect_to @restaurant }
         format.json { render :show, status: :created, location: @restaurant }
       else
+        flash[:danger] = "Une erreur est survenue."
         format.html { render :new }
         format.json { render json: @restaurant.errors, status: :unprocessable_entity }
       end
@@ -50,9 +52,11 @@ class RestaurantsController < ApplicationController
   def update
     respond_to do |format|
       if @restaurant.update(restaurant_params)
-        format.html { redirect_to @restaurant, notice: 'Restaurant was successfully updated.' }
+        flash[:success] = "Votre restaurant a été mis à jour."
+        format.html { redirect_to @restaurant }
         format.json { render :show, status: :ok, location: @restaurant }
       else
+        flash[:danger] = "Une erreur est survenue."
         format.html { render :edit }
         format.json { render json: @restaurant.errors, status: :unprocessable_entity }
       end
@@ -63,8 +67,9 @@ class RestaurantsController < ApplicationController
   # DELETE /restaurants/1.json
   def destroy
     @restaurant.destroy
+    flash[:success] = "Votre restaurant a été supprimé :'(."
     respond_to do |format|
-      format.html { redirect_to restaurants_url, notice: 'Restaurant was successfully destroyed.' }
+      format.html { redirect_to restaurants_url }
       format.json { head :no_content }
     end
   end
@@ -77,9 +82,11 @@ class RestaurantsController < ApplicationController
     status = @restaurant.send key
 
     if @restaurant.update({ key => !status })
-      redirect_to @restaurant, notice: 'La module à été activé.'
+      flash[:success] = "Le module à été activé."
+      redirect_to @restaurant
     else
-      redirect_to @restaurant, notice: 'Une erreur est survenue.'
+      flash[:danger] = "Une erreur est survenue."
+      redirect_to @restaurant
     end
   end
 
@@ -102,8 +109,10 @@ class RestaurantsController < ApplicationController
     @opening_hour.restaurant_id = @restaurant.id
 
     if @opening_hour.save
-      redirect_to edit_restaurant_path(@restaurant), notice: 'Restaurant was successfully created.' 
+      flash[:success] = "Cette horraire a été ajoutée."
+      redirect_to edit_restaurant_path(@restaurant) 
     else
+      flash[:danger] = "Une erreur est survenue."
       render :edit
     end
   end

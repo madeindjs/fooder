@@ -12,7 +12,7 @@ class SectionsController < ApplicationController
 
   # GET /sections/1/edit
   def edit
-    @title = "Editer page d'acceuil"
+    @title = "Editer page d'accueil"
   end
 
   # POST /sections
@@ -24,9 +24,11 @@ class SectionsController < ApplicationController
 
     respond_to do |format|
       if @section.save
-        format.html { redirect_to root_url, notice: 'Section was successfully created.' }
+        flash[:success] = "Votre texte d'accueil a été créé."
+        format.html { redirect_to root_url }
         format.json { render :show, status: :created, location: @section }
       else
+        flash[:danger] = "Une erreur est survenue."
         format.html { render :new }
         format.json { render json: @section.errors, status: :unprocessable_entity }
       end
@@ -38,9 +40,11 @@ class SectionsController < ApplicationController
   def update
     respond_to do |format|
       if @section.update(section_params)
-        format.html { redirect_to root_url, notice: 'Section was successfully updated.' }
+        flash[:success] = "Votre texte d'accueil a été supprimé."
+        format.html { redirect_to root_url}
         format.json { render :show, status: :ok, location: @section }
       else
+        flash[:danger] = "Une erreur est survenue."
         format.html { render :edit }
         format.json { render json: @section.errors, status: :unprocessable_entity }
       end
@@ -51,8 +55,9 @@ class SectionsController < ApplicationController
   # DELETE /sections/1.json
   def destroy
     @section.destroy
+    flash[:success] = "Votre texte d'accueil a été supprimé."
     respond_to do |format|
-      format.html { redirect_to root_url, notice: 'Section was successfully destroyed.' }
+      format.html { redirect_to root_url}
       format.json { head :no_content }
     end
   end
