@@ -102,21 +102,6 @@ class RestaurantsController < ApplicationController
   end
 
 
-  # POST /restaurant/1/opening_hours
-  def opening_hours
-    @opening_hour = OpeningHour.new opening_hour_params
-    @opening_hour.user_id = current_user.id
-    @opening_hour.restaurant_id = @restaurant.id
-
-    if @opening_hour.save
-      flash[:success] = "Cette horraire a été ajoutée."
-      redirect_to edit_restaurant_path(@restaurant) 
-    else
-      flash[:danger] = "Une erreur est survenue."
-      render :edit
-    end
-  end
-
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -127,10 +112,6 @@ class RestaurantsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def restaurant_params
       params.require(:restaurant).permit(:name, :address, :zip_code, :city, :module_blog, :picture, :logo, :css)
-    end
-
-    def opening_hour_params
-      params.require(:opening_hour).permit(:day, :opens, :closes, :valid_from, :valid_through)
     end
 
     def check_owner

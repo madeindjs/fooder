@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     match 'edits' => "dishes#edits", as: :dishes_edit, via: [:get, :post]
     patch 'activate_module' => "restaurants#activate_module"
 
-    resources :opening_hours, only: [:create, :update, :destroy]
+    resources :opening_hours, only: [:index, :create, :update, :destroy]
     resources :menus
     resources :posts
     resources :sections

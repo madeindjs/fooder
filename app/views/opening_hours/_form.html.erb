@@ -26,6 +26,11 @@
   </td>
   
   <td>
-    <%= f.submit 'modifier', class: 'btn btn-primary' %>
+    <% if opening_hour.new_record? %>
+      <%= f.submit 'Ajouter', class: 'btn btn-primary' %>
+    <% else %>
+      <%= f.submit 'Mettre à jour', class: 'btn btn-primary' %>
+      <%= link_to 'Supprimer', opening_hour, method: :delete, data: { confirm: 'Etes vous sûr?' }, class: 'btn btn-danger' %>
+    <% end %>
   </td>
 <% end %>
