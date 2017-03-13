@@ -24,6 +24,8 @@
 
         <% if check_admin %>
           <p class="text-right">
+            <%= link_to glyphicon('chevron-up'), sort_dish_path(dish.friendly_id, 1), method: :patch, class: 'btn btn-default btn-xs' %>
+            <%= link_to glyphicon('chevron-down'), sort_dish_path(dish.friendly_id, -1), method: :patch, class: 'btn btn-default btn-xs' %>
             <%= link_to "Editer", edit_dish_path( dish), class: 'btn btn-default btn-xs' %>
             <%= link_to "Supprimer",  dish, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-warning btn-xs' %>
           </p>

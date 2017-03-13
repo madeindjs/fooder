@@ -24,6 +24,8 @@
         <td><%= collection_select "dish[#{dish.id}][category]" , :category_id, current_user.categories, :id, :name, {selected: dish.category_id}, { class: "form-control" }  %></td>
         <td><%= text_field_tag "dish[#{dish.id}][price]" , dish.price, class: 'form-control' %></td>
         <td>
+          <%= link_to glyphicon('chevron-up'), sort_dish_path(dish.friendly_id, 1), method: :patch, class: 'btn btn-default btn-xs' %>
+          <%= link_to glyphicon('chevron-down'), sort_dish_path(dish.friendly_id, -1), method: :patch, class: 'btn btn-default btn-xs' %>
           <%= link_to 'en voir plus' , edit_dish_path(dish) , class: 'btn btn-default' %>
           <%= link_to 'supprimer', dish, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
         </td>

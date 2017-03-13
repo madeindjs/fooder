@@ -108,6 +108,11 @@ class DishesController < ApplicationController
     end
   end
 
+  # PATCH /dishes/1/sort/1
+  def sort
+    flash[:danger] = "Nothing happens."
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_dish
