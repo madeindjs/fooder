@@ -15,11 +15,11 @@
         <td><%= restaurant.complete_address %></td>
         <td><%= restaurant.user.complete_name %></td>
         <td>
-            <%= link_to 'Voir le site', root_url(subdomain: restaurant), class: 'btn btn-primary' %>
-            <% if current_user == restaurant.user %>
-                <%= link_to 'Edit', edit_restaurant_path(restaurant) , class: 'btn btn-warning' %>
-                <%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'  %>
-            <% end %>
+          <%= link_to 'Voir le site', root_url(subdomain: restaurant), class: 'btn btn-primary' %>
+          <% if current_user == restaurant.user %>
+            <%= link_to 'Edit', edit_restaurant_path(restaurant) , class: 'btn btn-warning' %>
+            <%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'  %>
+          <% end %>
         </td>
       </tr>
     <% end %>

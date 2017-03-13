@@ -1,6 +1,6 @@
 class DishesController < ApplicationController
   before_action :set_dish, only: [:show, :edit, :update, :destroy]
-  before_action :check_login, only: [:new, :create, :edit, :update, :destroy]
+  before_action :check_login, only: [:new, :create, :edit, :edits, :update, :destroy]
   before_action :check_owner, only: [:edit, :update, :destroy]
   before_action :check_restaurant
 
@@ -8,7 +8,7 @@ class DishesController < ApplicationController
   # GET /dishes.json
   def index
     @title = "Carte"
-    @dishes = @restaurant ? @restaurant.dishes :  Dish.all
+    @dishes = @restaurant.dishes
   end
 
   # GET /dishes/1
@@ -27,6 +27,40 @@ class DishesController < ApplicationController
   def edit
   end
 
+  # GET /edits
+  # POST /edits
+  def edits
+    redirect_to root_path unless current_user.restaurants.include? @restaurant
+    @dishes = @restaurant.dishes
+    if request.post?
+      # to array to save changes to display it to user
+      updated_dishes = []
+      fail_updated_dishes = []
+      # loop on all parameters
+      params.require(:dish).each do |id, data|
+        # we get dish and verify author is the user
+        if dish = Dish.find(id) and dish.user_id == current_user.id
+          # update attributes
+          dish.name = data['name']
+          dish.category_id = data['category']['category_id']
+          dish.price = data['price']
+          # save only if dish changed
+          if dish.changed?
+            # save dish and stor in array to display in flash message
+            if dish.save
+              updated_dishes << dish.name
+            else
+              fail_updated_dishes << dish.name
+            end
+          end
+        end
+      end
+      # display changes
+      flash[:success] = "La mise à jour de #{updated_dishes} a été effectuée." unless updated_dishes.empty?
+      flash[:danger] = "La mise à jour de #{fail_updated_dishes} n'a été effectuée."  unless fail_updated_dishes.empty?
+    end
+  end
+
   # POST /dishes
   # POST /dishes.json
   def create
@@ -36,9 +70,11 @@ class DishesController < ApplicationController
 
     respond_to do |format|
       if @dish.save
-        format.html { redirect_to @dish, notice: 'Dish was successfully created.' }
+        flash[:success] = "Votre plat a l'air délicieux!"
+        format.html { redirect_to @dish}
         format.json { render :show, status: :created, location: @dish }
       else
+        flash[:danger] = "Une erreur est survenue."
         format.html { render :new }
         format.json { render json: @dish.errors, status: :unprocessable_entity }
       end
@@ -50,9 +86,11 @@ class DishesController < ApplicationController
   def update
     respond_to do |format|
       if @dish.update(dish_params)
-        format.html { redirect_to @dish, notice: 'Dish was successfully updated.' }
+        flash[:success] = "Votre plat a été mis à jour avec succès."
+        format.html { redirect_to @dish }
         format.json { render :show, status: :ok, location: @dish }
       else
+        flash[:danger] = "Une erreur est survenue."
         format.html { render :edit }
         format.json { render json: @dish.errors, status: :unprocessable_entity }
       end
@@ -64,7 +102,8 @@ class DishesController < ApplicationController
   def destroy
     @dish.destroy
     respond_to do |format|
-      format.html { redirect_to dishes_path, notice: 'Dish was successfully destroyed.' }
+      flash[:success] = "Votre plat a été supprimé."
+      format.html { redirect_to dishes_path }
       format.json { head :no_content }
     end
   end

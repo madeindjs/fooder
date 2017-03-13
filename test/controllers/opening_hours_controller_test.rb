@@ -21,7 +21,7 @@ class OpeningHoursControllerTest < ActionDispatch::IntegrationTest
       post opening_hours_url, params: { opening_hour: { day: @opening_hour.day, closes: @opening_hour.closes, opens: @opening_hour.opens, valid_from: @opening_hour.valid_from, valid_through: @opening_hour.valid_through } }
     end
 
-    assert_redirected_to root_url
+    assert_redirected_to opening_hours_url
   end
 
 
@@ -33,7 +33,7 @@ class OpeningHoursControllerTest < ActionDispatch::IntegrationTest
   test "should update opening_hour" do
     login(@user)
     patch opening_hour_url(@opening_hour), params: { opening_hour: { day: @opening_hour.day, closes: @opening_hour.closes, opens: @opening_hour.opens, valid_from: @opening_hour.valid_from, valid_through: @opening_hour.valid_through } }
-    assert_redirected_to root_url
+    assert_redirected_to opening_hours_url
   end
 
   test "should redirect on destroy opening_hour" do
@@ -50,6 +50,6 @@ class OpeningHoursControllerTest < ActionDispatch::IntegrationTest
       delete opening_hour_url(@opening_hour)
     end
 
-    assert_redirected_to root_url
+    assert_redirected_to opening_hours_url
   end
 end

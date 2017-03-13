@@ -36,9 +36,11 @@ class RestaurantsController < ApplicationController
 
     respond_to do |format|
       if @restaurant.save
-        format.html { redirect_to @restaurant, notice: 'Restaurant was successfully created.' }
+        flash[:success] = "Votre magnifique restaurant a été crée, commencez à sublimez votre site!"
+        format.html { redirect_to @restaurant }
         format.json { render :show, status: :created, location: @restaurant }
       else
+        flash[:danger] = "Une erreur est survenue."
         format.html { render :new }
         format.json { render json: @restaurant.errors, status: :unprocessable_entity }
       end
@@ -50,9 +52,11 @@ class RestaurantsController < ApplicationController
   def update
     respond_to do |format|
       if @restaurant.update(restaurant_params)
-        format.html { redirect_to @restaurant, notice: 'Restaurant was successfully updated.' }
+        flash[:success] = "Votre restaurant a été mis à jour."
+        format.html { redirect_to @restaurant }
         format.json { render :show, status: :ok, location: @restaurant }
       else
+        flash[:danger] = "Une erreur est survenue."
         format.html { render :edit }
         format.json { render json: @restaurant.errors, status: :unprocessable_entity }
       end
@@ -63,8 +67,9 @@ class RestaurantsController < ApplicationController
   # DELETE /restaurants/1.json
   def destroy
     @restaurant.destroy
+    flash[:success] = "Votre restaurant a été supprimé :'(."
     respond_to do |format|
-      format.html { redirect_to restaurants_url, notice: 'Restaurant was successfully destroyed.' }
+      format.html { redirect_to restaurants_url }
       format.json { head :no_content }
     end
   end
@@ -77,9 +82,11 @@ class RestaurantsController < ApplicationController
     status = @restaurant.send key
 
     if @restaurant.update({ key => !status })
-      redirect_to @restaurant, notice: 'La module à été activé.'
+      flash[:success] = "Le module à été activé."
+      redirect_to @restaurant
     else
-      redirect_to @restaurant, notice: 'Une erreur est survenue.'
+      flash[:danger] = "Une erreur est survenue."
+      redirect_to @restaurant
     end
   end
 
@@ -95,19 +102,6 @@ class RestaurantsController < ApplicationController
   end
 
 
-  # POST /restaurant/1/opening_hours
-  def opening_hours
-    @opening_hour = OpeningHour.new opening_hour_params
-    @opening_hour.user_id = current_user.id
-    @opening_hour.restaurant_id = @restaurant.id
-
-    if @opening_hour.save
-      redirect_to edit_restaurant_path(@restaurant), notice: 'Restaurant was successfully created.' 
-    else
-      render :edit
-    end
-  end
-
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -118,10 +112,6 @@ class RestaurantsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def restaurant_params
       params.require(:restaurant).permit(:name, :address, :zip_code, :city, :module_blog, :picture, :logo, :css)
-    end
-
-    def opening_hour_params
-      params.require(:opening_hour).permit(:day, :opens, :closes, :valid_from, :valid_through)
     end
 
     def check_owner

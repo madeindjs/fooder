@@ -21,8 +21,10 @@ class CategoriesController < ApplicationController
     @category.user_id = current_user.id
 
     if @category.save
-      redirect_to current_user, notice: 'Category was successfully created.'
+      flash[:success] = "Votre categorie a été crée avec succès."
+      redirect_to current_user
     else
+      flash[:danger] = "Une erreur est survenue."
       render :new
     end
   end
@@ -31,8 +33,10 @@ class CategoriesController < ApplicationController
   # PATCH/PUT /categories/1.json
   def update
       if @category.update(category_params)
-        redirect_to current_user, notice: 'Category was successfully updated.'
+        flash[:success] = "Votre categorie a été mise à jour."
+        redirect_to current_user
       else
+        flash[:danger] = "Une erreur est survenue."
         render :edit
       end
   end
@@ -41,7 +45,8 @@ class CategoriesController < ApplicationController
   # DELETE /categories/1.json
   def destroy
     @category.destroy
-      redirect_to current_user, notice: 'Category was successfully destroyed.'
+    flash[:success] = "Votre categorie a été supprimée."
+    redirect_to current_user
   end
 
   private
