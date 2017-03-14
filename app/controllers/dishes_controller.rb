@@ -42,7 +42,7 @@ class DishesController < ApplicationController
         if dish = Dish.find(id) and dish.user_id == current_user.id
           # update attributes
           dish.name = data['name']
-          dish.category_id = data['category']['category_id']
+          dish.category_id = data['category_id']
           dish.price = data['price']
           # save only if dish changed
           if dish.changed?
