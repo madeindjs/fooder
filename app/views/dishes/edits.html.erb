@@ -9,9 +9,9 @@
 
   <div class="sortable">
 
-    <% @dishes.each do |dish| %>
+    <% @dishes.order(:order).each_with_index do |dish, order| %>
 
-      <div class="item col-xs-12">
+      <div id="<%= dish.id %>" class="item col-xs-12">
 
         <div class="col-xs-1 handle">
           <span class="glyphicon glyphicon-sort"></span>
@@ -20,7 +20,7 @@
         <%= hidden_field_tag "dish[#{dish.id}][category_id]", dish.category_id %>
 
         <div class="col-xs-6">
-          <%= text_field_tag "dish[#{dish.id}][order]", dish.category_id %>
+          <%= text_field_tag "dish[#{dish.id}][order]", order %>
           <%= text_field_tag "dish[#{dish.id}][name]" , dish.name, class: 'form-control' %>
         </div>
 
