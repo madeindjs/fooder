@@ -110,7 +110,7 @@ class DishesController < ApplicationController
 
   # PATCH /dishes/1/sort/1
   def sort
-    flash[:danger] = "Nothing happens."
+    @dishes = @restaurant.dishes
   end
 
   private

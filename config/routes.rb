@@ -19,7 +19,6 @@ Rails.application.routes.draw do
     resources :sections
 
     resources :dishes
-    patch 'dish/:id/sort/:value' => 'dishes#sort', as: :sort_dish
   end
 
 
