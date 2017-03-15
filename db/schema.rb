@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170314123906) do
+ActiveRecord::Schema.define(version: 20170315121319) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 20170314123906) do
     t.datetime "updated_at",    null: false
     t.string   "picture"
     t.string   "slug"
+    t.integer  "order"
     t.index ["slug"], name: "index_menus_on_slug", unique: true
   end
 
