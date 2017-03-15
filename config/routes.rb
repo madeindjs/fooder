@@ -16,10 +16,10 @@ Rails.application.routes.draw do
     resources :posts
     resources :sections
 
-    match 'menus/edits' => "menus#edits", as: :menus_edit, via: [:get, :post]
+    match 'menus/edit' => "menus#edits", as: :menus_edit, via: [:get, :post]
     resources :menus
 
-    match 'dishes/edits' => "dishes#edits", as: :dishes_edit, via: [:get, :post]
+    match 'dishes/edit' => "dishes#edits", as: :dishes_edit, via: [:get, :post]
     resources :dishes
   end
 

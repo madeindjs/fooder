@@ -23,6 +23,18 @@ class MenusControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should get edits" do
+    setup_restaurant_host
+    login(users(:me))
+    get menus_edit_path
+    assert_response :success
+  end
+
+  test "should redirect get edits on restaurant page" do
+    get menus_edit_path
+    assert_response 302
+  end
+
   test "should redirect on create menu" do
     assert_no_difference('Menu.count') do
       post menus_url, params: { menu: { content: @menu.content, description: @menu.description, name: @menu.name, price: @menu.price, restaurant_id: @menu.restaurant_id, tags: @menu.tags, user_id: @menu.user_id } }

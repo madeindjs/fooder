@@ -27,9 +27,6 @@ class MenusController < ApplicationController
   # GET /menus/edit
   # POST /menus/edit
   def edits
-
-    puts "*"*200
-
     redirect_to root_path unless current_user.restaurants.include? @restaurant
     @menus = @restaurant.menus.order :order
     if request.post?
