@@ -18,9 +18,9 @@
         </div>
 
         <%= hidden_field_tag "dish[#{dish.id}][category_id]", dish.category_id %>
+        <%= hidden_field_tag "dish[#{dish.id}][order]", order, class: 'order' %>
 
         <div class="col-xs-6">
-          <%= text_field_tag "dish[#{dish.id}][order]", order %>
           <%= text_field_tag "dish[#{dish.id}][name]" , dish.name, class: 'form-control' %>
         </div>
 

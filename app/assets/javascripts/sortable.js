@@ -1,9 +1,19 @@
-$(".sortable").sortable({
+// get the position number of the item
+function getPositionNumber(container, item){
+
+}
+
+var sortableList = $(".sortable");
+
+sortableList.sortable({
   handle: '.handle',
   placeholder: "ui-state-highlight col-xs-12",
   update: function(event, ui){
-    console.log(ui.position);
-    console.log(ui.item.attr('id') + "is now #" + ui.position);
+    // get all items existing
+    sortableList.children("div.item").each(function (){
+      // set index number in input value 
+      $(this).children('input.order').first().val($(this).index());
+    });
   }
 });
 $(".sortable").disableSelection();

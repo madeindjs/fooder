@@ -8,7 +8,7 @@ class DishesController < ApplicationController
   # GET /dishes.json
   def index
     @title = "Carte"
-    @dishes = @restaurant.dishes
+    @dishes = @restaurant.dishes.order :order
   end
 
   # GET /dishes/1
@@ -31,7 +31,7 @@ class DishesController < ApplicationController
   # POST /edits
   def edits
     redirect_to root_path unless current_user.restaurants.include? @restaurant
-    @dishes = @restaurant.dishes
+    @dishes = @restaurant.dishes.order :order
     if request.post?
       # to array to save changes to display it to user
       updated_dishes = []
