@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170307120230) do
+ActiveRecord::Schema.define(version: 20170315121319) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -39,7 +39,22 @@ ActiveRecord::Schema.define(version: 20170307120230) do
     t.integer  "nut_free",       default: 0
     t.integer  "sulphite_free",  default: 0
     t.string   "slug"
+    t.integer  "order"
     t.index ["slug"], name: "index_dishes_on_slug", unique: true
+  end
+
+  create_table "links", force: :cascade do |t|
+    t.string   "name"
+    t.string   "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "menu_dishes", id: false, force: :cascade do |t|
+    t.integer "menus_id"
+    t.integer "dishes_id"
+    t.index ["dishes_id"], name: "index_menu_dishes_on_dishes_id"
+    t.index ["menus_id"], name: "index_menu_dishes_on_menus_id"
   end
 
   create_table "menus", force: :cascade do |t|
@@ -54,6 +69,7 @@ ActiveRecord::Schema.define(version: 20170307120230) do
     t.datetime "updated_at",    null: false
     t.string   "picture"
     t.string   "slug"
+    t.integer  "order"
     t.index ["slug"], name: "index_menus_on_slug", unique: true
   end
 
