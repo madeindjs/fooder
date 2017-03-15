@@ -26,7 +26,7 @@ module ApplicationHelper
       number_to_currency number, unit: "€", format: "%n %u"
     end
 
-    def check_admin
+    def admin?
       @restaurant && current_user && @restaurant.user_id == current_user.id
     end
 

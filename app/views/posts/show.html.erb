@@ -6,7 +6,7 @@
 <p class="text-justify"><%= @post.content %></p>
 
 
-<% if check_admin %>
+<% if admin? %>
   <p class="text-right">
       <%= link_to 'editer', edit_post_path(@post), class: "btn btn-default" %>
       <%= link_to 'Supprimer', @post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'  %>
