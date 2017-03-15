@@ -1,5 +1,7 @@
 <h1>Menus</h1>
 
+<%= render 'shared/menus_toolbar' if admin? %>
+
 <% @menus.each do |menu| %>
   <h2><%= menu.name %> <small><%= menu.description %></small></h2>
 

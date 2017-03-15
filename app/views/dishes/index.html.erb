@@ -1,5 +1,7 @@
 <h1>Carte</h1>
 
+<%= render 'shared/dishes_toolbar' if admin? %>
+
 <%= render 'list', dishes: @dishes %>
 
 <div class="btn-group" role="group" aria-label="...">
