@@ -1,0 +1,49 @@
+<div class="jumbotron">
+  <h1>Editez vos menus</h1>
+  <p>Ici éditez / réorganisez rapidement vos menus. Vous pouvez accéder au formulaire complet en cliquant sur <i>En savoir plus</i></p>
+</div>
+
+
+
+<%= form_tag menus_edit_path do  %>
+
+  <div class="sortable">
+
+    <% @menus.order(:order).each_with_index do |menu, order| %>
+
+      <div id="<%= menu.id %>" class="item col-xs-12">
+
+        <div class="col-xs-1 handle">
+          <span class="glyphicon glyphicon-sort"></span>
+        </div>
+
+        <%= hidden_field_tag "menu[#{menu.id}][order]", order, class: 'order' %>
+
+        <div class="col-xs-6">
+          <%= text_field_tag "menu[#{menu.id}][name]" , menu.name, class: 'form-control' %>
+        </div>
+
+        <div class="col-xs-3">
+          <div class="input-group">
+            <%= text_field_tag "menu[#{menu.id}][price]" , menu.price, class: 'form-control text-right' %>
+            <span class="input-group-addon">€</span>
+          </div>
+        </div>
+
+        <div class="col-xs-2">
+          <div class="btn-group-vertical" role="group" aria-label="...">
+            <%= link_to 'en voir plus' , edit_menu_path(menu) , class: 'btn btn-xs btn btn-default' %>
+            <%= link_to 'supprimer', menu, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger' %>
+          </div>
+        </div>
+
+      </div>
+
+    <% end %>
+    
+  </div><!--/ .sortable -->
+
+  <%= submit_tag 'Tout mettre à jour', class: 'btn btn-primary' %>
+
+<% end %>
+

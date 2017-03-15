@@ -27,8 +27,8 @@ class DishesController < ApplicationController
   def edit
   end
 
-  # GET /edits
-  # POST /edits
+  # GET /dishes/edit
+  # POST /dishes/edit
   def edits
     redirect_to root_path unless current_user.restaurants.include? @restaurant
     @dishes = @restaurant.dishes.order :order

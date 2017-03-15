@@ -10,14 +10,16 @@ Rails.application.routes.draw do
   constraints subdomain: /.+/  do
     get 'contact' => "restaurants#contact"
     get 'allergens' => "restaurants#allergens"
-    match 'edits' => "dishes#edits", as: :dishes_edit, via: [:get, :post]
     patch 'activate_module' => "restaurants#activate_module"
 
     resources :opening_hours, only: [:index, :create, :update, :destroy]
-    resources :menus
     resources :posts
     resources :sections
 
+    match 'menus/edits' => "menus#edits", as: :menus_edit, via: [:get, :post]
+    resources :menus
+
+    match 'dishes/edits' => "dishes#edits", as: :dishes_edit, via: [:get, :post]
     resources :dishes
   end
 
