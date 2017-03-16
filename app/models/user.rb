@@ -4,7 +4,6 @@ class User < ApplicationRecord
   has_many :restaurants
   has_many :menus
   has_many :dishes
-  has_many :categories
   has_many :sections
   has_many :posts
 

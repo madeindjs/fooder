@@ -82,7 +82,7 @@ class Restaurant < ApplicationRecord
 
   def generate_categories
     ['Entrée', 'Plat', 'Dessert', 'Boisson', 'Sauce'].each do |category_name|
-      Category.create name: category_name, restaurant_id: self.id
+      Category.create name: category_name , restaurant_id: 8
     end
   end
 
