@@ -5,12 +5,12 @@ class Category < ApplicationRecord
   validates_uniqueness_of :name
 
 
-  def self.find_or_create name, user_id
-    categories_founded = Category.where(name: name, user_id: user_id)
+  def self.find_or_create name, restaurant_id
+    categories_founded = Category.where name: name, restaurant_id: restaurant_id
     if category = categories_founded.first
       return category
     else
-      return Category.create name: name, user_id: user_id
+      return Category.create name: name, restaurant_id: restaurant_id
     end
   end
 

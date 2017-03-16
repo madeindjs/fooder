@@ -14,7 +14,6 @@ ActiveRecord::Schema.define(version: 20170316115548) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
-    t.integer  "user_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.integer  "restaurant_id"
@@ -24,6 +23,7 @@ ActiveRecord::Schema.define(version: 20170316115548) do
     t.string   "name"
     t.text     "description"
     t.integer  "category_id"
+    t.integer  "user_id"
     t.integer  "restaurant_id"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
@@ -41,20 +41,6 @@ ActiveRecord::Schema.define(version: 20170316115548) do
     t.string   "slug"
     t.integer  "order"
     t.index ["slug"], name: "index_dishes_on_slug", unique: true
-  end
-
-  create_table "links", force: :cascade do |t|
-    t.string   "name"
-    t.string   "url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "menu_dishes", id: false, force: :cascade do |t|
-    t.integer "menus_id"
-    t.integer "dishes_id"
-    t.index ["dishes_id"], name: "index_menu_dishes_on_dishes_id"
-    t.index ["menus_id"], name: "index_menu_dishes_on_menus_id"
   end
 
   create_table "menus", force: :cascade do |t|

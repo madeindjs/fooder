@@ -31,7 +31,7 @@ class Restaurant < ApplicationRecord
     yaml_file = Rails.root.join 'app', 'assets', 'models', 'dishes.yml'
     YAML.load_file( yaml_file ).each do |dish_data|
       # create category
-      category = Category.find_or_create dish_data['category_name'], @user_id
+      category = Category.find_or_create dish_data['category_name'], self.id
       dish_data.delete 'category_name'
 
       # create dish
@@ -82,7 +82,7 @@ class Restaurant < ApplicationRecord
 
   def generate_categories
     ['Entrée', 'Plat', 'Dessert', 'Boisson', 'Sauce'].each do |category_name|
-      Category.create name: category_name, restaurant_id_id: self.id
+      Category.create name: category_name, restaurant_id: self.id
     end
   end
 
