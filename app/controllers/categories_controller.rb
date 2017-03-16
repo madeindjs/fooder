@@ -23,10 +23,11 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.new(category_params)
     @category.user_id = current_user.id
+    @category.restaurant_id = @restaurant.id
 
     if @category.save
       flash[:success] = "Votre categorie a été crée avec succès."
-      redirect_to current_user
+      redirect_to categories_path
     else
       flash[:danger] = "Une erreur est survenue."
       render :new
@@ -38,7 +39,7 @@ class CategoriesController < ApplicationController
   def update
       if @category.update(category_params)
         flash[:success] = "Votre categorie a été mise à jour."
-        redirect_to current_user
+        redirect_to categories_path
       else
         flash[:danger] = "Une erreur est survenue."
         render :edit
@@ -50,7 +51,7 @@ class CategoriesController < ApplicationController
   def destroy
     @category.destroy
     flash[:success] = "Votre categorie a été supprimée."
-    redirect_to current_user
+    redirect_to categories_path
   end
 
   private
