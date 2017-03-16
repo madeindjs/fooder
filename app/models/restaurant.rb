@@ -13,6 +13,7 @@ class Restaurant < ApplicationRecord
   after_create :generate_menus
   after_create :generate_sections
   after_create :generate_opening_hours
+  after_create :generate_categories
 
   mount_uploader :logo, PictureUploader
   mount_uploader :picture, PictureUploader
@@ -76,6 +77,13 @@ class Restaurant < ApplicationRecord
       end
     end
     
+  end
+
+
+  def generate_categories
+    ['Entrée', 'Plat', 'Dessert', 'Boisson', 'Sauce'].each do |category_name|
+      Category.create name: category_name, restaurant_id_id: self.id
+    end
   end
 
   # method to tell if friendly id should regenrate the slud

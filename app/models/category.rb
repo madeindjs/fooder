@@ -1,5 +1,8 @@
 class Category < ApplicationRecord
   belongs_to :user
+  belongs_to :restaurant
+
+  validates_uniqueness_of :name
 
 
   def self.find_or_create name, user_id
