@@ -22,7 +22,6 @@ class CategoriesController < ApplicationController
   # POST /categories.json
   def create
     @category = Category.new(category_params)
-    @category.user_id = current_user.id
     @category.restaurant_id = @restaurant.id
 
     if @category.save
@@ -66,6 +65,6 @@ class CategoriesController < ApplicationController
     end
 
     def check_owner
-      redirect_to root_path unless current_user.categories.include? @category
+      redirect_to root_path unless current_user.restaurants.include? @category.restaurant
     end
 end

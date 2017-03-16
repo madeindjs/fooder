@@ -26,6 +26,14 @@
   <h2>Mes restaurants</h2>
   <%= render 'restaurants/table', restaurants: @user.restaurants %>
 
+  <p>
+    <%= link_to "créer un autre restaurant", new_restaurant_path, class: 'btn btn-primary' %>
+  </p>
+
+  <p>
+    <%= alert 'info', "Vous pouvez créer autant de restaurant que vous le souhaitez. Sans frais supplémentaires." %>
+  </p>
+  
 <% else %>
   <h2>Ses restaurants</h2>
   <%= render 'restaurants/table', restaurants: @user.restaurants %>

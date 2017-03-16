@@ -1,6 +1,7 @@
-<% categories =  dishes.map{|d| d.category }.uniq.compact %>
+<pre> <%= @dishes.count %> </pre>
+<pre> <%= @restaurant.categories.count %> </pre>
 
-<% categories.each do |category| %>
+<% @restaurant.categories.each do |category| %>
 
   <div class="row">
 
