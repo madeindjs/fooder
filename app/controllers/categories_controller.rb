@@ -1,7 +1,11 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:edit, :update, :destroy]
-  before_action :check_login, only: [:new, :create, :edit, :update, :destroy]
+  before_action :check_login
   before_action :check_owner, only: [:edit, :update, :destroy]
+
+  def index
+    @categories = @restaurant.categories
+  end
 
 
   # GET /categories/new
