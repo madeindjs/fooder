@@ -1,6 +1,6 @@
 class MenusController < ApplicationController
   before_action :set_menu, only: [:show, :edit, :update, :destroy]
-  before_action :check_login, only: [:new, :create, :edit, :update, :destroy]
+  before_action :check_login, only: [:new, :create, :edits, :edit, :update, :destroy]
   before_action :check_owner, only: [:edit, :update, :destroy]
   # GET /menus
   # GET /menus.json

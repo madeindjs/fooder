@@ -37,7 +37,7 @@ class RestaurantsControllerTest < ActionDispatch::IntegrationTest
       post restaurants_url, params: { restaurant: { address: @restaurant.address, city: @restaurant.city, name: "new restaurant", zip_code: @restaurant.zip_code } }
     end
 
-    assert_redirected_to restaurant_url(Restaurant.last)
+    assert_redirected_to root_url(subdomain: Restaurant.last)
   end
 
   test "should show restaurant" do
@@ -81,7 +81,7 @@ class RestaurantsControllerTest < ActionDispatch::IntegrationTest
       delete restaurant_url(@restaurant)
     end
 
-    assert_redirected_to restaurants_url
+    assert_redirected_to @restaurant.user
   end
 
   test "should get contact" do
