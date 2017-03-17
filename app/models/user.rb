@@ -4,11 +4,8 @@ class User < ApplicationRecord
   has_many :restaurants
   has_many :menus
   has_many :dishes
-  has_many :categories
   has_many :sections
   has_many :posts
-
-  after_create :generate_categories
 
   mount_uploader :picture, PictureUploader
 
@@ -21,14 +18,6 @@ class User < ApplicationRecord
 
   def complete_name
     "#{self.lastname} #{self.firstname}"
-  end
-
-  private 
-
-  def generate_categories
-  	['Entrée', 'Plat', 'Dessert', 'Boisson', 'Sauce'].each do |category_name|
-  		Category.create name: category_name, user_id: self.id
-  	end
   end
 
 end

@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
       </button>
 
-      <% if @restaurant %> 
+      <% if @restaurant and @restaurant.name %> 
         <%= link_to @restaurant.name, root_url(subdomain: @restaurant) , class: "navbar-brand"%>
       <% else %>
         <%= link_to root_path , class: "navbar-brand", style: "padding: 5px" do %>

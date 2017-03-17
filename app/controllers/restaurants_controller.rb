@@ -34,16 +34,12 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.new(restaurant_params)
     @restaurant.user_id = current_user.id
 
-    respond_to do |format|
-      if @restaurant.save
-        flash[:success] = "Votre magnifique restaurant a été crée, commencez à sublimez votre site!"
-        format.html { redirect_to @restaurant }
-        format.json { render :show, status: :created, location: @restaurant }
-      else
-        flash[:danger] = "Une erreur est survenue."
-        format.html { render :new }
-        format.json { render json: @restaurant.errors, status: :unprocessable_entity }
-      end
+    if @restaurant.save
+      flash[:success] = "Votre magnifique restaurant a été crée, commencez à sublimez votre site!"
+      redirect_to @restaurant.address ? root_url(subdomain: @restaurant) : edit_restaurant_path(@restaurant) 
+    else
+      flash[:danger] = "Une erreur est survenue."
+      render :new
     end
   end
 
@@ -69,7 +65,7 @@ class RestaurantsController < ApplicationController
     @restaurant.destroy
     flash[:success] = "Votre restaurant a été supprimé :'(."
     respond_to do |format|
-      format.html { redirect_to restaurants_url }
+      format.html { redirect_to current_user }
       format.json { head :no_content }
     end
   end

@@ -1,6 +1,7 @@
-<% categories =  dishes.map{|d| d.category }.uniq.compact %>
+<% existing_categories_ids = dishes.map{|dish| dish.category_id }.uniq %>
 
-<% categories.each do |category| %>
+<% # select only categories who contains at least one dish
+  @restaurant.categories.order(:order).select{|c| existing_categories_ids.include? c.id }.each do |category| %>
 
   <div class="row">
 
