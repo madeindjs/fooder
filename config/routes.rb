@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     match 'dishes/edit' => "dishes#edits", as: :dishes_edit, via: [:get, :post]
     resources :dishes
 
+    match 'categories/edit' => "categories#edits", as: :categories_edit, via: [:get, :post]
     resources :categories
   end
 
