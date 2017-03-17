@@ -8,9 +8,6 @@
   <p class="lead"><%= render 'allergens', dish: @dish %></p>
 <% end %>
 
-<p>
-  <a href="#" class="btn btn-primary"><%= glyphicon 'pencil' %> Noter ce plat</a>
-</p>
 
 <% if current_user == @dish.user %>
 
