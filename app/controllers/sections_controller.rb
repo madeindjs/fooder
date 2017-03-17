@@ -15,6 +15,39 @@ class SectionsController < ApplicationController
     @title = "Editer page d'accueil"
   end
 
+  # GET  /sections/edit
+  # POST /sections/edit
+  def edits
+    redirect_to root_path unless current_user.restaurants.include? @restaurant
+    @sections = @restaurant.sections.order :order
+    if request.post?
+      # to array to save changes to display it to user
+      updated_sections = []
+      fail_updated_sections = []
+      # loop on all parameters
+      params.require(:sections).each do |id, data|
+        # we get section and verify author is the user
+        if section = Section.find(id) and section.restaurant_id == @restaurant.id
+          # update attributes
+          section.title = data['title']
+          section.order = data['order']
+          # save only if section changed
+          if section.changed?
+            # save section and stor in array to display in flash message
+            if section.save
+              updated_sections << section.title
+            else
+              fail_updated_sections << section.title
+            end
+          end
+        end
+      end
+      # display changes
+      flash[:success] = "La mise à jour de #{updated_sections} a été effectuée." unless updated_sections.empty?
+      flash[:danger] = "La mise à jour de #{fail_updated_sections} n'a été effectuée."  unless fail_updated_sections.empty?
+    end
+  end
+
   # POST /sections
   # POST /sections.json
   def create

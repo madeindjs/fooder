@@ -6,9 +6,7 @@
 
   <h3>Page d'acceuil</h3>
   <div>
-      <%= link_to new_section_path, class: "btn btn-default" do %>
-        <%= glyphicon "plus" %> Ajouter du texte
-      <% end %>
+    <%= render 'shared/sections_toolbar' %>
   </div>
 
   <h3>Carte</h3>
