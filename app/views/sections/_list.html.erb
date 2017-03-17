@@ -8,7 +8,7 @@
       <h2><%= section.title %></h2>
       <p><%= section.content %></p>
       
-      <% if check_admin %>
+      <% if admin? %>
         <p class="text-right">
             <%= link_to 'editer', edit_section_path(section), class: "btn btn-default" %>
             <%= link_to 'Supprimer', section, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'  %>

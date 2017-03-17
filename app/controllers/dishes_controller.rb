@@ -8,7 +8,7 @@ class DishesController < ApplicationController
   # GET /dishes.json
   def index
     @title = "Carte"
-    @dishes = @restaurant.dishes
+    @dishes = @restaurant.dishes.order :order
   end
 
   # GET /dishes/1
@@ -27,11 +27,11 @@ class DishesController < ApplicationController
   def edit
   end
 
-  # GET /edits
-  # POST /edits
+  # GET /dishes/edit
+  # POST /dishes/edit
   def edits
     redirect_to root_path unless current_user.restaurants.include? @restaurant
-    @dishes = @restaurant.dishes
+    @dishes = @restaurant.dishes.order :order
     if request.post?
       # to array to save changes to display it to user
       updated_dishes = []
@@ -42,8 +42,8 @@ class DishesController < ApplicationController
         if dish = Dish.find(id) and dish.user_id == current_user.id
           # update attributes
           dish.name = data['name']
-          dish.category_id = data['category']['category_id']
           dish.price = data['price']
+          dish.order = data['order']
           # save only if dish changed
           if dish.changed?
             # save dish and stor in array to display in flash message
@@ -106,6 +106,11 @@ class DishesController < ApplicationController
       format.html { redirect_to dishes_path }
       format.json { head :no_content }
     end
+  end
+
+  # PATCH /dishes/1/sort/1
+  def sort
+    @dishes = @restaurant.dishes
   end
 
   private

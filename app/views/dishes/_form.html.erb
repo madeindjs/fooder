@@ -26,31 +26,33 @@
 
   <div class="form-group">
     <%= f.label :category_id, 'Catégorie' %>
-    <%= collection_select :dish, :category_id, current_user.categories, :id, :name, {selected: dish.category_id}, { class: "form-control" }  %>
+    <%= collection_select :dish, :category_id, @restaurant.categories, :id, :name, {selected: dish.category_id}, { class: "form-control" }  %>
   </div>
 
-
-  <h2>Allergènes</h2>
-
-  <table class="table table-striped">
   
-    <% Dish::ALLERGENS.each do |sym, allergen| %>
-      <tr>
-          <td><%= f.label sym, allergen  %></td>
-        <% Dish::ALLERGEN_VALUES.each do |value, label| %>
-        <td>
-          <div class="radio">
-            <%= f.radio_button sym, value %>
-            <%= f.label sym, label, value: value %>
-          </div>
-        </td>
-        <% end %>
-      </tr>
-    <% end %>
+  <% if @restaurant.module_allergens %>
 
-  </table>
+    <h2>Allergènes</h2>
 
-  <%= alert 'warning', "Le module des allergènes n'est pas activé, ces information seront enregistrés mais pas elles ne seont pas affichées."  unless @restaurant.module_allergens %>
+    <table class="table table-striped">
+    
+      <% Dish::ALLERGENS.each do |sym, allergen| %>
+        <tr>
+            <td><%= f.label sym, allergen  %></td>
+          <% Dish::ALLERGEN_VALUES.each do |value, label| %>
+          <td>
+            <div class="radio">
+              <%= f.radio_button sym, value %>
+              <%= f.label sym, label, value: value %>
+            </div>
+          </td>
+          <% end %>
+        </tr>
+      <% end %>
+
+    </table>
+
+  <% end %>
 
   <div class="actions">
     <%= f.submit 'Confirmer', class: 'btn btn-primary' %>

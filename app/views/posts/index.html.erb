@@ -14,7 +14,7 @@
     <p class="text-right">
       <%= link_to "voir l'article", post, class: 'btn btn-primary' %>
 
-      <% if check_admin %>
+      <% if admin? %>
         <%= link_to 'editer', edit_post_path(post), class: "btn btn-default" %>
         <%= link_to 'Supprimer', post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'  %>
       <% end %>
@@ -23,7 +23,7 @@
 
 <% end %>
 
-<% if check_admin %>
+<% if admin? %>
   <%= link_to 'Ajouter un article', new_post_path, class: 'btn btn-primary' %>
 <% end %>
 

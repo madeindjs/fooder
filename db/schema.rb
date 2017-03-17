@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170307120230) do
+ActiveRecord::Schema.define(version: 20170317121927) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "restaurant_id"
+    t.integer  "order"
   end
 
   create_table "dishes", force: :cascade do |t|
@@ -39,6 +40,7 @@ ActiveRecord::Schema.define(version: 20170307120230) do
     t.integer  "nut_free",       default: 0
     t.integer  "sulphite_free",  default: 0
     t.string   "slug"
+    t.integer  "order"
     t.index ["slug"], name: "index_dishes_on_slug", unique: true
   end
 
@@ -54,6 +56,7 @@ ActiveRecord::Schema.define(version: 20170307120230) do
     t.datetime "updated_at",    null: false
     t.string   "picture"
     t.string   "slug"
+    t.integer  "order"
     t.index ["slug"], name: "index_menus_on_slug", unique: true
   end
 
@@ -114,6 +117,7 @@ ActiveRecord::Schema.define(version: 20170307120230) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.string   "picture"
+    t.integer  "order"
   end
 
   create_table "users", force: :cascade do |t|

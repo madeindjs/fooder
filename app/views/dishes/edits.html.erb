@@ -1,40 +1,50 @@
-
-<div class="col-xs-12">
+<div class="jumbotron">
   <h1>Editez vos plats</h1>
-  <p>Ici vous pouvez rapidement éditer vos plats</p>
+  <p>Ici éditez / réorganisez rapidement vos plats. Vous pouvez accéder au formulaire complet en cliquant sur <i>En savoir plus</i></p>
 </div>
 
-<div class="col-xs-12">
+
 
 <%= form_tag dishes_edit_path do  %>
 
-  <table class="table">
+  <div class="sortable">
 
-    <tr>
-      <th>Nom</th>
-      <th>Catégorie</th>
-      <th>Prix</th>
-      <th>Actions</th>
-    </tr>
+    <% @dishes.order(:order).each_with_index do |dish, order| %>
 
-    <% @dishes.each do |dish| %>
-      <tr>
-        <td><%= text_field_tag "dish[#{dish.id}][name]" , dish.name, class: 'form-control' %></td>
-        <!-- TODO: set tag selected -->
-        <td><%= collection_select "dish[#{dish.id}][category]" , :category_id, current_user.categories, :id, :name, {selected: dish.category_id}, { class: "form-control" }  %></td>
-        <td><%= text_field_tag "dish[#{dish.id}][price]" , dish.price, class: 'form-control' %></td>
-        <td>
-          <%= link_to 'en voir plus' , edit_dish_path(dish) , class: 'btn btn-default' %>
-          <%= link_to 'supprimer', dish, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
-        </td>
-      </tr>
+      <div id="<%= dish.id %>" class="item col-xs-12">
+
+        <div class="col-xs-1 handle">
+          <span class="glyphicon glyphicon-sort"></span>
+        </div>
+
+        <%= hidden_field_tag "dish[#{dish.id}][category_id]", dish.category_id %>
+        <%= hidden_field_tag "dish[#{dish.id}][order]", order, class: 'order' %>
+
+        <div class="col-xs-6">
+          <%= text_field_tag "dish[#{dish.id}][name]" , dish.name, class: 'form-control' %>
+        </div>
+
+        <div class="col-xs-3">
+          <div class="input-group">
+            <%= text_field_tag "dish[#{dish.id}][price]" , dish.price, class: 'form-control text-right' %>
+            <span class="input-group-addon">€</span>
+          </div>
+        </div>
+
+        <div class="col-xs-2">
+          <div class="btn-group-vertical" role="group" aria-label="...">
+            <%= link_to 'en voir plus' , edit_dish_path(dish) , class: 'btn btn-xs btn btn-default' %>
+            <%= link_to 'supprimer', dish, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger' %>
+          </div>
+        </div>
+
+      </div>
+
     <% end %>
     
-  </table>
+  </div><!--/ .sortable -->
 
   <%= submit_tag 'Tout mettre à jour', class: 'btn btn-primary' %>
 
 <% end %>
-
-</div>
 

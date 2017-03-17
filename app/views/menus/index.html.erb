@@ -1,7 +1,15 @@
-<h1>Menus</h1>
+<div class="col-xs-12">
+  <h1>Menus</h1>
+</div>
 
-<% @menus.each do |menu| %>
-  <h2><%= menu.name %> <small><%= menu.description %></small></h2>
+<div class="col-xs-12">
+  <%= render 'shared/menus_toolbar' if admin? %>
+</div>
 
-  <%= render 'details', menu:  menu %>
-<% end %>
+<div class="col-xs-12">
+  <% @menus.each do |menu| %>
+    <h2><%= menu.name %> <small><%= menu.description %></small></h2>
+
+    <%= render 'details', menu:  menu %>
+  <% end %>
+</div>
