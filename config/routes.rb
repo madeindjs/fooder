@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
     resources :opening_hours, only: [:index, :create, :update, :destroy]
     resources :posts
+    
+    match 'sections/edit' => "sections#edits", as: :sections_edit, via: [:get, :post]
     resources :sections
 
     match 'menus/edit' => "menus#edits", as: :menus_edit, via: [:get, :post]

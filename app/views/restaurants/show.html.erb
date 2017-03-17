@@ -1,8 +1,14 @@
 <div class="row">
 
+
+
   <div class="col-xs-12">
     <div class="page-header">
       <h1><%= @restaurant.name %></h1>
+    </div>
+
+    <div class="col-xs-12">
+      <%= render 'shared/sections_toolbar' if admin? %>
     </div>
 
     <%= image_tag @restaurant.picture, class: 'col-xs-12 img-responsive' if @restaurant.picture? %>
@@ -10,6 +16,9 @@
   </div>
 
 </div>
+
+
+
 
 <%= render 'sections/list', sections: @restaurant.sections %>
 
