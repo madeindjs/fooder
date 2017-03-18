@@ -35,7 +35,7 @@ class RestaurantsController < ApplicationController
     @restaurant.user_id = current_user.id
 
     if @restaurant.save
-      flash[:success] = "Votre magnifique restaurant a été crée, commencez à sublimez votre site!"
+      flash[:success] = "Votre magnifique restaurant a été créé, commencez à sublimez votre site!"
       redirect_to @restaurant.address ? root_url(subdomain: @restaurant) : edit_restaurant_path(@restaurant) 
     else
       flash[:danger] = "Une erreur est survenue."

@@ -58,7 +58,7 @@ class CategoriesController < ApplicationController
     @category.restaurant_id = @restaurant.id
 
     if @category.save
-      flash[:success] = "Votre categorie a été crée avec succès."
+      flash[:success] = "Votre categorie a été créé avec succès."
       redirect_to categories_path
     else
       flash[:danger] = "Une erreur est survenue."
