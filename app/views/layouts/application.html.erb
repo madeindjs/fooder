@@ -8,7 +8,12 @@
     <meta name="description" content="a website to comunicate about your restaurant">
     <meta name="author" content="Rousseau Alexandre">
 
-    <link rel="icon" type="image/png" href="/assets/favicon.png" />
+    <% if @restaurant and not @restaurant.logo.favicon.file.nil? %>
+      <link rel="icon" type="image/png" href="<%= @restaurant.logo.favicon %>" />
+    <% else %>
+      <link rel="icon" type="image/png" href="/assets/favicon.png" />
+    <% end %>
+
 
     <title><%= @restaurant ? @restaurant.name : "Fooder" %><%= " - #{@title}" if @title %></title>
 
@@ -38,7 +43,6 @@
   <body>
 
     <div class="main-container container-fluid">
-      
       <%= render 'layouts/navigation' %>
 
       <div class="row">
