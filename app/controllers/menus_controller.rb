@@ -41,6 +41,7 @@ class MenusController < ApplicationController
           menu.name  = data['name']
           menu.price = data['price']
           menu.order = data['order']
+          menu.activate = data['activate']
           # save only if menu changed
           if menu.changed?
             # save menu and stor in array to display in flash message

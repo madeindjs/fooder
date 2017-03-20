@@ -44,6 +44,7 @@ class DishesController < ApplicationController
           dish.name = data['name']
           dish.price = data['price']
           dish.order = data['order']
+          dish.activate = data['activate']
           # save only if dish changed
           if dish.changed?
             # save dish and stor in array to display in flash message
