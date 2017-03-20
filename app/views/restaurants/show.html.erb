@@ -1,11 +1,7 @@
 <div class="row">
 
-
-
   <div class="col-xs-12">
-    <div class="page-header">
-      <h1><%= @restaurant.name %></h1>
-    </div>
+    <h1 class="restaurant-title"><%= image_tag @restaurant.logo.thumb.url unless @restaurant.logo.thumb.file.nil? %><%= @restaurant.name %></h1>
 
     <div class="col-xs-12">
       <%= render 'shared/sections_toolbar' if admin? %>
