@@ -23,12 +23,6 @@
           <%= text_field_tag "categories[#{category.id}][name]" , category.name, class: 'form-control' %>
         </div>
 
-        <div class="col-xs-2">
-          <%= label_tag "menu[#{menu.id}][activate]" do %>
-            <%= check_box_tag "menu[#{menu.id}][activate]", 1, menu.activate %> Activer
-          <% end %>
-        </div>
-
 
         <div class="col-xs-2">
           <div class="btn-group-vertical" role="group" aria-label="...">
@@ -44,6 +38,8 @@
   </div><!--/ .sortable -->
 
   <%= submit_tag 'Tout mettre à jour', class: 'btn btn-primary' %>
+  <%= link_to "Ajouter une catégorie", new_category_path, class: 'btn btn-primary' %>
 
 <% end %>
+
 
