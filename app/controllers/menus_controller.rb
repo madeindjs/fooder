@@ -6,7 +6,7 @@ class MenusController < ApplicationController
   # GET /menus.json
   def index
     @title = "Menus"
-    @menus = @restaurant.menus.order :order
+    @menus = @restaurant.menus.where(activate: true).order :order
   end
 
   # GET /menus/1
@@ -41,6 +41,7 @@ class MenusController < ApplicationController
           menu.name  = data['name']
           menu.price = data['price']
           menu.order = data['order']
+          menu.activate = data['activate']
           # save only if menu changed
           if menu.changed?
             # save menu and stor in array to display in flash message
@@ -113,7 +114,7 @@ class MenusController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def menu_params
-      params.require(:menu).permit(:name, :description, :content, :tags, :price, :picture)
+      params.require(:menu).permit(:name, :description, :content, :tags, :price, :picture, :activate)
     end
 
     def check_owner

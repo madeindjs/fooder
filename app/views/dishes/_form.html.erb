@@ -24,6 +24,12 @@
     <%= f.text_field :price, class: "form-control" %>
   </div>
 
+  <div class="checkbox">
+    <%= f.label :activate do %>
+      <%= f.check_box :activate %> Activer
+    <% end %>
+  </div>
+
   <div class="form-group">
     <%= f.label :category_id, 'Catégorie' %>
     <%= collection_select :dish, :category_id, @restaurant.categories, :id, :name, {selected: dish.category_id}, { class: "form-control" }  %>

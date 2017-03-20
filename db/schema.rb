@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170317121927) do
+ActiveRecord::Schema.define(version: 20170320113001) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -26,8 +26,8 @@ ActiveRecord::Schema.define(version: 20170317121927) do
     t.integer  "category_id"
     t.integer  "user_id"
     t.integer  "restaurant_id"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.float    "price"
     t.string   "tags"
     t.string   "picture"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20170317121927) do
     t.integer  "sulphite_free",  default: 0
     t.string   "slug"
     t.integer  "order"
+    t.boolean  "activate",       default: true
     t.index ["slug"], name: "index_dishes_on_slug", unique: true
   end
 
@@ -52,11 +53,12 @@ ActiveRecord::Schema.define(version: 20170317121927) do
     t.integer  "price"
     t.integer  "user_id"
     t.integer  "restaurant_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.string   "picture"
     t.string   "slug"
     t.integer  "order"
+    t.boolean  "activate",      default: true
     t.index ["slug"], name: "index_menus_on_slug", unique: true
   end
 
