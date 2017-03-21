@@ -30,4 +30,13 @@ module ApplicationHelper
       @restaurant && current_user && @restaurant.user_id == current_user.id
     end
 
+    def display_options selected = nil
+      options_array = Restaurant::DISPLAY.map{ |id, data|
+        [data.keys.first, id]
+      }
+
+      return options_for_select options_array, selected
+    end
+
+
 end
