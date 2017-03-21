@@ -47,6 +47,7 @@ GEM
       request_store (~> 1.0)
       scrypt (>= 1.2, < 4.0)
     bcrypt (3.1.11)
+    bootstrap_form (2.6.0)
     builder (3.2.3)
     byebug (9.0.6)
     capistrano (3.7.2)
@@ -213,6 +214,7 @@ PLATFORMS
 
 DEPENDENCIES
   authlogic (>= 3.5)
+  bootstrap_form
   byebug
   capistrano
   capistrano-bundler
