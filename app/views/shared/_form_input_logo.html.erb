@@ -6,5 +6,5 @@
 
 <div class="form-group">
   <%= form.label :logo_display, 'Affichage'  %>
-  <%= form.select :logo_display,  display_options, {}, class: 'form-control' %>
+  <%= form.select :logo_display,  display_options(model.logo_display), {}, class: 'form-control' %>
 </div>

@@ -102,7 +102,12 @@ class RestaurantsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_restaurant
-      @restaurant = Restaurant.friendly.find(params[:id]) unless @restaurant
+      begin
+        @restaurant = Restaurant.friendly.find(params[:id]) unless @restaurant
+      rescue ActiveRecord::RecordNotFound => e
+        flash[:danger] = "Ce restaurant n'existe pas, mais vous pouvez le créer."
+        redirect_to new_restaurant_url(subdomain: '')
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

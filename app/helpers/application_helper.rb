@@ -35,7 +35,7 @@ module ApplicationHelper
         [data.keys.first, id]
       }
 
-      return options_for_select options_array, selected
+      return options_for_select(options_array, selected: selected)
     end
 
 
