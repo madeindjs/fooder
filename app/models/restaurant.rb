@@ -18,13 +18,6 @@ class Restaurant < ApplicationRecord
   mount_uploader :logo, PictureUploader
   mount_uploader :picture, PictureUploader
 
-  DISPLAY = { 
-    0 => { 'Masqué' => 'sr-only' },
-    1 => { 'Carré arrondis' => 'img-rounded' },
-    2 => { 'Circulaire' => 'img-circle' }, 
-    3 => { 'Encadré' => 'img-thumbnail' }, 
-  }
-
   extend FriendlyId
   friendly_id :name, use: :slugged
 

@@ -31,7 +31,7 @@ module ApplicationHelper
     end
 
     def display_options selected = nil
-      options_array = Restaurant::DISPLAY.map{ |id, data|
+      options_array = ImageFormat::DISPLAY.map{ |id, data|
         [data.keys.first, id]
       }
 

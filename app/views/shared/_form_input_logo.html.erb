@@ -2,8 +2,3 @@
   <%= image_tag model.logo.url, size:50,  class: 'img-circle' if model.logo? %>
   <%= form.file_field :logo %>
 </div>
-
-<div class="form-group">
-  <%= form.label :logo_display, 'Affichage'  %>
-  <%= form.select :logo_display,  display_options(model.logo_display), {}, class: 'form-control' %>
-</div>
