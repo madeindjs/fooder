@@ -1,18 +1,18 @@
 <div class="btn-group-vertical col-xs-12" role="toolbar" aria-label="...">
 
-  <%= link_to new_dish_path, class: "btn btn-default" do %>
+  <%= link_to new_dish_url(subdomain: @restaurant), class: "btn btn-default" do %>
     <%= glyphicon "plus" %> ajouter un plat
   <% end %>
 
-  <%= link_to dishes_edit_path, class: "btn btn-default" do %>
+  <%= link_to dishes_edit_url(subdomain: @restaurant), class: "btn btn-default" do %>
     <%= glyphicon "pencil" %> gérer les plats
   <% end %>
 
-  <%= link_to new_category_path, class: "btn btn-default" do %>
+  <%= link_to new_category_url(subdomain: @restaurant), class: "btn btn-default" do %>
     <%= glyphicon "plus" %> ajouter une catégorie
   <% end %>
 
-  <%= link_to categories_edit_path, class: "btn btn-default" do %>
+  <%= link_to categories_edit_url(subdomain: @restaurant), class: "btn btn-default" do %>
     <%= glyphicon "pencil" %> gérer les catégories
   <% end %>
 
