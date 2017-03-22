@@ -20,7 +20,6 @@ class RestaurantsController < ApplicationController
   # GET /restaurants/new
   def new
     @title = "Nouveau restaurant"
-    @restaurant = Restaurant.new
   end
 
   # GET /restaurants/1/edit
