@@ -4,7 +4,7 @@
 <% @posts.each do |post| %>
 
   <article>
-    <%= image_tag post.picture.thumb, class: 'img-circle section-img' if post.picture? %>
+  <%= picture_tag post, :posts_picture_display, css_class: 'section-img', size: 200 if post.picture? %>
     <h2><%= link_to post.title, post %></h2>
     
     <p><%= post.user.complete_name %> dans <%= tags post.tags %></p>
