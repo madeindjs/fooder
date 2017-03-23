@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170320113001) do
+ActiveRecord::Schema.define(version: 20170322123009) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -93,14 +93,19 @@ ActiveRecord::Schema.define(version: 20170320113001) do
     t.string   "zip_code"
     t.string   "city"
     t.integer  "user_id"
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
-    t.boolean  "module_blog",      default: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.boolean  "module_blog",              default: false
     t.string   "logo"
     t.string   "picture"
-    t.boolean  "module_allergens", default: false
+    t.boolean  "module_allergens",         default: false
     t.string   "slug"
     t.string   "css"
+    t.integer  "logo_display",             default: 2
+    t.integer  "menus_picture_display",    default: 2
+    t.integer  "dishes_picture_display",   default: 2
+    t.integer  "posts_picture_display",    default: 2
+    t.integer  "sections_picture_display", default: 2
     t.index ["slug"], name: "index_restaurants_on_slug", unique: true
   end
 

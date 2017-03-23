@@ -1,6 +1,6 @@
 <h1><%= @dish.name %> <small><%= @dish.category.name if @dish.category%></small></h1>
 
-<%= image_tag @dish.picture.url, alt: "photo du #{@dish.name}", size:200,  class: 'img-circle' if @dish.picture? %>
+<%= picture_tag @dish, :dishes_picture_display, css_class: "dish-picture", size: 200 %>
 
 <p class="lead"><%= @dish.description %></p>
 

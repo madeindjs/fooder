@@ -1,5 +1,6 @@
 <div class="col-sm-12">
-  <%= image_tag menu.picture.thumb, class: 'img-circle section-img' if menu.picture? %>
+
+  <%= picture_tag menu, :menus_picture_display, css_class: 'section-img', size: 100 %>
 
   <p>
     <%= menu.content %><br/>
