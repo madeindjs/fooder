@@ -6,9 +6,7 @@ function defer(method) {
 };
 
 defer( function(){
-    $( function () {
-  $( "#accordion" ).accordion({
-      heightStyle: "content"
-    });
-});
+  if($("#accordion").length){
+    $("#accordion").accordion({heightStyle: "content"});
+  }
 });

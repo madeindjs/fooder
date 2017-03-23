@@ -7,7 +7,6 @@ if(select.length){
     select.show();
     
     themes.forEach(function(value, index){
-      console.log(value);
       select.append($("<option />")
             .val(value.cssCdn)
             .text(value.name));

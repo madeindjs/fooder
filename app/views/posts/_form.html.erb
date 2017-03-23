@@ -1,26 +1,14 @@
-<%= form_for(post) do |f| %>
+<%= bootstrap_form_for post do |f| %>
   <%= render 'shared/errors_form', model: post %>
 
-  <div class="form-group">
-    <%= f.label :title, 'Titre' %>
-    <%= f.text_field :title, class: 'form-control' %>
-  </div>
+  <%= f.text_field :title, label: 'Titre' %>
 
-  <div class="form-group">
-    <%= f.label :content, 'Contenu' %>
-    <%= f.text_area :content, class: 'form-control' %>
-  </div>
+  <%= f.text_area :content, label: 'Contenu' %>
 
   <%= render 'shared/form_input_picture.html', form: f, model: post %>
 
-  <div class="form-group">
-    <%= f.label :tags %>
-    <%= f.text_field :tags, class: 'form-control' %>
-    <span class="help-block">Séparez vos tags par ";". <i>Exemple: "sans gluten;fait maison"</i></span>
-  </div>
+  <%= f.text_field :tags %>
+  <span class="help-block">Séparez vos tags par ";". <i>Exemple: "sans gluten;fait maison"</i></span>
 
-
-  <div class="actions">
-    <%= f.submit 'Confirmer', class: 'btn btn-primary' %>
-  </div>
+  <%= f.submit 'Confirmer' %>
 <% end %>

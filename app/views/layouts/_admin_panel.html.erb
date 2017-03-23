@@ -1,10 +1,9 @@
 <h1>Admin</h1>
 
 
-
 <div id="accordion">
 
-  <h3>Page d'acceuil</h3>
+  <h3>Page d'accueil</h3>
   <div>
     <%= render 'shared/sections_toolbar' %>
   </div>
@@ -26,21 +25,21 @@
 
       <% if @restaurant.module_blog %>
 
-        <%= link_to new_post_path, class: "btn btn-default" do %>
+        <%= link_to new_post_url(subdomain: @restaurant), class: "btn btn-default" do %>
           <%= glyphicon "plus" %> ajouter un article
         <% end %>
 
-        <%= link_to posts_path, class: "btn btn-default" do %>
+        <%= link_to posts_url(subdomain: @restaurant), class: "btn btn-default" do %>
           <%= glyphicon "pencil" %> gérer les articles
         <% end %>
 
-        <%= link_to activate_module_path(module: 'blog'), class: "btn btn-default", method: :patch do %>
+        <%= link_to activate_module_url(module: 'blog', subdomain: @restaurant), class: "btn btn-default", method: :patch do %>
           <%= glyphicon "unchecked" %> désactiver le blog
         <% end %>
 
       <% else %>
 
-        <%= link_to activate_module_path(module: 'blog'), class: "btn btn-default", method: :patch do %>
+        <%= link_to activate_module_url(module: 'blog', subdomain: @restaurant), class: "btn btn-default", method: :patch do %>
           <%= glyphicon "unchecked" %> <%= @restaurant.module_blog ? "désactiver" : "activer"  %> le blog
         <% end %>
 
@@ -63,7 +62,7 @@
       <% end %>
 
       <%= link_to opening_hours_path, class: "btn btn-default" do %>
-        <%= glyphicon "pencil" %> editer les horraires
+        <%= glyphicon "pencil" %> editer les horaires
       <% end %>
 
     </div> 
@@ -74,11 +73,11 @@
     <div class="btn-group-vertical col-xs-12" role="toolbar" aria-label="...">
 
         
-      <%= link_to activate_module_path(module: 'blog'), class: "btn btn-default", method: :patch do %>
+      <%= link_to activate_module_url(module: 'blog', subdomain: @restaurant), class: "btn btn-default", method: :patch do %>
         <%= glyphicon "unchecked" %> <%= @restaurant.module_blog ? "désactiver" : "activer"  %> le blog
       <% end %>
 
-      <%= link_to activate_module_path(module: 'allergens'), class: "btn btn-default", method: :patch do %>
+      <%= link_to activate_module_url(module: 'allergens', subdomain: @restaurant), class: "btn btn-default", method: :patch do %>
         <%= glyphicon "unchecked" %> <%= @restaurant.module_allergens ? "désactiver" : "activer"  %> les allergènes
       <% end %>
 

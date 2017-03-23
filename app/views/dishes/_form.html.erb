@@ -1,35 +1,18 @@
-<%= form_for dish do |f| %>
+<%= bootstrap_form_for dish do |f| %>
+
   <%= render 'shared/errors_form', model: dish %>
+  <%= f.text_field :name, label: 'Nom' %>
 
-  <div class="form-group">
-    <%= f.label :name, 'Nom' %>
-    <%= f.text_field :name, class: "form-control" %>
-  </div>
+  <%= f.label :category_id, 'Catégorie' %>
+  <%= collection_select :dish, :category_id, @restaurant.categories, :id, :name, {selected: dish.category_id}, { class: "form-control" }  %>
 
+  <%= f.text_area :description %>
   <%= render 'shared/form_input_picture.html', form: f, model: dish %>
+  <%= f.check_box :activate, label: 'Activer' %>
+  <%= f.text_field :tags %>
+  <%= f.number_field :price, label: 'Prix' %>
 
-  <div class="form-group">
-    <%= f.label :description %>
-    <%= f.text_area :description, class: "form-control" %>
-  </div>
 
-  <div class="form-group">
-    <%= f.label :tags %>
-    <%= f.text_field :tags, class: "form-control" %>
-    <span class="help-block">Séparez vos tags par ";". <i>Exemple: "sans gluten;fait maison"</i></span>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :price, 'Prix' %>
-    <%= f.text_field :price, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :category_id, 'Catégorie' %>
-    <%= collection_select :dish, :category_id, @restaurant.categories, :id, :name, {selected: dish.category_id}, { class: "form-control" }  %>
-  </div>
-
-  
   <% if @restaurant.module_allergens %>
 
     <h2>Allergènes</h2>
@@ -42,8 +25,7 @@
           <% Dish::ALLERGEN_VALUES.each do |value, label| %>
           <td>
             <div class="radio">
-              <%= f.radio_button sym, value %>
-              <%= f.label sym, label, value: value %>
+              <%= f.radio_button sym, value , label: label %>
             </div>
           </td>
           <% end %>
@@ -54,7 +36,5 @@
 
   <% end %>
 
-  <div class="actions">
-    <%= f.submit 'Confirmer', class: 'btn btn-primary' %>
-  </div>
+  <%= f.submit 'Confirmer' %>
 <% end %>

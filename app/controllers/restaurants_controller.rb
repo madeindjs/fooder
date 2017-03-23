@@ -20,7 +20,6 @@ class RestaurantsController < ApplicationController
   # GET /restaurants/new
   def new
     @title = "Nouveau restaurant"
-    @restaurant = Restaurant.new
   end
 
   # GET /restaurants/1/edit
@@ -35,7 +34,7 @@ class RestaurantsController < ApplicationController
     @restaurant.user_id = current_user.id
 
     if @restaurant.save
-      flash[:success] = "Votre magnifique restaurant a été crée, commencez à sublimez votre site!"
+      flash[:success] = "Votre magnifique restaurant a été créé, commencez à sublimez votre site!"
       redirect_to @restaurant.address ? root_url(subdomain: @restaurant) : edit_restaurant_path(@restaurant) 
     else
       flash[:danger] = "Une erreur est survenue."
@@ -102,12 +101,18 @@ class RestaurantsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_restaurant
-      @restaurant = Restaurant.friendly.find(params[:id]) unless @restaurant
+      begin
+        @restaurant = Restaurant.friendly.find(params[:id]) unless @restaurant
+      rescue ActiveRecord::RecordNotFound => e
+        flash[:danger] = "Ce restaurant n'existe pas, mais vous pouvez le créer."
+        redirect_to new_restaurant_url(subdomain: '')
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def restaurant_params
-      params.require(:restaurant).permit(:name, :address, :zip_code, :city, :module_blog, :picture, :logo, :css)
+      params.require(:restaurant).permit :name, :address, :zip_code, :city, :module_blog, :picture, :logo, :css, :logo_display,
+          :menus_picture_display, :dishes_picture_display, :posts_picture_display, :sections_picture_display
     end
 
     def check_owner

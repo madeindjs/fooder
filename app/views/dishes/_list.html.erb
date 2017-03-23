@@ -7,14 +7,11 @@
 
     <h2 class="col-xs-12"><%= category.name %></h2>
       
-
     <% dishes.select{|d| d.category_id == category.id}.each do |dish| %>
 
       <article class="col-sm-6">
-        <% if true and dish.picture? # TODO activate picture module %>
-          <%= link_to dish do %>
-            <%= image_tag dish.picture.url, alt: "photo du #{dish.name}", size:50,  class: 'img-circle dish-picture'  %>
-          <% end %>
+        <%= link_to dish do %>
+          <%= picture_tag dish, :dishes_picture_display, css_class: "dish-picture", size: 100 %>
         <% end %>
         <p>
           <h3><%= link_to dish.name, dish %></h3>

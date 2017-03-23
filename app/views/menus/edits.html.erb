@@ -19,15 +19,22 @@
 
         <%= hidden_field_tag "menu[#{menu.id}][order]", order, class: 'order' %>
 
-        <div class="col-xs-6">
+        <div class="col-xs-4">
           <%= text_field_tag "menu[#{menu.id}][name]" , menu.name, class: 'form-control' %>
         </div>
+
 
         <div class="col-xs-3">
           <div class="input-group">
             <%= text_field_tag "menu[#{menu.id}][price]" , menu.price, class: 'form-control text-right' %>
             <span class="input-group-addon">€</span>
           </div>
+        </div>
+
+        <div class="col-xs-2">
+          <%= label_tag "menu[#{menu.id}][activate]" do %>
+            <%= check_box_tag "menu[#{menu.id}][activate]", 1, menu.activate %> Activer
+          <% end %>
         </div>
 
         <div class="col-xs-2">
