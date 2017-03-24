@@ -4,3 +4,29 @@
 require_relative 'config/application'
 
 Rails.application.load_tasks
+
+
+namespace "pictures"  do
+  desc "regenerate all pictures"
+  task :regen => :environment do
+    
+
+    [Dish, Menu, Post, Restaurant].each do |model|
+
+      model.all.select{|r| !r.picture.file.nil? }.each do |entity|
+         begin
+          entity.picture.recreate_versions!
+          puts "#{entity.id} - #{entity} resized!"
+        rescue => e
+          puts  "ERROR: #{entity.id} - #{entity} -> #{e.to_s}"
+        end
+      end
+
+    end
+
+
+
+
+
+  end
+end
