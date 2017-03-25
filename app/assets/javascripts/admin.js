@@ -11,8 +11,11 @@ $("#accordion").accordion({heightStyle: "content"});
 $('#toggle-client-view').click(function(){
     console.log("button clicked");
 
+  // hide all admin panels
   $(".admin").each(function(index, el){
-    console.log(el);
     $(el).fadeOut();
   });
+
+  //
+  $("#main-container").addClass('col-md-offset-2 col-sm-offset-1');
 });
