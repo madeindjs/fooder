@@ -13,7 +13,7 @@
   </p>
 
   <% if admin? %>
-    <p class="text-right">
+    <p class="text-right admin">
         <%= link_to 'editer', edit_menu_path(menu), class: "btn btn-default" %>
         <%= link_to 'Supprimer', menu, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'  %>
     </p>

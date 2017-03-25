@@ -5,8 +5,14 @@ function defer(method) {
         setTimeout(function() { defer(method) }, 50);
 };
 
-defer( function(){
-  if($("#accordion").length){
-    $("#accordion").accordion({heightStyle: "content"});
-  }
+$("#accordion").accordion({heightStyle: "content"});
+
+
+$('#toggle-client-view').click(function(){
+    console.log("button clicked");
+
+  $(".admin").each(function(index, el){
+    console.log(el);
+    $(el).fadeOut();
+  });
 });

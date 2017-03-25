@@ -2,9 +2,11 @@
   <h1>Menus</h1>
 </div>
 
-<div class="col-xs-12">
-  <%= render 'shared/menus_toolbar' if admin? %>
-</div>
+<% if admin? %>
+  <div class="col-xs-12 admin">
+    <%= render 'shared/menus_toolbar' %>
+  </div>
+<% end %>
 
 <div class="col-xs-12">
   <% @menus.each do |menu| %>

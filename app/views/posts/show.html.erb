@@ -7,7 +7,7 @@
 
 
 <% if admin? %>
-  <p class="text-right">
+  <p class="text-right admin">
       <%= link_to 'editer', edit_post_path(@post), class: "btn btn-default" %>
       <%= link_to 'Supprimer', @post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'  %>
   </p>
