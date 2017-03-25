@@ -13,9 +13,17 @@ $('#toggle-client-view').click(function(){
 
   // hide all admin panels
   $(".admin").each(function(index, el){
-    $(el).fadeOut();
+    $(el).fadeToggle();
   });
 
   //
-  $("#main-container").addClass('col-md-offset-2 col-sm-offset-1');
+  var mainContainer = $("#main-container");
+  var offsetClasses = 'col-md-offset-2 col-sm-offset-1';
+  if(mainContainer.hasClass(offsetClasses)){
+    $(this).text('Afficher la vue client');
+    $("#main-container").removeClass(offsetClasses);
+  }else{
+    $(this).text("Afficher l'administration");
+    $("#main-container").addClass(offsetClasses);
+  }
 });
