@@ -5,7 +5,13 @@ function defer(method) {
         setTimeout(function() { defer(method) }, 50);
 };
 
-$("#accordion").accordion({heightStyle: "content"});
+
+var admin_accordion = $("#accordion")
+
+if(admin_accordion.length){
+  admin_accordion.accordion({heightStyle: "content"});
+  $('#admin-panel').fadeIn();
+}
 
 
 $('#toggle-client-view').click(function(){
