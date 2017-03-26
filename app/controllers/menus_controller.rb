@@ -22,6 +22,7 @@ class MenusController < ApplicationController
 
   # GET /menus/1/edit
   def edit
+    render  '_form', locals: {menu: @menu}, layout:  false if request.xhr?
   end
 
   # GET /menus/edit

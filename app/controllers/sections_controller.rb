@@ -13,6 +13,7 @@ class SectionsController < ApplicationController
   # GET /sections/1/edit
   def edit
     @title = "Editer page d'accueil"
+    render  '_form', locals: {section: @section}, layout:  false if request.xhr?
   end
 
   # GET  /sections/edit
