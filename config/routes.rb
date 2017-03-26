@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
   
-  resources :links
   get 'cost' => 'pages#cost'
 
   resources :categories, only: [:create, :new, :edit, :update, :destroy]
@@ -15,6 +14,9 @@ Rails.application.routes.draw do
 
     resources :opening_hours, only: [:index, :create, :update, :destroy]
     resources :posts
+    
+    match 'links/edit' => "links#edits", as: :links_edit, via: [:get, :post]
+    resources :links
     
     match 'sections/edit' => "sections#edits", as: :sections_edit, via: [:get, :post]
     resources :sections

@@ -1,27 +1,10 @@
-<%= form_for(link) do |f| %>
-  <% if link.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(link.errors.count, "error") %> prohibited this link from being saved:</h2>
+<%= bootstrap_form_for link do |f| %>
+  <%= render 'shared/errors_form', model: link %>
 
-      <ul>
-      <% link.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= f.text_field :name, label: 'Nom' %>
+  <%= f.text_field :url, label: 'Adresse' %>
 
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
+  <%= render 'shared/form_input_logo.html', form: f, model: link %>
 
-  <div class="field">
-    <%= f.label :url %>
-    <%= f.text_field :url %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <%= f.submit 'Confirmer' %>
 <% end %>

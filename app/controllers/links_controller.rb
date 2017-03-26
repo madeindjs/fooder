@@ -1,15 +1,12 @@
 class LinksController < ApplicationController
   before_action :set_link, only: [:show, :edit, :update, :destroy]
+  before_action :check_login
+  before_action :check_owner, only: [:edit, :update, :destroy]
 
   # GET /links
   # GET /links.json
   def index
     @links = Link.all
-  end
-
-  # GET /links/1
-  # GET /links/1.json
-  def show
   end
 
   # GET /links/new
@@ -21,14 +18,49 @@ class LinksController < ApplicationController
   def edit
   end
 
+  # GET /links/edits
+  # POST /links/edits
+  def edits
+    redirect_to root_path unless current_user.restaurants.include? @restaurant
+    @links = @restaurant.links.order :order
+    if request.post?
+      # to array to save changes to display it to user
+      updated_links = []
+      fail_updated_links = []
+      # loop on all parameters
+      params.require(:links).each do |id, data|
+        # we get link and verify author is the user
+        if link = Link.find(id)
+          # update attributes
+          link.name  = data['name']
+          link.url = data['url']
+          link.order = data['order']
+          # save only if link changed
+          if link.changed?
+            # save link and stor in array to display in flash message
+            if link.save
+              updated_links << link.name
+            else
+              fail_updated_links << link.name
+            end
+          end
+        end
+      end
+      # display changes
+      flash[:success] = "La mise à jour de #{updated_links} a été effectuée." unless updated_links.empty?
+      flash[:danger] = "La mise à jour de #{fail_updated_links} n'a été effectuée."  unless fail_updated_links.empty?
+    end
+  end
+
   # POST /links
   # POST /links.json
   def create
-    @link = Link.new(link_params)
+    @link = Link.new link_params
+    @link.restaurant_id = @restaurant.id
 
     respond_to do |format|
       if @link.save
-        format.html { redirect_to @link, notice: 'Link was successfully created.' }
+        format.html { redirect_to links_edit_path, notice: 'Link was successfully created.' }
         format.json { render :show, status: :created, location: @link }
       else
         format.html { render :new }
@@ -42,7 +74,7 @@ class LinksController < ApplicationController
   def update
     respond_to do |format|
       if @link.update(link_params)
-        format.html { redirect_to @link, notice: 'Link was successfully updated.' }
+        format.html { redirect_to links_edit_path, notice: 'Link was successfully updated.' }
         format.json { render :show, status: :ok, location: @link }
       else
         format.html { render :edit }
@@ -56,7 +88,7 @@ class LinksController < ApplicationController
   def destroy
     @link.destroy
     respond_to do |format|
-      format.html { redirect_to links_url, notice: 'Link was successfully destroyed.' }
+      format.html { redirect_to links_path, notice: 'Link was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -70,5 +102,9 @@ class LinksController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def link_params
       params.require(:link).permit(:name, :url)
+    end
+
+    def check_owner
+      redirect_to root_path unless current_user.restaurants.include? @restaurant
     end
 end
