@@ -1,90 +1,38 @@
 <div id="admin-panel" class="container-fluid col-lg-3 col-md-4 col-sm-12 sidebar admin" style="padding-top: 50px">
 
-
 <h1 class="visible-sm visible-xs">Admin</h1>
-
 
 <div id="accordion">
 
   <h3>Page d'accueil</h3>
   <div>
-    <%= render 'shared/sections_toolbar' %>
+    <%= render 'shared/toolbar_sections' %>
   </div>
 
   <h3>Carte</h3>
   <div>
-    <%= render 'shared/dishes_toolbar' %>
+    <%= render 'shared/toolbar_dishes' %>
   </div>
 
 
   <h3>Menu</h3>
   <div>
-    <%= render 'shared/menus_toolbar' %>
+    <%= render 'shared/toolbar_menus' %>
   </div>
 
   <h3>Blog</h3>
   <div>
-    <div class="btn-group-vertical col-xs-12" role="toolbar" aria-label="...">
-
-      <% if @restaurant.module_blog %>
-
-        <%= link_to new_post_url(subdomain: @restaurant), class: "btn btn-default" do %>
-          <%= glyphicon "plus" %> ajouter un article
-        <% end %>
-
-        <%= link_to posts_url(subdomain: @restaurant), class: "btn btn-default" do %>
-          <%= glyphicon "pencil" %> gérer les articles
-        <% end %>
-
-        <%= link_to activate_module_url(module: 'blog', subdomain: @restaurant), class: "btn btn-default", method: :patch do %>
-          <%= glyphicon "unchecked" %> désactiver le blog
-        <% end %>
-
-      <% else %>
-
-        <%= link_to activate_module_url(module: 'blog', subdomain: @restaurant), class: "btn btn-default", method: :patch do %>
-          <%= glyphicon "unchecked" %> <%= @restaurant.module_blog ? "désactiver" : "activer"  %> le blog
-        <% end %>
-
-      <% end %>
-
-    </div>
+    <%= render 'shared/toolbar_posts' %>
   </div>
-
 
   <h3>Restaurants</h3>
   <div>
-    <div class="btn-group-vertical col-xs-12" role="toolbar" aria-label="...">
-
-      <%= link_to new_restaurant_path, class: "btn btn-default" do %>
-        <%= glyphicon "plus" %> Créer un restaurant
-      <% end %>
-
-      <%= link_to edit_restaurant_path(@restaurant), class: "btn btn-default" do %>
-        <%= glyphicon "pencil" %> editer ce restaurant
-      <% end %>
-
-      <%= link_to opening_hours_path, class: "btn btn-default" do %>
-        <%= glyphicon "pencil" %> editer les horaires
-      <% end %>
-
-    </div> 
+    <%= render 'shared/toolbar_restaurant' %>
   </div>
 
   <h3>Modules</h3>
   <div>
-    <div class="btn-group-vertical col-xs-12" role="toolbar" aria-label="...">
-
-        
-      <%= link_to activate_module_url(module: 'blog', subdomain: @restaurant), class: "btn btn-default", method: :patch do %>
-        <%= glyphicon "unchecked" %> <%= @restaurant.module_blog ? "désactiver" : "activer"  %> le blog
-      <% end %>
-
-      <%= link_to activate_module_url(module: 'allergens', subdomain: @restaurant), class: "btn btn-default", method: :patch do %>
-        <%= glyphicon "unchecked" %> <%= @restaurant.module_allergens ? "désactiver" : "activer"  %> les allergènes
-      <% end %>
-
-    </div> 
+    <%= render 'shared/toolbar_modules' %>
   </div>
 
 </div>

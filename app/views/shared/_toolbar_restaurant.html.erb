@@ -1,0 +1,15 @@
+<div class="btn-group col-xs-12" role="toolbar" aria-label="...">
+
+  <%= link_to new_restaurant_path, class: "btn btn-default" do %>
+    <%= glyphicon "plus" %> Créer un restaurant
+  <% end %>
+
+  <%= link_to edit_restaurant_path(@restaurant), class: "btn btn-default" do %>
+    <%= glyphicon "pencil" %> editer ce restaurant
+  <% end %>
+
+  <%= link_to opening_hours_path, class: "btn btn-default" do %>
+    <%= glyphicon "pencil" %> editer les horaires
+  <% end %>
+
+</div> 
