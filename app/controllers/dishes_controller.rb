@@ -32,6 +32,7 @@ class DishesController < ApplicationController
   def edits
     redirect_to root_path unless current_user.restaurants.include? @restaurant
     @dishes = @restaurant.dishes.order :order
+    @categories = @restaurant.categories
     if request.post?
       # to array to save changes to display it to user
       updated_dishes = []
@@ -44,6 +45,7 @@ class DishesController < ApplicationController
           dish.name = data['name']
           dish.price = data['price']
           dish.order = data['order']
+          dish.category_id = data['category_id']
           dish.activate = data['activate']
           # save only if dish changed
           if dish.changed?
