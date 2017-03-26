@@ -6,16 +6,19 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
+    @title = "Actualité"
     @posts = @restaurant.posts
   end
 
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @title = @post.title
   end
 
   # GET /posts/new
   def new
+    @title = "Nouvel article"
     @post = Post.new
   end
 
@@ -32,9 +35,11 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
+        flash[:success] = "Votre post a été cré."
+        format.html { redirect_to @post }
         format.json { render :show, status: :created, location: @post }
       else
+        flash[:danger] = "Une erreur est survenue."
         format.html { render :new }
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
@@ -46,9 +51,11 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
+        flash[:success] = "Votre post a été mise à jour."
+        format.html { redirect_to @post}
         format.json { render :show, status: :ok, location: @post }
       else
+        flash[:danger] = "Une erreur est survenue."
         format.html { render :edit }
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
@@ -59,8 +66,9 @@ class PostsController < ApplicationController
   # DELETE /posts/1.json
   def destroy
     @post.destroy
+    flash[:success] = "Votre post a été supprimé."
     respond_to do |format|
-      format.html { redirect_to posts_path, notice: 'Post was successfully destroyed.' }
+      format.html { redirect_to posts_path}
       format.json { head :no_content }
     end
   end
@@ -77,6 +85,6 @@ class PostsController < ApplicationController
     end
 
     def check_owner
-      redirect_to @restaurant unless current_user.posts.include? @post
+      redirect_to root_path unless current_user.posts.include? @post
     end
 end

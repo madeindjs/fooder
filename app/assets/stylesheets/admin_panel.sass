@@ -1,10 +1,44 @@
 @import colors
 
 #admin-panel
+  display: none
+  padding-top: 50px
 
   // fixed to the right
   @media screen and (min-width: 992px)
-    position: fixed
     right: 0px
     top: 0px
-    bottom: 0px
+    bottom: 0
+    height: 100vh
+    position: fixed
+    background-color: #F2F1EF
+
+    padding-left: 0
+    padding-right: 0
+    margin-top: 20px
+
+    .ui-accordion-content
+      padding: 0px
+
+
+      .btn
+        text-align: left
+        border: none
+        background: white
+        text-shadow: none
+
+    .btn-group-vertical.col-xs-12
+      padding: 0px
+
+
+  .ui-accordion-header
+    background-color: #6C7A89
+    border: none
+    color: white
+
+    font-size: 18px
+
+    -moz-border-radius: 0px
+    -webkit-border-radius: 0px
+    border-radius: 0px
+

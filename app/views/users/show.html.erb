@@ -8,7 +8,7 @@
   <%= form_for(Restaurant.new) do |f| %>
 
     <div class="form-group col-sm-12">
-      <%= alert 'warning', "Vous n'avez pas encore de restaurant. Créer en un en cinq minutes!" %>
+      <%= alert 'warning', "Vous n'avez pas encore de restaurant. Créez en un en cinq minutes!" %>
     </div>
 
     <div class="form-group col-sm-12">
@@ -26,6 +26,14 @@
   <h2>Mes restaurants</h2>
   <%= render 'restaurants/table', restaurants: @user.restaurants %>
 
+  <p>
+    <%= link_to "créer un autre restaurant", new_restaurant_path, class: 'btn btn-primary' %>
+  </p>
+
+  <p>
+    <%= alert 'info', "Vous pouvez créer autant de restaurants que vous le souhaitez. Sans frais supplémentaires." %>
+  </p>
+  
 <% else %>
   <h2>Ses restaurants</h2>
   <%= render 'restaurants/table', restaurants: @user.restaurants %>

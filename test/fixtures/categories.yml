@@ -3,8 +3,8 @@
 one:
   id: 1
   name: category one
-  user_id: 1
+  restaurant_id: 1
 
 two:
   name: category two
-  user_id: 1
+  restaurant_id: 1

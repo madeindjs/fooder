@@ -4,6 +4,10 @@ class OpeningHoursController < ApplicationController
   before_action :check_owner, only: [:edit, :update, :destroy]
 
 
+  def index
+  end
+
+
   # POST /restaurant/1/opening_hours/1
   def create
     @opening_hour = OpeningHour.new(opening_hour_params)
@@ -11,20 +15,22 @@ class OpeningHoursController < ApplicationController
     @opening_hour.restaurant_id = @restaurant.id
 
     if @opening_hour.save
-      redirect_to edit_restaurant_path(@restaurant), notice: "Horraire d'ouverture crée."
+      flash[:success] = "Votre horraire d'ouverture a supprimé."
+      redirect_to opening_hours_path
     else
-      puts @opening_hour.errors.inspect
-      redirect_to edit_restaurant_path(@restaurant), notice: "Une erreur est survenue."
+      flash[:danger] = "Une erreur est survenue."
+      redirect_to root_path
     end
   end
 
   # PATCH/PUT /restaurant/1/opening_hours/1
   def update
     if @opening_hour.update(opening_hour_params)
-      redirect_to edit_restaurant_path(@restaurant), notice: "Horraire d'ouverture mise à jour."
+      flash[:success] = "Votre horraire d'ouverture a été mise à jour."
+      redirect_to opening_hours_path
     else
-      puts @opening_hour.errors.inspect
-      redirect_to edit_restaurant_path(@restaurant), notice: "Une erreur est survenue."
+      flash[:danger] = "Une erreur est survenue."
+      redirect_to root_path
     end
   end
 
@@ -32,7 +38,8 @@ class OpeningHoursController < ApplicationController
   # DELETE /opening_hours/1.json
   def destroy
     @opening_hour.destroy
-    redirect_to edit_restaurant_path(@restaurant), notice: "Horraire d'ouverture supprimée."
+    flash[:success] = "Votre horraire d'ouverture a été supprimée."
+    redirect_to opening_hours_path
   end
 
   private
@@ -47,6 +54,6 @@ class OpeningHoursController < ApplicationController
     end
 
     def check_owner
-      redirect_to restaurant_path(@restaurant) unless current_user.opening_hours.include? @opening_hour
+      redirect_to root_path unless current_user.opening_hours.include? @opening_hour
     end
 end

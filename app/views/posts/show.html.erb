@@ -1,13 +1,13 @@
 <h1><%= @post.title %></h1>
 
-<%= image_tag @post.picture.thumb, class: 'img-circle section-img' if @post.picture? %>
+<%= picture_tag @post, :posts_picture_display, css_class: 'section-img', size: 200 if @post.picture? %>
 
 <p><%= @post.user.complete_name %> dans <%= tags @post.tags %></p>
 <p class="text-justify"><%= @post.content %></p>
 
 
-<% if check_admin %>
-  <p class="text-right">
+<% if admin? %>
+  <p class="text-right admin">
       <%= link_to 'editer', edit_post_path(@post), class: "btn btn-default" %>
       <%= link_to 'Supprimer', @post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'  %>
   </p>

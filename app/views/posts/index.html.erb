@@ -4,7 +4,7 @@
 <% @posts.each do |post| %>
 
   <article>
-    <%= image_tag post.picture.thumb, class: 'img-circle section-img' if post.picture? %>
+  <%= picture_tag post, :posts_picture_display, css_class: 'section-img', size: 200 if post.picture? %>
     <h2><%= link_to post.title, post %></h2>
     
     <p><%= post.user.complete_name %> dans <%= tags post.tags %></p>
@@ -14,17 +14,19 @@
     <p class="text-right">
       <%= link_to "voir l'article", post, class: 'btn btn-primary' %>
 
-      <% if check_admin %>
-        <%= link_to 'editer', edit_post_path(post), class: "btn btn-default" %>
-        <%= link_to 'Supprimer', post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'  %>
+      <% if admin? %>
+        <div class="admin">
+          <%= link_to 'editer', edit_post_path(post), class: "btn btn-default" %>
+          <%= link_to 'Supprimer', post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'  %>
+        </div>
       <% end %>
     </a></p>
   </article>
 
 <% end %>
 
-<% if check_admin %>
-  <%= link_to 'Ajouter un article', new_post_path, class: 'btn btn-primary' %>
+<% if admin? %>
+  <%= link_to 'Ajouter un article', new_post_path, class: 'btn btn-primary admin' %>
 <% end %>
 
 

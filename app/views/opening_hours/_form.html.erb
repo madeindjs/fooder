@@ -1,31 +1,36 @@
-<%= form_for opening_hour do |f| %>
-  <td><%= f.select :day , options_for_select(OpeningHour::DAYS , opening_hour.day), {}, class: 'form-control' %></td>
+<%= bootstrap_form_for opening_hour do |f| %>
+  <td><%= f.select :day , options_for_select(OpeningHour::DAYS , opening_hour.day), {hide_label: true}, {} %></td>
 
   <td>
     <div class='input-group date'>
-      <%= f.time_field :opens , class: 'form-control timepicker' %>
+      <%= f.time_field :opens, class: 'timepicker', hide_label: true %>
     </div>
   </td>
 
   <td>
     <div class='input-group date'>
-      <%= f.time_field :closes , class: 'form-control timepicker' %>
+      <%= f.time_field :closes, class: 'timepicker', hide_label: true %>
     </div>
   </td>
 
   <td>
     <div class='input-group date'>
-      <%= f.date_field :valid_from , class: 'form-control' %>
+      <%= f.date_field :valid_from, hide_label: true %>
     </div>
   </td>
 
   <td>
     <div class='input-group date'>
-      <%= f.date_field :valid_through , class: 'form-control' %>
+      <%= f.date_field :valid_through, hide_label: true %>
     </div>
   </td>
   
   <td>
-    <%= f.submit 'modifier', class: 'btn btn-primary' %>
+    <% if opening_hour.new_record? %>
+      <%= f.submit 'Ajouter' %>
+    <% else %>
+      <%= f.submit 'Mettre à jour' %>
+      <%= link_to 'Supprimer', opening_hour, method: :delete, data: { confirm: 'Etes vous sûr?' }, class: 'btn btn-danger' %>
+    <% end %>
   </td>
 <% end %>

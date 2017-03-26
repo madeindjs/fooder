@@ -1,13 +1,14 @@
 # template from https://www.sitepoint.com/rails-authentication-with-authlogic/
 class UserSessionsController < ApplicationController
   def new
+    @title = "Se connecter"
     @user_session = UserSession.new
   end
 
   def create
     @user_session = UserSession.new(user_session_params)
     if @user_session.save
-      flash[:success] = "Welcome back!"
+      flash[:success] = "Bonjour #{@user_session.user.firstname}!"
       redirect_to @user_session.user
     else
       render :new
@@ -16,7 +17,7 @@ class UserSessionsController < ApplicationController
 
   def destroy
     current_user_session.destroy
-    flash[:success] = "Goodbye!"
+    flash[:success] = "A bientôt!"
     redirect_to root_path
   end
 

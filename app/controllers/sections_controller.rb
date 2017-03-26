@@ -6,11 +6,47 @@ class SectionsController < ApplicationController
 
   # GET /sections/new
   def new
+    @title = "Nouveau contenu"
     @section = Section.new
   end
 
   # GET /sections/1/edit
   def edit
+    @title = "Editer page d'accueil"
+    render  '_form', locals: {section: @section}, layout:  false if request.xhr?
+  end
+
+  # GET  /sections/edit
+  # POST /sections/edit
+  def edits
+    redirect_to root_path unless current_user.restaurants.include? @restaurant
+    @sections = @restaurant.sections.order :order
+    if request.post?
+      # to array to save changes to display it to user
+      updated_sections = []
+      fail_updated_sections = []
+      # loop on all parameters
+      params.require(:sections).each do |id, data|
+        # we get section and verify author is the user
+        if section = Section.find(id) and section.restaurant_id == @restaurant.id
+          # update attributes
+          section.title = data['title']
+          section.order = data['order']
+          # save only if section changed
+          if section.changed?
+            # save section and stor in array to display in flash message
+            if section.save
+              updated_sections << section.title
+            else
+              fail_updated_sections << section.title
+            end
+          end
+        end
+      end
+      # display changes
+      flash[:success] = "La mise à jour de #{updated_sections} a été effectuée." unless updated_sections.empty?
+      flash[:danger] = "La mise à jour de #{fail_updated_sections} n'a été effectuée."  unless fail_updated_sections.empty?
+    end
   end
 
   # POST /sections
@@ -22,9 +58,11 @@ class SectionsController < ApplicationController
 
     respond_to do |format|
       if @section.save
-        format.html { redirect_to @restaurant, notice: 'Section was successfully created.' }
+        flash[:success] = "Votre texte d'accueil a été créé."
+        format.html { redirect_to root_url }
         format.json { render :show, status: :created, location: @section }
       else
+        flash[:danger] = "Une erreur est survenue."
         format.html { render :new }
         format.json { render json: @section.errors, status: :unprocessable_entity }
       end
@@ -36,9 +74,11 @@ class SectionsController < ApplicationController
   def update
     respond_to do |format|
       if @section.update(section_params)
-        format.html { redirect_to @restaurant, notice: 'Section was successfully updated.' }
+        flash[:success] = "Votre texte d'accueil a été supprimé."
+        format.html { redirect_to root_url}
         format.json { render :show, status: :ok, location: @section }
       else
+        flash[:danger] = "Une erreur est survenue."
         format.html { render :edit }
         format.json { render json: @section.errors, status: :unprocessable_entity }
       end
@@ -49,8 +89,9 @@ class SectionsController < ApplicationController
   # DELETE /sections/1.json
   def destroy
     @section.destroy
+    flash[:success] = "Votre texte d'accueil a été supprimé."
     respond_to do |format|
-      format.html { redirect_to @restaurant, notice: 'Section was successfully destroyed.' }
+      format.html { redirect_to root_url}
       format.json { head :no_content }
     end
   end
@@ -67,6 +108,6 @@ class SectionsController < ApplicationController
     end
 
     def check_owner
-      redirect_to home_path unless current_user.sections.include? @section
+      redirect_to root_path unless current_user.sections.include? @section
     end
 end

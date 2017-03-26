@@ -25,6 +25,18 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test "should get edits" do
+    setup_restaurant_host
+    login(users(:me))
+    get categories_edit_path
+    assert_response :success
+  end
+
+  test "should redirect get edits on restaurant page" do
+    get categories_edit_path
+    assert_response 302
+  end
+
   test "should not create category" do
     assert_no_difference('Category.count') do
       post categories_url, params: { category: { name: "New category" } }
@@ -44,12 +56,12 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
 
   test "should update category" do
     patch category_url(@category), params: { category: { name: @category.name } }
-    assert_redirected_to home_url
+    assert_redirected_to root_url
   end
 
   test "should redirect on update category" do
     patch category_url(@category), params: { category: { name: @category.name } }
-    assert_redirected_to home_path
+    assert_redirected_to root_url
   end
 
   test "should not destroy category" do
@@ -57,7 +69,7 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
       delete category_url(@category)
     end
 
-    assert_redirected_to home_url
+    assert_redirected_to root_url
   end
 
   test "should destroy category" do

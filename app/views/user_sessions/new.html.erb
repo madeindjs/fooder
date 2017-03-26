@@ -3,20 +3,14 @@
 </div>
 
 <div class="row">
-  <%= form_for @user_session do |f| %>
+  <%= bootstrap_form_for @user_session do |f| %>
 
     <%= render 'shared/errors_form', model: @user_session %>
 
-    <div class="form-group">
-      <%= f.label :email %>
-      <%= f.email_field :email, class: 'form-control' %>
-    </div>
-    <div class="form-group">
-      <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %>
-    </div>
+    <%= f.email_field :email %>
+    <%= f.password_field :password, label: "Mot de passe"  %>
     
-    <%= f.submit 'se connecter', class: 'btn btn-primary' %>
+    <%= f.submit 'se connecter' %>
   <% end %>
 
   <p class="alert alert-info" role="alert">Pas encore de compte? <%= link_to "Créer un compte", signup_path, class: "alert-link" %></p>

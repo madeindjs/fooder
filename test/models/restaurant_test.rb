@@ -21,4 +21,9 @@ class RestaurantTest < ActiveSupport::TestCase
     assert_not_empty restaurant.menus
   end
 
+  test "should create categories" do
+    restaurant = Restaurant.create name: "Good Pizza", user_id: 1
+    assert_not_empty restaurant.categories
+  end
+
 end

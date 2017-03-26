@@ -1,19 +1,17 @@
-<% categories =  dishes.map{|d| d.category }.uniq.compact %>
+<% existing_categories_ids = dishes.map{|dish| dish.category_id }.uniq %>
 
-<% categories.each do |category| %>
+<% # select only categories who contains at least one dish
+  @restaurant.categories.order(:order).select{|c| existing_categories_ids.include? c.id }.each do |category| %>
 
   <div class="row">
 
     <h2 class="col-xs-12"><%= category.name %></h2>
       
-
     <% dishes.select{|d| d.category_id == category.id}.each do |dish| %>
 
       <article class="col-sm-6">
-        <% if true and dish.picture? # TODO activate picture module %>
-          <%= link_to dish do %>
-            <%= image_tag dish.picture.url, alt: "photo du #{dish.name}", size:50,  class: 'img-circle dish-picture'  %>
-          <% end %>
+        <%= link_to dish do %>
+          <%= picture_tag dish, :dishes_picture_display, css_class: "dish-picture", size: 100 %>
         <% end %>
         <p>
           <h3><%= link_to dish.name, dish %></h3>
@@ -22,8 +20,8 @@
           <%= render 'allergens', dish: dish if @restaurant.module_allergens %>
         </p>
 
-        <% if check_admin %>
-          <p class="text-right">
+        <% if admin? %>
+          <p class="text-right admin">
             <%= link_to "Editer", edit_dish_path( dish), class: 'btn btn-default btn-xs' %>
             <%= link_to "Supprimer",  dish, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-warning btn-xs' %>
           </p>

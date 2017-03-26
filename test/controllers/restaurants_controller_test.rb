@@ -28,7 +28,7 @@ class RestaurantsControllerTest < ActionDispatch::IntegrationTest
       post restaurants_url, params: { restaurant: { address: @restaurant.address, city: @restaurant.city, name: @restaurant.name, zip_code: @restaurant.zip_code } }
     end
 
-    assert_redirected_to home_path
+    assert_redirected_to root_path
   end
 
   test "should create restaurant" do
@@ -37,7 +37,7 @@ class RestaurantsControllerTest < ActionDispatch::IntegrationTest
       post restaurants_url, params: { restaurant: { address: @restaurant.address, city: @restaurant.city, name: "new restaurant", zip_code: @restaurant.zip_code } }
     end
 
-    assert_redirected_to restaurant_url(Restaurant.last)
+    assert_redirected_to root_url(subdomain: Restaurant.last)
   end
 
   test "should show restaurant" do
@@ -64,7 +64,7 @@ class RestaurantsControllerTest < ActionDispatch::IntegrationTest
 
   test "should not update restaurant" do
     patch restaurant_url(@restaurant), params: { restaurant: { address: @restaurant.address, city: @restaurant.city, name: @restaurant.name, user_id: @restaurant.user_id, zip_code: @restaurant.zip_code } }
-    assert_redirected_to home_path
+    assert_redirected_to root_path
   end
 
   test "should not destroy restaurant" do
@@ -72,7 +72,7 @@ class RestaurantsControllerTest < ActionDispatch::IntegrationTest
       delete restaurant_url(@restaurant)
     end
 
-    assert_redirected_to home_path
+    assert_redirected_to root_path
   end
 
   test "should destroy restaurant" do
@@ -81,11 +81,17 @@ class RestaurantsControllerTest < ActionDispatch::IntegrationTest
       delete restaurant_url(@restaurant)
     end
 
-    assert_redirected_to restaurants_url
+    assert_redirected_to @restaurant.user
   end
 
   test "should get contact" do
-    get restaurant_contact_url(@restaurant)
+    setup_restaurant_host
+    get contact_url
     assert_response :success
+  end
+
+  test "should get contact redirect" do
+    get contact_url
+    assert_response 302
   end
 end

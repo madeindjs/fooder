@@ -2,7 +2,7 @@ one:
   restaurant_id: 1
   user_id: 1
   day: 1
-  closes: 8:00
-  opens: 8:00
+  closes: '9:00'
+  opens: '8:00'
   valid_from: nil
   valid_through: nil

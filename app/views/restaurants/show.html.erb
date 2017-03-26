@@ -1,26 +1,38 @@
-<div class="row">
-  <div class="page-header">
-    <h1><%= @restaurant.name %></h1>
-  </div>
+<div class="row restaurant-header" style="background-image: url(<%= @restaurant.picture %>)">
 
-  <%= image_tag @restaurant.picture, class: 'col-xs-12 img-responsive' if @restaurant.picture? %>
+  <div class="col-xs-12">
+    <h1><%= logo_tag @restaurant %><%= @restaurant.name %></h1>
+  </div>
 </div>
+
+<% if admin? %>
+  <div class="row admin">
+    <div class="col-xs-12"">
+      <div class="col-xs-12">
+        <%= render 'shared/toolbar_sections' %>
+        <%= render 'shared/toolbar_restaurant' %>
+      </div>
+    </div>
+  </div>
+<% end %>
 
 <%= render 'sections/list', sections: @restaurant.sections %>
 
 
 <div class="row">
   <div class="col-xs-12">
-
     <div class="btn-group" role="toolbar" aria-label="...">
-      <%= link_to 'Voir la carte', dishes_path, class: "btn btn-primary" %>
+      <%= link_to 'La carte', dishes_path, class: "btn btn-lg btn-default" %>
+      <%= link_to 'Les menus', menus_path, class: "btn btn-lg btn-default" %>
+      <%= link_to "Les horaires d'ouverture", contact_path, class: "btn btn-lg btn-default" %>
+      <%= link_to 'Nous contacter', contact_path, class: "btn btn-lg btn-default" %>
     </div>
-
   </div>
 </div>
 
 <div class="row">
   <div class="col-xs-12">
+    <h2>Les horaires d'ouvertures</h2>
     <%= render 'opening_hours/details', opening_hours: @restaurant.opening_hours %>
   </div>
 </div>

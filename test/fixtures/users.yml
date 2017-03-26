@@ -4,6 +4,7 @@ me:
   id: 1
   email: madeindjs@gmail.com
   firstname: Alexandre 
+  slug: alexandre
   lastname: Rousseau
   password_salt: <%= salt = Authlogic::Random.hex_token %>
   crypted_password: <%= Authlogic::CryptoProviders::Sha512.encrypt("20462046" + salt) %>

@@ -5,6 +5,8 @@ class Menu < ApplicationRecord
 
   mount_uploader :picture, PictureUploader
 
+  include ImageFormat
+
   extend FriendlyId
   friendly_id :name, use: :slugged
 end

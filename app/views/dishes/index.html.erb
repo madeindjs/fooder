@@ -1,7 +1,11 @@
-<h1>Carte</h1>
+<div class="col-xs-12">
+  <h1>Carte</h1>
+</div>
 
-<%= render 'list', dishes: @dishes %>
+<div class="col-xs-12">
+  <%= render 'shared/toolbar_dishes' if admin? %>
+</div>
 
-<div class="btn-group" role="group" aria-label="...">
-  <%= link_to "Revenir au restaurant", restaurant_path(@restaurant) %>
+<div class="col-xs-12">
+  <%= render 'list', dishes: @dishes %>
 </div>

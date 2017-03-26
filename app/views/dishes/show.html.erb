@@ -1,6 +1,6 @@
 <h1><%= @dish.name %> <small><%= @dish.category.name if @dish.category%></small></h1>
 
-<%= image_tag @dish.picture.url, alt: "photo du #{@dish.name}", size:200,  class: 'img-circle' if @dish.picture? %>
+<%= picture_tag @dish, :dishes_picture_display, css_class: "dish-picture", size: 200 %>
 
 <p class="lead"><%= @dish.description %></p>
 
@@ -8,15 +8,10 @@
   <p class="lead"><%= render 'allergens', dish: @dish %></p>
 <% end %>
 
-<p>
-  <a href="#" class="btn btn-primary"><%= glyphicon 'pencil' %> Noter ce plat</a>
-</p>
 
-<% if current_user == @dish.user %>
-
-  <p class="text-right">
+<% if admin? %>
+  <p class="text-right admin">
     <%= link_to 'Editer', edit_dish_path(@dish), class: 'btn btn-warning' %>
     <%= link_to 'Supprimer', @dish, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
   </p>
-
 <% end %>

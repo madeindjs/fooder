@@ -1,3 +1,7 @@
+<div class="col-xs-12">
+  <h2>Editer les horaires d'ouvertures</h2>
+</div>
+
 <table class="table">
 
   <tr>
@@ -8,7 +12,7 @@
     <th></th>
   </tr>
   
-  <% opening_hours.each do |opening_hour| %>
+  <% @restaurant.opening_hours.order(day: :desc).each do |opening_hour| %>
     <tr>
       <%= render 'opening_hours/form', opening_hour: opening_hour  %>
     </tr>

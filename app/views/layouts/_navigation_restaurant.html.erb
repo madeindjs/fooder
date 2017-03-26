@@ -1,0 +1,12 @@
+<li><%=  link_to "Carte",  dishes_url(subdomain: @restaurant) %></li>
+<li><%= link_to "Menus", menus_url(subdomain: @restaurant) %></li>
+
+<% if @restaurant.module_blog %>
+  <li><%= link_to "Actualités", posts_url(subdomain: @restaurant) %></li>
+<% end %>
+
+<% if @restaurant.module_allergens %>
+  <li><%= link_to "Allergènes", allergens_url(subdomain: @restaurant) %></li>
+<% end %>
+
+<li><%= link_to "Contact", contact_url(subdomain: @restaurant) %></li>
