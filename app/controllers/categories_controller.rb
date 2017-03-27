@@ -3,11 +3,6 @@ class CategoriesController < ApplicationController
   before_action :check_login
   before_action :check_owner, only: [:edit, :update, :destroy]
 
-  def index
-    @categories = @restaurant.categories
-  end
-
-
   # GET /categories/new
   def new
     @title = "Nouvelle catégorie"
