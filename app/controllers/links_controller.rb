@@ -6,16 +6,24 @@ class LinksController < ApplicationController
 
   # GET /links/new
   def new
+    @title = "Créer un Lien"
+    @description = "Créer un nouveau lien vers votre restaurant."
+
     @link = Link.new
   end
 
   # GET /links/1/edit
   def edit
+    @title = "Editer un lien"
+    @description = "Editer le lien nommé #{@link.name}."
   end
 
   # GET /links/edits
   # POST /links/edits
   def edits
+    @title = "Gérer vos liens"
+    @description = "Renommer et réorganisez vos liens."
+
     redirect_to root_path unless current_user.restaurants.include? @restaurant
     @links = @restaurant.links.order :order
     if request.post?

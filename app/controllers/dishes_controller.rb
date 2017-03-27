@@ -8,6 +8,8 @@ class DishesController < ApplicationController
   # GET /dishes.json
   def index
     @title = "Carte"
+    @description = "Carte des produits proposés par ce restaurant."
+
     @dishes = @restaurant.dishes.where(activate: true).order :order
   end
 
@@ -15,21 +17,29 @@ class DishesController < ApplicationController
   # GET /dishes/1.json
   def show
     @title = @dish.name
+    @description = "Un parmi les nombreux déliceux produits proposé par #{@restaurant.name}"
   end
 
   # GET /dishes/new
   def new
-    @title = "Nouveau plat"
+    @title = "Nouveau produit"
+    @description = "Créer un nouveau plat que les clients pourons déguster."
+
     @dish = Dish.new
   end
 
   # GET /dishes/1/edit
   def edit
+    @title = "Editer #{@restaurant.name}"
+    @description = "Editer une catégorie existante."
   end
 
   # GET /dishes/edit
   # POST /dishes/edit
   def edits
+    @title = "Gérer vos produits"
+    @description = "Renommer et réorganisez les produits."
+
     redirect_to root_path unless current_user.restaurants.include? @restaurant
     @dishes = @restaurant.dishes.order :order
     @categories = @restaurant.categories

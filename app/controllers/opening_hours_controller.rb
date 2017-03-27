@@ -5,6 +5,8 @@ class OpeningHoursController < ApplicationController
 
 
   def index
+    @title = "Horraires d'ouvertures."
+    @description = "Gérer les horraires d'ouvertures."
   end
 
 

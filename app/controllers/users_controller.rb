@@ -5,7 +5,8 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @title = "Nos clients"
+    @title = "Nos utilisateurs"
+    @description = "Liste de nos plus fervents utilisateurs"
     @users = User.all
   end
 
@@ -13,15 +14,22 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @title = @user.complete_name
+    @description = "Informations relatives à #{@user.complete_name}"
   end
 
   # GET /users/new
   def new
+    @title = "Créer un nouveau compte"
+    @description = "Formulaire de création de compte sur Fooder"
+
     @user = User.new
   end
 
   # GET /users/1/edit
   def edit
+    @title = "Editer #{@user.complete_name}"
+    @description = "Editer les informations relatives à #{@user.complete_name}."
+
   end
 
   # POST /users

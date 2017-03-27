@@ -3,28 +3,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-<meta name=viewport content="width=device-width, initial-scale=1">
+<!-- primary informations -->
+<title><%= @title %></title>
+<meta property="og:title" content="<%= @title %>">
+<meta name="description" content="<%= @description %>">
+<meta property="og:description" content="<%= @description %>" >
 
-<meta name="keywords" content="cms, restaurant, website, create, free, manager, open-source">
-
-
-<!-- information meta tag -->
-<meta name="author" content="Rousseau Alexandre">
-<meta name="description" content="Un CMS pour générer un site vitrine pour un restaurant">
-<meta property="og:description" content="Un CMS pour générer un site vitrine pour un restaurant" >
-<meta name="description" content="Un CMS pour générer un site vitrine pour un restaurant" />
-    
-<meta name="language" content="fr-FR" />
-<meta name="rating" content="General">
-<meta name="expires" content="never">
-<meta name="distribution" content="Global">
-<meta name="email" content="rousseaualexandre.lyon@gmail.com">
-<meta name="author" content="ROUSSEAU Alexandre">
-<meta name="publisher" content="ROUSSEAU Alexandre">
-
-
-<title><%= @restaurant ? @restaurant.name : "Fooder" %><%= " - #{@title}" if @title %></title>
-<meta property="og:title" content="<%= @restaurant ? @restaurant.name : "Fooder" %><%= " - #{@title}" if @title %>">
+<!-- specific informations -->
 <% if @restaurant and not @restaurant.logo.favicon.file.nil? %>
   <link rel="icon" type="image/png" href="<%= @restaurant.logo.favicon.url %>" />
   <!-- TODO: ADD pictures tag here -->
@@ -39,3 +24,14 @@
   <meta property="og:image:width" content="1000">
   <meta property="og:image:height" content="1000">
 <% end %>
+
+<!-- Basics meta tags -->
+<meta name="keywords" content="cms, restaurant, website, create, free, manager, open-source">
+<meta name="author" content="Rousseau Alexandre">
+<meta name="language" content="fr-FR" />
+<meta name="rating" content="General">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="email" content="rousseaualexandre.lyon@gmail.com">
+<meta name="author" content="ROUSSEAU Alexandre">
+<meta name="publisher" content="ROUSSEAU Alexandre">

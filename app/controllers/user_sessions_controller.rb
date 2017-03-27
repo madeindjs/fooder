@@ -2,6 +2,8 @@
 class UserSessionsController < ApplicationController
   def new
     @title = "Se connecter"
+    @description = "Connexion à l'interface d'administration."
+
     @user_session = UserSession.new
   end
 
@@ -11,6 +13,7 @@ class UserSessionsController < ApplicationController
       flash[:success] = "Bonjour #{@user_session.user.firstname}!"
       redirect_to @user_session.user
     else
+      flash[:success] = "Une erreur est survenue lors de la création de votre compte."
       render :new
     end
   end

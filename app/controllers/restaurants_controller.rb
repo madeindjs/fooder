@@ -5,9 +5,10 @@ class RestaurantsController < ApplicationController
   before_action :check_restaurant, only: [:contact]
 
   # GET /restaurants
-  # GET /restaurants.json
   def index
-    @title = "nos clients"
+    @title = "Nos clients"
+    @description = "Liste des restaurants utilisant nos services"
+
     @restaurants = Restaurant.all
   end
 
@@ -15,20 +16,22 @@ class RestaurantsController < ApplicationController
   # GET /restaurants/1.json
   def show
     @title = @restaurant.name
+    @description = "Un magnifique restaurant"
   end
 
   # GET /restaurants/new
   def new
     @title = "Nouveau restaurant"
+    @description = "Créer un nouveau site pour votre restaurant."
   end
 
   # GET /restaurants/1/edit
   def edit
     @title = "Editer votre restaurant"
+    @description = "Editer les informations relatives à ce restaurant."
   end
 
   # POST /restaurants
-  # POST /restaurants.json
   def create
     @restaurant = Restaurant.new(restaurant_params)
     @restaurant.user_id = current_user.id

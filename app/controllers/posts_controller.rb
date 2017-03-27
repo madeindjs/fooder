@@ -7,6 +7,8 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @title = "Actualité"
+    @description = "Actualité autour du restaurant #{@restaurant.name}."
+
     @posts = @restaurant.posts
   end
 
@@ -14,16 +16,21 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
     @title = @post.title
+    @description = "'#{@post.title}' à propos de #{@restaurant.name}"
   end
 
   # GET /posts/new
   def new
     @title = "Nouvel article"
+    @description = "Ecrire un nouvel article sur le restaurant #{@restaurant.name}."
+
     @post = Post.new
   end
 
   # GET /posts/1/edit
   def edit
+    @title = "Editer #{@post.title}"
+    @description = "Editer l'article appelé #{@post.title}"
   end
 
   # POST /posts
