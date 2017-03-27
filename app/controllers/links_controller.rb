@@ -3,11 +3,6 @@ class LinksController < ApplicationController
   before_action :check_login
   before_action :check_owner, only: [:edit, :update, :destroy]
 
-  # GET /links
-  # GET /links.json
-  def index
-    @links = Link.all
-  end
 
   # GET /links/new
   def new
@@ -58,28 +53,24 @@ class LinksController < ApplicationController
     @link = Link.new link_params
     @link.restaurant_id = @restaurant.id
 
-    respond_to do |format|
-      if @link.save
-        format.html { redirect_to links_edit_path, notice: 'Link was successfully created.' }
-        format.json { render :show, status: :created, location: @link }
-      else
-        format.html { render :new }
-        format.json { render json: @link.errors, status: :unprocessable_entity }
-      end
+    if @link.save
+      flash[:success] = "Votre lien a été crée!"
+      redirect_to links_edit_path
+    else
+      flash[:danger] = "Une erreur est survenue."
+      render :new
     end
   end
 
   # PATCH/PUT /links/1
   # PATCH/PUT /links/1.json
   def update
-    respond_to do |format|
-      if @link.update(link_params)
-        format.html { redirect_to links_edit_path, notice: 'Link was successfully updated.' }
-        format.json { render :show, status: :ok, location: @link }
-      else
-        format.html { render :edit }
-        format.json { render json: @link.errors, status: :unprocessable_entity }
-      end
+    if @link.update(link_params)
+      flash[:success] = "Votre lien a été mis à jour!"
+      redirect_to links_edit_path
+    else
+      flash[:danger] = "Une erreur est survenue."
+      render :edit
     end
   end
 
@@ -87,10 +78,7 @@ class LinksController < ApplicationController
   # DELETE /links/1.json
   def destroy
     @link.destroy
-    respond_to do |format|
-      format.html { redirect_to links_path, notice: 'Link was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to links_edit_path, notice: 'Link was successfully destroyed.'
   end
 
   private

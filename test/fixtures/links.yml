@@ -3,6 +3,7 @@
 one:
   name: MyString
   url: MyString
+  restaurant_id: 1
 
 two:
   name: MyString
