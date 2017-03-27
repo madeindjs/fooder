@@ -8,6 +8,7 @@ class Restaurant < ApplicationRecord
   has_many :posts
   has_many :categories
   has_many :opening_hours
+  has_many :links
 
   after_create :generate_dishes
   after_create :generate_menus

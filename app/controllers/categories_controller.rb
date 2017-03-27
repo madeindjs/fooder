@@ -3,24 +3,26 @@ class CategoriesController < ApplicationController
   before_action :check_login
   before_action :check_owner, only: [:edit, :update, :destroy]
 
-  def index
-    @categories = @restaurant.categories
-  end
-
-
   # GET /categories/new
   def new
     @title = "Nouvelle catégorie"
+    @description = "Créer une nouvelle catégories pour vos plats."
+
     @category = Category.new
   end
 
   # GET /categories/1/edit
   def edit
+    @title = "Editer la catégorie"
+    @description = "Editer la catégorie existante."
   end
 
   # GET  /categories/edit
   # POST /categories/edit
   def edits
+    @title = "Gérer les categories"
+    @description = "Renommer et réorganisez vos catégories."
+
     redirect_to root_path unless current_user.restaurants.include? @restaurant
     @categories = @restaurant.categories.order :order
     if request.post?

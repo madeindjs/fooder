@@ -6,6 +6,8 @@ class MenusController < ApplicationController
   # GET /menus.json
   def index
     @title = "Menus"
+    @description = "Liste des menus proposés par #{@restaurant.name}."
+
     @menus = @restaurant.menus.where(activate: true).order :order
   end
 
@@ -13,20 +15,31 @@ class MenusController < ApplicationController
   # GET /menus/1.json
   def show
     @title = @menu.name
+    @description = "Un parmi les nombreux déliceux menus proposé par #{@restaurant.name}"
   end
 
   # GET /menus/new
   def new
+    @title = "Nouveau menu"
+    @description = "Créez un nouveau menu que vos clients pourons déguster."
+
     @menu = Menu.new
   end
 
   # GET /menus/1/edit
   def edit
+    @title = "Editer #{@menu.name}"
+    @description = "Editer un menu déjà existant."
+
+    render  '_form', locals: {menu: @menu}, layout:  false if request.xhr?
   end
 
   # GET /menus/edit
   # POST /menus/edit
   def edits
+    @title = "Gérer les menus"
+    @description = "Renommer et réorganisez les menu proposés par ce restaurant."
+
     redirect_to root_path unless current_user.restaurants.include? @restaurant
     @menus = @restaurant.menus.order :order
     if request.post?

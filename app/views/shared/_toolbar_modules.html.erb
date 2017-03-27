@@ -1,0 +1,11 @@
+<div class="btn-group col-xs-12" role="toolbar" aria-label="...">
+
+  <%= link_to activate_module_url(module: 'blog', subdomain: @restaurant), class: "btn btn-default", method: :patch do %>
+    <%= glyphicon "unchecked" %> <%= @restaurant.module_blog ? "désactiver" : "activer"  %> le blog
+  <% end %>
+
+  <%= link_to activate_module_url(module: 'allergens', subdomain: @restaurant), class: "btn btn-default", method: :patch do %>
+    <%= glyphicon "unchecked" %> <%= @restaurant.module_allergens ? "désactiver" : "activer"  %> les allergènes
+  <% end %>
+
+</div> 

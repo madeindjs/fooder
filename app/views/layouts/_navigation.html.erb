@@ -28,8 +28,12 @@
         
       </ul>
 
-      <% unless @restaurant %>
-        <ul class="nav navbar-nav nav navbar-right">
+      <ul class="nav navbar-nav nav navbar-right">
+        <% if @restaurant %>
+          <% if admin? %>
+            <li><button id="toggle-client-view" class="navbar-btn">Afficher la vue client</button></li>
+          <% end %>
+        <% else %>
           <% if current_user %>
             <li><%= link_to current_user.email, current_user %></li>
           <% else %>
@@ -37,8 +41,7 @@
             <li><%= link_to "créer un compte", signup_path %></li>
           <% end %>
         </ul>
-      <% end %>
-
+        <% end %>
     </div><!--/.nav-collapse -->
 
       

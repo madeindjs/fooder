@@ -7,17 +7,24 @@ class SectionsController < ApplicationController
   # GET /sections/new
   def new
     @title = "Nouveau contenu"
+    @description = "Ajouter du contenu à la page d'accueil de ce restaurant."
     @section = Section.new
   end
 
   # GET /sections/1/edit
   def edit
-    @title = "Editer page d'accueil"
+    @title = "Editer le contenu."
+    @description = "Editer le contenu de la page d'accueil."
+
+    render  '_form', locals: {section: @section}, layout:  false if request.xhr?
   end
 
   # GET  /sections/edit
   # POST /sections/edit
   def edits
+    @title = "Gérer le contenu de la page d'accueil."
+    @description = "Renommer et réorganisez le contenu proposés par ce restaurant."
+
     redirect_to root_path unless current_user.restaurants.include? @restaurant
     @sections = @restaurant.sections.order :order
     if request.post?

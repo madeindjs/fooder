@@ -1,0 +1,10 @@
+<%= bootstrap_form_for link do |f| %>
+  <%= render 'shared/errors_form', model: link %>
+
+  <%= f.text_field :name, label: 'Nom' %>
+  <%= f.text_field :url, label: 'Adresse' %>
+
+  <%= render 'shared/form_input_logo.html', form: f, model: link %>
+
+  <%= f.submit 'Confirmer' %>
+<% end %>
