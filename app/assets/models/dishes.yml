@@ -1,53 +1,60 @@
-# data from http://www.delarte.fr
 
-- name: Pollo pomodoro
-  description: Filet de poulet (viande française**), sauce concassé de tomates et jus de volaille au vinaigre balsamique, oignons rouges
-  price: 12.5
-  category_name: Viandes et poissons
+# Entrée
+
+- name: Tarte aux brocolis et à la moutarde
+  description: Une délicieuse tarte qui va vous réconcillier avec les brocolis
+  price: 8.00
+  category_name: Entrée
+  gluten_free: 2
+
+- name: Poke bowl au saumon fumé
+  description: Une recette gourmande & healthy
+  price: 12.00
+  category_name: Entrée
+  gluten_free: 2
+  tags: frais
+
+
+# Plats
+
+- name: Pâtes au chou kale, pancetta et gorgonzola
+  description: Une recette simple mais efficace
+  price: 12.00
+  category_name: Plats
   tags: sans gluten
 
-
-- name: Cabillaud sauce vierge
-  description: Cabillaud, sauce vierge (huile d’olive, tomates confites, olives noires, pignons de pin et câpres), citron, ciboulette
-  price: 15.5
-  category_name: Viandes et poissons
-
-
+- name: Pâtes au chou kale, pancetta et gorgonzola
+  description: Une revisite d'un légume méconnu
+  price: 16.00
+  category_name: Plats
+  gluten_free: 2
 
 
-- name: Salade Caesar
-  description: Bacon, émincés de poulet, sauce caesar Del Arte, salade iceberg, roquette, pains Del Arte, copeaux de fromage italien
-  price: 8.5
-  category_name: Entrée
-
-- name: La véritable burrata
-  description: Burrata (mozzarella au cœur crémeux), roquette, poivrons marinés, crème de balsamique
-  price: 10
-  category_name: Entrée
-  tags: charcuterie italienne
-
-
-
-
-- name: Martini tonic
-  description: Martini Bianco, Schweppes Indian Tonic 14cl
-  price: 6
-  category_name: Cocktail
+# Cocktails
 
 - name: Virgin Mojito
-  description: Sirop saveur rhum, sirop de Mojito Mint, Perrier, citron vert, sucre roux, feuilles de menthe fraîche 10cl
-  price: 10
-  category_name: Cocktail sans alcool
-  tags: sans alcool
+  description: sirop de Mojito Mint, Perrier, citron vert, sucre roux, feuilles de menthe fraîche 13cl
+  price: 6
+  category_name: Cocktails
+  tags: sans-alcool
+
+- name: Mojito
+  description: Rhum Bacardi, sirop de Mojito Mint, Perrier, citron vert, sucre roux, feuilles de menthe fraîche 13cl
+  price: 8.5
+  category_name: Cocktails
+  tags: frais
 
 
-- name: Panna cotta
-  description: La vraie crème à l’italienne à agrémenter de coulis de fruits rouges, lait caramélisé ou sauce au chocolat
-  price: 10
+# Desserts
+
+- name: Mangue et crème de coco
+  description: Un dessert fruité et crémeux à souhait! 
+  price: 7
   category_name: Desserts
-  tags: sans gluten
+  tags: frais
 
-- name: Tiramisù
-  description: La vraie recette avec le mascarpone, le café, le Marsala et ses biscuits
-  price: 10
+- name: Brownie
+  description: Un dessert fruité et crémeux à souhait! 
+  price: 5
   category_name: Desserts
+  tags: fait maison, sans gluten

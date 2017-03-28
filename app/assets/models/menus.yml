@@ -1,14 +1,11 @@
 - name: Spécial sans gluten
   description: Une pause gourmande, un moment dégustation, nous avons concocté des menus pour toutes les envies
-  price: 20
-  tags: sans gluten
+  price: 25.5
 
-- name: PRIMO ET MAESTRO
+- name: Primo Et Maestro
   description: Une pause gourmande, un moment dégustation, nous avons concocté des menus pour toutes les envies
-  price: 20
-  tags: sans gluten
+  price: 30
 
 - name: Bambino 
   description: Une pause gourmande, un moment dégustation, nous avons concocté des menus pour toutes les envies
-  price: 15
-  tags: sans gluten
+  price: 12.5
