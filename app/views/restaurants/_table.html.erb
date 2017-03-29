@@ -16,7 +16,7 @@
         <td><%= restaurant.user ? restaurant.user.complete_name : 'Utilisateur non trouvé' %></td>
         <td>
           <% if current_user == restaurant.user %>
-            <%= link_to_restaurant_with_session_key restaurant %>
+            <%= link_to 'Voir le site', restaurant_with_session_key_url(restaurant), class: 'btn btn-primary' %>
             <%= link_to 'Editer', edit_restaurant_path(restaurant) , class: 'btn btn-warning' %>
             <%= link_to 'Supprimer', restaurant, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'  %>
           <% else %>
