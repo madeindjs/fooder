@@ -33,11 +33,10 @@ class RestaurantsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create restaurant" do
     login(users(:me))
+    current_user = users(:me)
     assert_difference('Restaurant.count') do
       post restaurants_url, params: { restaurant: { address: @restaurant.address, city: @restaurant.city, name: "new restaurant", zip_code: @restaurant.zip_code } }
     end
-
-    assert_redirected_to root_url(subdomain: Restaurant.last)
   end
 
   test "should show restaurant" do
