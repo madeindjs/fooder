@@ -5,6 +5,7 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
 
   setup do
     @category = categories(:one)
+    setup_restaurant_host
   end
 
   test "should get new" do

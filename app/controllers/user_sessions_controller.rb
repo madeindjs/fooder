@@ -2,7 +2,7 @@
 class UserSessionsController < ApplicationController
   def new
     # if key is present, it's POST query from main website, so we try to identificate
-    if user_session_params.has_key?(:id) and user_session_params.has_key?(:key)
+    if params.has_key?(:user_session) and user_session_params.has_key?(:id) and user_session_params.has_key?(:key)
       create_user_session_from_public_key
       # Try to create session
       if @user_session.save
