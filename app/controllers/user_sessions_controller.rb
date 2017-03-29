@@ -12,7 +12,7 @@ class UserSessionsController < ApplicationController
     # if key is present, it's POST query from main website, so we try to identificate
     if user_session_params.has_key?(:id) and user_session_params.has_key?(:key)
       user = User.find user_session_params['id']
-      @user_session = UserSession.new user if user_session_params['key'] = 2812
+      @user_session = UserSession.new user if user_session_params['key'] = user.public_login_key
     else
       @user_session = UserSession.new user_session_params
     end
