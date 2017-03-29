@@ -6,8 +6,11 @@ class UserSessionsController < ApplicationController
       create_user_session_from_public_key
       # Try to create session
       if @user_session.save
-        flash[:success] = "Bonjour #{@user_session.user.firstname}!"
-        redirect_to @user_session.user
+        flash[:success] = [
+          "Bonjour #{@user_session.user.firstname}, Voici le super site de votre restaurant #{@restaurant.name}.",
+          "Commencez dès à présent à le personnaliser, le communiquer et en faire ce que vous voulez: C'est votre site!"
+        ].join("<br>")
+        redirect_to @restaurant ? @restaurant : @user_session.user
       else
         flash[:success] = "Une erreur est survenue."
         render :new
@@ -22,13 +25,12 @@ class UserSessionsController < ApplicationController
   end
 
   def create
-    # if key is present, it's POST query from main website, so we try to identificate
     @user_session = UserSession.new user_session_params
 
     # Try to create session
     if @user_session.save
       flash[:success] = "Bonjour #{@user_session.user.firstname}!"
-      redirect_to @user_session.user
+      redirect_to @restaurant ? @restaurant : @user_session.user
     else
       flash[:success] = "Une erreur est survenue."
       render :new
