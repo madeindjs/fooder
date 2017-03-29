@@ -20,4 +20,9 @@ class User < ApplicationRecord
     "#{self.lastname} #{self.firstname}"
   end
 
+  # Create a unique number to generate a key to accross session between domain
+  def public_login_key
+    Digest::SHA1.hexdigest "#{self.crypted_password}_#{self.last_request_at}"
+  end
+
 end
