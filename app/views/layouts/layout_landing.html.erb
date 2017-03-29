@@ -27,6 +27,9 @@
       <div class="row">
 
         <div id="main-container" class="col-md-8  col-sm-10 <%= "col-md-offset-2 col-sm-offset-1" if !admin? %>" style="padding-top: 50px">
+
+          <%= render 'shared/flash' %>
+
           <%= yield %>
         </div><!-- /.container -->
 
