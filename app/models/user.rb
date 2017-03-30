@@ -25,4 +25,8 @@ class User < ApplicationRecord
     Digest::SHA1.hexdigest "#{self.crypted_password}_#{self.last_request_at}"
   end
 
+  def premium?
+    false
+  end
+
 end

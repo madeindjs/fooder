@@ -35,6 +35,9 @@
           <% end %>
         <% else %>
           <% if current_user %>
+            <% unless current_user.premium? %>
+              <li><%= link_to "Passer premium", new_payement_path %></li>
+            <% end %>
             <li><%= link_to current_user.email, current_user %></li>
           <% else %>
             <li><%= link_to "se connecter", signin_path %></li>

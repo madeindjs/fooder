@@ -21,6 +21,7 @@
     </div>
 
     <p>
+      <%= link_to "Passer premium", new_payement_path, class: 'btn btn-primary' unless @user.premium? %>
       <%= link_to "se déconnecter", signout_path, class: 'btn btn-danger' %>
     </p>
 
@@ -31,7 +32,8 @@
   <%= render 'restaurants/table', restaurants: @user.restaurants %>
 
   <p>
-    <%= link_to "créer un autre restaurant", new_restaurant_path, class: 'btn btn-primary' %>
+    <%= link_to "créer un autre restaurant", new_restaurant_path, class: 'btn btn-default' %>
+    <%= link_to "Passer premium", new_payement_path, class: 'btn btn-primary' unless @user.premium? %>
     <%= link_to "se déconnecter", signout_path, class: 'btn btn-danger' %>
   </p>
 
