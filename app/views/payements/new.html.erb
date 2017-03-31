@@ -6,9 +6,8 @@
 <div class="col-xs-12">
   <p>Une fois le paiement</p>
   <ul>
-    <li>blalbla</li>
-    <li>blalbla</li>
-    <li>blalbla</li>
+    <li>vous continuez de bénéficier de toutes les mises à jour effectuées</li>
+    <li>vous rebasculez simplement sur le compte gratuit si votre compte premium arrive à terme: toutes vos données sont conservé</li>
   </ul>
 </div>
   
@@ -19,7 +18,7 @@
     <input type="hidden" name="hosted_button_id" value="2PQCPQ32JNP6A">
 
     <div class="form-group">
-      <%= select_tag :price, options_for_select(Payement::PRICES), {selected: 1, label: 'Nombre de mois', class: 'form-control input-lg'} %>
+      <%= select_tag :price, Product.options_for_select, {prompt: "Sélectionnez un tarif", label: 'Nombre de mois', class: 'form-control input-lg'} %>
     </div>
     <div class="form-group">
       <%= submit_tag "acheter", class: 'btn btn-lg btn-default' %>
@@ -27,6 +26,6 @@
   <% end %>
 
   <p>
-    <%= alert 'info', 'azaz' %>
+    <%= alert 'info', "Le prix n'inclue pas la location du nom de domaine qui reste à votre charge. Une dizaine d'euros supplémentaire par ans est à prévoir. Contactez le support pour plus d'information."  %>
   </p>
 </div>
