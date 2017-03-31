@@ -25,7 +25,7 @@
 
   <body>
 
-    <div class="main-container container-fluid">
+    <div class="container main-container container-fluid">
       <%= render 'layouts/navigation' %>
 
       <div class="row">
@@ -44,11 +44,9 @@
         
       </div>
 
-      <div class="row">
-        <%= render 'layouts/footer' %>
-      </div>
-
     </div>
+
+    <%= render 'layouts/footer' %>
     
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
