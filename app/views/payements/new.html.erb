@@ -1,5 +1,32 @@
-<h1>New Payement</h1>
+<div class="jumbotron">
+  <h1>Acheter un compte premium</h1>
+  <p>Bénéficiez dès a présent d'un nom de domaine personnalisé.</p>
+</div>
 
-<%= render 'form', payement: @payement %>
+<div class="col-xs-12">
+  <p>Une fois le paiement</p>
+  <ul>
+    <li>blalbla</li>
+    <li>blalbla</li>
+    <li>blalbla</li>
+  </ul>
+</div>
+  
+<div class="col-xs-12">
+  <%= form_tag "https://www.paypal.com/cgi-bin/webscr", class: 'form-inline' do %>
+    <%= render 'shared/errors_form', model: @payement %>
+    <input type="hidden" name="cmd" value="_s-xclick">
+    <input type="hidden" name="hosted_button_id" value="2PQCPQ32JNP6A">
 
-<%= link_to 'Back', payements_path %>
+    <div class="form-group">
+      <%= select_tag :price, options_for_select(Payement::PRICES), {selected: 1, label: 'Nombre de mois', class: 'form-control input-lg'} %>
+    </div>
+    <div class="form-group">
+      <%= submit_tag "acheter", class: 'btn btn-lg btn-default' %>
+    </div>
+  <% end %>
+
+  <p>
+    <%= alert 'info', 'azaz' %>
+  </p>
+</div>
