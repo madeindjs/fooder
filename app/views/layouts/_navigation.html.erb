@@ -9,7 +9,8 @@
       </button>
 
       <% if @restaurant and @restaurant.name %> 
-        <%= link_to @restaurant.name, root_url(subdomain: @restaurant) , class: "navbar-brand"%>
+        <%= link_to @restaurant.name, root_url(subdomain: @restaurant) , class: "navbar-brand", 
+          title:  ( admin? ? 'Le nom de votre restaurant peut être changé dans la section "editer le restaurant"' : nil ) %>
       <% else %>
         <%= link_to root_path , class: "navbar-brand", style: "padding: 5px" do %>
           <%= image_tag '/assets/fooder.svg', size: 40 %>

@@ -1,7 +1,4 @@
-// get the position number of the item
-function getPositionNumber(container, item){
-
-}
+$( document ).tooltip();
 
 if($(".sortable").length){
   var sortableList = $(".sortable");

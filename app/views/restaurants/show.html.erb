@@ -1,7 +1,8 @@
-<div class="row restaurant-header" style="background-image: url(<%= @restaurant.picture %>)">
+<div class="row restaurant-header" style="background-image: url(<%= @restaurant.picture %>)"
+  <%= tooltip 'Cette image de fond peut être changé dans la section  "editer le restaurant"' %> >
 
   <div class="col-xs-12">
-    <h1><%= logo_tag @restaurant %><%= @restaurant.name %></h1>
+    <h1  <%= tooltip 'Le nom de votre restaurant peut être changé dans la section "editer le restaurant"' %> ><%= logo_tag @restaurant %><%= @restaurant.name %></h1>
   </div>
 </div>
 
@@ -33,7 +34,7 @@
 <div class="row">
   <div class="col-xs-12">
     <h2>Les horaires d'ouvertures</h2>
-    <%= render 'opening_hours/details', opening_hours: @restaurant.opening_hours %>
+    <%= render 'opening_hours/details', opening_hours: @restaurant.valid_opening_hours %>
   </div>
 </div>
 

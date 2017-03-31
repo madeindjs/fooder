@@ -24,7 +24,7 @@ $('#toggle-client-view').click(function(){
 
   //
   var mainContainer = $("#main-container");
-  var offsetClasses = 'col-md-offset-2 col-sm-offset-1';
+  var offsetClasses = 'col-lg-offset-2 col-md-offset-1';
   if(mainContainer.hasClass(offsetClasses)){
     $(this).text('Afficher la vue client');
     $("#main-container").removeClass(offsetClasses);
