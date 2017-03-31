@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170330112053) do
+ActiveRecord::Schema.define(version: 20170331104901) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -104,6 +104,15 @@ ActiveRecord::Schema.define(version: 20170330112053) do
     t.string   "picture"
     t.string   "slug"
     t.index ["slug"], name: "index_posts_on_slug", unique: true
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "months"
+    t.float    "price"
+    t.boolean  "activate",   default: true
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "registrations", force: :cascade do |t|
