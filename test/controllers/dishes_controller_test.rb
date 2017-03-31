@@ -50,7 +50,7 @@ class DishesControllerTest < ActionDispatch::IntegrationTest
     setup_restaurant_host
     login(users(:me))
     assert_difference('Dish.count') do
-      post dishes_url, params: { dish: { category_id: @dish.category_id, description: @dish.description, name: @dish.name, restaurant_id: @dish.restaurant_id, user_id: @dish.user_id } }
+      post dishes_url, params: { dish: { category_id: @dish.category_id, description: @dish.description, name: @dish.name, restaurant_id: @dish.restaurant_id, user_id: @dish.user_id, price: 1 } }
     end
 
     assert_redirected_to Dish.last
@@ -59,7 +59,7 @@ class DishesControllerTest < ActionDispatch::IntegrationTest
   test "should not create dish" do
     setup_restaurant_host
     assert_no_difference('Dish.count') do
-      post dishes_url, params: { dish: { category_id: @dish.category_id, description: @dish.description, name: @dish.name, restaurant_id: @dish.restaurant_id, user_id: @dish.user_id } }
+      post dishes_url, params: { dish: { category_id: @dish.category_id, description: @dish.description, name: @dish.name, restaurant_id: @dish.restaurant_id, user_id: @dish.user_id, price: 1 } }
     end
 
     assert_redirected_to root_path
