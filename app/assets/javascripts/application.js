@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui/widgets/accordion
+//= require jquery-ui/widgets/tooltip
 //= require jquery-ui/widgets/sortable
 //= require moment
 //= require turbolinks

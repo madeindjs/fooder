@@ -51,4 +51,12 @@ module ApplicationHelper
   end
 
 
+  def tooltip content
+    if admin?
+     html = 'title="' + h(content) + '"'
+     html.html_safe
+   end
+  end
+
+
 end
