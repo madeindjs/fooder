@@ -11,7 +11,9 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery-ui
 //= require jquery_ujs
+//= require jquery-ui/widgets/accordion
+//= require jquery-ui/widgets/sortable
+//= require moment
 //= require turbolinks
 //= require_tree .
