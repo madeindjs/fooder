@@ -12,13 +12,12 @@
 </div>
   
 <div class="col-xs-12">
-  <%= form_tag "https://www.paypal.com/cgi-bin/webscr", class: 'form-inline' do %>
+  <%= bootstrap_form_for @payement do |f| %>
     <%= render 'shared/errors_form', model: @payement %>
-    <input type="hidden" name="cmd" value="_s-xclick">
-    <input type="hidden" name="hosted_button_id" value="2PQCPQ32JNP6A">
+
 
     <div class="form-group">
-      <%= select_tag :price, Product.options_for_select, {prompt: "Sélectionnez un tarif", label: 'Nombre de mois', class: 'form-control input-lg'} %>
+      <%= f.select :product_id, Product.options_for_select, {prompt: "Sélectionnez un produit", label: 'Produit'}, {class: 'form-control input-lg'} %>
     </div>
     <div class="form-group">
       <%= submit_tag "acheter", class: 'btn btn-lg btn-default' %>
@@ -29,3 +28,4 @@
     <%= alert 'info', "Le prix n'inclue pas la location du nom de domaine qui reste à votre charge. Une dizaine d'euros supplémentaire par ans est à prévoir. Contactez le support pour plus d'information."  %>
   </p>
 </div>
+
