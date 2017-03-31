@@ -15,7 +15,10 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="fooder.svg">
+   sodipodi:docname="fooder.svg"
+   inkscape:export-filename="/home/alex/dev/ruby/fooder/public/assets/favicon.png"
+   inkscape:export-xdpi="3.1648352"
+   inkscape:export-ydpi="3.1648352">
   <defs
      id="defs4">
     <inkscape:path-effect
@@ -30,9 +33,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.49497474"
-     inkscape:cx="324.16601"
-     inkscape:cy="497.56226"
+     inkscape:zoom="0.69999999"
+     inkscape:cx="331.20123"
+     inkscape:cy="509.99374"
      inkscape:document-units="px"
      inkscape:current-layer="root"
      showgrid="false"
@@ -52,7 +55,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -63,10 +66,10 @@
      transform="translate(0,-142.36216)">
     <path
        style="fill:#e3dedb;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 139.38074,721.09304 c 28.81461,-106.04406 13.83198,-114.52075 -6.06091,-171.72594 0,0 -8.90482,-74.52719 14.14214,-147.48228 -4.04061,-82.8325 -32.83131,-129.33377 36.3655,-208.09142 88.81592,-7.08763 155.77754,2.64014 244.45691,26.26397 80.92041,-15.2216 181.26358,-33.06657 288.90365,-20.20305 67.08703,9.09467 74.27732,98.18293 40.4061,177.78685 -13.10607,107.77623 16.7901,225.77709 22.22335,329.30972 -13.84696,76.70897 -6.77629,224.79594 -38.3858,268.7006 -56.41335,61.87331 -159.06266,8.5891 -212.13203,-6.0609 -72.83736,2.571 -189.11229,3.6871 -311.127,38.38581 C 121.03434,980.14139 124.13412,946.38959 90.893422,848.37226 145.29893,783.64872 123.69945,823.73988 139.38074,721.09304 Z"
+       d="m 137.2589,555.75723 c -5.61113,-30.84277 28.36498,-141.38459 4.56057,-217.55738 -12.50899,-36.95921 -13.26849,-92.67991 -3.04426,-111.97926 20.68603,-39.04713 41.12797,-32.47777 80.62297,-32.9174 83.10164,1.4838 183.06397,21.70178 226.02906,22.46847 32.34898,-5.2216 164.12072,-28.78086 271.76079,-15.91734 67.08703,9.09467 59.99161,182.46864 36.12039,230.64399 5.46536,113.49052 21.07581,172.91995 26.50906,276.45258 -13.84696,76.70897 -6.77629,224.79594 -38.3858,268.7006 -56.41335,61.87331 -225.73273,12.62971 -278.8021,-2.02029 -68.79675,10.65222 -122.44222,-0.35351 -244.45693,34.3452 C 121.03434,980.14139 124.13412,946.38959 90.893422,848.37226 183.25227,746.75172 143.86978,697.24444 137.2589,555.75723 Z"
        id="path4160"
        inkscape:connector-curvature="0"
-       sodipodi:nodetypes="ccccccccccccc" />
+       sodipodi:nodetypes="ccscccccccccc" />
     <rect
        style="opacity:1;fill:#e3dbdb;fill-opacity:1;stroke:none;stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect4168"
@@ -164,27 +167,27 @@
            rx="2.2620399"
            ry="9.8516703" />
       </g>
+      <text
+         style="font-style:normal;font-weight:normal;font-size:70px;line-height:125%;font-family:sans-serif;letter-spacing:99.94000244px;word-spacing:0px;fill:#aa4400;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         x="-939.69104"
+         y="555.50867"
+         id="text4234"
+         sodipodi:linespacing="125%"
+         transform="matrix(0,-1,1,0,0,0)"
+         xml:space="default">
+        <tspan
+           sodipodi:role="line"
+           id="tspan4236"
+           x="-939.69104"
+           y="555.50867"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:90px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';letter-spacing:70px;fill:#aa4400;fill-opacity:1">FOODER</tspan>
+      </text>
     </g>
     <g
        id="g4301"
        transform="matrix(0.40816327,0,0,0.40816327,349.04319,363.61084)">
       <g
          id="Guides_For_Artboard" />
-      <text
-         style="font-style:normal;font-weight:normal;font-size:70px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#aa4400;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-         x="-812.65558"
-         y="876.47156"
-         id="text4234"
-         sodipodi:linespacing="125%"
-         transform="matrix(0.8660254,-0.5,0.5,0.8660254,0,0)"
-         xml:space="default">
-        <tspan
-           sodipodi:role="line"
-           id="tspan4236"
-           x="-812.65558"
-           y="876.47156"
-           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:171.5px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';letter-spacing:113.93508148px;fill:#aa4400;fill-opacity:1">FOODER</tspan>
-      </text>
       <g
          id="Artwork" />
       <g
