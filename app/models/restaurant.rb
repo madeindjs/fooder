@@ -29,6 +29,10 @@ class Restaurant < ApplicationRecord
     "#{self.address}, #{self.zip_code}, #{self.city}"
   end
 
+  def valid_opening_hours
+    self.opening_hours.to_a.select{|h| h.actual? }
+  end
+
   private
 
   def generate_dishes

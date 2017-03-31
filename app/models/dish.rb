@@ -3,6 +3,11 @@ class Dish < ApplicationRecord
   belongs_to :category
   belongs_to :restaurant
 
+  validates_presence_of :user_id
+  validates_presence_of :category_id
+  validates_presence_of :restaurant_id
+  validates_presence_of :price
+
   mount_uploader :picture, PictureUploader
 
   extend FriendlyId
