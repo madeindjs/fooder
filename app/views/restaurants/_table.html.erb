@@ -3,7 +3,6 @@
     <tr>
       <th>Name</th>
       <th>Address</th>
-      <th>User</th>
       <th></th>
     </tr>
   </thead>
@@ -13,7 +12,6 @@
       <tr>
         <td><%= render 'restaurants/link', restaurant: restaurant %></td>
         <td><%= restaurant.complete_address %></td>
-        <td><%= restaurant.user ? restaurant.user.complete_name : 'Utilisateur non trouvé' %></td>
         <td>
           <% if current_user == restaurant.user %>
             <%= link_to 'Voir le site', restaurant_with_session_key_url(restaurant), class: 'btn btn-primary' %>
