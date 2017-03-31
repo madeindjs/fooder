@@ -4,7 +4,7 @@ class PagesController < ApplicationController
     @title = "Accueil"
     @description = "Génerez votre site pour votre restaurant."
 
-    render layout: 'layout_landing'
+    render layout: 'application_landing'
   end
 
   def cost
