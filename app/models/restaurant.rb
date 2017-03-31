@@ -16,6 +16,9 @@ class Restaurant < ApplicationRecord
   after_create :generate_opening_hours
   after_create :generate_categories
 
+  validates_presence_of :user_id
+  validates_presence_of :name
+
   mount_uploader :logo, PictureUploader
   mount_uploader :picture, PictureUploader
 

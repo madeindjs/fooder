@@ -3,6 +3,7 @@ class Category < ApplicationRecord
   belongs_to :restaurant
 
   validates_uniqueness_of :name, scope: :restaurant_id
+  validates_presence_of :restaurant_id
 
 
   def self.find_or_create name, restaurant_id
