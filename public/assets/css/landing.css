@@ -16,3 +16,5 @@ header{padding-top: 100px; padding-bottom: 100px}
 
 section.faq h3{font-size: 2.3rem;}
   section.faq p{font-size: 1.9rem;}
+
+footer{margin-top: 100px; padding-top: 40px; padding-bottom: 40px; background-color: #f5f5f5; text-align: center}
