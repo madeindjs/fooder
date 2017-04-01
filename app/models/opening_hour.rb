@@ -30,6 +30,17 @@ class OpeningHour < ApplicationRecord
     }
   end
 
+  # Check if this opening hour is actually valid or not
+  def actual?
+    if valid_from && valid_through
+      now_date_time = DateTime.now
+      now_date = Date.new 2000, now.month, now.day
+      valid_from < now_date && valid_through > now_date
+    else
+      true
+    end
+  end
+
   protected
   def opens_before_closes
     errors.add(:closes, "Opening time can't be after closed time") if opens && closes && opens >= closes

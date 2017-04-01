@@ -17,7 +17,7 @@ class OpeningHoursController < ApplicationController
     @opening_hour.restaurant_id = @restaurant.id
 
     if @opening_hour.save
-      flash[:success] = "Votre horraire d'ouverture a supprimé."
+      flash[:success] = "Votre horraire d'ouverture a été créée."
       redirect_to opening_hours_path
     else
       flash[:danger] = "Une erreur est survenue."

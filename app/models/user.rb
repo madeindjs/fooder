@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_many :sections
   has_many :posts
 
+  validates_uniqueness_of :email
+
   mount_uploader :picture, PictureUploader
 
   extend FriendlyId

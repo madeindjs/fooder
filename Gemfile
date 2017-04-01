@@ -5,47 +5,36 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
-gem 'mysql2'
-
-
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+# RAILS
 gem 'rails', '~> 5.0.1'
-# Use sqlite3 as the database for Active Record
-gem 'bootstrap_form'
-gem 'sqlite3'
-# Use Puma as the app server
-gem 'puma', '~> 3.0'
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
-# Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
-# Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.2'
-# See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
-
-# Use jquery as the JavaScript library
-gem 'jquery-rails'
-gem 'jquery-ui-rails'
-# Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5'
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.5'
+gem 'mysql2'
+gem 'sqlite3' 
+gem 'puma', '~> 3.0' # Use Puma as the app server
+gem 'turbolinks', '~> 5' # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
+gem 'jbuilder', '~> 2.5' # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
 gem 'friendly_id'
-
-# for upload picture
+# PICTURE
 gem 'carrierwave'
 gem 'rmagick' # sudo apt-get install libmagickwand-dev
 
+# CSS
+gem 'sass-rails', '~> 5.0'
+gem 'bootstrap_form'
 
+# JAVASCRIPT
+# gem 'therubyracer', platforms: :ruby # See https://github.com/rails/execjs#readme for more supported runtimes
+gem 'uglifier', '>= 1.3.0' # Use Uglifier as compressor for JavaScript assets
+gem 'coffee-rails', '~> 4.2' # Use CoffeeScript for .coffee assets and views
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
+gem 'momentjs-rails'
+
+# AUTHENTIFICATION
 gem 'authlogic', '>= 3.5'
-gem 'devise'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
