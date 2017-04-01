@@ -1,29 +1,25 @@
-<p id="notice"><%= notice %></p>
+<h1>Mes paiements</h1>
 
-<h1>Payements</h1>
-
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>User</th>
+      <th>Produit</th>
       <th>Transaction</th>
-      <th colspan="3"></th>
+      <th>Statut</th>
+      <th>Statut</th>
+      <th>Acheté le</th>
     </tr>
   </thead>
 
   <tbody>
     <% @payements.each do |payement| %>
       <tr>
-        <td><%= payement.user_id %></td>
+        <td><%= payement.product.name %></td>
         <td><%= payement.transaction_id %></td>
-        <td><%= link_to 'Show', payement %></td>
-        <td><%= link_to 'Edit', edit_payement_path(payement) %></td>
-        <td><%= link_to 'Destroy', payement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= payement.status %></td>
+        <td><%= payement.purchased_at %></td>
+        <td><%= link_to 'Détails', payement, class: 'btn btn-default' %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Payement', new_payement_path %>

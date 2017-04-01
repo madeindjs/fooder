@@ -1,19 +1,40 @@
-<p id="notice"><%= notice %></p>
+<h1>Payement</h1>
+
+<table class="table">
+
+  <tr>
+    <th>Produit</th>
+    <td><%= @payement.product.name %></td>
+  </tr>
+
+
+  <tr>
+    <th>Identifiant transaction Fooder</th>
+    <td><%= @payement.id %></td>
+  </tr>
+
+  <tr>
+    <th>Identifiant transaction Paypal</th>
+    <td><%= @payement.transaction_id %></td>
+  </tr>
+
+  <tr>
+    <th>Statut</th>
+    <td><%= @payement.status %></td>
+  </tr>
+
+  <tr>
+    <th>Acheté le</th>
+    <td><%= @payement.purchased_at %></td>
+  </tr>
+
+  <tr>
+    <th>Valide jusqu'à</th>
+    <td>TODO</td>
+  </tr>
+  
+</table>
 
 <p>
-  <strong>User:</strong>
-  <%= @payement.user_id %>
+  <%= link_to 'Mes autres payements', payements_url, class: 'btn btn-default' %>
 </p>
-
-<p>
-  <strong>Transaction:</strong>
-  <%= @payement.transaction_id %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @payement.status %>
-</p>
-
-<%= link_to 'Edit', edit_payement_path(@payement) %> |
-<%= link_to 'Back', payements_path %>

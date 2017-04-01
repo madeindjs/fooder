@@ -8,9 +8,14 @@ class PayementsController < ApplicationController
   protect_from_forgery except: [:hook] # to turn off csrf checking when Paypal send a plain HTTP POST.
 
 
+
   # POST /hook
   #
   # Get confirmation from paypal & redirect to payement
+  # 
+  # To simulate in developpement environement
+  # 1. install ngrok from https://ngrok.com/download
+  # 2. run it `./ngrok http 3000`
   def hook
     params.permit! # Permit all Paypal input params
     status = params[:payment_status]
@@ -30,7 +35,10 @@ class PayementsController < ApplicationController
   # GET /payements
   # GET /payements.json
   def index
-    @payements = Payement.all
+    @title = "Mes paiements"
+    @description = "Consulter vos paiements effectués."
+
+    @payements = Payement.includes(:product).where(user_id: current_user.id).all
   end
 
   # GET /payements/1
@@ -46,10 +54,6 @@ class PayementsController < ApplicationController
     @payement = Payement.new
   end
 
-  # GET /payements/1/edit
-  def edit
-  end
-
   # POST /payements
   # POST /payements.json
   def create
@@ -57,28 +61,12 @@ class PayementsController < ApplicationController
     @payement.user_id = current_user.id
 
     if @payement.save
-      redirect_to @payement.paypal_url(payements_url)
+      redirect_to @payement.paypal_url(payement_url(@payement))
     else
       render :new 
     end
   end
 
-  # PATCH/PUT /payements/1
-  # PATCH/PUT /payements/1.json
-  def update
-    if @payement.update(payement_params)
-      redirect_to @payement, notice: 'Payement was successfully updated.'
-    else
-      render :edit
-    end
-  end
-
-  # DELETE /payements/1
-  # DELETE /payements/1.json
-  def destroy
-    @payement.destroy
-    redirect_to payements_url, notice: 'Payement was successfully destroyed.'
-  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
