@@ -15,6 +15,9 @@ class PayementsController < ApplicationController
 
   # GET /payements/new
   def new
+    @title = "Passer premium"
+    @description = "Bénéficier dès a présent d'un nom de domaine personnalisé."
+
     @payement = Payement.new
   end
 
@@ -27,10 +30,6 @@ class PayementsController < ApplicationController
   def create
     @payement = Payement.new(payement_params)
     @payement.user_id = current_user.id
-
-    puts '*'*80
-    puts payement_params.inspect
-    puts '*'*80
 
     if @payement.save
       redirect_to @payement.paypal_url(payements_url)

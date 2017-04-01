@@ -6,8 +6,9 @@ class Payement < ApplicationRecord
 
 
   def paypal_url return_path
+
     values = {
-        business: "rousseaualexandre.lyon@gmail.com",
+        business: Rails.application.secrets.paypal_business_mail,
         cmd: "_xclick",
         upload: 1,
         return: return_path,# TODO: add a scren return to confirm payement
