@@ -1,14 +1,12 @@
 Rails.application.routes.draw do
 
-  
-  resources :payements
-  get 'cost' => 'pages#cost'
-
+  # restaurants area
   resources :categories, only: [:create, :new, :edit, :update, :destroy]
   resources :restaurants # TODO: remove it
-
-
+  
   constraints subdomain: /.+/  do
+    get '/' => 'restaurants#show'
+
     get 'contact' => "restaurants#contact"
     get 'allergens' => "restaurants#allergens"
     patch 'activate_module' => "restaurants#activate_module"
@@ -32,17 +30,20 @@ Rails.application.routes.draw do
     resources :categories
   end
 
+  # payements area
+  post "/hook" => "payements#hook", as: :payement_hook
+  resources :payements
 
+  # session
   resources :users
   resources :user_sessions, only: [:create, :destroy]
-
-
   get 'signout', to: 'user_sessions#destroy'
   get 'signin', to: 'user_sessions#new'
   get "signup" => "users#new"
 
+  # pages area
+  get 'cost' => 'pages#cost'
   get "home" => "pages#home"
-  get '/' => 'restaurants#show', constraints: { subdomain: /.+/ }
   get '/', to:  'restaurants#show', constraints: { subdomain: 'le-petit-lagon-bleu'}, as: :example
 
   root 'pages#home'

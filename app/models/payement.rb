@@ -11,12 +11,14 @@ class Payement < ApplicationRecord
         business: Rails.application.secrets.paypal_business_mail,
         cmd: "_xclick",
         upload: 1,
-        return: return_path,# TODO: add a scren return to confirm payement
+        return: return_path,
         invoice: id,
         amount: product.price,
         item_name: product.name,
         item_number: product.id,
-        quantity: 1
+        quantity: 1,
+        notify_url: Rails.application.routes.url_helpers.payement_hook_url(host: Rails.application.secrets.app_host)
+
     }
     "#{Rails.application.secrets.paypal_host}/cgi-bin/webscr?" + values.to_query
   end
