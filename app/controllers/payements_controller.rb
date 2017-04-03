@@ -18,14 +18,12 @@ class PayementsController < ApplicationController
   # 2. run it `./ngrok http 3000`
   def hook
     params.permit! # Permit all Paypal input params
-    status = params[:payment_status]
-      puts '*'*80
-      puts params.inspect
-      puts '*'*80
-      @payement = Payement.find params[:invoice]
-      puts @payement.inspect
-      puts '*'*80
-      @payement.update_attributes notification_params: params, status: status, transaction_id: params[:txn_id], purchased_at: Time.now
+
+    @payement = Payement.find params[:invoice]
+
+    if @payement.update_attributes paypal_params.merge(purchased_at: Time.now)
+      flash[:success] = "Merci pour votre achat." 
+    end
     render nothing: true
   end
 
@@ -75,5 +73,13 @@ class PayementsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def payement_params
       params.require(:payement).permit :product_id
+    end
+
+    # we take all paypal POST params in case we need it later
+    def paypal_params
+      params.permit :mc_gross, :protection_eligibility, :address_status, :payer_id, :address_street, :payment_date, :payment_status, 
+        :address_zip, :first_name, :address_country_code, :address_name, :notify_version, :custom, :payer_status, :business, :address_country, 
+        :address_city, :quantity, :verify_sign, :payer_email, :txn_id, :payment_type, :last_name, :address_state, :receiver_email, :receiver_id, 
+        :pending_reason, :txn_type, :item_name, :mc_currency , :item_number, :residence_country, :test_ipn, :transaction_subject, :payment_gross, :ipn_track_id
     end
 end

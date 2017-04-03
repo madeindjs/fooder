@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170401133546) do
+ActiveRecord::Schema.define(version: 20170403110108) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -88,11 +88,47 @@ ActiveRecord::Schema.define(version: 20170401133546) do
     t.integer  "user_id"
     t.string   "transaction_id"
     t.integer  "status"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.integer  "product_id"
     t.text     "notification_params"
     t.datetime "purchased_at"
+    t.string   "mc_gross"
+    t.string   "protection_eligibility"
+    t.string   "address_status"
+    t.string   "payer_id"
+    t.string   "address_street"
+    t.string   "payment_date"
+    t.string   "payment_status"
+    t.string   "address_zip"
+    t.string   "first_name"
+    t.string   "address_country_code"
+    t.string   "address_name"
+    t.string   "notify_version"
+    t.string   "custom"
+    t.string   "payer_status"
+    t.string   "business"
+    t.string   "address_country"
+    t.string   "address_city"
+    t.string   "quantity"
+    t.string   "verify_sign"
+    t.string   "payer_email"
+    t.string   "txn_id"
+    t.string   "payment_type"
+    t.string   "last_name"
+    t.string   "address_state"
+    t.string   "receiver_email"
+    t.string   "receiver_id"
+    t.string   "pending_reason"
+    t.string   "txn_type"
+    t.string   "item_name"
+    t.string   "mc_currency"
+    t.string   "item_number"
+    t.string   "residence_country"
+    t.string   "test_ipn"
+    t.string   "transaction_subject"
+    t.string   "payment_gross"
+    t.string   "ipn_track_id"
   end
 
   create_table "posts", force: :cascade do |t|
