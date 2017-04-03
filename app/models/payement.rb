@@ -23,4 +23,9 @@ class Payement < ApplicationRecord
     "#{Rails.application.secrets.paypal_host}/cgi-bin/webscr?" + values.to_query
   end
 
+
+  def complete_address
+    "#{address_street}, #{address_zip}, #{address_city}, #{address_country}"
+  end
+
 end

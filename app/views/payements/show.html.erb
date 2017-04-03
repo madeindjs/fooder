@@ -1,26 +1,15 @@
-<h1>Payement</h1>
+<h1>Facture</h1>
 
-<table class="table">
-
-  <tr>
-    <th>Produit</th>
-    <td><%= @payement.product.name %></td>
-  </tr>
-
+<table class="table table-striped">
 
   <tr>
-    <th>Identifiant transaction Fooder</th>
+    <th>Identifiant</th>
     <td><%= @payement.id %></td>
   </tr>
 
   <tr>
-    <th>Identifiant transaction Paypal</th>
-    <td><%= @payement.transaction_id %></td>
-  </tr>
-
-  <tr>
-    <th>Statut</th>
-    <td><%= @payement.status %></td>
+    <th>Produit</th>
+    <td><%= @payement.product.name %></td>
   </tr>
 
   <tr>
@@ -32,6 +21,40 @@
     <th>Valide jusqu'à</th>
     <td>TODO</td>
   </tr>
+  
+
+  <tr>
+    <th>TOTAL TTC</th>
+    <td><%= @payement.mc_gross %></td>
+  </tr>
+
+</table>
+
+<h2>Paypal</h2>
+
+<table class="table table-striped">
+
+  <tr>
+    <th>Transaction</th>
+    <td><%= @payement.txn_id %></td>
+  </tr>
+
+  <tr>
+    <th>Email</th>
+    <td><%= @payement.payer_email %></td>
+  </tr>
+
+  <tr>
+    <th>Adresse</th>
+    <td><%= @payement.complete_address %></td>
+  </tr>
+
+  <tr>
+    <th>Statut</th>
+    <td><%= @payement.payment_status %></td>
+  </tr>
+
+
   
 </table>
 
