@@ -2,8 +2,8 @@
 #
 # @see https://launchschool.com/blog/basic-paypal-checkout-processing-in-rails/
 class PayementsController < ApplicationController
-  before_action :check_login
-  before_action :set_payement, only: [:show, :edit, :update, :destroy]
+  before_action :check_login, only: [:show]
+  before_action :set_payement, only: [:show]
 
   protect_from_forgery except: [:hook] # to turn off csrf checking when Paypal send a plain HTTP POST.
 
@@ -19,7 +19,6 @@ class PayementsController < ApplicationController
   def hook
     params.permit! # Permit all Paypal input params
     status = params[:payment_status]
-    if status == "Completed"
       puts '*'*80
       puts params.inspect
       puts '*'*80
@@ -27,7 +26,6 @@ class PayementsController < ApplicationController
       puts @payement.inspect
       puts '*'*80
       @payement.update_attributes notification_params: params, status: status, transaction_id: params[:txn_id], purchased_at: Time.now
-    end
     render nothing: true
   end
 

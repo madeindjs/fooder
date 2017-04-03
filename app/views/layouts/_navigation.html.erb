@@ -32,6 +32,7 @@
       <ul class="nav navbar-nav nav navbar-right">
         <% if @restaurant %>
           <% if admin? %>
+            <li><%= link_to "Votre profil", user_url(current_user, subdomain: nil) %></li>
             <li><button id="toggle-client-view" class="navbar-btn">Afficher la vue client</button></li>
           <% end %>
         <% else %>
