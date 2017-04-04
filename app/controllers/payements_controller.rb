@@ -34,7 +34,7 @@ class PayementsController < ApplicationController
     @title = "Mes paiements"
     @description = "Consulter vos paiements effectués."
 
-    @payements = Payement.includes(:product).where(user_id: current_user.id).all
+    @payements = current_user.payements.includes(:product)
   end
 
   # GET /payements/1

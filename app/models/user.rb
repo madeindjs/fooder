@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   acts_as_authentic
   has_many :opening_hours
+  has_many :payements
   has_many :restaurants
   has_many :menus
   has_many :dishes

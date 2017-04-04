@@ -3,37 +3,36 @@
 <p><%= glyphicon 'envelope' %> <%= @user.email %></p>
 
 
-<% if @user == current_user and @user.restaurants.empty?%>
+<% if @user == current_user and %>
 
-  <%= form_for(Restaurant.new) do |f| %>
+  <% if @user.restaurants.empty? # if user have don't restaurant yet%>
+    <%= form_for(Restaurant.new) do |f| %>
 
-    <div class="form-group col-sm-12">
-      <%= alert 'warning', "Vous n'avez pas encore de restaurant. Créez en un en cinq minutes!" %>
-    </div>
+      <div class="form-group col-sm-12">
+        <%= alert 'warning', "Vous n'avez pas encore de restaurant. Créez en un en cinq minutes!" %>
+      </div>
 
-    <div class="form-group col-sm-12">
-      <%= f.label :name, 'Nom' %>
-      <%= f.text_field :name, class: 'form-control' %>
-    </div>
+      <div class="form-group col-sm-12">
+        <%= f.label :name, 'Nom' %>
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
 
-    <div class="form-group col-sm-12">
-      <%= f.submit 'Créer ce magnifique restaurant', class: 'btn btn-primary' %>
-    </div>
+      <div class="form-group col-sm-12">
+        <%= f.submit 'Créer ce magnifique restaurant', class: 'btn btn-primary' %>
+      </div>
+    <% end # end of form %>
 
-    <p>
-      <%= link_to "Passer premium", new_payement_path, class: 'btn btn-primary' unless @user.premium? %>
-      <%= link_to "se déconnecter", signout_path, class: 'btn btn-danger' %>
-    </p>
+  <% else # elese display restaurants %>
 
+    <h2>Mes restaurants</h2>
+    <%= render 'restaurants/table', restaurants: @user.restaurants %>
+    
   <% end %>
 
-<% elsif  @user == current_user %>
-  <h2>Mes restaurants</h2>
-  <%= render 'restaurants/table', restaurants: @user.restaurants %>
-
   <p>
-    <%= link_to "créer un autre restaurant", new_restaurant_path, class: 'btn btn-default' %>
-    <%= link_to "Passer premium", new_payement_path, class: 'btn btn-primary' unless @user.premium? %>
+    <%= link_to "créer un autre restaurant", new_restaurant_path, class: 'btn btn-primary' %>
+    <%= link_to "Passer premium", new_payement_path, class: 'btn btn-default' unless @user.premium? %>
+    <%= link_to "Mes paiements", payements_path, class: 'btn btn-default' %>
     <%= link_to "se déconnecter", signout_path, class: 'btn btn-danger' %>
   </p>
 
