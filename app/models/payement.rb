@@ -14,6 +14,7 @@ class Payement < ApplicationRecord
         return: return_path,
         invoice: id,
         amount: product.price,
+        currency_code: 'EUR',
         item_name: product.name,
         item_number: product.id,
         quantity: 1,
