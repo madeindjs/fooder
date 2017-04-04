@@ -28,8 +28,18 @@ class User < ApplicationRecord
     Digest::SHA1.hexdigest "#{self.crypted_password}_#{self.last_request_at}"
   end
 
+  # Check if the user is premium
   def premium?
-    false
+    # check if user has payements
+    if last_payement = payements.last
+      # is unlimited product
+      return true if last_payement.product.unlimited?
+      # check date
+      months = last_payement.product.months
+      return Time.now < last_payement.purchased_at + months.month
+    end
+
+    return false
   end
 
   def paypal_url(return_path)
