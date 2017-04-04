@@ -28,11 +28,12 @@ class ApplicationController < ActionController::Base
   end
 
   def check_restaurant
-    redirect_to root_url(subdomain: '') unless @restaurant
+    # TODO: repair this
+    # redirect_to root_url(subdomain: '') unless @restaurant
   end
 
   def check_login
-    redirect_to root_path   unless current_user_session
+    redirect_to root_path  unless current_user_session
   end
 
   helper_method :current_user_session, :current_user

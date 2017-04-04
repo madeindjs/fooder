@@ -1,0 +1,25 @@
+<h1>Mes paiements</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Produit</th>
+      <th>Transaction</th>
+      <th>Statut</th>
+      <th>Acheté le</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @payements.order(id: :desc).each do |payement| %>
+      <tr>
+        <td><%= payement.product.name %></td>
+        <td><%= payement.txn_id %></td>
+        <td><%= payement.payment_status %></td>
+        <td><%= payement.purchased_at %></td>
+        <td><%= link_to 'Détails', payement, class: 'btn btn-default' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
