@@ -2,7 +2,7 @@
 #
 # @see https://launchschool.com/blog/basic-paypal-checkout-processing-in-rails/
 class PayementsController < ApplicationController
-  before_action :check_login, only: [:show]
+  before_action :check_login, only: [:new, :index, :show, :create]
   before_action :set_payement, only: [:show]
 
   protect_from_forgery except: [:hook] # to turn off csrf checking when Paypal send a plain HTTP POST.

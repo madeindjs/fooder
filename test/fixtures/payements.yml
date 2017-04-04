@@ -2,10 +2,12 @@
 
 one:
   user_id: 1
+  product_id: 1
   transaction_id: MyString
   status: 1
 
 two:
   user_id: 1
+  product_id: 1
   transaction_id: MyString
   status: 1
