@@ -1,4 +1,4 @@
-<h1><%= @user.complete_name %></h1>
+<h1><%= image_tag '/assets/icons/certificate.svg', alt: 'utilisateur premium', size: 50 if @user.premium? %> <%= @user.complete_name %></h1>
 
 <p><%= glyphicon 'envelope' %> <%= @user.email %></p>
 

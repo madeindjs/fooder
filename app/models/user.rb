@@ -19,6 +19,7 @@ class User < ApplicationRecord
     c.crypto_provider = Authlogic::CryptoProviders::Sha512
   end
 
+
   def complete_name
     "#{self.lastname} #{self.firstname}"
   end
@@ -30,16 +31,17 @@ class User < ApplicationRecord
 
   # Check if the user is premium
   def premium?
+    return @premium if @premium
+
     # check if user has payements
     if last_payement = payements.last
       # is unlimited product
-      return true if last_payement.product.unlimited?
+      return @premium = true if last_payement.product.unlimited?
       # check date
       months = last_payement.product.months
-      return Time.now < last_payement.purchased_at + months.month
+      return @premium = Time.now < last_payement.purchased_at + months.month
     end
-
-    return false
+    return @premium = false
   end
 
   def paypal_url(return_path)

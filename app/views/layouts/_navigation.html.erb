@@ -37,7 +37,9 @@
           <% end %>
         <% else %>
           <% if current_user %>
-            <% unless current_user.premium? %>
+            <% if current_user.premium? %>
+              <li><%= image_tag '/assets/icons/certificate.svg', alt: 'utilisateur premium', size: 50 %></li>
+            <% else %>
               <li><%= link_to "Passer premium", new_payement_path %></li>
             <% end %>
             <li><%= link_to current_user.email, current_user %></li>
