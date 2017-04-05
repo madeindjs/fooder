@@ -13,7 +13,13 @@ if(select.length){
     });
     
     select.change(function(){
-      $("link").attr("href", $(this).val());
+      var value = $(this).val();
+      if( value != ""){
+        $("link").attr("href", value);
+        $(".admin").each(function(index, el){
+          $(el).fadeToggle();
+        });
+      }
     });
 
   }, "json").fail(function(){

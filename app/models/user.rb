@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   acts_as_authentic
   has_many :opening_hours
+  has_many :payements
   has_many :restaurants
   has_many :menus
   has_many :dishes
@@ -18,6 +19,7 @@ class User < ApplicationRecord
     c.crypto_provider = Authlogic::CryptoProviders::Sha512
   end
 
+
   def complete_name
     "#{self.lastname} #{self.firstname}"
   end
@@ -26,5 +28,32 @@ class User < ApplicationRecord
   def public_login_key
     Digest::SHA1.hexdigest "#{self.crypted_password}_#{self.last_request_at}"
   end
+
+  # Check if the user is premium
+  def premium?
+    return @premium if @premium
+    # check if user has payements
+    if last_payement = payements.last
+      # is unlimited product
+      return @premium = last_payement.actual?
+    end
+    return @premium = false
+  end
+
+  def paypal_url(return_path)
+    values = {
+        business: "merchant@gotealeaf.com",
+        cmd: "_xclick",
+        upload: 1,
+        return: "#{Rails.application.secrets.app_host}#{return_path}",
+        invoice: id,
+        amount: course.price,
+        item_name: course.name,
+        item_number: course.id,
+        quantity: '1'
+    }
+    "#{Rails.application.secrets.paypal_host}/cgi-bin/webscr?" + values.to_query
+  end
+
 
 end

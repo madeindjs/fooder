@@ -1,0 +1,40 @@
+class AddPaypalInformationsToPayements < ActiveRecord::Migration[5.0]
+  def change
+    add_column :payements, :mc_gross, :string
+    add_column :payements, :protection_eligibility, :string
+    add_column :payements, :address_status, :string
+    add_column :payements, :payer_id, :string
+    add_column :payements, :address_street, :string
+    add_column :payements, :payment_date, :string
+    add_column :payements, :payment_status, :string
+    add_column :payements, :address_zip, :string
+    add_column :payements, :first_name, :string
+    add_column :payements, :address_country_code, :string
+    add_column :payements, :address_name, :string
+    add_column :payements, :notify_version, :string
+    add_column :payements, :custom, :string
+    add_column :payements, :payer_status, :string
+    add_column :payements, :business, :string
+    add_column :payements, :address_country, :string
+    add_column :payements, :address_city, :string
+    add_column :payements, :quantity, :string
+    add_column :payements, :verify_sign, :string
+    add_column :payements, :payer_email, :string
+    add_column :payements, :txn_id, :string
+    add_column :payements, :payment_type, :string
+    add_column :payements, :last_name, :string
+    add_column :payements, :address_state, :string
+    add_column :payements, :receiver_email, :string
+    add_column :payements, :receiver_id, :string
+    add_column :payements, :pending_reason, :string
+    add_column :payements, :txn_type, :string
+    add_column :payements, :item_name, :string
+    add_column :payements, :mc_currency, :string
+    add_column :payements, :item_number, :string
+    add_column :payements, :residence_country, :string
+    add_column :payements, :test_ipn, :string
+    add_column :payements, :transaction_subject, :string
+    add_column :payements, :payment_gross, :string
+    add_column :payements, :ipn_track_id, :string
+  end
+end

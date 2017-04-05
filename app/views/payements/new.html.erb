@@ -1,0 +1,31 @@
+<div class="jumbotron">
+  <h1>Acheter un compte premium</h1>
+  <p>Bénéficiez dès a présent d'un nom de domaine personnalisé.</p>
+</div>
+
+<div class="col-xs-12">
+  <p>Une fois le paiement</p>
+  <ul>
+    <li>vous continuez de bénéficier de toutes les mises à jour effectuées</li>
+    <li>vous rebasculez simplement sur le compte gratuit si votre compte premium arrive à terme: toutes vos données sont conservé</li>
+  </ul>
+</div>
+  
+<div class="col-xs-12">
+  <%= bootstrap_form_for @payement do |f| %>
+    <%= render 'shared/errors_form', model: @payement %>
+
+
+    <div class="form-group">
+      <%= f.select :product_id, Product.options_for_select, {prompt: "Sélectionnez un produit", label: 'Produit'}, {class: 'form-control input-lg'} %>
+    </div>
+    <div class="form-group">
+      <%= submit_tag "acheter", class: 'btn btn-lg btn-default' %>
+    </div>
+  <% end %>
+
+  <p>
+    <%= alert 'info', "Le prix n'inclue pas la location du nom de domaine qui reste à votre charge. Une dizaine d'euros supplémentaire par ans est à prévoir. Contactez le support pour plus d'information."  %>
+  </p>
+</div>
+

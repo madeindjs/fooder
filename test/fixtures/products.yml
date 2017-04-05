@@ -1,0 +1,18 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  months: 1
+  price: 1.5
+
+one_month:
+  id: 1
+  name: MyString
+  months: 1
+  price: 1.5
+
+unlimited:
+  id: 2
+  name: unlimited
+  months: 0
+  price: 350

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170326202531) do
+ActiveRecord::Schema.define(version: 20170403110108) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -84,6 +84,53 @@ ActiveRecord::Schema.define(version: 20170326202531) do
     t.datetime "updated_at",    null: false
   end
 
+  create_table "payements", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "transaction_id"
+    t.integer  "status"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "product_id"
+    t.text     "notification_params"
+    t.datetime "purchased_at"
+    t.string   "mc_gross"
+    t.string   "protection_eligibility"
+    t.string   "address_status"
+    t.string   "payer_id"
+    t.string   "address_street"
+    t.string   "payment_date"
+    t.string   "payment_status"
+    t.string   "address_zip"
+    t.string   "first_name"
+    t.string   "address_country_code"
+    t.string   "address_name"
+    t.string   "notify_version"
+    t.string   "custom"
+    t.string   "payer_status"
+    t.string   "business"
+    t.string   "address_country"
+    t.string   "address_city"
+    t.string   "quantity"
+    t.string   "verify_sign"
+    t.string   "payer_email"
+    t.string   "txn_id"
+    t.string   "payment_type"
+    t.string   "last_name"
+    t.string   "address_state"
+    t.string   "receiver_email"
+    t.string   "receiver_id"
+    t.string   "pending_reason"
+    t.string   "txn_type"
+    t.string   "item_name"
+    t.string   "mc_currency"
+    t.string   "item_number"
+    t.string   "residence_country"
+    t.string   "test_ipn"
+    t.string   "transaction_subject"
+    t.string   "payment_gross"
+    t.string   "ipn_track_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string   "title"
     t.text     "content"
@@ -95,6 +142,15 @@ ActiveRecord::Schema.define(version: 20170326202531) do
     t.string   "picture"
     t.string   "slug"
     t.index ["slug"], name: "index_posts_on_slug", unique: true
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "months"
+    t.float    "price"
+    t.boolean  "activate",   default: true
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "restaurants", force: :cascade do |t|
@@ -142,12 +198,12 @@ ActiveRecord::Schema.define(version: 20170326202531) do
     t.string   "crypted_password"
     t.string   "password_salt"
     t.string   "persistence_token"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.string   "firstname"
     t.string   "lastname"
-    t.integer  "login_count",        default: 0, null: false
-    t.integer  "failed_login_count", default: 0, null: false
+    t.integer  "login_count",        default: 0,     null: false
+    t.integer  "failed_login_count", default: 0,     null: false
     t.datetime "last_request_at"
     t.datetime "current_login_at"
     t.datetime "last_login_at"
@@ -155,6 +211,7 @@ ActiveRecord::Schema.define(version: 20170326202531) do
     t.string   "last_login_ip"
     t.string   "picture"
     t.string   "slug"
+    t.boolean  "premium",            default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["slug"], name: "index_users_on_slug", unique: true
   end

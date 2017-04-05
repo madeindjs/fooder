@@ -5,7 +5,8 @@ class ApplicationController < ActionController::Base
   before_action :found_restaurant
 
 
-  private
+  protected
+
   def current_user_session
     return @current_user_session if defined?(@current_user_session)
     @current_user_session = UserSession.find
@@ -28,11 +29,12 @@ class ApplicationController < ActionController::Base
   end
 
   def check_restaurant
+    # TODO: repair this
     redirect_to root_url(subdomain: '') unless @restaurant
   end
 
   def check_login
-    redirect_to root_path   unless current_user_session
+    redirect_to root_path  unless current_user_session
   end
 
   helper_method :current_user_session, :current_user
