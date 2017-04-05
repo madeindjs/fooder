@@ -35,7 +35,7 @@ class User < ApplicationRecord
     # check if user has payements
     if last_payement = payements.last
       # is unlimited product
-      return @premium = last_payement.product.unlimited? ? true :Time.now < last_payement.valid_until
+      return @premium = last_payement.actual?
     end
     return @premium = false
   end

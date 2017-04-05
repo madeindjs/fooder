@@ -7,6 +7,7 @@
       <th>Transaction</th>
       <th>Statut</th>
       <th>Acheté le</th>
+      <th>Valide jusqu'à</th>
       <th></th>
     </tr>
   </thead>
@@ -18,6 +19,7 @@
         <td><%= payement.txn_id %></td>
         <td><%= payement.payment_status %></td>
         <td><%= payement.purchased_at %></td>
+        <td><%= payement.actual_until %></td>
         <td><%= link_to 'Détails', payement, class: 'btn btn-default' %></td>
       </tr>
     <% end %>

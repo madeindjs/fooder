@@ -30,9 +30,15 @@ class Payement < ApplicationRecord
   end
 
   # Get end date of validity
-  def valid_until
-    months = self.product.months
-    return self.purchased_at + months.month
+  def actual_until
+    return nil unless self.payment_status == "Completed"
+    return self.purchased_at + self.product.months.month rescue NoMethodError
+  end
+
+  # check if the payement make user premium
+  def actual?
+    return false unless self.payment_status == "Completed"
+    self.product.unlimited? ? true : Time.now < self.actual_until
   end
 
 end
