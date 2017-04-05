@@ -29,4 +29,10 @@ class Payement < ApplicationRecord
     "#{address_street}, #{address_zip}, #{address_city}, #{address_country}"
   end
 
+  # Get end date of validity
+  def valid_until
+    months = self.product.months
+    return self.purchased_at + months.month
+  end
+
 end
