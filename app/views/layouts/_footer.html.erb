@@ -1,59 +1,65 @@
 <footer class="footer">
-      <div class="container">
+  <div class="container">
 
-      <% if @restaurant %>
+    <% if @restaurant %>
 
-        <div class="col-sm-offset-1 col-sm-3 col-xs-4" <%= tooltip "Le plan du site est généré automatiquement en fonction des modules activé." %> >
+      <div class="col-sm-offset-1 col-sm-3 col-xs-4" <%= tooltip "Le plan du site est généré automatiquement en fonction des modules activé." %> >
+        <strong>Plan du site</strong>
+        <ul class="list-unstyled">
+            <%= render "layouts/navigation_restaurant" %>
+        </ul>
+      </div>
+
+      <div class="col-xs-4" <%= tooltip "Gérez les liens vers les résaux sociaux" %> >
+        <strong>Sur internet</strong>
+        <ul class="list-unstyled">
+            <% @restaurant.links.each do |link| %>
+              <li><%= link_to  link.name, link.url %></li>
+            <% end %>
+        </ul>
+      </div>
+
+      <div class="col-sm-3 col-xs-4">
+        <strong>Informations</strong>
+        <ul class="list-unstyled">
+            <li><%= link_to  'Coordonnées', contact_path %></li>
+        </ul>
+      </div>
+
+    <% else %>
+
+      <div class="col-xs-4" >
           <strong>Plan du site</strong>
           <ul class="list-unstyled">
-              <%= render "layouts/navigation_restaurant" %>
+            <li><%= link_to "Accueil", home_url(subdomain: nil) %></li>
+            <li><%= link_to "Nos clients", restaurants_path %></li>
+            <li><%= link_to "Tarifs", cost_path %></li>
           </ul>
         </div>
-
-        <div class="col-xs-4" <%= tooltip "Gérez les liens vers les résaux sociaux" %> >
-          <strong>Sur internet</strong>
-          <ul class="list-unstyled">
-              <% @restaurant.links.each do |link| %>
-                <li><%= link_to  link.name, link.url %></li>
-              <% end %>
-          </ul>
-        </div>
-
-        <div class="col-sm-3 col-xs-4">
-          <strong>Informations</strong>
-          <ul class="list-unstyled">
-              <li><%= link_to  'Coordonnées', contact_path %></li>
-          </ul>
-        </div>
-
-      <% else %>
 
         <div class="col-xs-4" >
-            <strong>Plan du site</strong>
-            <ul class="list-unstyled">
-              <li><%= link_to "Accueil", home_url(subdomain: nil) %></li>
-              <li><%= link_to "Nos clients", restaurants_path %></li>
-              <li><%= link_to "Tarifs", cost_path %></li>
-            </ul>
-          </div>
+          <strong>Le projet</strong>
+          <ul class="list-unstyled">
+            <li><%= link_to 'Github' , "https://github.com/madeindjs/fooder" %></li>
+            <li><%= link_to 'Apache License 2.0' , "http://www.apache.org/licenses/LICENSE-2.0.html" %></li>
+          </ul>
+        </div>
 
-          <div class="col-xs-4" >
-            <strong>Le projet</strong>
-            <ul class="list-unstyled">
-              <li><%= link_to 'Github' , "https://github.com/madeindjs/fooder" %></li>
-              <li><%= link_to 'Apache License 2.0' , "http://www.apache.org/licenses/LICENSE-2.0.html" %></li>
-            </ul>
-          </div>
+        <div class="col-xs-4" >
+          <strong>Contact</strong>
+          <ul class="list-unstyled">
+            <li><%= link_to "L'auteur" , "http://rousseau-alexandre.fr/" %></li>
+            <li><%= link_to 'Email' , "mailto:RousseauAlexandre.Lyon@gmail.com?subject=Fooder" %></li>
+          </ul>
+        </div>
 
-          <div class="col-xs-4" >
-            <strong>Contact</strong>
-            <ul class="list-unstyled">
-              <li><%= link_to "L'auteur" , "http://rousseau-alexandre.fr/" %></li>
-              <li><%= link_to 'Email' , "mailto:RousseauAlexandre.Lyon@gmail.com?subject=Fooder" %></li>
-            </ul>
-          </div>
+    <% end %>
 
-      <% end %>
-
+    </div>
+    
+    <% if @restaurant and not @restaurant.user.premium? %>
+      <div class="container" <%= tooltip "Basculez sur un compte premium pour faire disparaitre ce message." %> >
+        <p>Crée avec <%= link_to "fooder.pro" , "http://fooder.pro" %></p>
       </div>
+    <% end %>
 </footer>
