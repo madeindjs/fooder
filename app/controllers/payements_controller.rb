@@ -4,7 +4,7 @@
 class PayementsController < ApplicationController
   before_action :check_login, only: [:new, :index, :show, :create]
   before_action :set_payement, only: [:show]
-
+  before_action :found_restaurant, except: [:hook]
   protect_from_forgery except: [:hook] # to turn off csrf checking when Paypal send a plain HTTP POST.
 
 
