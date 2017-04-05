@@ -48,16 +48,12 @@ class RestaurantsController < ApplicationController
   # PATCH/PUT /restaurants/1
   # PATCH/PUT /restaurants/1.json
   def update
-    respond_to do |format|
-      if @restaurant.update(restaurant_params)
-        flash[:success] = "Votre restaurant a été mis à jour."
-        format.html { redirect_to @restaurant }
-        format.json { render :show, status: :ok, location: @restaurant }
-      else
-        flash[:danger] = "Une erreur est survenue."
-        format.html { render :edit }
-        format.json { render json: @restaurant.errors, status: :unprocessable_entity }
-      end
+    if @restaurant.update(restaurant_params)
+      flash[:success] = "Votre restaurant a été mis à jour."
+      redirect_to @restaurant
+    else
+      flash[:danger] = "Une erreur est survenue."
+      render :edit
     end
   end
 
@@ -114,8 +110,10 @@ class RestaurantsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def restaurant_params
-      params.require(:restaurant).permit :name, :address, :zip_code, :city, :module_blog, :picture, :logo, :css, :logo_display,
+      data = params.require(:restaurant).permit :name, :address, :zip_code, :city, :module_blog, :picture, :logo, :css, :logo_display,
           :menus_picture_display, :dishes_picture_display, :posts_picture_display, :sections_picture_display
+      data.delete :css if data['css'].empty?
+      return data
     end
 
     def check_owner
