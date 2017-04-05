@@ -12,7 +12,7 @@ class UserSessionsController < ApplicationController
         ].join("<br>")
         redirect_to @restaurant ? @restaurant : @user_session.user
       else
-        flash[:success] = "Une erreur est survenue."
+        flash[:danger] = "Une erreur est survenue."
         render :new
       end
 
@@ -32,7 +32,7 @@ class UserSessionsController < ApplicationController
       flash[:success] = "Bonjour #{@user_session.user.firstname}!"
       redirect_to @restaurant ? @restaurant : @user_session.user
     else
-      flash[:success] = "Une erreur est survenue."
+      flash[:danger] = "Une erreur est survenue."
       render :new
     end
   end
