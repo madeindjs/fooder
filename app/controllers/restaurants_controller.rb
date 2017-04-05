@@ -112,7 +112,7 @@ class RestaurantsController < ApplicationController
     def restaurant_params
       data = params.require(:restaurant).permit :name, :address, :zip_code, :city, :module_blog, :picture, :logo, :css, :logo_display,
           :menus_picture_display, :dishes_picture_display, :posts_picture_display, :sections_picture_display
-      data.delete :css if data['css'].empty?
+      data.delete :css if data['css'] and data['css'].empty?
       return data
     end
 
