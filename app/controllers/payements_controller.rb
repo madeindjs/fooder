@@ -20,9 +20,11 @@ class PayementsController < ApplicationController
     params.permit! # Permit all Paypal input params
 
     @payement = Payement.find params[:invoice]
+    now = Time.now
 
     if @payement.update_attributes paypal_params.merge(purchased_at: Time.now)
-      flash[:success] = "Merci pour votre achat." 
+      # update payement time
+      flash[:success] = "Merci pour votre achat."
     end
     render nothing: true
   end
