@@ -40,6 +40,11 @@ class User < ApplicationRecord
     return @premium = false
   end
 
+  # get last date of premium
+  def premium_until
+    return payements.last.actual_until
+  end
+
   def paypal_url(return_path)
     values = {
         business: "merchant@gotealeaf.com",
