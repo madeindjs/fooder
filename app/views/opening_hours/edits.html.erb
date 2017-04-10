@@ -1,0 +1,41 @@
+<div class="col-xs-12">
+  <h2>Editer les horaires d'ouvertures</h2>
+</div>
+
+
+<%= form_tag opening_hours_edit_path do  %>
+
+  <% @restaurant.opening_hours.each do |opening_hour| %>
+
+    <div id="<%= opening_hour.id %>" class="item col-xs-12">
+
+      <div class="col-xs-4">
+        <%= select_tag "opening_hour[#{opening_hour.id}][day]" , options_for_select(OpeningHour::DAYS , opening_hour.day), {label: 'Jour', class: 'form-control'} %>
+      </div>
+
+
+      <div class="col-xs-3">
+        <%= time_field_tag "opening_hour[#{opening_hour.id}][opens]", {value: opening_hour.opens}, {class: 'timepicker form-control', label: 'Ouverture'} %>
+      </div>
+
+      <div class="col-xs-3">
+        <%= time_field_tag "opening_hour[#{opening_hour.id}][closes]", {value: opening_hour.closes}, {class: 'timepicker form-control', label: 'Fermeture'} %>
+      </div>
+
+
+      <div class="col-xs-2">
+        <div class="btn-group-vertical" role="group" aria-label="...">
+          <%= link_to 'supprimer', opening_hour, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger' %>
+        </div>
+      </div>
+
+    </div>
+
+  <% end %>
+    
+
+  <%= submit_tag 'Tout mettre à jour', class: 'btn btn-primary' %>
+
+<% end %>
+
+<%= render 'opening_hours/form', opening_hour: OpeningHour.new  %>

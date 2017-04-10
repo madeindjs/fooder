@@ -11,7 +11,9 @@ Rails.application.routes.draw do
     get 'allergens' => "restaurants#allergens"
     patch 'activate_module' => "restaurants#activate_module"
 
-    resources :opening_hours, only: [:index, :create, :update, :destroy]
+    match 'opening_hours/edit' => "opening_hours#edits", as: :opening_hours_edit, via: [:get, :post]
+    resources :opening_hours, only: [:create, :destroy]
+
     resources :posts
     
     match 'links/edit' => "links#edits", as: :links_edit, via: [:get, :post]

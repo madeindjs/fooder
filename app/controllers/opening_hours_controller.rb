@@ -3,8 +3,9 @@ class OpeningHoursController < ApplicationController
   before_action :check_login, only: [:create, :update, :destroy]
   before_action :check_owner, only: [:edit, :update, :destroy]
 
-
-  def index
+  # GET  /restaurant/1/opening_hours/edits
+  # POST /restaurant/1/opening_hours/edits
+  def edits
     @title = "Horraires d'ouvertures."
     @description = "Gérer les horraires d'ouvertures."
   end
