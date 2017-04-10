@@ -28,7 +28,7 @@ class OpeningHoursControllerTest < ActionDispatch::IntegrationTest
     assert_no_difference('OpeningHour.count') do
       post opening_hours_edit_url, params: { opening_hour: { 
         "1"    => { day: @opening_hour.day, closes: @opening_hour.closes, opens: @opening_hour.opens, valid_from: @opening_hour.valid_from, valid_through: @opening_hour.valid_through},
-        "1000" => { day: @opening_hour.day, closes: @opening_hour.closes, opens: @opening_hour.opens, valid_from: @opening_hour.valid_from, valid_through: @opening_hour.valid_through},
+        "1000" => { day: 7, closes: @opening_hour.closes, opens: @opening_hour.opens, valid_from: @opening_hour.valid_from, valid_through: @opening_hour.valid_through},
       } }
     end
   end
@@ -40,30 +40,32 @@ class OpeningHoursControllerTest < ActionDispatch::IntegrationTest
     assert_difference('OpeningHour.count', 1) do
       post opening_hours_edit_url, params: { opening_hour: { 
         "1"    => { day: @opening_hour.day, closes: @opening_hour.closes, opens: @opening_hour.opens, valid_from: @opening_hour.valid_from, valid_through: @opening_hour.valid_through},
-        "1000" => { day: @opening_hour.day, closes: @opening_hour.closes, opens: @opening_hour.opens, valid_from: @opening_hour.valid_from, valid_through: @opening_hour.valid_through},
+        "1000" => { day: 7, closes: @opening_hour.closes, opens: @opening_hour.opens, valid_from: @opening_hour.valid_from, valid_through: @opening_hour.valid_through},
       } }
     end
   end
 
   test "should not update opening hours" do
+    old_day = @opening_hour.day
 
-    assert_no_difference('@opening_hour.day') do
-      post opening_hours_edit_url, params: { opening_hour: { 
-        @opening_hour.id    => { day: 6, closes: @opening_hour.closes, opens: @opening_hour.opens, valid_from: @opening_hour.valid_from, valid_through: @opening_hour.valid_through},
-      } }
-    end
+    post opening_hours_edit_url, params: { opening_hour: { 
+      @opening_hour.id    => { day: 6, closes: @opening_hour.closes, opens: @opening_hour.opens, valid_from: @opening_hour.valid_from, valid_through: @opening_hour.valid_through},
+    } }
 
+    assert_equal old_day, OpeningHour.find(@opening_hour.id).day
   end
 
 
   test "should update opening hours" do
     login(@user)
 
-    assert_difference('@opening_hour.day') do
-      post opening_hours_edit_url, params: { opening_hour: { 
-        @opening_hour.id    => { day: 6, closes: @opening_hour.closes, opens: @opening_hour.opens, valid_from: @opening_hour.valid_from, valid_through: @opening_hour.valid_through},
-      } }
-    end
+    old_day = @opening_hour.day
+
+    post opening_hours_edit_url, params: { opening_hour: { 
+      @opening_hour.id    => { day: 6, closes: @opening_hour.closes, opens: @opening_hour.opens, valid_from: @opening_hour.valid_from, valid_through: @opening_hour.valid_through},
+    } }
+
+    assert_not_equal old_day, OpeningHour.find(@opening_hour.id).day
 
   end
 
