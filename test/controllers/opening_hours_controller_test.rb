@@ -22,6 +22,52 @@ class OpeningHoursControllerTest < ActionDispatch::IntegrationTest
   end
 
 
+  test "should not create opening hours" do
+    login(@user)
+
+    assert_no_difference('OpeningHour.count') do
+      post opening_hours_edit_url, params: { opening_hour: { 
+        "1"    => { day: @opening_hour.day, closes: @opening_hour.closes, opens: @opening_hour.opens, valid_from: @opening_hour.valid_from, valid_through: @opening_hour.valid_through},
+        "1000" => { day: @opening_hour.day, closes: @opening_hour.closes, opens: @opening_hour.opens, valid_from: @opening_hour.valid_from, valid_through: @opening_hour.valid_through},
+      } }
+    end
+  end
+
+
+  test "should create opening hours" do
+    login(@user)
+
+    assert_difference('OpeningHour.count', 1) do
+      post opening_hours_edit_url, params: { opening_hour: { 
+        "1"    => { day: @opening_hour.day, closes: @opening_hour.closes, opens: @opening_hour.opens, valid_from: @opening_hour.valid_from, valid_through: @opening_hour.valid_through},
+        "1000" => { day: @opening_hour.day, closes: @opening_hour.closes, opens: @opening_hour.opens, valid_from: @opening_hour.valid_from, valid_through: @opening_hour.valid_through},
+      } }
+    end
+  end
+
+  test "should not update opening hours" do
+
+    assert_no_difference('@opening_hour.day') do
+      post opening_hours_edit_url, params: { opening_hour: { 
+        @opening_hour.id    => { day: 6, closes: @opening_hour.closes, opens: @opening_hour.opens, valid_from: @opening_hour.valid_from, valid_through: @opening_hour.valid_through},
+      } }
+    end
+
+  end
+
+
+  test "should update opening hours" do
+    login(@user)
+
+    assert_difference('@opening_hour.day') do
+      post opening_hours_edit_url, params: { opening_hour: { 
+        @opening_hour.id    => { day: 6, closes: @opening_hour.closes, opens: @opening_hour.opens, valid_from: @opening_hour.valid_from, valid_through: @opening_hour.valid_through},
+      } }
+    end
+
+  end
+
+
   test "should not create opening_hour" do
     assert_no_difference('OpeningHour.count') do
       post opening_hours_url, params: { opening_hour: { day: @opening_hour.day, closes: @opening_hour.closes, opens: @opening_hour.opens, valid_from: @opening_hour.valid_from, valid_through: @opening_hour.valid_through} }
