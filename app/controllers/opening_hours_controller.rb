@@ -1,7 +1,7 @@
 class OpeningHoursController < ApplicationController
   before_action :set_opening_hour, only: [:update, :destroy]
-  before_action :check_login, only: [:create, :update, :destroy]
-  before_action :check_owner, only: [:edit, :update, :destroy]
+  before_action :check_login, only: [:create, :edits, :destroy]
+  before_action :check_owner, only: [:edits, :destroy]
 
   # GET  /restaurant/1/opening_hours/edits
   # POST /restaurant/1/opening_hours/edits
@@ -57,6 +57,6 @@ class OpeningHoursController < ApplicationController
     end
 
     def check_owner
-      redirect_to root_path unless current_user.opening_hours.include? @opening_hour
+      redirect_to root_path unless current_user.restaurants.include? @restaurant
     end
 end
