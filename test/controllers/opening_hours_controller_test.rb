@@ -32,7 +32,7 @@ class OpeningHoursControllerTest < ActionDispatch::IntegrationTest
   end
 
 
-  test "should create opening hours" do
+  test "should create only one opening hours" do
     login(@user)
 
     assert_difference('OpeningHour.count', 1) do
@@ -41,6 +41,20 @@ class OpeningHoursControllerTest < ActionDispatch::IntegrationTest
         "1000" => { day: 7, closes: @opening_hour.closes, opens: @opening_hour.opens, valid_from: @opening_hour.valid_from, valid_through: @opening_hour.valid_through},
       } }
     end
+
+    assert_response :success
+  end
+
+  test "should create one opening hours" do
+    login(@user)
+
+    assert_difference('OpeningHour.count', 1) do
+      post opening_hours_edit_url, params: { opening_hour: { 
+        "0"    => { day: @opening_hour.day, closes: @opening_hour.closes, opens: @opening_hour.opens, valid_from: @opening_hour.valid_from, valid_through: @opening_hour.valid_through},
+      } }
+    end
+
+    assert_response :success
   end
 
   test "should not update opening hours" do
@@ -64,7 +78,6 @@ class OpeningHoursControllerTest < ActionDispatch::IntegrationTest
     } }
 
     assert_not_equal old_day, OpeningHour.find(@opening_hour.id).day
-
   end
 
 
@@ -81,7 +94,7 @@ class OpeningHoursControllerTest < ActionDispatch::IntegrationTest
       post opening_hours_url, params: { opening_hour: { day: @opening_hour.day, closes: @opening_hour.closes, opens: @opening_hour.opens, valid_from: @opening_hour.valid_from, valid_through: @opening_hour.valid_through } }
     end
 
-    assert_redirected_to opening_hours_url
+    assert_redirected_to opening_hours_edit_url
   end
 
 
@@ -100,6 +113,6 @@ class OpeningHoursControllerTest < ActionDispatch::IntegrationTest
       delete opening_hour_url(@opening_hour)
     end
 
-    assert_redirected_to opening_hours_url
+    assert_redirected_to opening_hours_edit_url
   end
 end

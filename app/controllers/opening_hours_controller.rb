@@ -63,7 +63,7 @@ class OpeningHoursController < ApplicationController
 
     if @opening_hour.save
       flash[:success] = "Votre horraire d'ouverture a été créée."
-      redirect_to opening_hours_path
+      redirect_to opening_hours_edit_path
     else
       flash[:danger] = "Une erreur est survenue."
       redirect_to root_path
@@ -74,7 +74,7 @@ class OpeningHoursController < ApplicationController
   def update
     if @opening_hour.update(opening_hour_params)
       flash[:success] = "Votre horraire d'ouverture a été mise à jour."
-      redirect_to opening_hours_path
+      redirect_to opening_hours_edit_path
     else
       flash[:danger] = "Une erreur est survenue."
       redirect_to root_path
@@ -86,7 +86,7 @@ class OpeningHoursController < ApplicationController
   def destroy
     @opening_hour.destroy
     flash[:success] = "Votre horraire d'ouverture a été supprimée."
-    redirect_to opening_hours_path
+    redirect_to opening_hours_edit_path
   end
 
   private
