@@ -23,8 +23,6 @@ class OpeningHoursControllerTest < ActionDispatch::IntegrationTest
 
 
   test "should not create opening hours" do
-    login(@user)
-
     assert_no_difference('OpeningHour.count') do
       post opening_hours_edit_url, params: { opening_hour: { 
         "1"    => { day: @opening_hour.day, closes: @opening_hour.closes, opens: @opening_hour.opens, valid_from: @opening_hour.valid_from, valid_through: @opening_hour.valid_through},
