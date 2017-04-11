@@ -1,0 +1,36 @@
+<div id="<%= opening_hour.id %>" class="item col-xs-12">
+
+  <div class="col-sm-3">
+    <%= select_tag "opening_hour[#{opening_hour.id}][day]" , options_for_select(OpeningHour::DAYS , opening_hour.day), {label: 'Jour', class: 'form-control'} %>
+  </div>
+
+  <div class="col-sm-2 col-xs-4">
+    <%= time_field_tag "opening_hour[#{opening_hour.id}][opens]", opening_hour.opens.to_s(:time), {class: 'timepicker form-control'} %>
+  </div>
+
+  <div class="col-sm-2 col-xs-4">
+    <%= time_field_tag "opening_hour[#{opening_hour.id}][closes]", opening_hour.closes.to_s(:time), {class: 'timepicker form-control'} %>
+  </div>
+
+  <div class="col-sm-4">
+    <%= label_tag "opening_hour[#{opening_hour.id}][advanced]" do %>
+      <%= check_box_tag "opening_hour[#{opening_hour.id}][advanced]" %> avancé
+    <% end %>
+  </div>
+
+  <div class="col-sm-2 col-xs-4">
+    <%= date_field_tag "opening_hour[#{opening_hour.id}][valid_from]", opening_hour.valid_from, {class: 'datepicker form-control'} %>
+  </div>
+
+  <div class="col-sm-2 col-xs-4">
+    <%= date_field_tag "opening_hour[#{opening_hour.id}][valid_through]", opening_hour.valid_through, {class: 'datepicker form-control'} %>
+  </div>
+
+
+  <div class="col-sm-1">
+    <div class="btn-group-vertical" role="group" aria-label="...">
+      <%= link_to 'supprimer', opening_hour, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger' %>
+    </div>
+  </div>
+
+</div>
