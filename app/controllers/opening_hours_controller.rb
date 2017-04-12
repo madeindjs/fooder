@@ -65,8 +65,8 @@ class OpeningHoursController < ApplicationController
       flash[:success] = "Votre horraire d'ouverture a été créée."
       redirect_to opening_hours_edit_path
     else
+      puts 
       flash[:danger] = "Une erreur est survenue."
-      redirect_to root_path
     end
   end
 

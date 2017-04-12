@@ -1,4 +1,11 @@
 <div class="col-xs-12">
+  <h2>Ajouter une horaire d'ouverture</h2>
+</div>
+
+<%= render 'form', opening_hour: OpeningHour.new %>
+
+
+<div class="col-xs-12">
   <h2>Editer les horaires d'ouvertures</h2>
 </div>
 
@@ -8,11 +15,8 @@
     <%= render 'subform', opening_hour: opening_hour %>
   <% end %>
 
-
   <div class="col-xs-12">
     <%= submit_tag 'Tout mettre à jour', class: 'btn btn-primary' %>
   </div>
     
-
 <% end %>
-

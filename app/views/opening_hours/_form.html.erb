@@ -1,0 +1,33 @@
+<%= form_for opening_hour do |f| %>
+
+  <%= render 'shared/errors_form', model: opening_hour %>
+
+  <div class="col-sm-2">
+    <%= f.label :day, "Jour" %>
+    <%= f.select :day, options_for_select(OpeningHour::DAYS , opening_hour.day),{}, {label: 'Jour', class: 'form-control'} %>
+  </div>
+
+  <div class="col-sm-2 col-xs-6">
+  <%= f.label :opens, "Ouverture" %>
+    <%= f.time_field :opens, {class: 'timepicker form-control'} %>
+  </div>
+
+  <div class="col-sm-2 col-xs-6">
+  <%= f.label :closes, "Fermeture" %>
+    <%= f.time_field :closes, {class: 'timepicker form-control'} %>
+  </div>
+
+  <div class="datetimepicker-container opening_hour col-sm-2 col-xs-6">
+    <%= f.label :valid_from, "A partir de" %>
+    <%= f.date_field :valid_from, {class: 'datepicker form-control'} %>
+  </div>
+
+  <div class="datetimepicker-container opening_hour col-sm-2 col-xs-6">
+    <%= f.label :valid_through, "Jusqu'à" %>
+    <%= f.date_field :valid_through, {class: 'datepicker form-control'} %>
+  </div>
+
+  <div class="col-sm-2">
+    <%= f.submit 'Ajouter', class: 'btn btn-primary' %>
+  </div>
+<% end %>
