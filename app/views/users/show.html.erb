@@ -31,7 +31,11 @@
 
   <p>
     <%= link_to "créer un autre restaurant", new_restaurant_path, class: 'btn btn-primary' %>
-    <%= link_to "Passer premium", new_payement_path, class: 'btn btn-default' unless @user.premium? %>
+    <% if @user.premium? %> 
+      <%= link_to "Acheter", new_payement_path, class: 'btn btn-default' %>
+    <% else %>
+      <%= link_to "Passer premium", new_payement_path, class: 'btn btn-default' %>
+    <% end %>
     <%= link_to "Mes paiements", payements_path, class: 'btn btn-default' %>
     <%= link_to "se déconnecter", signout_path, class: 'btn btn-danger' %>
   </p>

@@ -1,36 +1,33 @@
-<%= bootstrap_form_for opening_hour do |f| %>
-  <td><%= f.select :day , options_for_select(OpeningHour::DAYS , opening_hour.day), {hide_label: true}, {} %></td>
+<%= form_for opening_hour do |f| %>
 
-  <td>
-    <div class='input-group date'>
-      <%= f.time_field :opens, class: 'timepicker', hide_label: true %>
-    </div>
-  </td>
+  <%= render 'shared/errors_form', model: opening_hour %>
 
-  <td>
-    <div class='input-group date'>
-      <%= f.time_field :closes, class: 'timepicker', hide_label: true %>
-    </div>
-  </td>
+  <div class="col-sm-2">
+    <%= f.label :day, "Jour" %>
+    <%= f.select :day, options_for_select(OpeningHour::DAYS , opening_hour.day),{}, {label: 'Jour', class: 'form-control'} %>
+  </div>
 
-  <td>
-    <div class='input-group date'>
-      <%= f.date_field :valid_from, hide_label: true %>
-    </div>
-  </td>
+  <div class="col-sm-2 col-xs-6">
+  <%= f.label :opens, "Ouverture" %>
+    <%= f.time_field :opens, {class: 'timepicker form-control'} %>
+  </div>
 
-  <td>
-    <div class='input-group date'>
-      <%= f.date_field :valid_through, hide_label: true %>
-    </div>
-  </td>
-  
-  <td>
-    <% if opening_hour.new_record? %>
-      <%= f.submit 'Ajouter' %>
-    <% else %>
-      <%= f.submit 'Mettre à jour' %>
-      <%= link_to 'Supprimer', opening_hour, method: :delete, data: { confirm: 'Etes vous sûr?' }, class: 'btn btn-danger' %>
-    <% end %>
-  </td>
+  <div class="col-sm-2 col-xs-6">
+  <%= f.label :closes, "Fermeture" %>
+    <%= f.time_field :closes, {class: 'timepicker form-control'} %>
+  </div>
+
+  <div class="datetimepicker-container opening_hour col-sm-2 col-xs-6">
+    <%= f.label :valid_from, "A partir de" %>
+    <%= f.date_field :valid_from, {class: 'datepicker form-control'} %>
+  </div>
+
+  <div class="datetimepicker-container opening_hour col-sm-2 col-xs-6">
+    <%= f.label :valid_through, "Jusqu'à" %>
+    <%= f.date_field :valid_through, {class: 'datepicker form-control'} %>
+  </div>
+
+  <div class="col-sm-2">
+    <%= f.submit 'Ajouter', class: 'btn btn-primary' %>
+  </div>
 <% end %>

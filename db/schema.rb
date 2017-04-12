@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170403110108) do
+ActiveRecord::Schema.define(version: 20170406112110) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -212,6 +212,7 @@ ActiveRecord::Schema.define(version: 20170403110108) do
     t.string   "picture"
     t.string   "slug"
     t.boolean  "premium",            default: false
+    t.datetime "premium_until"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["slug"], name: "index_users_on_slug", unique: true
   end

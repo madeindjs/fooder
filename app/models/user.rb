@@ -31,14 +31,10 @@ class User < ApplicationRecord
 
   # Check if the user is premium
   def premium?
-    return @premium if @premium
-    # check if user has payements
-    if last_payement = payements.last
-      # is unlimited product
-      return @premium = last_payement.actual?
-    end
-    return @premium = false
+    return false unless self.premium_until
+    return Time.now < self.premium_until
   end
+
 
   def paypal_url(return_path)
     values = {

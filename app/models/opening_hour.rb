@@ -32,10 +32,9 @@ class OpeningHour < ApplicationRecord
 
   # Check if this opening hour is actually valid or not
   def actual?
-    if valid_from && valid_through
-      now_date_time = DateTime.now
-      now_date = Date.new 2000, now.month, now.day
-      valid_from < now_date && valid_through > now_date
+    if valid_from || valid_through
+      now = DateTime.now
+      (!valid_from || (valid_from < now)) && (!valid_through || (valid_through > now))
     else
       true
     end

@@ -1,5 +1,4 @@
 $(function () {
-  if ( $( ".timepicker" ).length ) {
-    $('.timepicker').datetimepicker({format: 'HH:mm'});
-  }
+  $('.timepicker').datetimepicker({format: 'HH:mm'});
+  $('.datepicker').datetimepicker({format: 'YYYY-MM-DD'});
 });
