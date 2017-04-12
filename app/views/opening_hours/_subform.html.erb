@@ -1,0 +1,39 @@
+<%
+  advanced = opening_hour.valid_from || opening_hour.valid_through
+  style = advanced ? "" : 'style="display: none"'.html_safe
+%>
+
+<div id="<%= opening_hour.id %>" class="opening-hour-item col-xs-12">
+
+  <% prefix_field = "opening_hour[#{opening_hour.id}]" %> 
+
+  <div class="col-sm-2">
+  <%= label_tag "#{prefix_field}[valid_from]", "Jour" %>
+    <%= select_tag "#{prefix_field}[day]" , options_for_select(OpeningHour::DAYS , opening_hour.day), {label: 'Jour', class: 'form-control'} %>
+  </div>
+
+  <div class="col-sm-2 col-xs-6">
+  <%= label_tag "#{prefix_field}[opens]", "Ouverture" %>
+    <%= time_field_tag "#{prefix_field}[opens]", opening_hour.opens.to_s(:time), {class: 'timepicker form-control'} %>
+  </div>
+
+  <div class="col-sm-2 col-xs-6">
+  <%= label_tag "#{prefix_field}[closes]", "Fermeture" %>
+    <%= time_field_tag "#{prefix_field}[closes]", opening_hour.closes.to_s(:time), {class: 'timepicker form-control'} %>
+  </div>
+
+  <div class="datetimepicker-container opening_hour col-sm-2 col-xs-6">
+    <%= label_tag "#{prefix_field}[valid_from]", "A partir de" %>
+    <%= date_field_tag "#{prefix_field}[valid_from]", opening_hour.valid_from, {class: 'datepicker form-control'} %>
+  </div>
+
+  <div class="datetimepicker-container opening_hour col-sm-2 col-xs-6">
+    <%= label_tag "#{prefix_field}[valid_through]", "Jusqu'à" %>
+    <%= date_field_tag "#{prefix_field}[valid_through]", opening_hour.valid_through, {class: 'datepicker form-control'} %>
+  </div>
+
+  <div class="col-sm-2">
+    <%= link_to 'supprimer', opening_hour, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+  </div>
+
+</div>
