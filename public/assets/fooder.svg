@@ -16,9 +16,9 @@
    version="1.1"
    inkscape:version="0.91 r13725"
    sodipodi:docname="fooder.svg"
-   inkscape:export-filename="/home/alex/dev/ruby/fooder/public/assets/fooder.png"
-   inkscape:export-xdpi="80"
-   inkscape:export-ydpi="80">
+   inkscape:export-filename="/home/arousseau/dev/ruby/fooder/public/assets/favicon.png"
+   inkscape:export-xdpi="3.2"
+   inkscape:export-ydpi="3.2">
   <defs
      id="defs4" />
   <sodipodi:namedview
@@ -29,17 +29,17 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.47544798"
-     inkscape:cx="199.64275"
-     inkscape:cy="332.61912"
+     inkscape:cx="667.52797"
+     inkscape:cy="552.31456"
      inkscape:document-units="px"
      inkscape:current-layer="root"
      showgrid="false"
      units="px"
-     inkscape:window-width="1600"
-     inkscape:window-height="847"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
-     inkscape:window-maximized="1"
+     inkscape:window-width="835"
+     inkscape:window-height="428"
+     inkscape:window-x="2732"
+     inkscape:window-y="879"
+     inkscape:window-maximized="0"
      showguides="false">
     <inkscape:grid
        type="xygrid"
@@ -65,60 +65,69 @@
      id="root"
      transform="translate(0,-152.36216)">
     <ellipse
-       style="fill:#decd87;fill-opacity:1;stroke:none;stroke-width:0.95629203;stroke-opacity:1"
+       style="fill:#f2f3ed;fill-opacity:1;stroke:none;stroke-width:0.95629203;stroke-opacity:1"
        id="path4295-7-5-9-6-6-0-3"
        cx="450"
        cy="602.36218"
        rx="375"
        ry="374.99997" />
     <ellipse
-       style="fill:#d3bc5f;fill-opacity:1;stroke:none;stroke-width:0.95629203;stroke-opacity:1"
+       style="fill:#83d6de;fill-opacity:1;stroke:none;stroke-width:0.95629203;stroke-opacity:1"
        id="path4295-7-5-9-6-6-0"
        cx="449.00021"
        cy="602.36218"
        rx="349.52188"
        ry="349.52185" />
+    <path
+       style="opacity:1;fill:#83d6de;fill-opacity:1;stroke:none;stroke-width:4.44269514;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 126.82031 582.43359 A 349.52188 349.52185 0 0 0 208.84375 702.43359 L 691.57617 702.43359 A 349.52188 349.52185 0 0 0 773.27344 582.43359 L 126.82031 582.43359 z "
+       transform="translate(0,152.36216)"
+       id="roller_pin_left-3" />
     <g
        id="roller_pin"
-       transform="matrix(0.76604444,0.64278762,-0.64278762,0.76604444,-374.34832,395.2213)">
+       transform="matrix(0.75798629,0.54258042,-0.63602603,0.64662215,-387.70819,461.83067)">
       <g
          id="g4290-7-4-2-6-3"
-         transform="matrix(0.98480775,-0.17364818,0.17364818,0.98480775,83.055698,164.08027)">
-        <rect
-           transform="matrix(0.5,0.8660254,-0.8660254,0.5,0,0)"
-           style="opacity:1;fill:#552200;fill-opacity:1;stroke:#552200;stroke-width:21.19183731;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-           id="roller_pin_body"
-           width="58.808163"
-           height="678.80817"
-           x="173.74641"
-           y="-1204.5968"
-           rx="1.3302623"
-           ry="8.3592453" />
-        <rect
-           transform="matrix(0.50000001,0.8660254,-0.8660254,0.50000001,0,0)"
-           style="opacity:1;fill:#552200;fill-opacity:1;stroke:#552200;stroke-width:1.24407136;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-           id="roller_pin_left"
-           width="58.755928"
-           height="73.755928"
-           x="173.77254"
-           y="-507.57693"
-           rx="1.3290807"
-           ry="0.90827417" />
-        <rect
-           transform="matrix(0.50000001,0.8660254,-0.8660254,0.50000001,0,0)"
-           style="opacity:1;fill:#552200;fill-opacity:1;stroke:#552200;stroke-width:1.24407136;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-           id="roller_pin_rigth"
-           width="58.755928"
-           height="73.755928"
-           x="173.77254"
-           y="-1298.5645"
-           rx="1.3290807"
-           ry="0.90827417" />
+         transform="matrix(1.0835608,-0.1244912,0.26676141,1.135343,38.546209,144.94247)">
+        <g
+           id="g4236"
+           transform="translate(-3.5881808,2.0716371)">
+          <rect
+             ry="10.608123"
+             rx="1.2443188"
+             y="-1301.0496"
+             x="177.77612"
+             height="861.42694"
+             width="55.008778"
+             id="roller_pin_left"
+             style="opacity:1;fill:#eb9532;fill-opacity:1;stroke:#eb9532;stroke-width:4.11382914;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+             transform="matrix(0.49999965,0.8660256,-0.86602541,0.49999998,0,0)" />
+          <rect
+             ry="8.326664"
+             rx="1.6897429"
+             y="-1208.4172"
+             x="167.93051"
+             height="676.16241"
+             width="74.700066"
+             id="roller_pin_body"
+             style="opacity:1;fill:#985004;fill-opacity:1;stroke:#985004;stroke-width:23.83758736;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+             transform="matrix(0.50000001,0.8660254,-0.8660254,0.50000001,0,0)" />
+          <rect
+             ry="8.3271866"
+             rx="0.21271312"
+             y="-1208.4387"
+             x="166.58994"
+             height="676.20465"
+             width="9.4036093"
+             id="roller_pin_left-7-5-3"
+             style="opacity:1;fill:#f2f3ed;fill-opacity:1;stroke:#f2f3ed;stroke-width:1.5069797;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+             transform="matrix(0.49999826,0.86602641,-0.86602541,0.49999998,0,0)" />
+        </g>
       </g>
     </g>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#008000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#282830;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;"
        x="98.016327"
        y="694.34558"
        id="title"
@@ -127,9 +136,9 @@
          id="tspan4334-0-0-0-4-6"
          x="98.016327"
          y="694.34558"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:193.75px;font-family:monospace;-inkscape-font-specification:monospace;fill:#1a1a1a;fill-opacity:1">Fooder</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:193.75px;font-family:monospace;-inkscape-font-specification:monospace;fill:#282830;fill-opacity:1;">Fooder</tspan></text>
     <path
-       style="fill:#decd87;fill-opacity:1;stroke:none;stroke-width:6.67466259;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:#f2f3ed;fill-opacity:1;stroke:none;stroke-width:6.67466259;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        transform="translate(0,152.36216)"
        id="navigator_header"
        inkscape:connector-curvature="0"
@@ -142,7 +151,7 @@
          cy="442.91769"
          cx="-254.58246"
          id="path4185-0-2-6-1-0-8"
-         style="opacity:1;fill:#800000;fill-opacity:1;stroke:none;stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+         style="opacity:1;fill:#ee543a;fill-opacity:1;stroke:none;stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
       <circle
          r="25"
          cy="442.91769"
