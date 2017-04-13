@@ -3,14 +3,14 @@
 
     <% if @restaurant %>
 
-      <div class="col-sm-offset-1 col-sm-3 col-xs-4" <%= tooltip "Le plan du site est généré automatiquement en fonction des modules activé." %> >
+      <div class="col-sm-offset-1 col-sm-3 col-xs-4 tooltip" <%= tooltip "Le plan du site est généré automatiquement en fonction des modules activé." %> >
         <strong>Plan du site</strong>
         <ul class="list-unstyled">
             <%= render "layouts/navigation_restaurant" %>
         </ul>
       </div>
 
-      <div class="col-xs-4" <%= tooltip "Gérez les liens vers les résaux sociaux" %> >
+      <div class="col-xs-4 tooltip" <%= tooltip "Gérez les liens vers les résaux sociaux" %> >
         <strong>Sur internet</strong>
         <ul class="list-unstyled">
             <% @restaurant.links.each do |link| %>
@@ -58,7 +58,7 @@
     </div>
     
     <% if @restaurant and not @restaurant.user.premium? %>
-      <div class="container" <%= tooltip "Basculez sur un compte premium pour faire disparaitre ce message." %> >
+      <div class="container tooltip" <%= tooltip "Basculez sur un compte premium pour faire disparaitre ce message." %> >
         <p>Crée avec <%= link_to "fooder.pro" , "http://fooder.pro" %></p>
       </div>
     <% end %>

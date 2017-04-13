@@ -7,7 +7,7 @@
 
   <% prefix_field = "opening_hour[#{opening_hour.id}]" %> 
 
-  <div class="col-sm-2">
+  <div class="col-sm-2 col-xs-12">
   <%= label_tag "#{prefix_field}[valid_from]", "Jour" %>
     <%= select_tag "#{prefix_field}[day]" , options_for_select(OpeningHour::DAYS , opening_hour.day), {label: 'Jour', class: 'form-control'} %>
   </div>
@@ -32,7 +32,7 @@
     <%= date_field_tag "#{prefix_field}[valid_through]", opening_hour.valid_through, {class: 'datepicker form-control'} %>
   </div>
 
-  <div class="col-sm-2">
+  <div class="col-sm-2 col-xs-12">
     <%= link_to 'supprimer', opening_hour, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
   </div>
 

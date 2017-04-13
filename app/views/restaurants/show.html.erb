@@ -1,8 +1,8 @@
-<div class="row restaurant-header" style="background-image: url(<%= @restaurant.picture %>)"
+<div class="row restaurant-header tooltip" style="background-image: url(<%= @restaurant.picture %>)"
   <%= tooltip 'Cette image de fond peut être changé dans la section  "editer le restaurant"' %> >
 
   <div class="col-xs-12">
-    <h1  <%= tooltip 'Le nom de votre restaurant peut être changé dans la section "editer le restaurant"' %> ><%= logo_tag @restaurant %><%= @restaurant.name %></h1>
+    <h1 class="tooltip" <%= tooltip 'Le nom de votre restaurant peut être changé dans la section "editer le restaurant"' %> ><%= logo_tag @restaurant %><%= @restaurant.name %></h1>
   </div>
 </div>
 
