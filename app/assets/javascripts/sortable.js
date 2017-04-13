@@ -1,4 +1,4 @@
-$( document ).tooltip();
+$('.tooltip').tooltip();
 
 if($(".sortable").length){
   var sortableList = $(".sortable");
