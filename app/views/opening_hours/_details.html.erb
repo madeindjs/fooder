@@ -1,4 +1,4 @@
-<table class="table tooltip" <%= tooltip 'Les horraires d\'ouvertures  peuvent êtres modifiés dans la section "editer les horraires d\'ouvertures"' %>>
+<table class="table tooltip-holder" <%= tooltip 'Les horraires d\'ouvertures  peuvent êtres modifiés dans la section "editer les horraires d\'ouvertures"' %>>
   
     <% opening_hours.group_by{|op| op.day}.each do |k, opening_hours_grouped| %>
       <tr>
