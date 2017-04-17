@@ -33,6 +33,17 @@
       <%= render 'shared/toolbar_modules' %>
     </div>
 
+    <h3>Utilisateur</h3>
+    <div>
+      
+    </div>
+
   </div>
+
+  <%= link_to edit_restaurant_path(@restaurant), class: "btn btn-default" do %>
+    <%= glyphicon "cog" %> Paramètres
+  <% end %>
+
+  <%= link_to 'Retourner sur Fooder', root_path(subdomain: nil), class: "btn btn-default" %>
 
 </div>

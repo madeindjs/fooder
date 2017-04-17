@@ -21,7 +21,7 @@
 
   <%= render 'shared/errors_form', model: restaurant %>
 
-  <h3>Informations</h3>
+  <h3>Informations du restaurant</h3>
 
   <div>
     <div class="col-sm-12">
@@ -39,6 +39,11 @@
     <div class="col-sm-6">
       <%= f.text_field :city, label: 'Ville' %>
     </div>
+
+    <div class="col-xs-12">
+      <%= alert 'info', 'Ces informations serviront à construire la section "contact" de votre site.' %>
+    </div>
+
   </div>
 
 
@@ -65,7 +70,7 @@
   </div>
 
 
-  <h3>Affichage</h3>
+  <h3>Affichage des images</h3>
 
   <div>
     <% picture_size_labels_fiels.each do |field, label| %>
