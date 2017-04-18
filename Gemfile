@@ -35,6 +35,7 @@ gem 'momentjs-rails'
 
 # AUTHENTIFICATION
 gem 'authlogic', '>= 3.5'
+gem 'authlogic_email_token'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
