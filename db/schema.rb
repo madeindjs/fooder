@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170406112110) do
+ActiveRecord::Schema.define(version: 20170418114034) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -198,12 +198,12 @@ ActiveRecord::Schema.define(version: 20170406112110) do
     t.string   "crypted_password"
     t.string   "password_salt"
     t.string   "persistence_token"
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.string   "firstname"
     t.string   "lastname"
-    t.integer  "login_count",        default: 0,     null: false
-    t.integer  "failed_login_count", default: 0,     null: false
+    t.integer  "login_count",            default: 0,     null: false
+    t.integer  "failed_login_count",     default: 0,     null: false
     t.datetime "last_request_at"
     t.datetime "current_login_at"
     t.datetime "last_login_at"
@@ -211,8 +211,12 @@ ActiveRecord::Schema.define(version: 20170406112110) do
     t.string   "last_login_ip"
     t.string   "picture"
     t.string   "slug"
-    t.boolean  "premium",            default: false
+    t.boolean  "premium",                default: false
     t.datetime "premium_until"
+    t.string   "new_email"
+    t.string   "email_token"
+    t.datetime "email_token_updated_at"
+    t.boolean  "activated",              default: false, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["slug"], name: "index_users_on_slug", unique: true
   end
