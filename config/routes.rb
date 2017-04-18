@@ -42,6 +42,7 @@ Rails.application.routes.draw do
   get 'signout', to: 'user_sessions#destroy'
   get 'signin', to: 'user_sessions#new'
   get "signup" => "users#new"
+  get "confirm_email" => "users#confirm_email/:token"
 
   # pages area
   get 'cost' => 'pages#cost'

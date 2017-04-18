@@ -1,7 +1,7 @@
 class UserMailer < ApplicationMailer
-  def activate_account(user)
+  def email_confirmation user
     @user = user
-    @url  = 'http://example.com/login'
-    mail(to: @user.email, subject: 'Bienvenue sur Fooder, activez votre compte dès à présent')
+    @url  = confirm_email_url user.email_token
+    mail(to: @user.email, subject: 'Bienvenue sur Fooder, confirmez votre email dès à présent')
   end
 end
