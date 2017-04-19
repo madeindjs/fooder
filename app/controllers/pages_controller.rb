@@ -7,9 +7,9 @@ class PagesController < ApplicationController
     render layout: 'application_landing'
   end
 
-  def cost
-    @title = "Prix"
-    @description = "Descriptif de la grille tarifaire."
+  def contact
+    @title = "Contact"
+    @description = "Formulaire de contact au support."
   end
 
 end

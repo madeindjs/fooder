@@ -45,6 +45,7 @@ Rails.application.routes.draw do
   get "confirm_email" => "users#confirm_email/:token"
 
   # pages area
+  match 'contact' => 'pages#contact', via: [:get, :post]
   get 'cost' => 'pages#cost'
   get "home" => "pages#home"
   get '/', to:  'restaurants#show', constraints: { subdomain: 'le-petit-lagon-bleu'}, as: :example
