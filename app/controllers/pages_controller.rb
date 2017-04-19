@@ -10,6 +10,17 @@ class PagesController < ApplicationController
   def contact
     @title = "Contact"
     @description = "Formulaire de contact au support."
+    if request.post?
+      UserMailer.contact(contact_params.to_h).deliver_now
+      flash[:success] = 'Votre demande à été transmise au support'
+    end
+  end
+
+  private
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def contact_params
+    params.require('/contact').permit(:object, :email, :content)
   end
 
 end
