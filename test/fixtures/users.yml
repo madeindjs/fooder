@@ -14,7 +14,11 @@ me:
        
 
 my_girlfriend:
+  id: 2
   email: lorene.odet@orange.fr
+  firstname: Lorène 
+  slug: lorene
+  lastname: Odet
   password_salt: <%= salt = Authlogic::Random.hex_token %>
   crypted_password: <%= Authlogic::CryptoProviders::Sha512.encrypt("lolotop" + salt) %>
   persistence_token: <%= Authlogic::Random.hex_token %>
