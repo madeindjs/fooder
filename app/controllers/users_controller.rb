@@ -80,7 +80,7 @@ class UsersController < ApplicationController
       else
         user.confirm_email!
         UserSession.create(user)
-        flash[:sucess] = 'Votre email est maintenant confirmé!'
+        flash[:success] = 'Votre email est maintenant confirmé!'
       end
     else
       flash[:danger] = 'Une erreur est survenue.'

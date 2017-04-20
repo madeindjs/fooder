@@ -29,12 +29,12 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
   test "should get edits" do
     setup_restaurant_host
     login(users(:me))
-    get categories_edit_path
+    get categories_edit_url
     assert_response :success
   end
 
   test "should redirect get edits on restaurant page" do
-    get categories_edit_path
+    get categories_edit_url
     assert_response 302
   end
 
@@ -45,7 +45,7 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should redirect on get edit" do
-    get edit_category_path(@category)
+    get edit_category_url(@category)
     assert_response 302
   end
 
