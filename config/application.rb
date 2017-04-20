@@ -14,18 +14,5 @@ module Fooder
 
     # Silent deprecation warning " Time columns will become time zone aware in Rails 5.1"
     config.active_record.time_zone_aware_types = [:datetime, :time]
-
-    config.action_mailer.delivery_method = :smtp
-
-    config.action_mailer.smtp_settings = {
-      address:              'ssl0.ovh.net',
-      port:                 465,
-      domain:               'ssl0.ovh.net',
-      user_name:            'support@fooder.pro',
-      password:             Rails.application.secrets.email_password,
-      authentication:       :plain,
-      enable_starttls_auto: true ,
-      tls: true 
-    }
   end
 end

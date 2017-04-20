@@ -57,6 +57,16 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "Fooder_#{Rails.env}"
   config.action_mailer.perform_caching = false
   config.action_mailer.default_url_options = { host: 'http://fooder.pro' }
+  config.action_mailer.smtp_settings = {
+    address:              'ssl0.ovh.net',
+    port:                 465,
+    domain:               'ssl0.ovh.net',
+    user_name:            'support@fooder.pro',
+    password:             Rails.application.secrets.email_password,
+    authentication:       :plain,
+    enable_starttls_auto: true ,
+    tls: true 
+  }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
