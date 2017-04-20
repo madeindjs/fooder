@@ -42,7 +42,7 @@ Rails.application.routes.draw do
   get 'signout', to: 'user_sessions#destroy'
   get 'signin', to: 'user_sessions#new'
   get "signup" => "users#new"
-  get "confirm_email" => "users#confirm_email/:token"
+  get "confirm_email/:token" => "users#confirm_email", as: 'confirm_email'
 
   # pages area
   match 'contact' => 'pages#contact', via: [:get, :post]

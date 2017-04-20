@@ -73,19 +73,19 @@ class UsersController < ApplicationController
   end
 
 
-  def confirm_email token
-    if user = User.find_using_email_token(token, 5.days)
-      was_unactivated = !user.activated
-      user.confirm_email!
-      UserSession.create(user)
-      if was_unactivated
-        redirect_to root_url, notice: 'Your account has been activated.'
+  def confirm_email
+    if user = User.find_using_email_token(params[:token], 5.days)
+      if user.activated
+        flash[:danger] = 'Votre email a déjà été confirmée.'
       else
-        redirect_to root_url, notice: 'Your email address has been confirmed.'
+        user.confirm_email!
+        UserSession.create(user)
+        flash[:sucess] = 'Votre email est maintenant confirmé!'
       end
     else
-      render action: :bad_confirmation_email
+      flash[:danger] = 'Une erreur est survenue.'
     end
+    redirect_to root_url
   end
 
   private

@@ -1,8 +1,8 @@
 class UserMailer < ApplicationMailer
 
-  def email_confirmation user
+  def email_confirmation user, controller
     @user = user
-    @url  = confirm_email_url user.email_token
+    @url  = confirm_email_url(token: user.email_token)
     mail(to: @user.email, subject: 'Bienvenue sur Fooder, confirmez votre email dès à présent')
   end
 
