@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+
+    <h1>Bienvenue sur <%= link_to 'Fooder' , root_url %></h1>
+    <p><strong>Votre compte a été crée avec succès</strong>. Votre iddentifiant est <strong><%= @user.email %></strong>, connectez vous via <%= link_to nil, signin_url %>.</p>
+
+
+    <h2>Première étape</h2>
+    <p>Confirmez votre addresse mail en cliquant sur ce lien: <%= link_to nil, @url %>.</p>
+
+    <h2>Deuxième étape</h2>
+    <p>Commencez à <%= link_to "créer votre restaurant", new_restaurant_url %> sur Fooder et communiquez votre site.</p>
+
+    <br>
+
+    <p>Merci de votre confiance.</p>
+
+    <footer>
+      <hr/>
+      <p>En cas de problème, n'hésitez pas à contacter le support via l'addresse mail suivante.</p>
+    </footer>
+
+  </body>
+</html>

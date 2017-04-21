@@ -1,5 +1,8 @@
 class User < ApplicationRecord
   acts_as_authentic
+
+  include Authlogic::ActsAsAuthentic::EmailToken::Confirmation
+
   has_many :opening_hours
   has_many :payements
   has_many :restaurants
@@ -51,5 +54,11 @@ class User < ApplicationRecord
     "#{Rails.application.secrets.paypal_host}/cgi-bin/webscr?" + values.to_query
   end
 
+  # activate account from user email token
+  #
+  # Method imported from Authlogic::ActsAsAuthentic::EmailToken 
+  def activate
+    self.activated = true
+  end
 
 end

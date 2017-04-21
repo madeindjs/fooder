@@ -1,0 +1,13 @@
+<h1>Contact</h1>
+
+<p>Vous avez un question? N'hesitez pas à nous contacter.</p>
+
+<%= bootstrap_form_for contact_path do |f| %>
+
+  <%= f.text_field :object, label: 'Objet' %>
+  <%= f.text_field :email, label: 'Votre email' %>
+  <%= f.text_area :content, label: 'Contenu' %>
+  <%= f.submit 'Envoyer' %>
+
+<% end %>
+

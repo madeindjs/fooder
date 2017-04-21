@@ -6,7 +6,9 @@ function defer(method) {
 };
 
 
-var admin_accordion = $("#accordion")
+$('#accordion-form').accordion();
+
+var admin_accordion = $("#accordion");
 
 if(admin_accordion.length){
   admin_accordion.accordion({heightStyle: "content"});

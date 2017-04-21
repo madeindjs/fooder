@@ -73,4 +73,29 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to users_url
   end
+
+  test "should not confirm email" do
+    # get email & reset password
+    my_girlfriend = users(:my_girlfriend)
+    my_girlfriend.reset_email_token!
+    assert_not my_girlfriend.activated
+    my_girlfriend.reset_email_token!
+    # send GET request to confirm email
+    get confirm_email_url(token: 'bad_token')
+    my_girlfriend.reload
+    # check if user is confirmed
+    assert_not my_girlfriend.activated
+  end 
+
+  test "should confirm email" do
+    # get email & reset password
+    my_girlfriend = users(:my_girlfriend)
+    my_girlfriend.reset_email_token!
+    assert_not my_girlfriend.activated
+    # send GET request to confirm email
+    get confirm_email_url(token: my_girlfriend.email_token)
+    my_girlfriend.reload
+    # check if user is confirmed
+    assert my_girlfriend.activated
+  end 
 end

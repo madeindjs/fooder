@@ -35,12 +35,12 @@ class SectionsControllerTest < ActionDispatch::IntegrationTest
   test "should get edits" do
     setup_restaurant_host
     login(users(:me))
-    get sections_edit_path
+    get sections_edit_url
     assert_response :success
   end
 
   test "should redirect get edits on restaurant page" do
-    get sections_edit_path
+    get sections_edit_url
     assert_response 302
   end
 

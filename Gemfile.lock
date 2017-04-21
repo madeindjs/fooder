@@ -46,6 +46,8 @@ GEM
       activesupport (>= 3.2, < 5.1)
       request_store (~> 1.0)
       scrypt (>= 1.2, < 4.0)
+    authlogic_email_token (0.0.5)
+      authlogic (~> 3)
     bootstrap_form (2.6.0)
     builder (3.2.3)
     byebug (9.0.6)
@@ -206,6 +208,7 @@ PLATFORMS
 
 DEPENDENCIES
   authlogic (>= 3.5)
+  authlogic_email_token
   bootstrap_form
   byebug
   capistrano

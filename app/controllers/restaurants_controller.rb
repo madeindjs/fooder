@@ -85,14 +85,10 @@ class RestaurantsController < ApplicationController
   end
 
 
-  # GET /restaurants/1/contact
-  def contact
-    @title = "Contact"
-  end
-
   # GET /allergens
   def allergens
     @title = "Carte des allergènes"
+    @description = "Liste des allergènes présents dans nos plats."
   end
 
 

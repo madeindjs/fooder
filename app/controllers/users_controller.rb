@@ -37,32 +37,30 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-    respond_to do |format|
-      if @user.save
-        flash[:success] = "Votre compte a été créé avec succès."
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
-      else
-        flash[:danger] = "Une erreur est survenue."
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    if @user.save
+      @user.maybe_deliver_email_confirmation! self
+      flash[:success] = "Votre compte a été créé avec succès, un email de confirmation vous a été envoyé."
+      redirect_to @user
+    else
+      flash[:danger] = "Une erreur est survenue."
+      render :new
     end
   end
 
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-    respond_to do |format|
-      if @user.update(user_params)
-        flash[:success] = "Votre compte a été mise à jour."
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user }
+    if @user.update_attributes user_params
+      # check if we need to re-sent an confirmation email
+      if @user.maybe_deliver_email_confirmation! self
+        flash[:success] = "Votre compte a été mise à jour, un email de confirmation vous a été envoyé."
       else
-        flash[:danger] = "Une erreur est survenue."
-        format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        flash[:success] = "Votre compte a été mise à jour."
       end
+      redirect_to @user
+    else
+      flash[:danger] = "Une erreur est survenue."
+      render 'edit'
     end
   end
 
@@ -71,10 +69,23 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     flash[:success] = "Votre post a été mise à jour."
-    respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
-      format.json { head :no_content }
+    redirect_to users_url
+  end
+
+
+  def confirm_email
+    if user = User.find_using_email_token(params[:token], 5.days)
+      if user.activated
+        flash[:danger] = 'Votre email a déjà été confirmée.'
+      else
+        user.confirm_email!
+        UserSession.create(user)
+        flash[:success] = 'Votre email est maintenant confirmé!'
+      end
+    else
+      flash[:danger] = 'Une erreur est survenue.'
     end
+    redirect_to root_url
   end
 
   private
