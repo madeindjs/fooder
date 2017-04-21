@@ -10,7 +10,7 @@ class AddEmailTokenToUsers < ActiveRecord::Migration[5.0]
     add_column :users, :activated, :boolean, after: :id, null: false, default: false
 
     # set validity for all old user
-    User.all.each do { |user|
+    User.all.each { |user|
         user.activated = true
         user.save
     }
