@@ -6,6 +6,7 @@ me:
   firstname: Alexandre 
   slug: alexandre
   lastname: Rousseau
+  activated: true
   password_salt: <%= salt = Authlogic::Random.hex_token %>
   crypted_password: <%= Authlogic::CryptoProviders::Sha512.encrypt("20462046" + salt) %>
   persistence_token: <%= Authlogic::Random.hex_token %>
@@ -13,13 +14,18 @@ me:
        
 
 my_girlfriend:
+  id: 2
   email: lorene.odet@orange.fr
+  firstname: Lorène 
+  slug: lorene
+  lastname: Odet
   password_salt: <%= salt = Authlogic::Random.hex_token %>
   crypted_password: <%= Authlogic::CryptoProviders::Sha512.encrypt("lolotop" + salt) %>
   persistence_token: <%= Authlogic::Random.hex_token %>
 
 ben:
   email: whatever@whatever.com
+  activated: true
   password_salt: <%= salt = Authlogic::Random.hex_token %>
   crypted_password: <%= Authlogic::CryptoProviders::Sha512.encrypt("whatever" + salt) %>
   persistence_token: <%= Authlogic::Random.hex_token %>

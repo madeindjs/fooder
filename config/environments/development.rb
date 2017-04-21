@@ -30,9 +30,16 @@ Rails.application.configure do
   end
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default_url_options = { host: 'http://lvh.me', port: 3000 }
   config.action_mailer.perform_caching = false
+
+  # don't forget to install maildev:  npm install -g maildev
+  config.action_mailer.smtp_settings = {
+    address:              'localhost',
+    port:                 1025,
+    domain:               'localhost',
+  }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
