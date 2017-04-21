@@ -9,10 +9,15 @@ class PagesController < ApplicationController
 
   def contact
     @title = "Contact"
-    @description = "Formulaire de contact au support."
+    @description = "Une question? N'hésitez pas à nous contacter par mail."
     if request.post?
-      UserMailer.contact(contact_params.to_h).deliver_now
-      flash[:success] = 'Votre demande à été transmise au support'
+      if @restaurant
+        RestaurantMailer.contact(contact_params.to_h, @restaurant.user.email).deliver_now
+        flash[:success] = 'Votre demande à été transmise au support'
+      else
+        UserMailer.contact(contact_params.to_h).deliver_now
+        flash[:success] = 'Votre demande à été transmise au support'
+      end
     end
   end
 
