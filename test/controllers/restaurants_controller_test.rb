@@ -83,14 +83,4 @@ class RestaurantsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to @restaurant.user
   end
 
-  test "should get contact" do
-    setup_restaurant_host
-    get contact_url
-    assert_response :success
-  end
-
-  test "should get contact redirect" do
-    get contact_url
-    assert_response 302
-  end
 end
