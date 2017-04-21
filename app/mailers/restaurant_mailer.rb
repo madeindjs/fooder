@@ -1,0 +1,2 @@
+class RestaurantMailer < ApplicationMailer
+end
