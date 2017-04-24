@@ -43,4 +43,14 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.premium?
   end
 
+
+  test "should delivering password instructions" do
+    assert_difference("@user.perishable_token") do 
+      @user.deliver_password_reset_instructions!
+      # should "send an email" do
+      #   assert_sent_email
+      # end
+    end
+  end
+
 end
