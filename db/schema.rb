@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170418114034) do
+ActiveRecord::Schema.define(version: 20170424110104) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -172,6 +172,7 @@ ActiveRecord::Schema.define(version: 20170418114034) do
     t.integer  "dishes_picture_display",   default: 2
     t.integer  "posts_picture_display",    default: 2
     t.integer  "sections_picture_display", default: 2
+    t.boolean  "module_contact",           default: true
     t.index ["slug"], name: "index_restaurants_on_slug", unique: true
   end
 
@@ -217,7 +218,9 @@ ActiveRecord::Schema.define(version: 20170418114034) do
     t.string   "email_token"
     t.datetime "email_token_updated_at"
     t.boolean  "activated",              default: false, null: false
+    t.string   "perishable_token",       default: "",    null: false
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["perishable_token"], name: "index_users_on_perishable_token"
     t.index ["slug"], name: "index_users_on_slug", unique: true
   end
 
