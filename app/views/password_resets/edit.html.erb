@@ -1,8 +1,18 @@
-<h1>Update your password</h1>
-     
-<p>Please enter the new password below and then press "Update Password".</p>
+<h1>Mise à jour de votre mot de passe</h1>
  
-<%= form_tag password_reset_path, :method => :put do %>
-  <%= password_field_tag :password %>
-  <%= submit_tag "Update Password" %>
+<p>Entrez votre nouveau de passe et confirmez</p>
+ 
+<%= form_tag password_reset_path, method: :put do %>
+
+  <div class="form-group">
+    <%= label_tag :password, "Nouveau mot de passe" %> 
+    <%= password_field_tag :password, nil, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag :password_confirmation, "Confirmez votre nouveau mot de passe" %> 
+    <%= password_field_tag :password_confirmation, nil, class: 'form-control' %>
+  </div>
+
+  <%= submit_tag "Mettre à jour", class: 'btn btn-default' %>
 <% end %>

@@ -3,33 +3,38 @@ class PasswordResetsController < ApplicationController
   before_action :load_user_using_perishable_token, :only => [ :edit, :update ]
  
   def new
+    @title = "Mot de passe oublié"
+    @description = "Entrez votre email pour changer votre mot de passe."
   end
  
   def create
-    if @user = User.find_by_email(params[:email])
-      @user.deliver_password_reset_instructions!
-      flash[:notice] = "Instructions to reset your password have been emailed to you"
-      redirect_to root_path
+    email_sent = params[:email]
+    if @user = User.find_by_email(email_sent)
+      if @user.activated
+        @user.deliver_password_reset_instructions!
+        flash[:success] = "Un email vous à été envoyé avec les instructions pour changer votre mot de passe."
+        redirect_to root_path
+      else
+        flash[:danger] = "Ce compte n'est pas encore actif."
+        redirect_to new_password_reset_path
+      end
     else
-      flash.now[:error] = "No user was found with email address #{params[:email]}"
-      render :new
+      flash[:danger] = "Aucun utilisateur avec le mail \"#{email_sent}\" n'a été trouvé"
+      redirect_to new_password_reset_path
     end
   end
  
   def edit
+    @title = "Mettre à jour le mot de passe"
+    @description = "Créer une nouvelle catégories pour vos plats."
   end
  
   def update
-    @user.password = params[:password]
-    # Only if your are using password confirmation
-    # @user.password_confirmation = params[:password]
-    
-    # Use @user.save_without_session_maintenance instead if you
-    # don't want the user to be signed in automatically.
-    if @user.save
-      flash[:success] = "Your password was successfully updated"
+    if @user.update_attributes password_params
+      flash[:success] = "Votre mot de passe a été mis à jour"
       redirect_to @user
     else
+      flash[:danger] = @user.errors.full_messages
       render :edit
     end
   end
@@ -40,8 +45,13 @@ class PasswordResetsController < ApplicationController
   def load_user_using_perishable_token
     @user = User.find_using_perishable_token(params[:id])
     unless @user
-      flash[:error] = "We're sorry, but we could not locate your account"
+      flash[:danger] = "Nous n'avons pas retrouvé votre compte."
       redirect_to root_url
     end
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def password_params
+    params.permit(:password, :password_confirmation)
   end
 end

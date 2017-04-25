@@ -14,8 +14,8 @@ class UserMailer < ApplicationMailer
   end
 
   def password_reset user
-    mail subject: "Password Reset Instructions", to: user.email,
-      body: edit_password_reset_url(user.perishable_token)
+    @url = edit_password_reset_url(user.perishable_token)
+    mail(subject: "Changement de votre mot de passe", to: user.email)
   end
 
 end
