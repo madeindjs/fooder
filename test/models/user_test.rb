@@ -43,4 +43,11 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.premium?
   end
 
+
+  test "should delivering password instructions" do
+    assert_empty @user.perishable_token
+    @user.deliver_password_reset_instructions!
+    assert_not_empty @user.perishable_token
+  end
+
 end

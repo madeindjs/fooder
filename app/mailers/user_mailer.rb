@@ -13,4 +13,9 @@ class UserMailer < ApplicationMailer
     mail(to: 'support@fooder.pro', subject: @object)
   end
 
+  def password_reset user
+    @url = edit_password_reset_url(user.perishable_token)
+    mail(subject: "Changement de votre mot de passe", to: user.email)
+  end
+
 end

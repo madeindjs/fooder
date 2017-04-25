@@ -42,6 +42,7 @@ Rails.application.routes.draw do
   get 'signin', to: 'user_sessions#new'
   get "signup" => "users#new"
   get "confirm_email/:token" => "users#confirm_email", as: 'confirm_email'
+  resources :password_resets, :only => [ :new, :create, :edit, :update ]
 
   # pages area
   match 'contact' => 'pages#contact', via: [:get, :post]

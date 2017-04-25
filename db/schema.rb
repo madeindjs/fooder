@@ -218,7 +218,9 @@ ActiveRecord::Schema.define(version: 20170421105206) do
     t.string   "email_token"
     t.datetime "email_token_updated_at"
     t.boolean  "activated",              default: false, null: false
+    t.string   "perishable_token",       default: "",    null: false
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["perishable_token"], name: "index_users_on_perishable_token"
     t.index ["slug"], name: "index_users_on_slug", unique: true
   end
 
