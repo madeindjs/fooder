@@ -1,0 +1,11 @@
+<div class="btn-group col-xs-12" role="toolbar" aria-label="...">
+
+  <%= link_to user_url(current_user, subdomain: nil), class: "btn btn-default" do %>
+    <%= glyphicon "user" %> Votre profil
+  <% end %>
+
+  <%= link_to edit_user_url(current_user, subdomain: nil), class: "btn btn-default" do %>
+    <%= glyphicon "pencil" %> editer votre profil
+  <% end %>
+
+</div>
