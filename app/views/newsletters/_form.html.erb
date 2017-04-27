@@ -1,17 +1,5 @@
-<%= form_for(newsletter) do |f| %>
-  <% if newsletter.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(newsletter.errors.count, "error") %> prohibited this newsletter from being saved:</h2>
-
-      <ul>
-      <% newsletter.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<%= bootstrap_form_for newsletter do |f| %>
+  <%= render 'shared/errors_form', model: newsletter %>
+  <%= f.text_field :email, label: 'Votre email' %>
+  <%= f.submit "S'abonner" %>
 <% end %>

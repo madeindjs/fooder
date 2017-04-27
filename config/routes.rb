@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :newsletters
   # restaurants area
   resources :categories, only: [:create, :new, :edit, :update, :destroy]
   resources :restaurants # TODO: remove it
@@ -51,5 +50,7 @@ Rails.application.routes.draw do
   get "home" => "pages#home"
   get '/', to:  'restaurants#show', constraints: { subdomain: 'le-petit-lagon-bleu'}, as: :example
 
+  resources :newsletters, only: [:create, :destroy]
+  
   root 'pages#home'
 end
