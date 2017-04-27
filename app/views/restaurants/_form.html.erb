@@ -44,10 +44,16 @@
       </div>
 
 
-      <h3>Thème</h3>
+      <h3>Site</h3>
 
       <div>
-        <%= f.select :css, { "Sélectionnez un theme" => nil }, {}, {id: 'themes'} %>
+        <div class="col-xs-12">
+          <%= f.select :css, { "Sélectionnez un theme" => nil }, {label: 'Thème'}, {id: 'themes'} %>
+        </div>
+
+        <div class="col-xs-12">
+          <%= f.text_field :slug, label: "Préfixe de l'URL gratuite", append: ".fooder.pro", prepend: 'https://' %>
+        </div>
       </div>
 
 
