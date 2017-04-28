@@ -1,0 +1,5 @@
+<%= bootstrap_form_for newsletter do |f| %>
+  <%= render 'shared/errors_form', model: newsletter %>
+  <%= f.text_field :email, label: 'Votre email' %>
+  <%= f.submit "S'abonner" %>
+<% end %>
