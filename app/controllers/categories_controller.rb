@@ -2,6 +2,7 @@ class CategoriesController < ApplicationController
   before_action :set_category, only: [:edit, :update, :destroy]
   before_action :check_login
   before_action :check_owner, only: [:edit, :update, :destroy]
+  before_action :check_admin, only: [:edits]
 
   # GET /categories/new
   def new
@@ -23,7 +24,6 @@ class CategoriesController < ApplicationController
     @title = "Gérer les categories"
     @description = "Renommer et réorganisez vos catégories."
 
-    redirect_to root_path unless current_user.restaurants.include? @restaurant
     @categories = @restaurant.categories.order :order
     if request.post?
       # to array to save changes to display it to user

@@ -1,0 +1,40 @@
+<h1>Gerez vos allergènes</h1>
+
+
+<%= form_tag dishes_edit_path do  %>
+
+  <div class="col-xs-12">
+    <table class="table table-striped text-center">
+
+      <tr>
+        <th></th>
+        <% Dish::ALLERGENS.each do |value, name| %>
+          <th><%= name %></th>
+        <% end %>
+      </tr>
+
+      <% @restaurant.dishes.each do |dish| %>
+        <tr>
+          <td><%= link_to dish.name, dish %></td>
+
+          <% Dish::ALLERGENS.each do |value, name| %>
+            <td><%= check_box_tag "dish[#{dish.id}][#{value}]" , 1, dish.send(value) == 0 ? false : true %></td>
+          <% end %>
+        </tr>
+      <% end %>
+
+    </table>
+  </div>
+
+  <%= submit_tag 'Tout mettre à jour', class: 'btn btn-primary' %>
+
+<% end %>
+
+
+<%= form_tag dishes_edit_path do  %>
+
+
+    
+
+
+<% end %>
