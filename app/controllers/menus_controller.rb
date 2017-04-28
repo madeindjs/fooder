@@ -2,6 +2,7 @@ class MenusController < ApplicationController
   before_action :set_menu, only: [:show, :edit, :update, :destroy]
   before_action :check_login, only: [:new, :create, :edits, :edit, :update, :destroy]
   before_action :check_owner, only: [:edit, :update, :destroy]
+  before_action :check_admin, only: [:edits]
   # GET /menus
   # GET /menus.json
   def index
@@ -40,7 +41,6 @@ class MenusController < ApplicationController
     @title = "Gérer les menus"
     @description = "Renommer et réorganisez les menu proposés par ce restaurant."
 
-    redirect_to root_path unless current_user.restaurants.include? @restaurant
     @menus = @restaurant.menus.order :order
     if request.post?
       # to array to save changes to display it to user

@@ -2,6 +2,7 @@ class OpeningHoursController < ApplicationController
   before_action :set_opening_hour, only: [:update, :destroy]
   before_action :check_login, only: [:create, :edits, :destroy]
   before_action :check_owner, only: [:edits, :destroy]
+  before_action :check_admin, only: [:edits]
 
   # GET  /restaurant/1/opening_hours/edits
   # POST /restaurant/1/opening_hours/edits
