@@ -18,8 +18,7 @@
           <td><%= link_to dish.name, dish %></td>
 
           <% Dish::ALLERGENS.each do |value, name| %>
-
-            <td><%= check_box_tag "dish[#{dish.id}][#{value}]" , dish.send(value) %></td>
+            <td><%= check_box_tag "dish[#{dish.id}][#{value}]" , 1, dish.send(value) == 0 ? false : true %></td>
           <% end %>
         </tr>
       <% end %>

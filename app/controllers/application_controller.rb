@@ -38,6 +38,7 @@ class ApplicationController < ActionController::Base
   end
 
   def check_admin
+    check_login
     redirect_to root_path unless current_user.restaurants.include? @restaurant
   end
 
