@@ -53,7 +53,7 @@ class UserTest < ActiveSupport::TestCase
 
   test "should add to newletter" do
     assert_difference('Newsletter.count', 1) do
-      User.create email: 'test@test.fr', password: '20462046', password_confirmation: '20462046'
+      User.create email: 'azerty@test.fr', password: '20462046', password_confirmation: '20462046'
     end
     assert @user.payements.empty?
     assert_not @user.premium?
