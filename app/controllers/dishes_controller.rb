@@ -41,6 +41,7 @@ class DishesController < ApplicationController
     @description = "Ajoutez rapidement les allrgènes de vos plat."
 
     @dishes = @restaurant.dishes.order :order
+    @categories = @restaurant.categories
   end
 
   # GET /dishes/edit
