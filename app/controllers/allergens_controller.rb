@@ -1,4 +1,6 @@
 class AllergensController < ApplicationController
+  before_action :check_restaurant
+  before_action :check_admin, only: [:edits]
 
   # GET /allergens
   def index
