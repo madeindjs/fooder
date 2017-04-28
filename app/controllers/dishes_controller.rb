@@ -36,14 +36,6 @@ class DishesController < ApplicationController
   end
 
 
-  def allergens
-    @title = "Gestion des allrgènes"
-    @description = "Ajoutez rapidement les allrgènes de vos plat."
-
-    @dishes = @restaurant.dishes.order :order
-    @categories = @restaurant.categories
-  end
-
   # GET /dishes/edit
   # POST /dishes/edit
   def edits
