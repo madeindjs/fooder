@@ -2,6 +2,7 @@ class DishesController < ApplicationController
   before_action :set_dish, only: [:show, :edit, :update, :destroy]
   before_action :check_login, only: [:new, :create, :edit, :edits, :update, :destroy]
   before_action :check_owner, only: [:edit, :update, :destroy]
+  before_action :check_admin, only: [:edits, :allergens]
   before_action :check_restaurant
 
   # GET /dishes
@@ -34,13 +35,20 @@ class DishesController < ApplicationController
     @description = "Editer une catégorie existante."
   end
 
+
+  def allergens
+    @title = "Gestion des allrgènes"
+    @description = "Ajoutez rapidement les allrgènes de vos plat."
+
+    @dishes = @restaurant.dishes.order :order
+  end
+
   # GET /dishes/edit
   # POST /dishes/edit
   def edits
     @title = "Gérer vos produits"
     @description = "Renommer et réorganisez les produits."
 
-    redirect_to root_path unless current_user.restaurants.include? @restaurant
     @dishes = @restaurant.dishes.order :order
     @categories = @restaurant.categories
     if request.post?

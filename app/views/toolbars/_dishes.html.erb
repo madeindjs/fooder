@@ -8,6 +8,10 @@
     <%= glyphicon "pencil" %> gérer les plats
   <% end %>
 
+  <%= link_to dishes_allergens_edit_url(subdomain: @restaurant), class: "btn btn-default" do %>
+    <%= glyphicon "exclamation-sign" %> gérer les allergènes
+  <% end %>
+
   <%= link_to new_category_url(subdomain: @restaurant), class: "btn btn-default" do %>
     <%= glyphicon "plus" %> ajouter une catégorie
   <% end %>

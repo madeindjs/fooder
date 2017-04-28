@@ -37,6 +37,10 @@ class ApplicationController < ActionController::Base
     redirect_to root_path  unless current_user_session
   end
 
+  def check_admin
+    redirect_to root_path unless current_user.restaurants.include? @restaurant
+  end
+
   helper_method :current_user_session, :current_user
 
 end
