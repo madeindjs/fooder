@@ -2,12 +2,11 @@
 <header>
   
   <h1><%= image_tag '/assets/fooder.svg', alt: 'fooder', size: 300 %></h1>
-  <p>Génerez votre site pour votre restaurant.</p>
-  <hr>
-  <p style="font-size: 1.8em; color: gray">Vous pensez que HTML et CSS sont des organismes de l'URSSAF? On s'occupe de tout!</p>
-  <%= alert 'warning', "Le projet est en cours de construction. Si vous êtes intéressés par le projet, soyez patients." %>
+  <p>Créez un site dynamique de qualité pour votre restaurant.</p>
+  <!-- <p style="font-size: 1.8em; color: gray">Vous pensez que HTML et CSS sont des organismes de l'URSSAF? On s'occupe de tout!</p> -->
+  <p class="alert alert-warning">Le projet est en cours de construction. Vous pouvez tout de même l'utiliser normalement.</p>
 
-  <%= link_to "C'est parti!", signup_url, class: 'btn btn-lg btn-primary' %>
+  <p><%= link_to "C'est parti!", signup_url, class: 'btn btn-lg btn-primary' %></p>
 </header>
 
 <hr/>
@@ -16,9 +15,10 @@
   <div class="row">
     <div class="col-xs-12">
       <h2>Rapidité, simplicité</h2>
-      <p>Quelques clics suffisent pour génerer votre site sans aucune connaissance en web.</p>
-      <p>Vous pouvez ensuite mettre à jour et communiquer autour de votre restaurant.</p>
+      <p>Quelques clics suffisent pour <strong>créer votre site</strong> sans aucune connaissance en web.</p>
+      <p><strong>Gérez</strong> à tout moment vos produits pour <strong>créer une carte interactive</strong>.</p>
       <p>C'est vous le chef!</p>
+      <p><%= link_to image_tag("/assets/screenshots/carte.png", class: 'screenshot img-thumbnail'), example_url %></p>
       <p><%= link_to "Commencez dès maintenant", signup_url, class: 'btn btn-lg btn-default' %></p>
     </div>
   </div>
@@ -33,25 +33,29 @@
       <div class="col-xs-12"></div>
 
       <h2>Comment ça fonctionne?</h2>
-      <p>Vous n'avez besoin d'aucune connaissance particulière, c'est très simple</p>
+        <p><%= link_to "Créez votre compte", signup_url %> sur Fooder et créez votre restaurant.</p>
 
       <div class="col-sm-4">
         <h3>Etape 1</h3>
-        <p><%= link_to "Créez votre compte", signup_url %> sur Fooder.</p>
+        <p>Ajoutez vos produits et vos menus</p>
       </div>
 
       <div class="col-sm-4">
         <h3>Etape 2</h3>
-        <p>Ajoutez les produits que vous proposez.</p>
+        <p>Organisez vos produits et composez vos menus</p>
       </div>
 
       <div class="col-sm-4">
         <h3>Etape 3</h3>
-        <p>Choisissez un thème.</p>
+        <p>Choisissez un thème et personnalisez votre site.</p>
       </div>
 
-      <div class="col-xs-12" style="margin-top: 80px">
+      <div class="col-xs-12">
         <p><%= link_to "voir l'exemple", example_url, class: 'btn btn-lg btn-default' %></p>
+      </div>
+
+      <div class="col-xs-12">
+        <p class="alert alert-info">Besoin d'aide? <%= link_to 'Contactez le support.', contact_path, class: 'alert-link' %></p>
       </div>
 
     </div>
@@ -68,32 +72,27 @@
 
 
     <div class="col-sm-6">
-      <h3>Allergènes.</h3>
+      <h3><%= glyphicon 'heart' %> Allergènes.</h3>
       <p>Renseignez les allergènes présents dans vos plats et proposez  une carte des allergènes.</p>
     </div>
 
     <div class="col-sm-6">
-      <h3>Menus.</h3>
+      <h3><%= glyphicon 'book' %> Menus.</h3>
       <p>Composez vos menus avec les plats que vous avez déjà renseignés.</p>
     </div>
 
     <div class="col-sm-6">
-      <h3>Blog.</h3>
+      <h3><%= glyphicon 'bullhorn' %> Blog.</h3>
       <p>Communiquez autour de l'actualité de votre restaurant.</p>
     </div>
 
     <div class="col-sm-6">
-      <h3>Thèmes.</h3>
+      <h3><%= glyphicon 'tint' %> Thèmes.</h3>
       <p>Choisissez un thème parmi les nombreux proposés.</p>
     </div>
 
-    <div class="col-sm-6">
-      <h3>Notations.</h3>
-      <p>Laissez vos clients noter vos plats.</p>
-    </div>
-
-    <div class="col-sm-12">
-      <h3>Autres?</h3>
+    <div class="col-sm-12 alert alert-info">
+      <h3><%= glyphicon 'question-sign' %> D'autres idées?</h3>
       <p>Nous sommes à l'écoute pour toutes propositions de nouvelles fonctionnalités.</p>
     </div>
 
