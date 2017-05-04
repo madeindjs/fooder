@@ -10,6 +10,8 @@ h2{font-size:3em;font-weight: 800;line-height: 1.5;}
 table{font-size: 1.2em;}
   table *{text-align: center}
 
+hr{border: 10px solid #eee;width:100px;}
+
 section,
 header{padding-top: 100px; padding-bottom: 100px}
   section p,

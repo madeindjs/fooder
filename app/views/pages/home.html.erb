@@ -2,8 +2,8 @@
 <header>
   
   <h1><%= image_tag '/assets/fooder.svg', alt: 'fooder', size: 300 %></h1>
-  <p>Créez un site dynamique de qualité pour votre restaurant.</p>
-  <!-- <p style="font-size: 1.8em; color: gray">Vous pensez que HTML et CSS sont des organismes de l'URSSAF? On s'occupe de tout!</p> -->
+  <!-- <p><strong>Créez un site dynamique de qualité</strong> pour votre restaurant.</p> -->
+  <p><strong>Développez</strong> votre clientèle avec un <strong>site internet</strong> à l'image de votre <strong>restaurant</strong>.</p>
   <p class="alert alert-warning">Le projet est en cours de construction. Vous pouvez tout de même l'utiliser normalement.</p>
 
   <p><%= link_to "C'est parti!", signup_url, class: 'btn btn-lg btn-primary' %></p>
@@ -14,11 +14,13 @@
 <section>
   <div class="row">
     <div class="col-xs-12">
-      <h2>Rapidité, simplicité</h2>
-      <p>Quelques clics suffisent pour <strong>créer votre site</strong> sans aucune connaissance en web.</p>
-      <p><strong>Gérez</strong> à tout moment vos produits pour <strong>créer une carte interactive</strong>.</p>
-      <p>C'est vous le chef!</p>
-      <p><%= link_to image_tag("/assets/screenshots/carte.png", class: 'screenshot img-thumbnail'), example_url %></p>
+      <h2>Rapide, simple</h2>
+
+      <p>En quelques clics, et sans connaissances en web-design, <strong>créez votre site</strong> pour votre restaurant.</p>
+
+      <p>Vous pensez que <strong>HTML</strong> et <strong>CSS</strong> sont des organismes de l'<strong>URSSAF</strong>? On vous facilite la vie!</p>
+      
+      <p><%= link_to "Créez votre compte", signup_url %> sur Fooder et commencez dès à présent à .</p>
       <p><%= link_to "Commencez dès maintenant", signup_url, class: 'btn btn-lg btn-default' %></p>
     </div>
   </div>
@@ -33,30 +35,30 @@
       <div class="col-xs-12"></div>
 
       <h2>Comment ça fonctionne?</h2>
-        <p><%= link_to "Créez votre compte", signup_url %> sur Fooder et créez votre restaurant.</p>
+      <p><%= link_to "Créez votre compte", signup_url %> sur Fooder et créez votre restaurant.</p>
 
       <div class="col-sm-4">
         <h3>Etape 1</h3>
-        <p>Ajoutez vos produits et vos menus</p>
+        <p><strong>Ajoutez</strong><br/> vos produits</p>
       </div>
 
       <div class="col-sm-4">
         <h3>Etape 2</h3>
-        <p>Organisez vos produits et composez vos menus</p>
+        <p><strong>Composez</strong><br/> vos menus</p>
       </div>
 
       <div class="col-sm-4">
         <h3>Etape 3</h3>
-        <p>Choisissez un thème et personnalisez votre site.</p>
+        <p><strong>C'est tout!</strong><br/> Votre carte interactive est prête.</p>
       </div>
 
       <div class="col-xs-12">
+        <p class="alert alert-info">Et tout cela <strong>totalement gratuitement</strong> et <strong>sans période d'éssai</strong>.</p>
         <p><%= link_to "voir l'exemple", example_url, class: 'btn btn-lg btn-default' %></p>
       </div>
 
-      <div class="col-xs-12">
-        <p class="alert alert-info">Besoin d'aide? <%= link_to 'Contactez le support.', contact_path, class: 'alert-link' %></p>
-      </div>
+
+
 
     </div>
   </div>
@@ -68,7 +70,41 @@
 <div class="row">
   <div class="col-xs-12">
     <h2>Fonctionnalités</h2>
-    <p>Votre site dispose de plusieurs modules que vous pouvez choisir d'activer ou non.</p>
+    <p>Votre site dispose de plusieurs modules que vous pouvez choisir d'activer ou non <small>(comme des legos)</small>.</p>
+
+
+    <div class="col-sm-6">
+      <h3><%= glyphicon 'apple' %> Produits.</h3>
+      <p>Modifiez vos plats à tout moment.</p>
+    </div>
+
+    <div class="col-sm-6">
+      <h3><%= glyphicon 'book' %> Carte interactive.</h3>
+      <p>Créez vos produits et liez-les pour proposer des menus.</p>
+    </div>
+
+
+    <div class="col-sm-6">
+      <h3><%= glyphicon 'tint' %> Thèmes.</h3>
+      <p>Choisissez un thème parmi les nombreux proposés.</p>
+    </div>
+
+    <div class="col-sm-6">
+      <h3><%= glyphicon 'time' %> Horraires d'ouvertures.</h3>
+      <p>Choisissez un thème parmi les nombreux proposés.</p>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<hr/>
+
+<section>
+<div class="row">
+  <div class="col-xs-12">
+    <h2>Vous souhaitez aller plus loin?</h2>
+    <p>Votre site dispose de plusieurs modules que vous pouvez choisir d'activer ou non <small>(comme des legos)</small>.</p>
 
 
     <div class="col-sm-6">
@@ -77,8 +113,8 @@
     </div>
 
     <div class="col-sm-6">
-      <h3><%= glyphicon 'book' %> Menus.</h3>
-      <p>Composez vos menus avec les plats que vous avez déjà renseignés.</p>
+      <h3><%= glyphicon 'envelope' %> Contact.</h3>
+      <p>Laissez vos client vous contactez à traver un formulaire de contact.</p>
     </div>
 
     <div class="col-sm-6">
@@ -87,7 +123,7 @@
     </div>
 
     <div class="col-sm-6">
-      <h3><%= glyphicon 'tint' %> Thèmes.</h3>
+      <h3><%= glyphicon 'star' %> Evaluations.</h3>
       <p>Choisissez un thème parmi les nombreux proposés.</p>
     </div>
 
@@ -106,8 +142,8 @@
 <div class="row">
   <div class="col-xs-12">
     <h2>Prix</h2>
-    <p>Créez votre site gratuitement et décidez de basculer sur un compte premium quand vous le souhaitez.</p>
     <%= render 'cost_table' %>
+    <p class="alert alert-info">Créez votre site gratuitement et décidez de basculer sur un compte premium quand vous le souhaitez.</p>
   </div>
 </div>
 </section>
