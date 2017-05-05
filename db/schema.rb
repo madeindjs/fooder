@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170503105520) do
+ActiveRecord::Schema.define(version: 20170505105149) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -182,6 +182,7 @@ ActiveRecord::Schema.define(version: 20170503105520) do
     t.integer  "posts_picture_display",    default: 2
     t.integer  "sections_picture_display", default: 2
     t.boolean  "module_contact",           default: true
+    t.boolean  "module_menus",             default: true
     t.index ["slug"], name: "index_restaurants_on_slug", unique: true
   end
 
