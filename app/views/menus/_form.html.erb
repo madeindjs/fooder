@@ -7,5 +7,24 @@
   <%= f.text_area :content, label: 'Contenu' %>
   <%= f.text_field :tags %>
   <%= f.number_field :price, label: 'Prix' %>
+
+  <% if @restaurant.module_menus %>
+
+    <h2>Produits inclus</h2>
+
+    <ul>
+      <% @restaurant.dishes.each do |dish| %>
+        <li>
+          <div class="checkbox">
+            <%= check_box_tag "[dishes][#{dish.id}]", true, menu.dishes.include?(dish) %>
+            <%= label_tag "[dishes][#{dish.id}]", dish.name %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+
+  <% end %>
+
+
   <%= f.submit 'Confirmer' %>
 <% end %>
