@@ -2,19 +2,11 @@
 
   <%= picture_tag menu, :menus_picture_display, css_class: 'section-img', size: 100 %>
 
-  <p>
-    <%= menu.content %><br/>
-    <%= tags menu.tags %>
-  </p>
+  
 
-
-  <p class="text-right lead">
-    <%= price menu.price %>
-  </p>
 
   <% if @restaurant.module_menus and not menu.dishes.empty?%>
-    <h3>Inclus</h3>
-    <%= render 'dishes/list', dishes: menu.dishes %>
+    <%= render 'dishes/simple_list', dishes: menu.dishes %>
   <% end %>
 
 
