@@ -19,6 +19,8 @@ class DishesController < ApplicationController
   def show
     @title = @dish.name
     @description = "Un parmi les nombreux déliceux produits proposé par #{@restaurant.name}"
+
+    @menus = @dish.menus.uniq
   end
 
   # GET /dishes/new

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170505105149) do
+ActiveRecord::Schema.define(version: 20170505112826) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -43,6 +43,11 @@ ActiveRecord::Schema.define(version: 20170505105149) do
     t.integer  "order"
     t.boolean  "activate",       default: true
     t.index ["slug"], name: "index_dishes_on_slug", unique: true
+  end
+
+  create_table "dishes_menus", id: false, force: :cascade do |t|
+    t.integer "dish_id", null: false
+    t.integer "menu_id", null: false
   end
 
   create_table "links", force: :cascade do |t|

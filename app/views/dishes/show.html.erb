@@ -9,6 +9,21 @@
 <% end %>
 
 
+<% unless @menus.empty? %>
+
+  <h2>Inclus dans les menus</h2>
+
+  <ul>
+    <% @menus.each do |menu| %>
+      <li><%= link_to menu.name, menu %></li>
+    <% end %>
+  </ul>
+
+<% end %>
+
+
+
+
 <% if admin? %>
   <p class="text-right admin">
     <%= link_to 'Editer', edit_dish_path(@dish), class: 'btn btn-warning' %>
