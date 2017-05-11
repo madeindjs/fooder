@@ -17,6 +17,8 @@ class RestaurantsController < ApplicationController
   def show
     @title = @restaurant.name
     @description = "Un magnifique restaurant"
+
+    render layout: 'landing_restaurant'
   end
 
   # GET /restaurants/new
