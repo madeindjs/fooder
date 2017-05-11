@@ -9,14 +9,18 @@
 <% end %>
 
 
-<h2>Inclus dans les menus</h2>
+<% unless @menus.empty? %>
 
+  <h2>Inclus dans les menus</h2>
 
-<ul>
-  <% @dish.menus.each do |menu| %>
-    <li><%= link_to menu.name, menu %></li>
-  <% end %>
-</ul>
+  <ul>
+    <% @menus.each do |menu| %>
+      <li><%= link_to menu.name, menu %></li>
+    <% end %>
+  </ul>
+
+<% end %>
+
 
 
 
