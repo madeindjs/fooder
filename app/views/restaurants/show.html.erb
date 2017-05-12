@@ -28,17 +28,6 @@
 
 <div class="row">
   <div class="col-xs-12">
-    <div class="btn-group" role="toolbar" aria-label="...">
-      <%= link_to 'La carte', dishes_path, class: "btn btn-lg btn-default" %>
-      <%= link_to 'Les menus', menus_path, class: "btn btn-lg btn-default" %>
-      <%= link_to "Les horaires d'ouverture", contact_path, class: "btn btn-lg btn-default" %>
-      <%= link_to 'Nous contacter', contact_path, class: "btn btn-lg btn-default" %>
-    </div>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-xs-12">
     <h2>Les horaires d'ouvertures</h2>
     <%= render 'opening_hours/details', opening_hours: @restaurant.valid_opening_hours %>
   </div>
