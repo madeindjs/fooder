@@ -1,68 +1,94 @@
 
-<header>
+<!--  -->
+<div class="col-sm-6">
+  <h1><%= image_tag '/assets/fooder.svg', alt: 'fooder', size: 200 %></h1>
+  <p><strong>Créez</strong> un <strong>site internet</strong> à l'image de votre <strong>restaurant</strong>.</p>
   
-  <h1><%= image_tag '/assets/fooder.svg', alt: 'fooder', size: 300 %></h1>
-  <!-- <p><strong>Créez un site dynamique de qualité</strong> pour votre restaurant.</p> -->
-  <p><strong>Développez</strong> votre clientèle avec un <strong>site internet</strong> à l'image de votre <strong>restaurant</strong>.</p>
-  <p class="alert alert-warning">Le projet est en cours de construction. Vous pouvez tout de même l'utiliser normalement.</p>
-
   <p><%= link_to "C'est parti!", signup_url, class: 'btn btn-lg btn-primary' %></p>
-</header>
+</div>
 
-<hr/>
 
-<section>
-  <div class="row">
-    <div class="col-xs-12">
-      <h2>Rapide, simple</h2>
+<div class="col-sm-6 hidden-xs text-right">
+  <%= image_tag '/assets/screenshots/macbook.png', alt: "Capture d'écran de la page d'un restaurant crée avec Fooder", class: "img-responsive screenshot" %>
+</div>
 
-      <p>En quelques clics, et sans connaissances en web-design, <strong>créez votre site</strong> pour votre restaurant.</p>
+<div class="col-xs-12">
+  <p class="alert alert-warning">Le projet est en cours de construction. Vous pouvez tout de même l'utiliser normalement.</p>
+</div>
 
-      <p>Vous pensez que <strong>HTML</strong> et <strong>CSS</strong> sont des organismes de l'<strong>URSSAF</strong>? On vous facilite la vie!</p>
+
+
+<div class="col-xs-12">
+  <h2>Comment ça fonctionne?<br/><small>C'est vraiment simple</small></h2>
+
+
+
+  <div class="row step">
+    <!-- description -->
+    <div class="col-sm-6 col-xs-12">
+      <h3>Créez votre compte</h3>
+      <p>Duis minim nostrud consectetur reprehenderit elit culpa voluptate in eu sit eu consequat.</p>
+    </div>
+
+    <!-- picure -->
+    <div class="col-sm-6 col-xs-12">
       
-      <p><%= link_to "Créez votre compte", signup_url %> sur Fooder et commencez dès à présent à .</p>
-      <p><%= link_to "Commencez dès maintenant", signup_url, class: 'btn btn-lg btn-default' %></p>
     </div>
   </div>
-</section>
 
-<hr/>
 
-<section>
+
   <div class="row">
-    <div class="col-xs-12">
+    <!-- picure -->
+    <div class="col-sm-6 col-xs-12">
+      <%= image_tag '/assets/screenshots/macbook.png', class: "img-responsive screenshot" %>
+    </div>
 
-      <div class="col-xs-12"></div>
-
-      <h2>Comment ça fonctionne?</h2>
-      <p><%= link_to "Créez votre compte", signup_url %> sur Fooder et créez votre restaurant.</p>
-
-      <div class="col-sm-4">
-        <h3>Etape 1</h3>
-        <p><strong>Ajoutez</strong><br/> vos produits</p>
-      </div>
-
-      <div class="col-sm-4">
-        <h3>Etape 2</h3>
-        <p><strong>Composez</strong><br/> vos menus</p>
-      </div>
-
-      <div class="col-sm-4">
-        <h3>Etape 3</h3>
-        <p><strong>C'est tout!</strong><br/> Votre carte interactive est prête.</p>
-      </div>
-
-      <div class="col-xs-12">
-        <p class="alert alert-info">Et tout cela <strong>totalement gratuitement</strong> et <strong>sans période d'éssai</strong>.</p>
-        <p><%= link_to "voir l'exemple", example_url, class: 'btn btn-lg btn-default' %></p>
-      </div>
-
-
-
-
+    <!-- description -->
+    <div class="col-sm-6 col-xs-12">
+      <h3>Ajoutez vos produits</h3>
+      <p>Duis minim nostrud consectetur reprehenderit elit culpa voluptate in eu sit eu consequat.</p>
     </div>
   </div>
-</section>
+
+
+
+  <div class="row step">
+    <!-- description -->
+    <div class="col-sm-6 col-xs-12">
+      <h3>Personnalisez votre site</h3>
+      <p>Duis minim nostrud consectetur reprehenderit elit culpa voluptate in eu sit eu consequat.</p>
+    </div>
+
+    <!-- picure -->
+    <div class="col-sm-6 col-xs-12">
+      <%= image_tag '/assets/screenshots/macbook.png', class: "img-responsive screenshot" %>
+    </div>
+  </div>
+
+
+
+  <div class="row step">
+    <!-- picure -->
+    <div class="col-sm-6 col-xs-12">
+      <%= image_tag '/assets/screenshots/macbook.png', class: "img-responsive screenshot" %>
+    </div>
+
+    <!-- description -->
+    <div class="col-sm-6 col-xs-12">
+      <h3>Activez vos modules</h3>
+      <p>Duis minim nostrud consectetur reprehenderit elit culpa voluptate in eu sit eu consequat.</p>
+    </div>
+  </div>
+
+
+
+  
+  
+  <p><%= link_to "Créez votre compte", signup_url %> sur Fooder et commencez dès à présent à .</p>
+  <p><%= link_to "Commencez dès maintenant", signup_url, class: 'btn btn-lg btn-default' %></p>
+</div>
+
 
 <hr>
 
@@ -73,17 +99,17 @@
     <p>Votre site dispose de plusieurs modules que vous pouvez choisir d'activer ou non <small>(comme des legos)</small>.</p>
 
 
-    <div class="col-sm-12">
+    <div class="feature col-lg-4 col-sm-12">
       <h3><%= glyphicon 'book' %> Carte interactive.</h3>
       <p>Gerez le prix, la photo, la description ou encore l'organisation de vos plats et votre carte se met à jour instantanément.</p>
     </div>
 
-    <div class="col-sm-6">
+    <div class="feature col-lg-4 col-sm-12">
       <h3><%= glyphicon 'th-large' %> Modules.</h3>
       <p>Votre site dispose de plusieurs modules que vous pouvez choisir d'activer ou non.</p>
     </div>
 
-    <div class="col-sm-6">
+    <div class="feature col-lg-4 col-sm-12">
       <h3><%= glyphicon 'tint' %> Thèmes.</h3>
       <p>Choisissez un thème parmi les nombreux proposés.</p>
     </div>
@@ -93,6 +119,34 @@
 </section>
 
 <hr/>
+
+<section>
+<div class="row">
+  <div class="col-xs-12">
+    <h2>Bénefices</h2>
+    <p>Votre site dispose de plusieurs modules que vous pouvez choisir d'activer ou non <small>(comme des legos)</small>.</p>
+
+
+    <div class="feature col-lg-4 col-sm-12">
+      <h3><%= glyphicon 'book' %> Vous fait gagnez du temps</h3>
+      <p>Plus besoin de rensigner vos clients sur les plats que vous proposez</p>
+    </div>
+
+    <div class="feature col-lg-4 col-sm-12">
+      <h3><%= glyphicon 'book' %> Se concentrer sur votre métier</h3>
+      <p>Plus besoin de rensigner vos clients sur les plats que vous proposez</p>
+    </div>
+
+    <div class="feature col-lg-4 col-sm-12">
+      <h3><%= glyphicon 'tint' %> Développez votre clientèle.</h3>
+      <p>Choisissez un thème parmi les nombreux proposés.</p>
+    </div>
+
+  </div>
+</div>
+</section>
+
+
 
 <section>
 <div class="row">
