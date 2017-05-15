@@ -1,76 +1,25 @@
 
-<table class="table">
+<div class="col-xs-6 col-sm-4 col-lg-3">
+  <strong>Gratuit</strong>
 
-  <thead>
-    <tr>
-      <th></th>
-      <th>compte gratuit</th>
-      <th>compte premium</th>
-    </tr>
-  </thead>
+  <ul>
+    <li>Parfait pour essayer notre produit</li>
+    <li>Pas de période d'essai</li>
+  </ul>
 
-  <tbody>
-    <tr>
-      <td>Création du site</td>
-      <td><%= glyphicon 'ok' %></td>
-      <td><%= glyphicon 'ok' %></td>
-    </tr>
+  <p><%= link_to "Compte gratuit", signup_path, class: 'btn btn-default' %></p>
+</div>
 
-    <tr>
-      <td>Gestion de vos produits</td>
-      <td><%= glyphicon 'ok' %></td>
-      <td><%= glyphicon 'ok' %></td>
-    </tr>
+<div class="col-xs-6 col-sm-4 col-lg-3">
+  <strong>Premium</strong>
 
-    <tr>
-      <td>Module de blog</td>
-      <td><%= glyphicon 'ok' %></td>
-      <td><%= glyphicon 'ok' %></td>
-    </tr>
+  <ul>
+    <li>Support exclusif</li>
+    <li>Développement de vos idées</li>
+    <li>URL personnalisée</li>
+    <li>Aucun lien vers notre site</li>
+  </ul>
 
-    <tr>
-      <td>Module de réservation</td>
-      <td><%= glyphicon 'ok' %></td>
-      <td><%= glyphicon 'ok' %></td>
-    </tr>
+  <p><%= link_to "Compte premium", signup_path, class: 'btn btn-primary' %></p>
+</div>
 
-    <tr>
-      <td>Module de notation de plat</td>
-      <td><%= glyphicon 'ok' %></td>
-      <td><%= glyphicon 'ok' %></td>
-    </tr>
-
-    <tr>
-      <td>Module de notation de plat</td>
-      <td><%= glyphicon 'ok' %></td>
-      <td><%= glyphicon 'ok' %></td>
-    </tr>
-
-    <tr>
-      <td>HTTPS</td>
-      <td></td>
-      <td><%= glyphicon 'ok' %></td>
-    </tr>
-
-    <tr>
-      <td>URL personalisée</td>
-      <td></td>
-      <td><%= glyphicon 'ok' %></td>
-    </tr>
-  </tbody>
-
-  <tfoot>
-    <tr>
-      <td></td>
-      <td>0 € / mois</td>
-      <td>9.99 € / mois</td>
-    </tr>
-
-    <tr>
-      <td></td>
-      <td><%= link_to "Compte gratuit", signup_path, class: 'btn btn-default' %></td>
-      <td><%= link_to "Compte premium", signup_path, class: 'btn btn-primary' %></td>
-    </tr>
-  </tfoot>
-  
-</table>

@@ -1,8 +1,19 @@
-h2{text-align: center}
+h1,
+h2
+{margin-top: 100px}
+
+p,
+li{font-size: 18px}
+
+h2,
+h3 {text-align: center}
+h3 > img{display: block; margin: auto;}
 
 img.screenshot{max-height: 300px}
 
 div.step{padding-top: 50px; padding-bottom: 50px}
 
 div.feature{text-align: center; padding-top: 30px;padding-bottom: 30px}
-  div.feature h3 > span.glyphicon{display: block; font-size: 40px}
+
+
+
