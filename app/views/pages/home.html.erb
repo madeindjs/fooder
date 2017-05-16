@@ -1,4 +1,3 @@
-
 <!--  -->
 <div class="col-sm-6">
 
@@ -18,7 +17,7 @@
 </div>
 
 
-<div class="col-sm-6 hidden-xs text-right">
+<div class="col-sm-6 hidden-xs text-right" style="padding-top: 200px">
   <%= image_tag '/assets/screenshots/macbook.png', alt: "Capture d'écran de la page d'un restaurant crée avec Fooder", class: "img-responsive screenshot" %>
 </div>
 
@@ -164,45 +163,45 @@
 
 
 
-<hr>
 
-<section class="faq">
-  <div class="col-xs-12">
-    <h2>FAQ <small>Foire aux questions</small></h2>
+<div class="col-xs-12">
+  <h2>FAQ<br/><small>Foire aux questions</small></h2>
 
 
-    <div class="col-sm-6">
-      <h3>Est-ce qu'il y a une limite au compte gratuit?</h3>
-      <p><strong>Non.</strong> Vous pouvez choisir de basculer sur un compte premium à tout moment (et vice versa).</p>
-    </div>
-
-    <div class="col-sm-6">
-      <h3>Est-ce qu'il y a un engagement pour le mode premium?</h3>
-      <p><strong>Non.</strong> Vous pouvez choisir de résilier à tout moment et rebasculer sur le mode gratuit.</p>
-    </div>
-
-    <div class="col-sm-6">
-      <h3>Est-il possible d'avoir un coup de main pour démarrer?</h3>
-      <p><strong>Oui.</strong> Pour tout abonnement au service premium de plus de 12 mois. Contactez-nous pour la mise en place de votre contenu.</p>
-    </div>
-
-    <div class="col-sm-6">
-      <h3>Dois-je m'occuper de l'hébergement?</h3>
-      <p><strong>Non.</strong> On s'occupe de tout.</p>
-    </div>
-
+  <div class="col-sm-6 question">
+    <blockquote>
+      <p>Est-ce qu'il y a une limite au compte gratuit?</p>
+    </blockquote>
+    <p><strong>Non.</strong> Vous pouvez choisir de basculer sur un compte premium à tout moment (et vice versa).</p>
   </div>
-</div>
-</section>
 
-
-<section>
-<div class="row">
-  <div class="col-xs-12">
-    <h2>Newsletter</h2>
-    <p>Intéressé pas le projet? N'hésitez pas à vous abonner à la newsletter!</p>
-    <%= render 'newsletters/form', newsletter: Newsletter.new %>
+  <div class="col-sm-6 question">
+    <blockquote>
+      <p>Est-ce qu'il y a un engagement pour le mode premium?</p>
+    </blockquote>
+    <p><strong>Non.</strong> Vous pouvez choisir de résilier à tout moment et rebasculer sur le mode gratuit.</p>
   </div>
+
+  <div class="col-sm-6 question">
+    <blockquote>
+      <p>Est-il possible d'avoir un coup de main pour démarrer?</p>
+    </blockquote>
+    <p><strong>Oui.</strong> Pour tout abonnement au service premium de plus de 12 mois. Contactez-nous pour la mise en place de votre contenu.</p>
+  </div>
+
+  <div class="col-sm-6 question">
+    <blockquote>
+      <p>Dois-je m'occuper de l'hébergement?</p>
+    </blockquote>
+    <p><strong>Non.</strong> On s'occupe de tout.</p>
+  </div>
+
 </div>
-</section>
+
+
+<div class="col-xs-12">
+  <h2>Newsletter</h2>
+  <p>Intéressé pas le projet? N'hésitez pas à vous abonner à la newsletter!</p>
+  <%= render 'newsletters/form', newsletter: Newsletter.new %>
+</div>
 

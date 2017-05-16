@@ -2,8 +2,8 @@ h1,
 h2
 {margin-top: 100px}
 
-p,
-li{font-size: 18px}
+#main-container p,
+#main-container li{font-size: 18px}
 
 h2,
 h3 {text-align: center}
