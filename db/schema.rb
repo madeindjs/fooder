@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170421105206) do
+ActiveRecord::Schema.define(version: 20170505112826) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -45,6 +45,11 @@ ActiveRecord::Schema.define(version: 20170421105206) do
     t.index ["slug"], name: "index_dishes_on_slug", unique: true
   end
 
+  create_table "dishes_menus", id: false, force: :cascade do |t|
+    t.integer "dish_id", null: false
+    t.integer "menu_id", null: false
+  end
+
   create_table "links", force: :cascade do |t|
     t.string   "name"
     t.string   "url"
@@ -70,6 +75,15 @@ ActiveRecord::Schema.define(version: 20170421105206) do
     t.integer  "order"
     t.boolean  "activate",      default: true
     t.index ["slug"], name: "index_menus_on_slug", unique: true
+  end
+
+  create_table "newsletters", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "email"
+    t.string   "firstname"
+    t.string   "lastname"
+    t.string   "website"
   end
 
   create_table "opening_hours", force: :cascade do |t|
@@ -173,6 +187,7 @@ ActiveRecord::Schema.define(version: 20170421105206) do
     t.integer  "posts_picture_display",    default: 2
     t.integer  "sections_picture_display", default: 2
     t.boolean  "module_contact",           default: true
+    t.boolean  "module_menus",             default: true
     t.index ["slug"], name: "index_restaurants_on_slug", unique: true
   end
 
@@ -218,7 +233,9 @@ ActiveRecord::Schema.define(version: 20170421105206) do
     t.string   "email_token"
     t.datetime "email_token_updated_at"
     t.boolean  "activated",              default: false, null: false
+    t.string   "perishable_token",       default: "",    null: false
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["perishable_token"], name: "index_users_on_perishable_token"
     t.index ["slug"], name: "index_users_on_slug", unique: true
   end
 

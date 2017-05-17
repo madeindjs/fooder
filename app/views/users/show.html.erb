@@ -29,20 +29,9 @@
     
   <% end %>
 
-  <p>
-    <%= link_to "créer un autre restaurant", new_restaurant_path, class: 'btn btn-primary' %>
-    <% if @user.premium? %> 
-      <%= link_to "Acheter", new_payement_path, class: 'btn btn-default' %>
-    <% else %>
-      <%= link_to "Passer premium", new_payement_path, class: 'btn btn-default' %>
-    <% end %>
-    <%= link_to "Mes paiements", payements_path, class: 'btn btn-default' %>
-    <%= link_to "se déconnecter", signout_path, class: 'btn btn-danger' %>
-  </p>
+  <%= render 'toolbars/user' %>
 
-  <p>
-    <%= alert 'info', "Vous pouvez créer autant de restaurants que vous le souhaitez. Sans frais supplémentaires." %>
-  </p>
+  <%= alert 'info', "Vous pouvez créer autant de restaurants que vous le souhaitez. Sans frais supplémentaires." %>
   
 <% else %>
   <h2>Ses restaurants</h2>

@@ -17,7 +17,6 @@
           <h3><%= link_to dish.name, dish %></h3>
           <%= dish.description %>  <strong><%= price dish.price %></strong><br/>
           <%= tags dish.tags %>
-          <%= render 'allergens', dish: dish if @restaurant.module_allergens %>
         </p>
 
         <% if admin? %>

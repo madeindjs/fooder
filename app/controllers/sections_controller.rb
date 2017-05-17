@@ -2,6 +2,8 @@ class SectionsController < ApplicationController
   before_action :set_section, only: [:edit, :update, :destroy]
   before_action :check_login, only: [:new, :create, :edit, :update, :destroy]
   before_action :check_owner, only: [:edit, :update, :destroy]
+  before_action :check_admin, only: [:edits]
+  before_action :check_restaurant
 
 
   # GET /sections/new
@@ -25,7 +27,6 @@ class SectionsController < ApplicationController
     @title = "Gérer le contenu de la page d'accueil."
     @description = "Renommer et réorganisez le contenu proposés par ce restaurant."
 
-    redirect_to root_path unless current_user && current_user.restaurants.include?(@restaurant)
     @sections = @restaurant.sections.order :order
     if request.post?
       # to array to save changes to display it to user

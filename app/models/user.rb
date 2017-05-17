@@ -15,6 +15,8 @@ class User < ApplicationRecord
 
   mount_uploader :picture, PictureUploader
 
+  after_create :add_to_newsletter
+
   extend FriendlyId
   friendly_id :firstname, use: :slugged
 
@@ -59,6 +61,15 @@ class User < ApplicationRecord
   # Method imported from Authlogic::ActsAsAuthentic::EmailToken 
   def activate
     self.activated = true
+  end
+
+  def deliver_password_reset_instructions!
+    reset_perishable_token!
+    UserMailer.password_reset(self).deliver_now
+  end
+
+  def add_to_newsletter
+    Newsletter.create({email: self.email})
   end
 
 end

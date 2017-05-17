@@ -6,7 +6,7 @@ module ApplicationHelper
 
 
   def alert type, content
-    "<div class=\"alert alert-#{type}\" role=\"alert\">#{content}</div>".html_safe
+    "<div class=\"col-xs-12 alert alert-#{type}\" role=\"alert\">#{content}</div>".html_safe
   end
 
 

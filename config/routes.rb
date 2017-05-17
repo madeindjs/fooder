@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   constraints subdomain: /.+/  do
     get '/' => 'restaurants#show'
 
-    get 'allergens' => "restaurants#allergens"
     patch 'activate_module' => "restaurants#activate_module"
 
     match 'opening_hours/edit' => "opening_hours#edits", as: :opening_hours_edit, via: [:get, :post]
@@ -24,8 +23,12 @@ Rails.application.routes.draw do
     match 'menus/edit' => "menus#edits", as: :menus_edit, via: [:get, :post]
     resources :menus
 
+    match 'dishes/allergens' => "dishes#allergens", as: :dishes_allergens_edit, via: [:get, :post]
     match 'dishes/edit' => "dishes#edits", as: :dishes_edit, via: [:get, :post]
     resources :dishes
+
+    get 'allergens/edit' => "allergens#edits", as: :allergens_edit
+    resources :allergens, only: [:index]
 
     match 'categories/edit' => "categories#edits", as: :categories_edit, via: [:get, :post]
     resources :categories
@@ -42,6 +45,7 @@ Rails.application.routes.draw do
   get 'signin', to: 'user_sessions#new'
   get "signup" => "users#new"
   get "confirm_email/:token" => "users#confirm_email", as: 'confirm_email'
+  resources :password_resets, :only => [ :new, :create, :edit, :update ]
 
   # pages area
   match 'contact' => 'pages#contact', via: [:get, :post]
@@ -49,5 +53,7 @@ Rails.application.routes.draw do
   get "home" => "pages#home"
   get '/', to:  'restaurants#show', constraints: { subdomain: 'le-petit-lagon-bleu'}, as: :example
 
+  resources :newsletters, only: [:create, :destroy]
+  
   root 'pages#home'
 end

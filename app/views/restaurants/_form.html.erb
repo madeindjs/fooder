@@ -10,84 +10,83 @@
 
 %>
 
-
 <div class="col-xs-12">
-  
 
-<%= bootstrap_form_for restaurant do |f| %>
+  <%= bootstrap_form_for restaurant do |f| %>
 
-  <div id="accordion-form">
-    
-
-  <%= render 'shared/errors_form', model: restaurant %>
-
-  <h3>Informations du restaurant</h3>
-
-  <div>
-    <div class="col-sm-12">
-      <%= f.text_field :name, label: 'Nom' %>
-    </div>
-
-    <div class="col-sm-12">
-      <%= f.text_field :address, label: 'Adresse' %>
-    </div>
-
-    <div class="col-sm-6">
-      <%= f.text_field :zip_code, label: 'Code Postal' %>
-    </div>
-
-    <div class="col-sm-6">
-      <%= f.text_field :city, label: 'Ville' %>
-    </div>
-
-    <div class="col-xs-12">
-      <%= alert 'info', 'Ces informations serviront à construire la section "contact" de votre site.' %>
-    </div>
-
-  </div>
-
-
-  <h3>Thème</h3>
-
-  <div>
-    <%= f.select :css, { "Sélectionnez un theme" => nil }, {}, {id: 'themes'} %>
-  </div>
-
-
-
-  <h3>Logo</h3>
-
-  <div>
-    <div class="col-sm-6">
-      <%= render 'shared/form_input_logo.html', form: f, model: restaurant %>
-      <p class="alert alert-info">Le logo est utilisé en tant que favicon.</p>
-    </div>
-    
-    <div class="col-sm-6">
-      <%= render 'shared/form_input_picture.html', form: f, model: restaurant %>
-      <p class="alert alert-info">L'image est affichée sur la page principale.</p>
-    </div>
-  </div>
-
-
-  <h3>Affichage des images</h3>
-
-  <div>
-    <% picture_size_labels_fiels.each do |field, label| %>
-
-      <div class="col-sm-6">
-        <%= f.select field,  display_options(restaurant.send field ), {label: label} %>
-      </div>
-         
-    <% end %>
-  </div>
-
-
-
-  <%= f.submit 'Confirmer' %>
-
-  </div>
+    <div id="accordion-form">
       
+      <%= render 'shared/errors_form', model: restaurant %>
 
-<% end %>
+      <h3>Informations du restaurant</h3>
+
+      <div>
+        <div class="col-sm-12">
+          <%= f.text_field :name, label: 'Nom' %>
+        </div>
+
+        <div class="col-sm-12">
+          <%= f.text_field :address, label: 'Adresse' %>
+        </div>
+
+        <div class="col-sm-6">
+          <%= f.text_field :zip_code, label: 'Code Postal' %>
+        </div>
+
+        <div class="col-sm-6">
+          <%= f.text_field :city, label: 'Ville' %>
+        </div>
+
+        <div class="col-xs-12">
+          <%= alert 'info', 'Ces informations serviront à construire la section "contact" de votre site.' %>
+        </div>
+
+      </div>
+
+
+      <h3>Site</h3>
+
+      <div>
+        <div class="col-xs-12">
+          <%= f.select :css, { "Sélectionnez un theme" => nil }, {label: 'Thème'}, {id: 'themes'} %>
+        </div>
+
+        <div class="col-xs-12">
+          <%= f.text_field :slug, label: "Préfixe de l'URL gratuite", append: ".fooder.pro", prepend: 'https://' %>
+        </div>
+      </div>
+
+
+      <h3>Logo</h3>
+
+      <div>
+        <div class="col-sm-6">
+          <%= render 'shared/form_input_logo.html', form: f, model: restaurant %>
+          <p class="alert alert-info">Le logo est utilisé en tant que favicon.</p>
+        </div>
+        
+        <div class="col-sm-6">
+          <%= render 'shared/form_input_picture.html', form: f, model: restaurant %>
+          <p class="alert alert-info">L'image est affichée sur la page principale.</p>
+        </div>
+      </div>
+
+
+      <h3>Affichage des images</h3>
+
+      <div>
+        <% picture_size_labels_fiels.each do |field, label| %>
+
+          <div class="col-sm-6">
+            <%= f.select field,  display_options(restaurant.send field ), {label: label} %>
+          </div>
+             
+        <% end %>
+      </div>
+
+    </div>
+        
+    <%= f.submit 'Confirmer' %>
+
+  <% end %>
 </div>

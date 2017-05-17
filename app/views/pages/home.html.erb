@@ -1,145 +1,183 @@
+<!--  -->
+<div class="col-sm-6">
 
-<header>
+  <%# = image_tag '/assets/fooder.svg', alt: 'fooder', size: 200 %>
+  <h1>Créez votre site internet pour votre restaurant.</h1>
+
+  <ul>
+    <li>sans connaissances</li>
+    <li>en moins de 5 minutes</li>
+    <li>gratuitement sans limite d'essai</li>
+  </ul>
+
+  <p>Essayez dès maintenant, ressentez le pouvoir.</p>
   
-  <h1><%= image_tag '/assets/fooder.svg', alt: 'fooder', size: 300 %></h1>
-  <p>Génerez votre site pour votre restaurant.</p>
-  <hr>
-  <p style="font-size: 1.8em; color: gray">Vous pensez que HTML et CSS sont des organismes de l'URSSAF? On s'occupe de tout!</p>
-  <%= alert 'warning', "Le projet est en cours de construction. Si vous êtes intéressés par le projet, soyez patients." %>
+  <p><%= link_to "C'est parti!", signup_url, class: 'btn btn-lg btn-primary' %></p>
+  <p class="alert alert-warning">Le projet est en cours de construction. Vous pouvez tout de même l'utiliser normalement.</p>
+</div>
 
-  <%= link_to "C'est parti!", signup_url, class: 'btn btn-lg btn-primary' %>
-</header>
 
-<hr/>
+<div class="col-sm-6 hidden-xs text-right" style="padding-top: 200px">
+  <%= image_tag '/assets/screenshots/macbook.png', alt: "Capture d'écran de la page d'un restaurant crée avec Fooder", class: "img-responsive screenshot" %>
+</div>
 
-<section>
+
+
+<div class="col-xs-12">
+  <h2>Comment ça fonctionne?<br/><small>C'est vraiment simple</small></h2>
+
+
+
+  <div class="row step">
+    <!-- description -->
+    <div class="col-sm-offset-3 col-sm-6 col-xs-12 text-center">
+      <h3>1. Inscrivez vous</h3>
+      <p><%= link_to 'Créez votre compte', signup_path %> sur Fooder. C'est totalement gratuit.</p>
+      <p>Aucun frais n'est à prévoir et aucune carte bancaire n'est requise.</p>
+      <p>Une fois votre compte activé, vous pouvez créez votre premier site!</p>
+    </div>
+
+  </div>
+
+
+
   <div class="row">
-    <div class="col-xs-12">
-      <h2>Rapidité, simplicité</h2>
-      <p>Quelques clics suffisent pour génerer votre site sans aucune connaissance en web.</p>
-      <p>Vous pouvez ensuite mettre à jour et communiquer autour de votre restaurant.</p>
-      <p>C'est vous le chef!</p>
-      <p><%= link_to "Commencez dès maintenant", signup_url, class: 'btn btn-lg btn-default' %></p>
+    <!-- picure -->
+    <div class="col-sm-6 col-xs-12">
+      <%= image_tag '/assets/screenshots/macbook.png', class: "img-responsive screenshot" %>
+    </div>
+
+    <!-- description -->
+    <div class="col-sm-6 col-xs-12">
+      <h3>2. Ajoutez vos produits</h3>
+      <p>Une fois votre restaurant crée, rendez-vous dans l'interface d'administration et ajoutez vos produits.</p>
+      <p>Un formulaire simple vous demande les informations de base.</p>
+      <p>Votre carte est générée automatiquement.</p>
     </div>
   </div>
-</section>
 
-<hr/>
 
-<section>
-  <div class="row">
-    <div class="col-xs-12">
 
-      <div class="col-xs-12"></div>
+  <div class="row step">
+    <!-- description -->
+    <div class="col-sm-6 col-xs-12">
+      <h3>3. Personnalisez votre site</h3>
+      <p>Utilisez toutes les options disponnibles pour rendre votre site unique.</p>
+      <p>Sélectionnez un thème parmis les nombreux proposés</p>
+    </div>
 
-      <h2>Comment ça fonctionne?</h2>
-      <p>Vous n'avez besoin d'aucune connaissance particulière, c'est très simple</p>
-
-      <div class="col-sm-4">
-        <h3>Etape 1</h3>
-        <p><%= link_to "Créez votre compte", signup_url %> sur Fooder.</p>
-      </div>
-
-      <div class="col-sm-4">
-        <h3>Etape 2</h3>
-        <p>Ajoutez les produits que vous proposez.</p>
-      </div>
-
-      <div class="col-sm-4">
-        <h3>Etape 3</h3>
-        <p>Choisissez un thème.</p>
-      </div>
-
-      <div class="col-xs-12" style="margin-top: 80px">
-        <p><%= link_to "voir l'exemple", example_url, class: 'btn btn-lg btn-default' %></p>
-      </div>
-
+    <!-- picure -->
+    <div class="col-sm-6 col-xs-12">
+      <%= image_tag '/assets/screenshots/macbook.png', class: "img-responsive screenshot" %>
     </div>
   </div>
-</section>
 
-<hr>
+  <p class="text-center"><%= link_to "Commencez dès maintenant", signup_url, class: 'btn btn-lg btn-default' %></p>
+</div>
 
-<section>
+
 <div class="row">
   <div class="col-xs-12">
     <h2>Fonctionnalités</h2>
-    <p>Votre site dispose de plusieurs modules que vous pouvez choisir d'activer ou non.</p>
 
-
-    <div class="col-sm-6">
-      <h3>Allergènes.</h3>
-      <p>Renseignez les allergènes présents dans vos plats et proposez  une carte des allergènes.</p>
+    <div class="feature col-lg-4 col-sm-6 col-xs-12">
+      <h3><%= image_tag '/assets/icons/devices.svg', alt: 'Modules', size: 100 %> Responsive.</h3>
+      <p>Votre site est compatible pour les smartphones, tablettes et orinateurs.</p>
     </div>
 
-    <div class="col-sm-6">
-      <h3>Menus.</h3>
-      <p>Composez vos menus avec les plats que vous avez déjà renseignés.</p>
+    <div class="feature col-lg-4 col-sm-6 col-xs-12">
+      <h3><%= image_tag '/assets/icons/pantone.svg', alt: 'Modules', size: 100 %> Thèmes.</h3>
+      <p>De nombreux thèmes vous sont proposés. Vous trouverez forcément votre bonheur.</p>
     </div>
 
-    <div class="col-sm-6">
-      <h3>Blog.</h3>
+    <div class="feature col-lg-4 col-sm-6 col-xs-12">
+      <h3><%= image_tag '/assets/icons/box.svg', alt: 'Modules', size: 100 %> Modules.</h3>
+      <p>Vous souhaitez désactiver une fonctionnalité? Pas de problème.</p>
+    </div>
+
+    <div class="feature col-lg-4 col-sm-6 col-xs-12">
+      <h3><%= image_tag '/assets/icons/magician.svg', alt: 'Magie', size: 100 %> Menu.</h3>
+      <p>Vos produits peuvent s'assembler pour composer des menus riches en contenu.</p>
+    </div>
+
+
+    <div class="feature col-lg-4 col-sm-6 col-xs-12">
+      <h3><%= image_tag '/assets/icons/heart.svg', alt: 'Coeur', size: 100 %> Allergènes.</h3>
+      <p>Proposez  une carte des allergènes intéractive accessible à partir de chaque produits.</p>
+    </div>
+
+    <div class="feature col-lg-4 col-sm-6 col-xs-12">
+      <h3><%= image_tag '/assets/icons/letter.svg', alt: 'Lettre', size: 100 %> Contact.</h3>
+      <p>Laissez vos client vous contactez à traver un formulaire de contact.</p>
+    </div>
+
+    <div class="feature col-lg-4 col-sm-6 col-xs-12">
+      <h3><%= image_tag '/assets/icons/megaphone.svg', alt: 'Magie', size: 100 %> Blog.</h3>
       <p>Communiquez autour de l'actualité de votre restaurant.</p>
     </div>
 
-    <div class="col-sm-6">
-      <h3>Thèmes.</h3>
+    <div class="feature col-lg-4 col-sm-6 col-xs-12">
+      <h3><%= image_tag '/assets/icons/pencil.svg', alt: 'Stylo', size: 100 %> Evaluations.</h3>
       <p>Choisissez un thème parmi les nombreux proposés.</p>
     </div>
 
-    <div class="col-sm-6">
-      <h3>Notations.</h3>
-      <p>Laissez vos clients noter vos plats.</p>
+    <div class="feature col-lg-4 col-sm-6 col-xs-12">
+      <p class="alert alert-info"><strong>D'autres idées?</strong> Nous sommes à l'écoute pour toutes propositions de nouvelles fonctionnalités.</p>
     </div>
-
-    <div class="col-sm-12">
-      <h3>Autres?</h3>
-      <p>Nous sommes à l'écoute pour toutes propositions de nouvelles fonctionnalités.</p>
-    </div>
-
   </div>
 </div>
-</section>
 
-<hr>
 
-<section>
+
 <div class="row">
   <div class="col-xs-12">
     <h2>Prix</h2>
-    <p>Créez votre site gratuitement et décidez de basculer sur un compte premium quand vous le souhaitez.</p>
-    <%= render 'cost_table' %>
   </div>
+  <%= render 'cost_table' %>
 </div>
-</section>
-
-<hr>
-
-<section class="faq">
-  <div class="col-xs-12">
-    <h2>FAQ <small>Foire aux questions</small></h2>
 
 
-    <div class="col-sm-6">
-      <h3>Est-ce qu'il y a une limite au compte gratuit?</h3>
-      <p><strong>Non.</strong> Vous pouvez choisir de basculer sur un compte premium à tout moment (et vice versa).</p>
-    </div>
+<div class="col-xs-12">
+  <h2>Newsletter</h2>
+  <p>Intéressé pas le projet? N'hésitez pas à vous abonner à la newsletter!</p>
+  <%= render 'newsletters/form', newsletter: Newsletter.new %>
+</div>
 
-    <div class="col-sm-6">
-      <h3>Est-ce qu'il y a un engagement pour le mode premium?</h3>
-      <p><strong>Non.</strong> Vous pouvez choisir de résilier à tout moment et rebasculer sur le mode gratuit.</p>
-    </div>
 
-    <div class="col-sm-6">
-      <h3>Est-il possible d'avoir un coup de main pour démarrer?</h3>
-      <p><strong>Oui.</strong> Pour tout abonnement au service premium de plus de 12 mois. Contactez-nous pour la mise en place de votre contenu.</p>
-    </div>
+<div class="col-xs-12">
+  <h2>FAQ<br/><small>Foire aux questions</small></h2>
 
-    <div class="col-sm-6">
-      <h3>Dois-je m'occuper de l'hébergement?</h3>
-      <p><strong>Non.</strong> On s'occupe de tout.</p>
-    </div>
 
+  <div class="col-sm-6 question">
+    <blockquote>
+      <p>Est-ce qu'il y a une limite au compte gratuit?</p>
+    </blockquote>
+    <p><strong>Non.</strong> Vous pouvez choisir de basculer sur un compte premium à tout moment (et vice versa).</p>
   </div>
+
+  <div class="col-sm-6 question">
+    <blockquote>
+      <p>Est-ce qu'il y a un engagement pour le mode premium?</p>
+    </blockquote>
+    <p><strong>Non.</strong> Vous pouvez choisir de résilier à tout moment et rebasculer sur le mode gratuit.</p>
+  </div>
+
+  <div class="col-sm-6 question">
+    <blockquote>
+      <p>Est-il possible d'avoir un coup de main pour démarrer?</p>
+    </blockquote>
+    <p><strong>Oui.</strong> Pour tout abonnement au service premium de plus de 12 mois. Contactez-nous pour la mise en place de votre contenu.</p>
+  </div>
+
+  <div class="col-sm-6 question">
+    <blockquote>
+      <p>Dois-je m'occuper de l'hébergement?</p>
+    </blockquote>
+    <p><strong>Non.</strong> On s'occupe de tout.</p>
+  </div>
+
 </div>
-</section>
+
+
+
+

@@ -4,13 +4,24 @@
 
 <% if admin? %>
   <div class="col-xs-12 admin">
-    <%= render 'shared/toolbar_menus' %>
+    <%= render 'toolbars/menus' %>
   </div>
 <% end %>
 
 <div class="col-xs-12">
   <% @menus.each do |menu| %>
-    <h2><%= menu.name %> <small><%= menu.description %></small></h2>
+
+    <div class="jumbotron col-xs-12">
+      <h2><%= link_to menu.name, menu %> <span class="label label-primary"><%= price menu.price %></span></h2>
+      <p><%= menu.description %></p>
+
+      <% if menu.tags %>
+        <p><%= tags menu.tags %></p>
+      <% end %>
+
+    </div>
+
+    <p><%= menu.content %></p>
 
     <%= render 'details', menu:  menu %>
   <% end %>

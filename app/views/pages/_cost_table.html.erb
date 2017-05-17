@@ -1,70 +1,37 @@
+<style type="text/css">span.price{font-size: 30px; display: block;}</style>
 
-<table class="table">
+<div class="col-xs-12 col-xs-offset-1 col-sm-offset-0 col-md-offset-1 col-lg-offset-2">
 
-  <thead>
-    <tr>
-      <th></th>
-      <th>compte gratuit</th>
-      <th>compte premium</th>
-    </tr>
-  </thead>
+  <div class="col-xs-10 col-sm-6 col-md-5 col-lg-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Gratuit</h3>
+      </div>
+      <div class="panel-body">
+        <p class="text-center"><span class="price">0 €</span> par mois</p>
+      </div>
+      <ul class="list-group">
+        <li class="list-group-item">Accès à toutes les fonctionnalités</li>
+        <li class="list-group-item">Parfait pour essayer notre produit</li>
+        <li class="list-group-item">Aucun engagment</li>
+      </ul>
+    </div>
+  </div>
 
-  <tbody>
-    <tr>
-      <td>Création du site</td>
-      <td><%= glyphicon 'ok' %></td>
-      <td><%= glyphicon 'ok' %></td>
-    </tr>
+  <div class="col-xs-10 col-sm-6 col-md-5 col-lg-4">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">Premium</h3>
+      </div>
+      <div class="panel-body">
+        <p class="text-center">à partir de <span class="price">10 €</span> par mois</p>
+      </div>
+      <ul class="list-group">
+        <li class="list-group-item">Support exclusif</li>
+        <li class="list-group-item">URL personnalisée</li>
+        <li class="list-group-item">Aucun lien vers notre site</li>
+      </ul>
+    </div>
+  </div>
 
-    <tr>
-      <td>Gestion de vos produits</td>
-      <td><%= glyphicon 'ok' %></td>
-      <td><%= glyphicon 'ok' %></td>
-    </tr>
-
-    <tr>
-      <td>Module de blog</td>
-      <td><%= glyphicon 'ok' %></td>
-      <td><%= glyphicon 'ok' %></td>
-    </tr>
-
-    <tr>
-      <td>Module de réservation</td>
-      <td><%= glyphicon 'ok' %></td>
-      <td><%= glyphicon 'ok' %></td>
-    </tr>
-
-    <tr>
-      <td>Module de notation de plat</td>
-      <td><%= glyphicon 'ok' %></td>
-      <td><%= glyphicon 'ok' %></td>
-    </tr>
-
-    <tr>
-      <td>Module de notation de plat</td>
-      <td><%= glyphicon 'ok' %></td>
-      <td><%= glyphicon 'ok' %></td>
-    </tr>
-
-    <tr>
-      <td>URL personalisée</td>
-      <td></td>
-      <td><%= glyphicon 'ok' %></td>
-    </tr>
-  </tbody>
-
-  <tfoot>
-    <tr>
-      <td></td>
-      <td>0 € / mois</td>
-      <td>9.99 € / mois</td>
-    </tr>
-
-    <tr>
-      <td></td>
-      <td><%= link_to "Compte gratuit", signup_path, class: 'btn btn-default' %></td>
-      <td><%= link_to "Compte premium", signup_path, class: 'btn btn-primary' %></td>
-    </tr>
-  </tfoot>
-  
-</table>
+</div>

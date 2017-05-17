@@ -1,6 +1,16 @@
 <h1>Contact</h1>
 
+
+<% if admin? %>
+  <div class="alert alert-dismissible alert-warning" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    Le mail sera envoyé à <%= current_user.email %>.
+  </div>
+<% end %>
+
+
 <p>Vous avez un question? N'hesitez pas à nous contacter.</p>
+
 
 <%= bootstrap_form_for contact_path do |f| %>
 

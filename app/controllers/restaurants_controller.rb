@@ -17,6 +17,8 @@ class RestaurantsController < ApplicationController
   def show
     @title = @restaurant.name
     @description = "Un magnifique restaurant"
+
+    render layout: 'landing_restaurant'
   end
 
   # GET /restaurants/new
@@ -85,14 +87,6 @@ class RestaurantsController < ApplicationController
   end
 
 
-  # GET /allergens
-  def allergens
-    @title = "Carte des allergènes"
-    @description = "Liste des allergènes présents dans nos plats."
-  end
-
-
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_restaurant
@@ -106,8 +100,8 @@ class RestaurantsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def restaurant_params
-      data = params.require(:restaurant).permit :name, :address, :zip_code, :city, :module_blog, :picture, :logo, :css, :logo_display,
-          :menus_picture_display, :dishes_picture_display, :posts_picture_display, :sections_picture_display
+      data = params.require(:restaurant).permit :name, :address, :zip_code, :city, :picture, :logo, :css, :logo_display,
+          :menus_picture_display, :dishes_picture_display, :posts_picture_display, :sections_picture_display, :slug
       data.delete :css if data['css'] and data['css'].empty?
       return data
     end

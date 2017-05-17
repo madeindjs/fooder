@@ -43,4 +43,20 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.premium?
   end
 
+
+  test "should delivering password instructions" do
+    assert_empty @user.perishable_token
+    @user.deliver_password_reset_instructions!
+    assert_not_empty @user.perishable_token
+  end
+
+
+  test "should add to newletter" do
+    assert_difference('Newsletter.count', 1) do
+      User.create email: 'azerty@test.fr', password: '20462046', password_confirmation: '20462046'
+    end
+    assert @user.payements.empty?
+    assert_not @user.premium?
+  end
+
 end

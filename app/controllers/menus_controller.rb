@@ -2,6 +2,7 @@ class MenusController < ApplicationController
   before_action :set_menu, only: [:show, :edit, :update, :destroy]
   before_action :check_login, only: [:new, :create, :edits, :edit, :update, :destroy]
   before_action :check_owner, only: [:edit, :update, :destroy]
+  before_action :check_admin, only: [:edits]
   # GET /menus
   # GET /menus.json
   def index
@@ -40,7 +41,6 @@ class MenusController < ApplicationController
     @title = "Gérer les menus"
     @description = "Renommer et réorganisez les menu proposés par ce restaurant."
 
-    redirect_to root_path unless current_user.restaurants.include? @restaurant
     @menus = @restaurant.menus.order :order
     if request.post?
       # to array to save changes to display it to user
@@ -79,32 +79,29 @@ class MenusController < ApplicationController
     @menu.user_id = current_user.id
     @menu.restaurant_id = @restaurant.id
 
-    respond_to do |format|
-      if @menu.save
-        flash[:success] = "Votre menu a été supprimé."
-        format.html { redirect_to @menu }
-        format.json { render :show, status: :created, location: @menu }
-      else
-        flash[:danger] = "Une erreur est survenue."
-        format.html { render :new }
-        format.json { render json: @menu.errors, status: :unprocessable_entity }
-      end
+    if @menu.save
+      flash[:success] = "Votre menu a été supprimé."
+      redirect_to @menu
+    else
+      flash[:danger] = "Une erreur est survenue."
+      render :new
     end
   end
 
   # PATCH/PUT /menus/1
-  # PATCH/PUT /menus/1.json
   def update
-    respond_to do |format|
-      if @menu.update(menu_params)
-        flash[:success] = "Votre menu a été mise à jour."
-        format.html { redirect_to @menu }
-        format.json { render :show, status: :ok, location: @menu }
-      else
-        flash[:danger] = "Une erreur est survenue."
-        format.html { render :edit }
-        format.json { render json: @menu.errors, status: :unprocessable_entity }
-      end
+    if @menu.update(menu_params)
+
+      
+      params['dishes'].each_pair do |dish_id, boolean|
+        @menu.dishes << Dish.find(dish_id)
+      end if params['dishes']
+
+      flash[:success] = "Votre menu a été mise à jour."
+      redirect_to @menu
+    else
+      flash[:danger] = "Une erreur est survenue."
+      render :edit
     end
   end
 
@@ -113,16 +110,13 @@ class MenusController < ApplicationController
   def destroy
     @menu.destroy
     flash[:success] = "Votre categorie a été mise à jour."
-    respond_to do |format|
-      format.html { redirect_to menus_path }
-      format.json { head :no_content }
-    end
+    redirect_to menus_path
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_menu
-      @menu = Menu.friendly.find(params[:id])
+      @menu = Menu.includes(:dishes).friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -2,19 +2,17 @@
 
   <%= picture_tag menu, :menus_picture_display, css_class: 'section-img', size: 100 %>
 
-  <p>
-    <%= menu.content %><br/>
-    <%= tags menu.tags %>
-  </p>
+  
 
 
-  <p class="text-right lead">
-    <%= price menu.price %>
-  </p>
+  <% if @restaurant.module_menus and not menu.dishes.empty?%>
+    <%= render 'dishes/simple_list', dishes: menu.dishes %>
+  <% end %>
+
 
   <% if admin? %>
     <p class="text-right admin">
-        <%= link_to 'editer', edit_menu_path(menu), class: "btn btn-default ajax-edit" %>
+        <%= link_to 'editer', edit_menu_path(menu), class: "btn btn-default" %>
         <%= link_to 'Supprimer', menu, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'  %>
     </p>
   <% end %>

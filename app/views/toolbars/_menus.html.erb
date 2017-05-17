@@ -1,0 +1,22 @@
+<div class="btn-group col-xs-12 " role="toolbar" aria-label="...">
+
+  
+  <% if @restaurant.module_menus %>
+
+    <%= link_to new_menu_url(subdomain: @restaurant), class: "btn btn-default" do %>
+      <%= glyphicon "plus" %> ajouter un menu
+    <% end %>
+
+    <%= link_to menus_edit_url(subdomain: @restaurant), class: "btn btn-default" do %>
+      <%= glyphicon "pencil" %> gérer les menus
+    <% end %>
+
+  <% else %>
+
+    <%= link_to activate_module_url(module: 'menus', subdomain: @restaurant), class: "btn btn-default", method: :patch do %>
+      <%= glyphicon "unchecked" %> <%= @restaurant.module_menus ? "désactiver" : "activer"  %> les menus
+    <% end %>
+
+  <% end %>
+
+</div>

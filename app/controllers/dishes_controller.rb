@@ -2,6 +2,7 @@ class DishesController < ApplicationController
   before_action :set_dish, only: [:show, :edit, :update, :destroy]
   before_action :check_login, only: [:new, :create, :edit, :edits, :update, :destroy]
   before_action :check_owner, only: [:edit, :update, :destroy]
+  before_action :check_admin, only: [:edits, :allergens]
   before_action :check_restaurant
 
   # GET /dishes
@@ -18,6 +19,8 @@ class DishesController < ApplicationController
   def show
     @title = @dish.name
     @description = "Un parmi les nombreux déliceux produits proposé par #{@restaurant.name}"
+
+    @menus = @dish.menus.uniq
   end
 
   # GET /dishes/new
@@ -34,13 +37,13 @@ class DishesController < ApplicationController
     @description = "Editer une catégorie existante."
   end
 
+
   # GET /dishes/edit
   # POST /dishes/edit
   def edits
     @title = "Gérer vos produits"
     @description = "Renommer et réorganisez les produits."
 
-    redirect_to root_path unless current_user.restaurants.include? @restaurant
     @dishes = @restaurant.dishes.order :order
     @categories = @restaurant.categories
     if request.post?
@@ -52,11 +55,8 @@ class DishesController < ApplicationController
         # we get dish and verify author is the user
         if dish = Dish.find(id) and dish.user_id == current_user.id
           # update attributes
-          dish.name = data['name']
-          dish.price = data['price']
-          dish.order = data['order']
-          dish.category_id = data['category_id']
-          dish.activate = data['activate']
+          dish.assign_attributes data.permit(:name, :description, :category_id, :price, :tags, :picture, :activate, 
+            :gluten_free, :crustacea_free, :egg_free, :fish_free, :peanut_free, :lactose_free, :nut_free, :sulphite_free)
           # save only if dish changed
           if dish.changed?
             # save dish and stor in array to display in flash message
@@ -70,7 +70,8 @@ class DishesController < ApplicationController
       end
       # display changes
       flash[:success] = "La mise à jour de #{updated_dishes} a été effectuée." unless updated_dishes.empty?
-      flash[:danger] = "La mise à jour de #{fail_updated_dishes} n'a été effectuée."  unless fail_updated_dishes.empty?
+      flash[:danger] = "La mise à jour de #{fail_updated_dishes} n'a pas été effectuée."  unless fail_updated_dishes.empty?
+      redirect_back fallback_location: dishes_edit_path
     end
   end
 
