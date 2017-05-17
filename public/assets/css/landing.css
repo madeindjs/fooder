@@ -1,25 +1,19 @@
-header{text-align: center;}
-  header p{font-size:2.5em;}
-
 h1,
+h2
+{margin-top: 100px}
+
+#main-container p,
+#main-container li{font-size: 18px}
+
 h2,
-h3{font-weight: 800;line-height: 1.5;text-align: center;}
-h1{font-size:4em;}
-h2{font-size:3em;font-weight: 800;line-height: 1.5;}
+h3 {text-align: center}
+h3 > img{display: block; margin: auto;}
 
-table{font-size: 1.2em;}
-  table *{text-align: center}
+img.screenshot{max-height: 300px}
 
-hr{border: 10px solid #eee;width:100px;}
+div.step{padding-top: 50px; padding-bottom: 50px}
 
-section,
-header{padding-top: 100px; padding-bottom: 100px}
-  section p,
-  header p{font-size: 2.4rem;text-align: center;color: #555;text-align: center;margin-top: 25px;}
+div.feature{text-align: center; padding-top: 30px;padding-bottom: 30px}
 
-section.faq h3{font-size: 2.3rem;}
-  section.faq p{font-size: 1.9rem;}
 
-footer{margin-top: 100px; padding-top: 40px; padding-bottom: 40px; background-color: #f5f5f5; text-align: center}
 
-#new_newsletter{max-width: 400px;margin: auto}

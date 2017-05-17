@@ -8,7 +8,7 @@
     
 
     <!-- Bootstrap core CSS -->
-    <%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' %>
+    <%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/readable/bootstrap.min.css' %>
     <%= stylesheet_link_tag '/assets/css/landing.css' %>
     
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -26,7 +26,7 @@
 
       <div class="row">
 
-        <div id="main-container" class="col-md-8  col-sm-10 <%= "col-md-offset-2 col-sm-offset-1" if !admin? %>" style="padding-top: 50px">
+        <div id="main-container" class="container" style="padding-top: 50px">
 
           <%= render 'shared/flash' %>
 
