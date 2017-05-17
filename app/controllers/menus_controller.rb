@@ -92,10 +92,10 @@ class MenusController < ApplicationController
   def update
     if @menu.update(menu_params)
 
-      #
+      
       params['dishes'].each_pair do |dish_id, boolean|
         @menu.dishes << Dish.find(dish_id)
-      end
+      end if params['dishes']
 
       flash[:success] = "Votre menu a été mise à jour."
       redirect_to @menu
