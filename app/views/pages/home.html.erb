@@ -80,77 +80,52 @@
   <div class="col-xs-12">
     <h2>Fonctionnalités</h2>
 
-    <div class="feature col-lg-4 col-sm-12">
+    <div class="feature col-lg-4 col-sm-6 col-xs-12">
       <h3><%= image_tag '/assets/icons/devices.svg', alt: 'Modules', size: 100 %> Responsive.</h3>
       <p>Votre site est compatible pour les smartphones, tablettes et orinateurs.</p>
     </div>
 
-    <div class="feature col-lg-4 col-sm-12">
+    <div class="feature col-lg-4 col-sm-6 col-xs-12">
       <h3><%= image_tag '/assets/icons/pantone.svg', alt: 'Modules', size: 100 %> Thèmes.</h3>
-      <p>De nombreux thèmes vous sont proposés.</p>
+      <p>De nombreux thèmes vous sont proposés. Vous trouverez forcément votre bonheur.</p>
     </div>
 
-    <div class="feature col-lg-4 col-sm-12">
+    <div class="feature col-lg-4 col-sm-6 col-xs-12">
       <h3><%= image_tag '/assets/icons/box.svg', alt: 'Modules', size: 100 %> Modules.</h3>
       <p>Vous souhaitez désactiver une fonctionnalité? Pas de problème.</p>
     </div>
 
-    <div class="col-sm-feature col-lg-4 col-sm-12">
+    <div class="feature col-lg-4 col-sm-6 col-xs-12">
       <h3><%= image_tag '/assets/icons/magician.svg', alt: 'Magie', size: 100 %> Menu.</h3>
-      <p>Assemblez vos produits pour proposer des menus.</p>
+      <p>Vos produits peuvent s'assembler pour composer des menus riches en contenu.</p>
     </div>
 
 
-    <div class="feature col-lg-4 col-sm-12">
+    <div class="feature col-lg-4 col-sm-6 col-xs-12">
       <h3><%= image_tag '/assets/icons/heart.svg', alt: 'Coeur', size: 100 %> Allergènes.</h3>
-      <p>Proposez  une carte des allergènes intéractive.</p>
+      <p>Proposez  une carte des allergènes intéractive accessible à partir de chaque produits.</p>
     </div>
 
-    <div class="feature col-lg-4 col-sm-12">
+    <div class="feature col-lg-4 col-sm-6 col-xs-12">
       <h3><%= image_tag '/assets/icons/letter.svg', alt: 'Lettre', size: 100 %> Contact.</h3>
       <p>Laissez vos client vous contactez à traver un formulaire de contact.</p>
     </div>
 
-    <div class="feature col-lg-4 col-sm-12">
+    <div class="feature col-lg-4 col-sm-6 col-xs-12">
       <h3><%= image_tag '/assets/icons/megaphone.svg', alt: 'Magie', size: 100 %> Blog.</h3>
       <p>Communiquez autour de l'actualité de votre restaurant.</p>
     </div>
 
-    <div class="feature col-lg-4 col-sm-12">
+    <div class="feature col-lg-4 col-sm-6 col-xs-12">
       <h3><%= image_tag '/assets/icons/pencil.svg', alt: 'Stylo', size: 100 %> Evaluations.</h3>
       <p>Choisissez un thème parmi les nombreux proposés.</p>
     </div>
 
-    <div class="col-sm-12 alert alert-info">
-      <p><strong>D'autres idées?</strong> Nous sommes à l'écoute pour toutes propositions de nouvelles fonctionnalités.</p>
+    <div class="feature col-lg-4 col-sm-6 col-xs-12">
+      <p class="alert alert-info"><strong>D'autres idées?</strong> Nous sommes à l'écoute pour toutes propositions de nouvelles fonctionnalités.</p>
     </div>
   </div>
 </div>
-
-<% if false %>
-<div class="row">
-  <div class="col-xs-12">
-    <h2>Bénefices</h2>
-
-
-    <div class="feature col-lg-4 col-sm-12">
-      <h3><%= glyphicon 'time' %> Vous fait gagnez du temps</h3>
-      <p>Plus besoin de renseigner vos clients à propos de vos produits car vous proposerez une carte claire et intéractive.</p>
-    </div>
-
-    <div class="feature col-lg-4 col-sm-12">
-      <h3><%= glyphicon 'cutlery' %> Concentrez-vous sur votre métier</h3>
-      <p>Plus besoin de rensigner vos clients sur les plats que vous proposez</p>
-    </div>
-
-    <div class="feature col-lg-4 col-sm-12">
-      <h3><%= glyphicon 'thumbs-up' %> Développez votre clientèle.</h3>
-      <p>Choisissez un thème parmi les nombreux proposés.</p>
-    </div>
-
-  </div>
-</div>
-<% end %>
 
 
 
@@ -162,6 +137,11 @@
 </div>
 
 
+<div class="col-xs-12">
+  <h2>Newsletter</h2>
+  <p>Intéressé pas le projet? N'hésitez pas à vous abonner à la newsletter!</p>
+  <%= render 'newsletters/form', newsletter: Newsletter.new %>
+</div>
 
 
 <div class="col-xs-12">
@@ -199,9 +179,5 @@
 </div>
 
 
-<div class="col-xs-12">
-  <h2>Newsletter</h2>
-  <p>Intéressé pas le projet? N'hésitez pas à vous abonner à la newsletter!</p>
-  <%= render 'newsletters/form', newsletter: Newsletter.new %>
-</div>
+
 
