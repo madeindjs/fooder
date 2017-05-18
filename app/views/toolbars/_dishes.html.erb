@@ -1,23 +1,33 @@
-<div class="btn-group" role="toolbar" aria-label="...">
+<ul class="nav nav-tabs" role="toolbar" aria-label="...">
 
-  <%= link_to new_dish_url(subdomain: @restaurant), class: "btn btn-default" do %>
-    <%= glyphicon "plus" %> ajouter un plat
-  <% end %>
+  <li role="presentation">
+    <%= link_to new_dish_url(subdomain: @restaurant), class: "btn btn-default" do %>
+      <%= glyphicon "plus" %> ajouter un plat
+    <% end %>
+  </li>
 
-  <%= link_to dishes_edit_url(subdomain: @restaurant), class: "btn btn-default" do %>
-    <%= glyphicon "pencil" %> gérer les plats
-  <% end %>
+  <li role="presentation">
+    <%= link_to dishes_edit_url(subdomain: @restaurant), class: "btn btn-default" do %>
+      <%= glyphicon "pencil" %> gérer les plats
+    <% end %>
+  </li>
 
-  <%= link_to allergens_edit_url(subdomain: @restaurant), class: "btn btn-default" do %>
-    <%= glyphicon "exclamation-sign" %> gérer les allergènes
-  <% end %>
+  <li role="presentation">
+    <%= link_to allergens_edit_url(subdomain: @restaurant), class: "btn btn-default" do %>
+      <%= glyphicon "exclamation-sign" %> gérer les allergènes
+    <% end %>
+  </li>
 
-  <%= link_to new_category_url(subdomain: @restaurant), class: "btn btn-default" do %>
-    <%= glyphicon "plus" %> ajouter une catégorie
-  <% end %>
+  <li role="presentation">
+    <%= link_to new_category_url(subdomain: @restaurant), class: "btn btn-default" do %>
+      <%= glyphicon "plus" %> ajouter une catégorie
+    <% end %>
+  </li>
 
-  <%= link_to categories_edit_url(subdomain: @restaurant), class: "btn btn-default" do %>
-    <%= glyphicon "pencil" %> gérer les catégories
-  <% end %>
+  <li role="presentation">
+    <%= link_to categories_edit_url(subdomain: @restaurant), class: "btn btn-default" do %>
+      <%= glyphicon "pencil" %> gérer les catégories
+    <% end %>
+  </li>
 
-</div>
+</ul>

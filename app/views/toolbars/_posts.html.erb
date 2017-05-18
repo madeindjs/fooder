@@ -1,25 +1,33 @@
-<div class="btn-group col-xs-12" role="toolbar" aria-label="...">
+<ul class="nav nav-tabs" role="toolbar" aria-label="...">
 
   <% if @restaurant.module_blog %>
 
-    <%= link_to new_post_url(subdomain: @restaurant), class: "btn btn-default" do %>
-      <%= glyphicon "plus" %> ajouter un article
-    <% end %>
+    <li role="presentation">
+      <%= link_to new_post_url(subdomain: @restaurant), class: "btn btn-default" do %>
+        <%= glyphicon "plus" %> ajouter un article
+      <% end %>
+    </li>
 
-    <%= link_to posts_url(subdomain: @restaurant), class: "btn btn-default" do %>
-      <%= glyphicon "pencil" %> gérer les articles
-    <% end %>
+    <li role="presentation">
+      <%= link_to posts_url(subdomain: @restaurant), class: "btn btn-default" do %>
+        <%= glyphicon "pencil" %> gérer les articles
+      <% end %>
+    </li>
 
-    <%= link_to activate_module_url(module: 'blog', subdomain: @restaurant), class: "btn btn-default", method: :patch do %>
-      <%= glyphicon "unchecked" %> désactiver le blog
-    <% end %>
+    <li role="presentation">
+      <%= link_to activate_module_url(module: 'blog', subdomain: @restaurant), class: "btn btn-default", method: :patch do %>
+        <%= glyphicon "unchecked" %> désactiver le blog
+      <% end %>
+    </li>
 
   <% else %>
 
-    <%= link_to activate_module_url(module: 'blog', subdomain: @restaurant), class: "btn btn-default", method: :patch do %>
-      <%= glyphicon "unchecked" %> <%= @restaurant.module_blog ? "désactiver" : "activer"  %> le blog
-    <% end %>
+    <li role="presentation">
+      <%= link_to activate_module_url(module: 'blog', subdomain: @restaurant), class: "btn btn-default", method: :patch do %>
+        <%= glyphicon "unchecked" %> <%= @restaurant.module_blog ? "désactiver" : "activer"  %> le blog
+      <% end %>
+    </li>
 
   <% end %>
 
-</div>
+</ul>
