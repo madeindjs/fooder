@@ -1,12 +1,6 @@
 
 # Entrée
 
-- name: Tarte aux brocolis et à la moutarde
-  description: Une délicieuse tarte qui va vous réconcillier avec les brocolis
-  price: 8.00
-  category_name: Entrée
-  gluten_free: 2
-
 - name: Poke bowl au saumon fumé
   description: Une recette gourmande & healthy
   price: 12.00
@@ -38,12 +32,6 @@
   category_name: Cocktails
   tags: sans-alcool
 
-- name: Mojito
-  description: Rhum Bacardi, sirop de Mojito Mint, Perrier, citron vert, sucre roux, feuilles de menthe fraîche 13cl
-  price: 8.5
-  category_name: Cocktails
-  tags: frais
-
 
 # Desserts
 
@@ -52,9 +40,3 @@
   price: 7
   category_name: Desserts
   tags: frais
-
-- name: Brownie
-  description: Un dessert fruité et crémeux à souhait! 
-  price: 5
-  category_name: Desserts
-  tags: fait maison, sans gluten

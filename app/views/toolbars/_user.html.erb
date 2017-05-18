@@ -1,27 +1,39 @@
-<div class="btn-group col-xs-12" role="toolbar" aria-label="...">
+<ul class="nav nav-tabs" role="toolbar" aria-label="...">
 
-  <%= link_to user_url(current_user, subdomain: nil), class: "btn btn-default" do %>
-    <%= glyphicon "user" %> Votre profil
-  <% end %>
+  <li role="presentation">
+    <%= link_to user_url(current_user, subdomain: nil) do %>
+      <%= glyphicon "user" %> Votre profil
+    <% end %>
+  </li>
 
-  <%= link_to edit_user_url(current_user, subdomain: nil), class: "btn btn-default" do %>
-    <%= glyphicon "pencil" %> Editer votre profil
-  <% end %>
+  <li role="presentation">
+    <%= link_to edit_user_url(current_user, subdomain: nil) do %>
+      <%= glyphicon "pencil" %> Editer votre profil
+    <% end %>
+  </li>
 
-  <%= link_to new_restaurant_path(subdomain: nil), class: "btn btn-default" do %>
-    <%= glyphicon "plus" %> Créer un autre restaurant
-  <% end %>
+  <li role="presentation">
+    <%= link_to new_restaurant_path(subdomain: nil) do %>
+      <%= glyphicon "plus" %> Créer un autre restaurant
+    <% end %>
+  </li>
   
-  <%= link_to new_payement_path(subdomain: nil), class: "btn btn-default" do %>
-    <%= glyphicon "credit-card" %> Acheter
-  <% end unless current_user.premium? %>
+  <li role="presentation">
+    <%= link_to new_payement_path(subdomain: nil) do %>
+      <%= glyphicon "credit-card" %> Acheter
+    <% end unless current_user.premium? %>
+  </li>
 
-  <%= link_to payements_path(subdomain: nil), class: "btn btn-default" do %>
-    <%= glyphicon "list" %> Mes paiements
-  <% end %>
+  <li role="presentation">
+    <%= link_to payements_path(subdomain: nil) do %>
+      <%= glyphicon "list" %> Mes paiements
+    <% end %>
+  </li>
 
-  <%= link_to signout_path(subdomain: nil), class: "btn btn-default" do %>
-    <%= glyphicon "log-out" %> se déconnecter
-  <% end %>
+  <li role="presentation">
+    <%= link_to signout_path(subdomain: nil) do %>
+      <%= glyphicon "log-out" %> se déconnecter
+    <% end %>
+  </li>
 
-</div>
+</ul>

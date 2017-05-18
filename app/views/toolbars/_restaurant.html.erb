@@ -1,11 +1,15 @@
-<div class="btn-group col-xs-12" role="toolbar" aria-label="...">
+<ul class="nav nav-tabs" role="toolbar" aria-label="...">
 
-  <%= link_to opening_hours_edit_path, class: "btn btn-default" do %>
-    <%= glyphicon "time" %> editer les horaires
-  <% end %>
+  <li role="presentation">
+    <%= link_to opening_hours_edit_path, class: "btn btn-default" do %>
+      <%= glyphicon "time" %> editer les horaires
+    <% end %>
+  </li>
 
-  <%= link_to links_edit_path, class: "btn btn-default" do %>
-    <%= glyphicon "link" %> gérer les liens
-  <% end %>
+  <li role="presentation">
+    <%= link_to links_edit_path, class: "btn btn-default" do %>
+      <%= glyphicon "link" %> gérer les liens
+    <% end %>
+  </li>
 
-</div> 
+</ul>

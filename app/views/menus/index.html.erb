@@ -1,12 +1,12 @@
-<div class="col-xs-12">
-  <h1>Menus</h1>
-</div>
-
 <% if admin? %>
   <div class="col-xs-12 admin">
     <%= render 'toolbars/menus' %>
   </div>
 <% end %>
+
+<div class="col-xs-12">
+  <h1>Menus</h1>
+</div>
 
 <div class="col-xs-12">
   <% @menus.each do |menu| %>

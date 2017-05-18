@@ -1,16 +1,6 @@
 <style>
-  
   main-container{padding: 0}
-
 </style>
-
-<div class="row restaurant-header tooltip-holder" style="background-image: url(<%= @restaurant.picture %>)"
-  <%= tooltip 'Cette image de fond peut être changé dans la section  "editer le restaurant"' %> >
-
-  <div class="col-xs-12">
-    <h1 class="tooltip-holder" <%= tooltip 'Le nom de votre restaurant peut être changé dans la section "editer le restaurant"' %> ><%= logo_tag @restaurant %><%= @restaurant.name %></h1>
-  </div>
-</div>
 
 <% if admin? %>
   <div class="row admin">
@@ -22,6 +12,14 @@
     </div>
   </div>
 <% end %>
+
+<div class="row restaurant-header tooltip-holder" style="background-image: url(<%= @restaurant.picture %>)"
+  <%= tooltip 'Cette image de fond peut être changé dans la section  "editer le restaurant"' %> >
+
+  <div class="col-xs-12">
+    <h1 class="tooltip-holder" <%= tooltip 'Le nom de votre restaurant peut être changé dans la section "editer le restaurant"' %> ><%= logo_tag @restaurant %><%= @restaurant.name %></h1>
+  </div>
+</div>
 
 <%= render 'sections/list', sections: @restaurant.sections %>
 
