@@ -13,7 +13,7 @@
           title:  ( admin? ? 'Le nom de votre restaurant peut être changé dans la section "editer le restaurant"' : nil ) %>
       <% else %>
         <%= link_to root_path , class: "navbar-brand", style: "padding: 5px" do %>
-          <%= image_tag '/assets/fooder.svg', size: 40 %>
+          <%= image_tag 'fooder.svg', size: 40 %>
         <% end # end of navbar-brand %>
       <% end %>
     </div><!-- / .navbar-header -->
@@ -37,7 +37,7 @@
         <% else %>
           <% if current_user %>
             <% if current_user.premium? %>
-              <li><%= image_tag '/assets/icons/certificate.svg', alt: 'utilisateur premium', size: 50 %></li>
+              <li><%= image_tag 'icons/certificate.svg', alt: 'utilisateur premium', size: 50 %></li>
             <% else %>
               <li><%= link_to "Passer premium", new_payement_path %></li>
             <% end %>
