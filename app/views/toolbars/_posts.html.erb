@@ -1,6 +1,6 @@
-<ul class="nav nav-tabs" role="toolbar" aria-label="...">
+<% if @restaurant.module_blog %>
 
-  <% if @restaurant.module_blog %>
+  <ul class="nav nav-tabs" role="toolbar" aria-label="...">
 
     <li role="presentation">
       <%= link_to new_post_url(subdomain: @restaurant), class: "btn btn-default" do %>
@@ -20,14 +20,5 @@
       <% end %>
     </li>
 
-  <% else %>
-
-    <li role="presentation">
-      <%= link_to activate_module_url(module: 'blog', subdomain: @restaurant), class: "btn btn-default", method: :patch do %>
-        <%= glyphicon "unchecked" %> <%= @restaurant.module_blog ? "désactiver" : "activer"  %> le blog
-      <% end %>
-    </li>
-
-  <% end %>
-
-</ul>
+  </ul>
+<% end %>

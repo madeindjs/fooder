@@ -1,6 +1,6 @@
-<ul class="nav nav-tabs" role="toolbar" aria-label="...">
+<% if @restaurant.module_menus %>
 
-  <% if @restaurant.module_menus %>
+  <ul class="nav nav-tabs" role="toolbar" aria-label="...">
 
     <li role="presentation">
       <%= link_to new_menu_url(subdomain: @restaurant), class: "btn btn-default" do %>
@@ -14,14 +14,5 @@
       <% end %>
     </li>
 
-  <% else %>
-
-    <li role="presentation">
-      <%= link_to activate_module_url(module: 'menus', subdomain: @restaurant), class: "btn btn-default", method: :patch do %>
-        <%= glyphicon "unchecked" %> <%= @restaurant.module_menus ? "désactiver" : "activer"  %> les menus
-      <% end %>
-    </li>
-
-  <% end %>
-
-</ul>
+  </ul>
+<% end %> 
