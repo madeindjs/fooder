@@ -1,12 +1,12 @@
 <% 
   picture_size_labels_fiels = { 
-    logo_display: "Logo de votre restaurant",
-    menus_picture_display: "Photos des menus", 
-    dishes_picture_display: "Photos de vos plats à la carte", 
-    posts_picture_display: "Photos de vos actualités", 
-    sections_picture_display: "Photos des sections sur la page d'acueil" 
+    picture_display: "Logo de votre restaurant",
+    picture_display: "Photos des menus", 
+    picture_display: "Photos de vos plats à la carte", 
+    picture_display: "Photos de vos actualités", 
+    picture_display: "Photos des sections sur la page d'acueil" 
   }
-  picture_size_labels_fiels.delete! :posts_picture_display unless restaurant.posts_picture_display
+  picture_size_labels_fiels.delete! :picture_display unless restaurant.picture_display
 
 %>
 
@@ -47,9 +47,6 @@
       <h3>Site</h3>
 
       <div>
-        <div class="col-xs-12">
-          <%= f.select :css, { "Sélectionnez un theme" => nil }, {label: 'Thème'}, {id: 'themes'} %>
-        </div>
 
         <div class="col-xs-12">
           <%= f.text_field :slug, label: "Préfixe de l'URL gratuite", append: ".fooder.pro", prepend: 'https://' %>
@@ -61,27 +58,25 @@
 
       <div>
         <div class="col-sm-6">
-          <%= render 'shared/form_input_logo.html', form: f, model: restaurant %>
-          <p class="alert alert-info">Le logo est utilisé en tant que favicon.</p>
+          <%= render 'shared/form_input_logo.html', form: f, model: restaurant, help: 'Le logo est utilisé en tant que favicon.' %>
         </div>
         
         <div class="col-sm-6">
-          <%= render 'shared/form_input_picture.html', form: f, model: restaurant %>
-          <p class="alert alert-info">L'image est affichée sur la page principale.</p>
+          <%= render 'shared/form_input_picture.html', form: f, model: restaurant, help: "L'image est affichée sur la page principale." %>
         </div>
       </div>
 
 
-      <h3>Affichage des images</h3>
+      <h3>Design</h3>
 
       <div>
-        <% picture_size_labels_fiels.each do |field, label| %>
+        <div class="col-xs-12">
+          <%= f.select :picture_display,  display_options(restaurant.picture_display), {label: "Affichage des images"} %>
+        </div>
 
-          <div class="col-sm-6">
-            <%= f.select field,  display_options(restaurant.send field ), {label: label} %>
-          </div>
-             
-        <% end %>
+        <div class="col-xs-12">
+          <%= f.select :css, { "Sélectionnez un theme" => nil }, {label: 'Thème'}, {id: 'themes'} %>
+        </div>
       </div>
 
     </div>

@@ -1,4 +1,7 @@
 <div class="form-group">
   <%= image_tag model.logo.url, size:50,  class: 'img-circle' if model.logo? %>
   <%= form.file_field :logo %>
+  <% if help %>
+    <span class="help-block"><%= help %></span>
+  <% end %>
 </div>

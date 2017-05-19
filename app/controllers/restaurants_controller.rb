@@ -100,8 +100,7 @@ class RestaurantsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def restaurant_params
-      data = params.require(:restaurant).permit :name, :address, :zip_code, :city, :picture, :logo, :css, :logo_display,
-          :menus_picture_display, :dishes_picture_display, :posts_picture_display, :sections_picture_display, :slug
+      data = params.require(:restaurant).permit :name, :address, :zip_code, :city, :picture, :logo, :css, :picture_display, :slug
       data.delete :css if data['css'] and data['css'].empty?
       return data
     end
