@@ -56,7 +56,6 @@ class LinksController < ApplicationController
   end
 
   # POST /links
-  # POST /links.json
   def create
     @link = Link.new link_params
     @link.restaurant_id = @restaurant.id
@@ -71,7 +70,6 @@ class LinksController < ApplicationController
   end
 
   # PATCH/PUT /links/1
-  # PATCH/PUT /links/1.json
   def update
     if @link.update(link_params)
       flash[:success] = "Votre lien a été mis à jour!"
@@ -83,10 +81,9 @@ class LinksController < ApplicationController
   end
 
   # DELETE /links/1
-  # DELETE /links/1.json
   def destroy
     @link.destroy
-    redirect_to links_edit_path, notice: 'Link was successfully destroyed.'
+    redirect_to links_edit_path
   end
 
   private
