@@ -3,9 +3,11 @@ Rails.application.routes.draw do
   # restaurants area
   resources :categories, only: [:create, :new, :edit, :update, :destroy]
   resources :restaurants # TODO: remove it
-  
+
   constraints subdomain: /.+/  do
     get '/' => 'restaurants#show'
+
+    resources :admin
 
     patch 'activate_module' => "restaurants#activate_module"
 
@@ -13,10 +15,10 @@ Rails.application.routes.draw do
     resources :opening_hours, only: [:create, :destroy]
 
     resources :posts
-    
+
     match 'links/edit' => "links#edits", as: :links_edit, via: [:get, :post]
     resources :links
-    
+
     match 'sections/edit' => "sections#edits", as: :sections_edit, via: [:get, :post]
     resources :sections
 
@@ -54,6 +56,6 @@ Rails.application.routes.draw do
   get '/', to:  'restaurants#show', constraints: { subdomain: 'le-petit-lagon-bleu'}, as: :example
 
   resources :newsletters, only: [:create, :destroy]
-  
+
   root 'pages#home'
 end
