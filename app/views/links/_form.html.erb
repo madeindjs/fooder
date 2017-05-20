@@ -2,6 +2,11 @@
   <%= render 'shared/errors_form', model: link %>
 
   <%= f.text_field :name, label: 'Nom' %>
+
+  <%= f.select  :link_type_id,
+      options_for_select(LinkType.all.map{ |p| [ p.name , p.id] }),
+      {label: 'Type de lien', help: "Précharge le logo"} %>
+
   <%= f.text_field :url, label: 'Adresse' %>
 
   <%= render 'shared/form_input_logo.html', form: f, model: link %>
