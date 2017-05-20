@@ -7,7 +7,7 @@
       options_for_select(LinkType.all.map{ |p| [ p.name , p.id] }),
       {label: 'Type de lien', help: "Précharge le logo"} %>
 
-  <%= f.text_field :url, label: 'Adresse' %>
+  <%= f.text_field :url, label: 'Lien' %>
 
   <%= render 'shared/form_input_logo.html', form: f, model: link %>
 
