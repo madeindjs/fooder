@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170519105150) do
+ActiveRecord::Schema.define(version: 20170520115043) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -50,6 +50,13 @@ ActiveRecord::Schema.define(version: 20170519105150) do
     t.integer "menu_id", null: false
   end
 
+  create_table "link_types", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.string   "logo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "links", force: :cascade do |t|
     t.string   "name"
     t.string   "url"
@@ -58,6 +65,8 @@ ActiveRecord::Schema.define(version: 20170519105150) do
     t.string   "logo"
     t.integer  "restaurant_id"
     t.integer  "order"
+    t.string   "target"
+    t.integer  "link_type_id"
   end
 
   create_table "menus", force: :cascade do |t|
