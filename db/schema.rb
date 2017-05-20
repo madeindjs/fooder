@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170519115900) do
+ActiveRecord::Schema.define(version: 20170519105150) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -58,7 +58,6 @@ ActiveRecord::Schema.define(version: 20170519115900) do
     t.string   "logo"
     t.integer  "restaurant_id"
     t.integer  "order"
-    t.string   "brand"
   end
 
   create_table "menus", force: :cascade do |t|
@@ -234,13 +233,6 @@ ActiveRecord::Schema.define(version: 20170519115900) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["perishable_token"], name: "index_users_on_perishable_token"
     t.index ["slug"], name: "index_users_on_slug", unique: true
-  end
-
-  create_table "websites", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.string   "logo"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
 end
