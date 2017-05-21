@@ -79,11 +79,10 @@ class RestaurantsController < ApplicationController
 
     if @restaurant.update({ key => !status })
       flash[:success] = "Le module à été activé."
-      redirect_to @restaurant
     else
       flash[:danger] = "Une erreur est survenue."
-      redirect_to @restaurant
     end
+    redirect_back fallback_location: @restaurant
   end
 
 
