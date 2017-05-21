@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
 
   before_action :found_restaurant
 
+  layout 'application'
 
   protected
 
