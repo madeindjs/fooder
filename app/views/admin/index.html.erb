@@ -1,0 +1,27 @@
+<h1 class="page-header">Administration</h1>
+
+<!-- Display dashboards items -->
+<% @data.each do |title, data| %>
+  <div class="col-xs-12 col-sm-6 col-md-4">
+    <div class="panel panel-<%= data[:color] %>">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-xs-3">
+            <%= glyphicon data[:glypicon] %>
+          </div>
+          <div class="col-xs-9 text-right">
+            <div class="huge"><%= data[:objects].count %></div>
+            <div><%= title %> actif</div>
+          </div>
+        </div>
+      </div>
+      <a href="#">
+        <div class="panel-footer">
+          <span class="pull-left">Gérer les <%= title %></span>
+          <span class="pull-right"><%= glyphicon 'expand' %></span>
+          <div class="clearfix"></div>
+        </div>
+      </a>
+    </div>
+  </div>
+<% end %>
