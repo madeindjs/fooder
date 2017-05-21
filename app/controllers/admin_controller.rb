@@ -8,16 +8,19 @@ class AdminController < ApplicationController
         color: 'primary',
         glypicon: 'apple',
         objects: @restaurant.dishes.select{ |d| d.activate },
+        link: links_edit_path
       },
       "Menus" => {
         color: 'danger',
         glypicon: 'cutlery',
         objects: @restaurant.menus.select{ |d| d.activate },
+        link: links_edit_path
       },
       "Articles" => {
         color: 'warning',
         glypicon: 'comment',
         objects: @restaurant.posts,
+        link: links_edit_path
       },
     }
   end
