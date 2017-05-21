@@ -1,11 +1,6 @@
 <ul class="nav nav-tabs" role="toolbar" aria-label="...">
 
-  <% {
-      'menus'     => 'les menus',
-      'blog'      => 'le blog',
-      'allergens' => 'les allergènes',
-      'contact'   => 'le formulaire de contact',
-      }.each do |module_name, description| %>
+  <% Restaurant::MODULES.each do |module_name, description| %>
 
     <li role="presentation">
       <%= link_to activate_module_url(module: module_name, subdomain: @restaurant), class: "btn btn-default", method: :patch do %>

@@ -16,7 +16,7 @@
         </div>
       </div>
       <%= link_to @data[:link] do %>
-        <div class="panel-footer">
+        <div class="panel-footer text-<%= data[:color] %>">
             <span class="pull-left">Gérer les <%= title %></span>
             <span class="pull-right"><%= glyphicon 'expand' %></span>
             <div class="clearfix"></div>
@@ -25,3 +25,32 @@
     </div>
   </div>
 <% end %>
+
+
+<!-- modules -->
+<div class="col-xs-12">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      Modules
+    </div>
+    <table class="table">
+      <% Restaurant::MODULES.each do |module_name, data| %>
+        <tr>
+          <th><%= data[:title] %></th>
+          <td><%= data[:description] %></td>
+          <td></td>
+          <td class="text-right">
+            <% activated = @restaurant.send("module_#{module_name}") %>
+            <%= link_to activate_module_url(module: module_name, subdomain: @restaurant), class: "btn btn-default", method: :patch do %>
+            <%= glyphicon(activated ? "check" : "unchecked") %> <%= activated ? "désactiver" : "activer"  %>
+              <% activated = @restaurant.send("module_#{module_name}") %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+    <div class="panel-footer">
+      <p>il vous reste 4 modules à activer</p>
+    </div>
+  </div>
+</div>

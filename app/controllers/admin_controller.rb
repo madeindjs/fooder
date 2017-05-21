@@ -14,14 +14,16 @@ class AdminController < ApplicationController
         color: 'danger',
         glypicon: 'cutlery',
         objects: @restaurant.menus.select{ |d| d.activate },
-        link: links_edit_path
+        link: links_edit_path,
+        module: 'menus',
       },
       "Articles" => {
         color: 'warning',
         glypicon: 'comment',
         objects: @restaurant.posts,
-        link: links_edit_path
+        link: links_edit_path,
+        module: 'blog',
       },
-    }
+    }.select{|item, data| data[:module] == nil || @restaurant.send("module_"+data[:module])  }
   end
 end
