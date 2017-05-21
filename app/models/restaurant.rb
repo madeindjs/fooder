@@ -29,18 +29,22 @@ class Restaurant < ApplicationRecord
       menus: {
         title: 'Menus',
         description: 'Créez des menus liées à vos produits',
+        glyphicon: 'cutlery',
       },
       blog: {
         title: 'Blog',
         description: 'Communiquez autour de vos nouveautés',
+        glyphicon: 'comment',
       },
       allergens: {
         title: 'Allergènes',
         description: 'Génerez automatiquement une carte des allergènes',
+        glyphicon: 'heart'
       },
       contact: {
         title: 'Contact',
         description: 'Un formulaire de contact rapide',
+        glyphicon: 'send'
       }
   }
 

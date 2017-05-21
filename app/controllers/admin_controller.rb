@@ -6,20 +6,20 @@ class AdminController < ApplicationController
     @data = {
       "Produits" => {
         color: 'primary',
-        glypicon: 'apple',
+        glyphicon: 'apple',
         objects: @restaurant.dishes.select{ |d| d.activate },
         link: links_edit_path
       },
       "Menus" => {
         color: 'danger',
-        glypicon: 'cutlery',
+        glyphicon: 'cutlery',
         objects: @restaurant.menus.select{ |d| d.activate },
         link: links_edit_path,
         module: 'menus',
       },
       "Articles" => {
         color: 'warning',
-        glypicon: 'comment',
+        glyphicon: 'comment',
         objects: @restaurant.posts,
         link: links_edit_path,
         module: 'blog',
