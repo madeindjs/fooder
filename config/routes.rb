@@ -7,7 +7,12 @@ Rails.application.routes.draw do
   constraints subdomain: /.+/  do
     get '/' => 'restaurants#show'
 
-    resources :admin
+    scope '/admin' do
+      get '/' => 'admin#index', as: :admin
+      match 'allergens' => "admin#allergens", as: :admin_allergens, via: [:get, :post]
+    end
+
+
 
     patch 'activate_module' => "restaurants#activate_module"
 
@@ -25,7 +30,6 @@ Rails.application.routes.draw do
     match 'menus/edit' => "menus#edits", as: :menus_edit, via: [:get, :post]
     resources :menus
 
-    match 'dishes/allergens' => "dishes#allergens", as: :dishes_allergens_edit, via: [:get, :post]
     match 'dishes/edit' => "dishes#edits", as: :dishes_edit, via: [:get, :post]
     resources :dishes
 

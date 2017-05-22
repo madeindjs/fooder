@@ -9,6 +9,14 @@ class AdminController < ApplicationController
   def index
   end
 
+  def allergens
+    @title = "Gestion des allrgènes"
+    @description = "Ajoutez rapidement les allrgènes de vos plat."
+
+    @dishes = @restaurant.dishes.order :order
+    @categories = @restaurant.categories
+  end
+
   private
 
   def set_sidebar_data
@@ -25,14 +33,21 @@ class AdminController < ApplicationController
         objects: @restaurant.menus.select{ |d| d.activate },
         link: menus_edit_path,
         module: 'menus',
-        },
-        "Articles" => {
-          color: 'warning',
-          glyphicon: 'comment',
-          objects: @restaurant.posts,
-          link: posts_path,
-          module: 'blog',
-          },
-        }.select{|item, data| data[:module] == nil || @restaurant.send("module_"+data[:module])  }
+      },
+      "Articles" => {
+        color: 'warning',
+        glyphicon: 'comment',
+        objects: @restaurant.posts,
+        link: posts_path,
+        module: 'blog',
+      },
+      "Allèrgenes" => {
+          color: 'info',
+          glyphicon: 'heart',
+          objects: [],
+          link: admin_allergens_path,
+          module: 'allergens',
+      }
+    }.select{|item, data| data[:module] == nil || @restaurant.send("module_"+data[:module])  }
   end
 end
