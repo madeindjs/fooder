@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     scope '/admin' do
       get '/' => 'admin#index', as: :admin
       match 'allergens' => "admin#allergens", as: :admin_allergens, via: [:get, :post]
+      match 'dishes' => "admin#dishes", as: :admin_dishes, via: [:get, :post]
     end
 
 
@@ -30,7 +31,6 @@ Rails.application.routes.draw do
     match 'menus/edit' => "menus#edits", as: :menus_edit, via: [:get, :post]
     resources :menus
 
-    match 'dishes/edit' => "dishes#edits", as: :dishes_edit, via: [:get, :post]
     resources :dishes
 
     get 'allergens/edit' => "allergens#edits", as: :allergens_edit

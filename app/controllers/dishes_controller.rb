@@ -38,43 +38,6 @@ class DishesController < ApplicationController
   end
 
 
-  # GET /dishes/edit
-  # POST /dishes/edit
-  def edits
-    @title = "Gérer vos produits"
-    @description = "Renommer et réorganisez les produits."
-
-    @dishes = @restaurant.dishes.order :order
-    @categories = @restaurant.categories
-    if request.post?
-      # to array to save changes to display it to user
-      updated_dishes = []
-      fail_updated_dishes = []
-      # loop on all parameters
-      params.require(:dish).each do |id, data|
-        # we get dish and verify author is the user
-        if dish = Dish.find(id) and dish.user_id == current_user.id
-          # update attributes
-          dish.assign_attributes data.permit(:name, :description, :category_id, :price, :tags, :picture, :activate, 
-            :gluten_free, :crustacea_free, :egg_free, :fish_free, :peanut_free, :lactose_free, :nut_free, :sulphite_free)
-          # save only if dish changed
-          if dish.changed?
-            # save dish and stor in array to display in flash message
-            if dish.save
-              updated_dishes << dish.name
-            else
-              fail_updated_dishes << dish.name
-            end
-          end
-        end
-      end
-      # display changes
-      flash[:success] = "La mise à jour de #{updated_dishes} a été effectuée." unless updated_dishes.empty?
-      flash[:danger] = "La mise à jour de #{fail_updated_dishes} n'a pas été effectuée."  unless fail_updated_dishes.empty?
-      redirect_back fallback_location: dishes_edit_path
-    end
-  end
-
   # POST /dishes
   # POST /dishes.json
   def create
@@ -82,16 +45,12 @@ class DishesController < ApplicationController
     @dish.user_id = current_user.id
     @dish.restaurant_id = @restaurant.id
 
-    respond_to do |format|
-      if @dish.save
-        flash[:success] = "Votre plat a l'air délicieux!"
-        format.html { redirect_to @dish}
-        format.json { render :show, status: :created, location: @dish }
-      else
-        flash[:danger] = "Une erreur est survenue."
-        format.html { render :new }
-        format.json { render json: @dish.errors, status: :unprocessable_entity }
-      end
+    if @dish.save
+      flash[:success] = "Votre plat a l'air délicieux!"
+      redirect_to @dish
+    else
+      flash[:danger] = "Une erreur est survenue."
+      render :new
     end
   end
 
@@ -131,12 +90,12 @@ class DishesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_dish
       @dish = Dish.friendly.find(params[:id])
-      redirect_to root_path unless @dish 
+      redirect_to root_path unless @dish
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def dish_params
-      params.require(:dish).permit :name, :description, :category_id, :price, :tags, :picture, :activate, 
+      params.require(:dish).permit :name, :description, :category_id, :price, :tags, :picture, :activate,
         :gluten_free, :crustacea_free, :egg_free, :fish_free, :peanut_free, :lactose_free, :nut_free, :sulphite_free
     end
 
