@@ -45,6 +45,12 @@
 
             <ul class="nav navbar-nav nav navbar-right">
               <li><%= link_to 'Revenir au restaurant', @restaurant %></li>
+              <!-- Profil -->
+              <li>
+                <%= link_to edit_user_url(current_user, subdomain: nil) do %>
+                  <%= glyphicon "user" %> <%= current_user.complete_name %>
+                <% end %>
+              </li>
             </ul>
           </div><!--/.nav-collapse -->
 
@@ -52,16 +58,13 @@
         </div>
       </nav>
 
-      <div class="row">
-        <div class="sidebar col-sm-3">
-
+      <div class="row" style="padding-top: 80px">
+        <div class="hidden-xs col-sm-3 col-md-2 col-lg-2">
+            <%= render 'shared/sidebar' %>
         </div>
-        <div class="col-xs-12 col-sm-9">
-
-          <div id="main-container" style="padding-top: 80px">
+        <div class="col-xs-12 col-sm-9 col-md-10 col-lg-10">
             <%= render 'shared/flash' %>
             <%= yield %>
-          </div>
         </div>
       </div><!-- /.row -->
       <%= render 'layouts/footer' %>
