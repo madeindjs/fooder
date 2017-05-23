@@ -1,4 +1,4 @@
-<h1>Actualité</h1>
+<h1 class="page-header">Actualité</h1>
 
 
 <% @posts.each do |post| %>
@@ -6,7 +6,7 @@
   <article>
   <%= picture_tag post, :picture_display, css_class: 'section-img', size: 200 if post.picture? %>
     <h2><%= link_to post.title, post %></h2>
-    
+
     <p><%= post.user.complete_name %> dans <%= tags post.tags %></p>
     <p class="text-justify"><%= post.content %></p></p>
 
@@ -28,5 +28,3 @@
 <% if admin? %>
   <%= link_to 'Ajouter un article', new_post_path, class: 'btn btn-primary admin' %>
 <% end %>
-
-

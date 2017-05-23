@@ -1,7 +1,7 @@
 <h1 class="page-header">Administration</h1>
 
 <!-- Display dashboards items -->
-<% sidebar_data.each do |title, data| %>
+<% sidebar_data.select{|item, data| data[:objects] }.each do |title, data| %>
   <div class="col-xs-6 col-sm-6 col-md-4">
     <div class="panel panel-<%= data[:color] %> admin-dashboard-item">
       <div class="panel-heading">
@@ -30,9 +30,7 @@
 <!-- modules -->
 <div class="col-xs-12">
   <div class="panel panel-default">
-    <div class="panel-heading">
-      Modules
-    </div>
+    <div class="panel-heading">Modules</div>
     <table class="table">
       <% Restaurant::MODULES.each do |module_name, data| %>
         <tr>
@@ -49,8 +47,21 @@
         </tr>
       <% end %>
     </table>
-    <div class="panel-footer">
-      <p>il vous reste 4 modules à activer</p>
-    </div>
+  </div>
+</div>
+
+
+<!-- Opening hours -->
+<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+  <div class="panel panel-default">
+    <div class="panel-heading">Horraires d'ouvertures</div>
+    <%= render 'opening_hours/details', opening_hours: @restaurant.valid_opening_hours %>
+    <%= link_to admin_opening_hours_path do %>
+      <div class="panel-footer text-default">
+          <span class="pull-left">Gérer les horraires d'ouvertures</span>
+          <span class="pull-right"><%= glyphicon 'expand' %></span>
+          <div class="clearfix"></div>
+      </div>
+    <% end %>
   </div>
 </div>

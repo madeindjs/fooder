@@ -8,30 +8,36 @@ module AdminHelper
         objects: @restaurant.dishes.select{ |d| d.activate },
         link: admin_dishes_path
       },
-      "Liens" => {
-        color: 'danger',
+      "Menus" => {
+        color: 'success',
         glyphicon: 'cutlery',
+        objects: @restaurant.menus.select{ |d| d.activate },
+        link: admin_menus_path,
+        module: 'menus'
+      },
+      "Allèrgenes" => {
+        color: 'danger',
+        glyphicon: 'heart',
+        objects: [],
+        link: admin_allergens_path,
+        module: 'allergens'
+      },
+      "Liens" => {
+        color: 'primary',
+        glyphicon: 'link',
         objects: @restaurant.links,
         link: admin_links_path,
       },
       "Horraires d'ouverture" => {
-        color: 'danger',
-        glyphicon: 'cutlery',
-        objects: @restaurant.opening_hours,
+        color: 'info',
+        glyphicon: 'time',
         link: admin_opening_hours_path,
       },
       "Catégories" => {
-        color: 'danger',
-        glyphicon: 'cutlery',
-        objects: @restaurant.links,
+        color: 'warning',
+        glyphicon: 'folder-open',
+        objects: @restaurant.categories,
         link: admin_categories_path,
-      },
-      "Menus" => {
-        color: 'danger',
-        glyphicon: 'cutlery',
-        objects: @restaurant.menus.select{ |d| d.activate },
-        link: admin_menus_path,
-        module: 'menus',
       },
       "Articles" => {
         color: 'warning',
@@ -40,13 +46,6 @@ module AdminHelper
         link: posts_path,
         module: 'blog',
       },
-      "Allèrgenes" => {
-          color: 'info',
-          glyphicon: 'heart',
-          objects: [],
-          link: admin_allergens_path,
-          module: 'allergens',
-      }
     }.select{|item, data| data[:module] == nil || @restaurant.send("module_"+data[:module])  }
   end
 
