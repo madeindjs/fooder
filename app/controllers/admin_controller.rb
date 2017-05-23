@@ -2,8 +2,6 @@ class AdminController < ApplicationController
   before_action :check_login
   before_action :check_admin
 
-  before_action :set_sidebar_data
-
   layout 'admin'
 
   # GET /admin
@@ -56,37 +54,40 @@ class AdminController < ApplicationController
     end
   end
 
-  private
+  # GET  /admin/menus
+  # POST /admin/menus
+  def menus
+    @title = "Gérer les menus"
+    @description = "Renommer et réorganisez les menu proposés par ce restaurant."
 
-  def set_sidebar_data
-    @sidebar_data = {
-      "Produits" => {
-        color: 'primary',
-        glyphicon: 'apple',
-        objects: @restaurant.dishes.select{ |d| d.activate },
-        link: admin_dishes_path
-      },
-      "Menus" => {
-        color: 'danger',
-        glyphicon: 'cutlery',
-        objects: @restaurant.menus.select{ |d| d.activate },
-        link: menus_edit_path,
-        module: 'menus',
-      },
-      "Articles" => {
-        color: 'warning',
-        glyphicon: 'comment',
-        objects: @restaurant.posts,
-        link: posts_path,
-        module: 'blog',
-      },
-      "Allèrgenes" => {
-          color: 'info',
-          glyphicon: 'heart',
-          objects: [],
-          link: admin_allergens_path,
-          module: 'allergens',
-      }
-    }.select{|item, data| data[:module] == nil || @restaurant.send("module_"+data[:module])  }
+    @menus = @restaurant.menus.order :order
+    if request.post?
+      # to array to save changes to display it to user
+      updated_menus = []
+      fail_updated_menus = []
+      # loop on all parameters
+      params.require(:menu).each do |id, data|
+        # we get menu and verify author is the user
+        if menu = Menu.find(id) and menu.user_id == current_user.id
+          # update attributes
+          menu.name  = data['name']
+          menu.price = data['price']
+          menu.order = data['order']
+          menu.activate = data['activate']
+          # save only if menu changed
+          if menu.changed?
+            # save menu and stor in array to display in flash message
+            if menu.save
+              updated_menus << menu.name
+            else
+              fail_updated_menus << menu.name
+            end
+          end
+        end
+      end
+      # display changes
+      flash[:success] = "La mise à jour de #{updated_menus} a été effectuée." unless updated_menus.empty?
+      flash[:danger] = "La mise à jour de #{fail_updated_menus} n'a été effectuée."  unless fail_updated_menus.empty?
+    end
   end
 end

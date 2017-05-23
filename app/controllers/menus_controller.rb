@@ -3,6 +3,9 @@ class MenusController < ApplicationController
   before_action :check_login, only: [:new, :create, :edits, :edit, :update, :destroy]
   before_action :check_owner, only: [:edit, :update, :destroy]
   before_action :check_admin, only: [:edits]
+
+  layout 'admin', only: [:edit]
+
   # GET /menus
   # GET /menus.json
   def index
@@ -35,42 +38,7 @@ class MenusController < ApplicationController
     render  '_form', locals: {menu: @menu}, layout:  false if request.xhr?
   end
 
-  # GET /menus/edit
-  # POST /menus/edit
-  def edits
-    @title = "Gérer les menus"
-    @description = "Renommer et réorganisez les menu proposés par ce restaurant."
 
-    @menus = @restaurant.menus.order :order
-    if request.post?
-      # to array to save changes to display it to user
-      updated_menus = []
-      fail_updated_menus = []
-      # loop on all parameters
-      params.require(:menu).each do |id, data|
-        # we get menu and verify author is the user
-        if menu = Menu.find(id) and menu.user_id == current_user.id
-          # update attributes
-          menu.name  = data['name']
-          menu.price = data['price']
-          menu.order = data['order']
-          menu.activate = data['activate']
-          # save only if menu changed
-          if menu.changed?
-            # save menu and stor in array to display in flash message
-            if menu.save
-              updated_menus << menu.name
-            else
-              fail_updated_menus << menu.name
-            end
-          end
-        end
-      end
-      # display changes
-      flash[:success] = "La mise à jour de #{updated_menus} a été effectuée." unless updated_menus.empty?
-      flash[:danger] = "La mise à jour de #{fail_updated_menus} n'a été effectuée."  unless fail_updated_menus.empty?
-    end
-  end
 
   # POST /menus
   # POST /menus.json
@@ -92,7 +60,7 @@ class MenusController < ApplicationController
   def update
     if @menu.update(menu_params)
 
-      
+
       params['dishes'].each_pair do |dish_id, boolean|
         @menu.dishes << Dish.find(dish_id)
       end if params['dishes']

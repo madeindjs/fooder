@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       get '/' => 'admin#index', as: :admin
       match 'allergens' => "admin#allergens", as: :admin_allergens, via: [:get, :post]
       match 'dishes' => "admin#dishes", as: :admin_dishes, via: [:get, :post]
+      match 'menus' => "admin#menus", as: :admin_menus, via: [:get, :post]
     end
 
 
@@ -28,7 +29,6 @@ Rails.application.routes.draw do
     match 'sections/edit' => "sections#edits", as: :sections_edit, via: [:get, :post]
     resources :sections
 
-    match 'menus/edit' => "menus#edits", as: :menus_edit, via: [:get, :post]
     resources :menus
 
     resources :dishes
