@@ -4,7 +4,7 @@ class RestaurantsController < ApplicationController
   before_action :check_owner, only: [:edit, :update, :destroy, :opening_hours]
   before_action :check_restaurant, only: [:contact]
 
-  layout 'application'
+  layout 'admin', only: [:edit]
 
   # GET /restaurants
   def index

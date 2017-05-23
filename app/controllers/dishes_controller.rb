@@ -5,6 +5,8 @@ class DishesController < ApplicationController
   before_action :check_admin, only: [:edits, :allergens]
   before_action :check_restaurant
 
+  layout 'admin', only: [:edit]
+
   # GET /dishes
   # GET /dishes.json
   def index

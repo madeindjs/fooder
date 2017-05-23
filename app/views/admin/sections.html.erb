@@ -1,11 +1,7 @@
-<div class="jumbotron">
-  <h1>Editez vos en-têtes</h1>
-  <p>Ici éditez / réorganisez rapidement vos en-têts. Vous pouvez accéder au formulaire complet en cliquant sur <i>En savoir plus</i></p>
-</div>
+<h1 class="page-header">Gerez vos en-têtes</h1>
 
 
-
-<%= form_tag sections_edit_path do  %>
+<%= form_tag admin_sections_path do  %>
 
   <div class="sortable">
 
@@ -34,10 +30,9 @@
       </div>
 
     <% end %>
-    
+
   </div><!--/ .sortable -->
 
   <%= submit_tag 'Tout mettre à jour', class: 'btn btn-primary' %>
 
 <% end %>
-

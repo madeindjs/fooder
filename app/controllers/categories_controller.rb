@@ -4,6 +4,8 @@ class CategoriesController < ApplicationController
   before_action :check_owner, only: [:edit, :update, :destroy]
   before_action :check_admin, only: [:edits]
 
+  layout 'admin', only: [:edit]
+
   # GET /categories/new
   def new
     @title = "Nouvelle catégorie"
@@ -16,41 +18,6 @@ class CategoriesController < ApplicationController
   def edit
     @title = "Editer la catégorie"
     @description = "Editer la catégorie existante."
-  end
-
-  # GET  /categories/edit
-  # POST /categories/edit
-  def edits
-    @title = "Gérer les categories"
-    @description = "Renommer et réorganisez vos catégories."
-
-    @categories = @restaurant.categories.order :order
-    if request.post?
-      # to array to save changes to display it to user
-      updated_categories = []
-      fail_updated_categories = []
-      # loop on all parameters
-      params.require(:categories).each do |id, data|
-        # we get category and verify author is the user
-        if category = Category.find(id) and category.restaurant_id == @restaurant.id
-          # update attributes
-          category.name = data['name']
-          category.order = data['order']
-          # save only if category changed
-          if category.changed?
-            # save category and stor in array to display in flash message
-            if category.save
-              updated_categories << category.name
-            else
-              fail_updated_categories << category.name
-            end
-          end
-        end
-      end
-      # display changes
-      flash[:success] = "La mise à jour de #{updated_categories} a été effectuée." unless updated_categories.empty?
-      flash[:danger] = "La mise à jour de #{fail_updated_categories} n'a été effectuée."  unless fail_updated_categories.empty?
-    end
   end
 
   # POST /categories

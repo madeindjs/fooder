@@ -4,6 +4,8 @@ class LinksController < ApplicationController
   before_action :check_owner, only: [:edit, :update, :destroy]
   before_action :check_admin, only: [:edits]
 
+  layout 'admin', only: [:edit]
+
 
   # GET /links/new
   def new
@@ -17,42 +19,6 @@ class LinksController < ApplicationController
   def edit
     @title = "Editer un lien"
     @description = "Editer le lien nommé #{@link.name}."
-  end
-
-  # GET /links/edits
-  # POST /links/edits
-  def edits
-    @title = "Gérer vos liens"
-    @description = "Renommer et réorganisez vos liens."
-
-    @links = @restaurant.links.order :order
-    if request.post?
-      # to array to save changes to display it to user
-      updated_links = []
-      fail_updated_links = []
-      # loop on all parameters
-      params.require(:links).each do |id, data|
-        # we get link and verify author is the user
-        if link = Link.find(id)
-          # update attributes
-          link.name  = data['name']
-          link.url = data['url']
-          link.order = data['order']
-          # save only if link changed
-          if link.changed?
-            # save link and stor in array to display in flash message
-            if link.save
-              updated_links << link.name
-            else
-              fail_updated_links << link.name
-            end
-          end
-        end
-      end
-      # display changes
-      flash[:success] = "La mise à jour de #{updated_links} a été effectuée." unless updated_links.empty?
-      flash[:danger] = "La mise à jour de #{fail_updated_links} n'a été effectuée."  unless fail_updated_links.empty?
-    end
   end
 
   # POST /links

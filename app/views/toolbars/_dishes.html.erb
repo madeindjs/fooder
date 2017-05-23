@@ -7,13 +7,13 @@
   </li>
 
   <li role="presentation">
-    <%= link_to dishes_edit_url(subdomain: @restaurant), class: "btn btn-default" do %>
+    <%= link_to admin_dishes_url(subdomain: @restaurant), class: "btn btn-default" do %>
       <%= glyphicon "pencil" %> gérer les plats
     <% end %>
   </li>
 
   <li role="presentation">
-    <%= link_to allergens_edit_url(subdomain: @restaurant), class: "btn btn-default" do %>
+    <%= link_to admin_allergens_url(subdomain: @restaurant), class: "btn btn-default" do %>
       <%= glyphicon "exclamation-sign" %> gérer les allergènes
     <% end %>
   </li>
@@ -25,7 +25,7 @@
   </li>
 
   <li role="presentation">
-    <%= link_to categories_edit_url(subdomain: @restaurant), class: "btn btn-default" do %>
+    <%= link_to admin_categories_url(subdomain: @restaurant), class: "btn btn-default" do %>
       <%= glyphicon "pencil" %> gérer les catégories
     <% end %>
   </li>
