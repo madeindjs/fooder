@@ -3,6 +3,8 @@ class PostsController < ApplicationController
   before_action :check_login, only: [:new, :create, :edit, :update, :destroy]
   before_action :check_owner, only: [:edit, :update, :destroy]
 
+  layout 'admin', only: [:edit, :new]
+
   # GET /posts
   # GET /posts.json
   def index
@@ -34,50 +36,36 @@ class PostsController < ApplicationController
   end
 
   # POST /posts
-  # POST /posts.json
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     @post.restaurant_id = @restaurant.id
 
-    respond_to do |format|
-      if @post.save
-        flash[:success] = "Votre post a été cré."
-        format.html { redirect_to @post }
-        format.json { render :show, status: :created, location: @post }
-      else
-        flash[:danger] = "Une erreur est survenue."
-        format.html { render :new }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
+    if @post.save
+      flash[:success] = "Votre post a été cré."
+      redirect_to @post
+    else
+      flash[:danger] = "Une erreur est survenue."
+      render :new
     end
   end
 
   # PATCH/PUT /posts/1
-  # PATCH/PUT /posts/1.json
   def update
-    respond_to do |format|
-      if @post.update(post_params)
-        flash[:success] = "Votre post a été mise à jour."
-        format.html { redirect_to @post}
-        format.json { render :show, status: :ok, location: @post }
-      else
-        flash[:danger] = "Une erreur est survenue."
-        format.html { render :edit }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
+    if @post.update(post_params)
+      flash[:success] = "Votre post a été mise à jour."
+      redirect_to @post
+    else
+      flash[:danger] = "Une erreur est survenue."
+      render :edit
     end
   end
 
   # DELETE /posts/1
-  # DELETE /posts/1.json
   def destroy
     @post.destroy
     flash[:success] = "Votre post a été supprimé."
-    respond_to do |format|
-      format.html { redirect_to posts_path}
-      format.json { head :no_content }
-    end
+    redirect_back fallback_location: posts_path
   end
 
   private

@@ -1,9 +1,6 @@
-<div class="jumbotron">
-  <h1>Editez vos liens</h1>
-  <p>Les liens peuvent êtres la page Facebook, twitter ou autre chose en lien avec votre restaurant. Vous pouvez accéder au formulaire complet en cliquant sur <i>En savoir plus</i></p>
-</div>
+<h1 class="page-header">Gerez vos liens</h1>
 
-<%= form_tag links_edit_path do  %>
+<%= form_tag admin_links_path do  %>
 
   <div class="sortable">
 
@@ -36,7 +33,7 @@
       </div>
 
     <% end %>
-    
+
   </div><!--/ .sortable -->
 
   <%= submit_tag 'Tout mettre à jour', class: 'btn btn-primary' %>

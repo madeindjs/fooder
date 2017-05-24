@@ -2,7 +2,7 @@
   main-container{padding: 0}
 </style>
 
-<% if admin? %>
+<% if false and admin? %>
   <div class="row admin">
     <div class="col-xs-12"">
       <div class="col-xs-12">
@@ -37,4 +37,3 @@
     <p><%= glyphicon 'user' %> <%= link_to @restaurant.user.complete_name, @restaurant.user %></p>
   </div>
 </div>
-

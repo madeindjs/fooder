@@ -4,6 +4,8 @@ class RestaurantsController < ApplicationController
   before_action :check_owner, only: [:edit, :update, :destroy, :opening_hours]
   before_action :check_restaurant, only: [:contact]
 
+  layout 'admin', only: [:edit]
+
   # GET /restaurants
   def index
     @title = "Nos clients"
@@ -79,11 +81,10 @@ class RestaurantsController < ApplicationController
 
     if @restaurant.update({ key => !status })
       flash[:success] = "Le module à été activé."
-      redirect_to @restaurant
     else
       flash[:danger] = "Une erreur est survenue."
-      redirect_to @restaurant
     end
+    redirect_back fallback_location: @restaurant
   end
 
 

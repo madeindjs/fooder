@@ -28,20 +28,9 @@ class DishesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+
   test "should redirect get new on restaurant page" do
     get new_dish_url
-    assert_response 302
-  end
-
-  test "should get edits" do
-    setup_restaurant_host
-    login(users(:me))
-    get dishes_edit_path
-    assert_response :success
-  end
-
-  test "should redirect get edits on restaurant page" do
-    get dishes_edit_path
     assert_response 302
   end
 

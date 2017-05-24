@@ -31,7 +31,7 @@ class LinksControllerTest < ActionDispatch::IntegrationTest
       post links_url, params: { link: { name: @link.name, url: @link.url } }
     end
 
-    assert_redirected_to links_edit_url
+    assert_redirected_to admin_links_url
   end
 
   test "should redirect on get edit" do
@@ -54,7 +54,7 @@ class LinksControllerTest < ActionDispatch::IntegrationTest
   test "should update link" do
     login(users(:me))
     patch link_url(@link), params: { link: { name: @link.name, url: @link.url } }
-    assert_redirected_to links_edit_url
+    assert_redirected_to admin_links_url
   end
 
   test "should redirect on destroy link" do
@@ -71,6 +71,6 @@ class LinksControllerTest < ActionDispatch::IntegrationTest
       delete link_url(@link)
     end
 
-    assert_redirected_to links_edit_url
+    assert_redirected_to admin_links_url
   end
 end

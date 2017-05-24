@@ -23,17 +23,6 @@ class MenusControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get edits" do
-    setup_restaurant_host
-    login(users(:me))
-    get menus_edit_url
-    assert_response :success
-  end
-
-  test "should redirect get edits on restaurant page" do
-    get menus_edit_url
-    assert_response 302
-  end
 
   test "should redirect on create menu" do
     assert_no_difference('Menu.count') do
@@ -93,6 +82,6 @@ class MenusControllerTest < ActionDispatch::IntegrationTest
       delete menu_url(@menu)
     end
 
-    assert_redirected_to menus_url
+    assert_redirected_to admin_menus_url
   end
 end

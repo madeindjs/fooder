@@ -1,21 +1,9 @@
-<% 
-  picture_size_labels_fiels = { 
-    picture_display: "Logo de votre restaurant",
-    picture_display: "Photos des menus", 
-    picture_display: "Photos de vos plats à la carte", 
-    picture_display: "Photos de vos actualités", 
-    picture_display: "Photos des sections sur la page d'acueil" 
-  }
-  picture_size_labels_fiels.delete! :picture_display unless restaurant.picture_display
-
-%>
-
 <div class="col-xs-12">
 
   <%= bootstrap_form_for restaurant do |f| %>
 
     <div id="accordion-form">
-      
+
       <%= render 'shared/errors_form', model: restaurant %>
 
       <h3>Informations du restaurant</h3>
@@ -60,7 +48,7 @@
         <div class="col-sm-6">
           <%= render 'shared/form_input_logo.html', form: f, model: restaurant, help: 'Le logo est utilisé en tant que favicon.' %>
         </div>
-        
+
         <div class="col-sm-6">
           <%= render 'shared/form_input_picture.html', form: f, model: restaurant, help: "L'image est affichée sur la page principale." %>
         </div>
@@ -80,7 +68,7 @@
       </div>
 
     </div>
-        
+
     <%= f.submit 'Confirmer' %>
 
   <% end %>

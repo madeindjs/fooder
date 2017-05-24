@@ -8,8 +8,8 @@
         <span class="icon-bar"></span>
       </button>
 
-      <% if @restaurant and @restaurant.name %> 
-        <%= link_to @restaurant.name, root_url(subdomain: @restaurant) , class: "navbar-brand", 
+      <% if @restaurant and @restaurant.name %>
+        <%= link_to @restaurant.name, root_url(subdomain: @restaurant) , class: "navbar-brand",
           title:  ( admin? ? 'Le nom de votre restaurant peut être changé dans la section "editer le restaurant"' : nil ) %>
       <% else %>
         <%= link_to root_path , class: "navbar-brand", style: "padding: 5px" do %>
@@ -26,12 +26,13 @@
           <li><%= link_to "Nos clients", restaurants_path %></li>
           <li><%= link_to "Contact", contact_path %></li>
         <% end %>
-        
+
       </ul>
 
       <ul class="nav navbar-nav nav navbar-right">
         <% if @restaurant %>
           <% if admin? %>
+          <li><%= link_to 'Administration', admin_path %></li>
             <li><button id="toggle-client-view" class="navbar-btn">Afficher la vue client</button></li>
           <% end %>
         <% else %>
@@ -50,6 +51,6 @@
         <% end %>
     </div><!--/.nav-collapse -->
 
-      
+
   </div>
 </nav>

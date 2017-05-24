@@ -1,11 +1,7 @@
-<div class="jumbotron">
-  <h1>Editez vos menus</h1>
-  <p>Ici éditez / réorganisez rapidement vos menus. Vous pouvez accéder au formulaire complet en cliquant sur <i>En savoir plus</i></p>
-</div>
+<h1 class="page-header">Gerez vos menus</h1>
 
 
-
-<%= form_tag menus_edit_path do  %>
+<%= form_tag admin_menus_path do  %>
 
   <div class="sortable">
 
@@ -47,10 +43,9 @@
       </div>
 
     <% end %>
-    
+
   </div><!--/ .sortable -->
 
   <%= submit_tag 'Tout mettre à jour', class: 'btn btn-primary' %>
 
 <% end %>
-
