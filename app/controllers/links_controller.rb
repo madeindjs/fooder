@@ -22,14 +22,13 @@ class LinksController < ApplicationController
   end
 
   # POST /links
-  # POST /links.json
   def create
     @link = Link.new link_params
     @link.restaurant_id = @restaurant.id
 
     if @link.save
       flash[:success] = "Votre lien a été crée!"
-      redirect_to links_edit_path
+      redirect_to admin_links_path
     else
       flash[:danger] = "Une erreur est survenue."
       render :new
@@ -37,11 +36,10 @@ class LinksController < ApplicationController
   end
 
   # PATCH/PUT /links/1
-  # PATCH/PUT /links/1.json
   def update
     if @link.update(link_params)
       flash[:success] = "Votre lien a été mis à jour!"
-      redirect_to links_edit_path
+      redirect_to admin_links_path
     else
       flash[:danger] = "Une erreur est survenue."
       render :edit
@@ -49,10 +47,10 @@ class LinksController < ApplicationController
   end
 
   # DELETE /links/1
-  # DELETE /links/1.json
   def destroy
     @link.destroy
-    redirect_to links_edit_path, notice: 'Link was successfully destroyed.'
+    flash[:success] = "Votre lien a été supprimé"
+    redirect_to admin_links_path
   end
 
   private

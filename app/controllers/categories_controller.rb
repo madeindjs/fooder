@@ -21,14 +21,13 @@ class CategoriesController < ApplicationController
   end
 
   # POST /categories
-  # POST /categories.json
   def create
     @category = Category.new(category_params)
     @category.restaurant_id = @restaurant.id
 
     if @category.save
       flash[:success] = "Votre categorie a été créé avec succès."
-      redirect_to categories_path
+      redirect_back fallback_location: admin_categories_path
     else
       flash[:danger] = "Une erreur est survenue."
       render :new
@@ -36,11 +35,10 @@ class CategoriesController < ApplicationController
   end
 
   # PATCH/PUT /categories/1
-  # PATCH/PUT /categories/1.json
   def update
       if @category.update(category_params)
         flash[:success] = "Votre categorie a été mise à jour."
-        redirect_to categories_path
+        redirect_to admin_categories_path
       else
         flash[:danger] = "Une erreur est survenue."
         render :edit
@@ -52,7 +50,7 @@ class CategoriesController < ApplicationController
   def destroy
     @category.destroy
     flash[:success] = "Votre categorie a été supprimée."
-    redirect_to categories_path
+    redirect_to admin_categories_path
   end
 
   private

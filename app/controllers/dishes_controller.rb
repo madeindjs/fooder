@@ -57,30 +57,20 @@ class DishesController < ApplicationController
   end
 
   # PATCH/PUT /dishes/1
-  # PATCH/PUT /dishes/1.json
   def update
-    respond_to do |format|
-      if @dish.update(dish_params)
-        flash[:success] = "Votre plat a été mis à jour avec succès."
-        format.html { redirect_to @dish }
-        format.json { render :show, status: :ok, location: @dish }
-      else
-        flash[:danger] = "Une erreur est survenue."
-        format.html { render :edit }
-        format.json { render json: @dish.errors, status: :unprocessable_entity }
-      end
+    if @dish.update(dish_params)
+      flash[:success] = "Votre plat a été mis à jour avec succès."
+      redirect_to @dish
+    else
+      flash[:danger] = "Une erreur est survenue."
+      render :edit
     end
   end
 
   # DELETE /dishes/1
-  # DELETE /dishes/1.json
   def destroy
     @dish.destroy
-    respond_to do |format|
-      flash[:success] = "Votre plat a été supprimé."
-      format.html { redirect_to dishes_path }
-      format.json { head :no_content }
-    end
+    redirect_back fallback_location: dishes_path
   end
 
   # PATCH /dishes/1/sort/1

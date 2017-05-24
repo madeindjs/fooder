@@ -50,7 +50,7 @@ class AdminController < ApplicationController
       # display changes
       flash[:success] = "La mise à jour de #{updated_dishes} a été effectuée." unless updated_dishes.empty?
       flash[:danger] = "La mise à jour de #{fail_updated_dishes} n'a pas été effectuée."  unless fail_updated_dishes.empty?
-      redirect_back fallback_location: dishes_edit_path
+      redirect_back fallback_location: admin_dishes_path
     end
   end
 

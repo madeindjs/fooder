@@ -78,7 +78,7 @@ class MenusController < ApplicationController
   def destroy
     @menu.destroy
     flash[:success] = "Votre categorie a été mise à jour."
-    redirect_to menus_path
+    redirect_back fallback_location: admin_menus_path
   end
 
   private

@@ -25,50 +25,36 @@ class SectionsController < ApplicationController
 
 
   # POST /sections
-  # POST /sections.json
   def create
     @section = Section.new(section_params)
     @section.user_id = current_user.id
     @section.restaurant_id = @restaurant.id
 
-    respond_to do |format|
-      if @section.save
-        flash[:success] = "Votre texte d'accueil a été créé."
-        format.html { redirect_to root_url }
-        format.json { render :show, status: :created, location: @section }
-      else
-        flash[:danger] = "Une erreur est survenue."
-        format.html { render :new }
-        format.json { render json: @section.errors, status: :unprocessable_entity }
-      end
+    if @section.save
+      flash[:success] = "Votre texte d'accueil a été créé."
+      redirect_to root_url
+    else
+      flash[:danger] = "Une erreur est survenue."
+      render :new
     end
   end
 
   # PATCH/PUT /sections/1
-  # PATCH/PUT /sections/1.json
   def update
-    respond_to do |format|
-      if @section.update(section_params)
-        flash[:success] = "Votre texte d'accueil a été supprimé."
-        format.html { redirect_to root_url}
-        format.json { render :show, status: :ok, location: @section }
-      else
-        flash[:danger] = "Une erreur est survenue."
-        format.html { render :edit }
-        format.json { render json: @section.errors, status: :unprocessable_entity }
-      end
+    if @section.update(section_params)
+      flash[:success] = "Votre texte d'accueil a été supprimé."
+      redirect_to root_url
+    else
+      flash[:danger] = "Une erreur est survenue."
+      render :edit
     end
   end
 
   # DELETE /sections/1
-  # DELETE /sections/1.json
   def destroy
     @section.destroy
     flash[:success] = "Votre texte d'accueil a été supprimé."
-    respond_to do |format|
-      format.html { redirect_to root_url}
-      format.json { head :no_content }
-    end
+    redirect_to root_url
   end
 
   private
