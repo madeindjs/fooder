@@ -52,7 +52,6 @@ class PostsController < ApplicationController
 
   # PATCH/PUT /posts/1
   def update
-    respond_to do |format|
     if @post.update(post_params)
       flash[:success] = "Votre post a été mise à jour."
       redirect_to @post

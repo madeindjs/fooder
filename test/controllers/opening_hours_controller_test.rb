@@ -9,22 +9,9 @@ class OpeningHoursControllerTest < ActionDispatch::IntegrationTest
   end
 
 
-  test "should redirect on get edits" do
-    get opening_hours_edit_url
-    assert_response 302
-  end
-
-
-  test "should get edits" do
-    login(@user)
-    get opening_hours_edit_url
-    assert_response :success
-  end
-
-
   test "should not create opening hours" do
     assert_no_difference('OpeningHour.count') do
-      post opening_hours_edit_url, params: { opening_hour: { 
+      post admin_opening_hours_url, params: { opening_hour: {
         "1"    => { day: @opening_hour.day, closes: @opening_hour.closes, opens: @opening_hour.opens, valid_from: @opening_hour.valid_from, valid_through: @opening_hour.valid_through},
         "1000" => { day: 7, closes: @opening_hour.closes, opens: @opening_hour.opens, valid_from: @opening_hour.valid_from, valid_through: @opening_hour.valid_through},
       } }
@@ -36,7 +23,7 @@ class OpeningHoursControllerTest < ActionDispatch::IntegrationTest
     login(@user)
 
     assert_difference('OpeningHour.count', 1) do
-      post opening_hours_edit_url, params: { opening_hour: { 
+      post admin_opening_hours_url, params: { opening_hour: {
         "1"    => { day: @opening_hour.day, closes: @opening_hour.closes, opens: @opening_hour.opens, valid_from: @opening_hour.valid_from, valid_through: @opening_hour.valid_through},
         "1000" => { day: 7, closes: @opening_hour.closes, opens: @opening_hour.opens, valid_from: @opening_hour.valid_from, valid_through: @opening_hour.valid_through},
       } }
@@ -49,7 +36,7 @@ class OpeningHoursControllerTest < ActionDispatch::IntegrationTest
     login(@user)
 
     assert_difference('OpeningHour.count', 1) do
-      post opening_hours_edit_url, params: { opening_hour: { 
+      post admin_opening_hours_url, params: { opening_hour: {
         "0"    => { day: @opening_hour.day, closes: @opening_hour.closes, opens: @opening_hour.opens, valid_from: @opening_hour.valid_from, valid_through: @opening_hour.valid_through},
       } }
     end
@@ -60,7 +47,7 @@ class OpeningHoursControllerTest < ActionDispatch::IntegrationTest
   test "should not update opening hours" do
     old_day = @opening_hour.day
 
-    post opening_hours_edit_url, params: { opening_hour: { 
+    post admin_opening_hours_url, params: { opening_hour: {
       @opening_hour.id    => { day: 6, closes: @opening_hour.closes, opens: @opening_hour.opens, valid_from: @opening_hour.valid_from, valid_through: @opening_hour.valid_through},
     } }
 
@@ -73,7 +60,7 @@ class OpeningHoursControllerTest < ActionDispatch::IntegrationTest
 
     old_day = @opening_hour.day
 
-    post opening_hours_edit_url, params: { opening_hour: { 
+    post admin_opening_hours_url, params: { opening_hour: {
       @opening_hour.id    => { day: 6, closes: @opening_hour.closes, opens: @opening_hour.opens, valid_from: @opening_hour.valid_from, valid_through: @opening_hour.valid_through},
     } }
 
@@ -94,7 +81,7 @@ class OpeningHoursControllerTest < ActionDispatch::IntegrationTest
       post opening_hours_url, params: { opening_hour: { day: @opening_hour.day, closes: @opening_hour.closes, opens: @opening_hour.opens, valid_from: @opening_hour.valid_from, valid_through: @opening_hour.valid_through } }
     end
 
-    assert_redirected_to opening_hours_edit_url
+    assert_redirected_to admin_opening_hours_url
   end
 
 
@@ -113,6 +100,6 @@ class OpeningHoursControllerTest < ActionDispatch::IntegrationTest
       delete opening_hour_url(@opening_hour)
     end
 
-    assert_redirected_to opening_hours_edit_url
+    assert_redirected_to admin_opening_hours_url
   end
 end

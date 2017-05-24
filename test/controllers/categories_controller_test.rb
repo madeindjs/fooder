@@ -26,17 +26,6 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test "should get edits" do
-    setup_restaurant_host
-    login(users(:me))
-    get categories_edit_url
-    assert_response :success
-  end
-
-  test "should redirect get edits on restaurant page" do
-    get categories_edit_url
-    assert_response 302
-  end
 
   test "should not create category" do
     assert_no_difference('Category.count') do
