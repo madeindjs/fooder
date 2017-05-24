@@ -3,6 +3,8 @@ class PostsController < ApplicationController
   before_action :check_login, only: [:new, :create, :edit, :update, :destroy]
   before_action :check_owner, only: [:edit, :update, :destroy]
 
+  layout 'admin', only: [:edit, :new]
+
   # GET /posts
   # GET /posts.json
   def index

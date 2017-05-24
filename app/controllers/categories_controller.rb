@@ -4,7 +4,7 @@ class CategoriesController < ApplicationController
   before_action :check_owner, only: [:edit, :update, :destroy]
   before_action :check_admin, only: [:edits]
 
-  layout 'admin', only: [:edit]
+  layout 'admin', only: [:edit, :new]
 
   # GET /categories/new
   def new

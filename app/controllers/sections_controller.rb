@@ -5,6 +5,8 @@ class SectionsController < ApplicationController
   before_action :check_admin, only: [:edits]
   before_action :check_restaurant
 
+  layout 'admin', only: [:new]
+
 
   # GET /sections/new
   def new

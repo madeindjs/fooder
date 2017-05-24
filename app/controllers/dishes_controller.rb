@@ -5,7 +5,7 @@ class DishesController < ApplicationController
   before_action :check_admin, only: [:edits, :allergens]
   before_action :check_restaurant
 
-  layout 'admin', only: [:edit]
+  layout 'admin', only: [:edit, :new]
 
   # GET /dishes
   # GET /dishes.json
