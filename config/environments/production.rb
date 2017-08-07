@@ -65,7 +65,7 @@ Rails.application.configure do
     password:             Rails.application.secrets.email_password,
     authentication:       :plain,
     enable_starttls_auto: true ,
-    tls: true 
+    tls: true
   }
 
   # Ignore bad email addresses and do not raise email delivery errors.
@@ -94,4 +94,6 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  default_url_options[:host] = 'fooder.pro'
 end
