@@ -20,3 +20,7 @@
 # Ignore Byebug command history file.
 .byebug_history
 public/uploads/
+
+# Sitemap
+public/sitemap.xml.gz
+public/sitemaps/*
