@@ -1,0 +1,67 @@
+<h1 class="page-header">Administration</h1>
+
+<!-- Display dashboards items -->
+<% sidebar_data.select{|item, data| data[:objects] }.each do |title, data| %>
+  <div class="col-xs-6 col-sm-6 col-md-4">
+    <div class="panel panel-<%= data[:color] %> admin-dashboard-item">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="picture col-xs-3">
+            <%= glyphicon data[:glyphicon] %>
+          </div>
+          <div class="col-xs-9 text-right">
+            <div class="lead"><%= data[:objects].count %></div>
+            <div><%= title %> actif</div>
+          </div>
+        </div>
+      </div>
+      <%= link_to data[:link] do %>
+        <div class="panel-footer text-<%= data[:color] %>">
+            <span class="pull-left">Gérer les <%= title %></span>
+            <span class="pull-right"><%= glyphicon 'expand' %></span>
+            <div class="clearfix"></div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+
+<!-- modules -->
+<div class="col-xs-12">
+  <div class="panel panel-default">
+    <div class="panel-heading">Modules</div>
+    <table class="table">
+      <% Restaurant::MODULES.each do |module_name, data| %>
+        <tr>
+          <th><%= glyphicon data[:glyphicon] %> <%= data[:title] %></th>
+          <td><%= data[:description] %></td>
+          <td></td>
+          <td class="text-right">
+            <% activated = @restaurant.send("module_#{module_name}") %>
+            <%= link_to activate_module_url(module: module_name, subdomain: @restaurant), class: "btn btn-default", method: :patch do %>
+            <%= glyphicon(activated ? "check" : "unchecked") %> <%= activated ? "désactiver" : "activer"  %>
+              <% activated = @restaurant.send("module_#{module_name}") %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+
+<!-- Opening hours -->
+<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+  <div class="panel panel-default">
+    <div class="panel-heading">Horraires d'ouvertures</div>
+    <%= render 'opening_hours/details', opening_hours: @restaurant.valid_opening_hours %>
+    <%= link_to admin_opening_hours_path do %>
+      <div class="panel-footer text-default">
+          <span class="pull-left">Gérer les horraires d'ouvertures</span>
+          <span class="pull-right"><%= glyphicon 'expand' %></span>
+          <div class="clearfix"></div>
+      </div>
+    <% end %>
+  </div>
+</div>

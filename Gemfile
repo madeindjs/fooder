@@ -8,7 +8,7 @@ end
 # RAILS
 gem 'rails', '~> 5.0.1'
 gem 'mysql2'
-gem 'sqlite3' 
+gem 'sqlite3'
 gem 'puma', '~> 3.0' # Use Puma as the app server
 gem 'turbolinks', '~> 5' # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'jbuilder', '~> 2.5' # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -20,6 +20,9 @@ gem 'friendly_id'
 # PICTURE
 gem 'carrierwave'
 gem 'rmagick' # sudo apt-get install libmagickwand-dev
+# Sitemap
+gem 'sitemap_generator'
+gem 'whenever', :require => false
 
 # CSS
 gem 'sass-rails', '~> 5.0'
@@ -36,6 +39,8 @@ gem 'momentjs-rails'
 # AUTHENTIFICATION
 gem 'authlogic', '>= 3.5'
 gem 'authlogic_email_token'
+
+gem 'sitemap_generator'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

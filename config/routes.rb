@@ -3,34 +3,30 @@ Rails.application.routes.draw do
   # restaurants area
   resources :categories, only: [:create, :new, :edit, :update, :destroy]
   resources :restaurants # TODO: remove it
-  
+
   constraints subdomain: /.+/  do
     get '/' => 'restaurants#show'
 
+    scope '/admin' do
+      get '/' => 'admin#index', as: :admin
+      match 'allergens' => "admin#allergens", as: :admin_allergens, via: [:get, :post]
+      match 'dishes' => "admin#dishes", as: :admin_dishes, via: [:get, :post]
+      match 'menus' => "admin#menus", as: :admin_menus, via: [:get, :post]
+      match 'opening_hours' => "admin#opening_hours", as: :admin_opening_hours, via: [:get, :post]
+      match 'links' => "admin#links", as: :admin_links, via: [:get, :post]
+      match 'sections' => "admin#sections", as: :admin_sections, via: [:get, :post]
+      match 'categories' => "admin#categories", as: :admin_categories, via: [:get, :post]
+    end
+
     patch 'activate_module' => "restaurants#activate_module"
 
-    match 'opening_hours/edit' => "opening_hours#edits", as: :opening_hours_edit, via: [:get, :post]
     resources :opening_hours, only: [:create, :destroy]
-
     resources :posts
-    
-    match 'links/edit' => "links#edits", as: :links_edit, via: [:get, :post]
     resources :links
-    
-    match 'sections/edit' => "sections#edits", as: :sections_edit, via: [:get, :post]
     resources :sections
-
-    match 'menus/edit' => "menus#edits", as: :menus_edit, via: [:get, :post]
     resources :menus
-
-    match 'dishes/allergens' => "dishes#allergens", as: :dishes_allergens_edit, via: [:get, :post]
-    match 'dishes/edit' => "dishes#edits", as: :dishes_edit, via: [:get, :post]
     resources :dishes
-
-    get 'allergens/edit' => "allergens#edits", as: :allergens_edit
     resources :allergens, only: [:index]
-
-    match 'categories/edit' => "categories#edits", as: :categories_edit, via: [:get, :post]
     resources :categories
   end
 
@@ -54,6 +50,6 @@ Rails.application.routes.draw do
   get '/', to:  'restaurants#show', constraints: { subdomain: 'le-petit-lagon-bleu'}, as: :example
 
   resources :newsletters, only: [:create, :destroy]
-  
+
   root 'pages#home'
 end

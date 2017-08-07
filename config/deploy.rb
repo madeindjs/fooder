@@ -33,3 +33,14 @@ append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/syst
 
 # Default value for keep_releases is 5
 # set :keep_releases, 5
+
+namespace :deploy do
+
+  after :updated, :bundle_install do
+    # invoke "ruby_on_rails:copy_database_configuration"
+    invoke "ruby_on_rails:bundle_install"
+    invoke "ruby_on_rails:db_migrate"
+    invoke "ruby_on_rails:assets_precompile"
+  end
+
+end

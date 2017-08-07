@@ -4,6 +4,8 @@ class RestaurantsController < ApplicationController
   before_action :check_owner, only: [:edit, :update, :destroy, :opening_hours]
   before_action :check_restaurant, only: [:contact]
 
+  layout 'admin', only: [:edit]
+
   # GET /restaurants
   def index
     @title = "Nos clients"
@@ -79,11 +81,10 @@ class RestaurantsController < ApplicationController
 
     if @restaurant.update({ key => !status })
       flash[:success] = "Le module à été activé."
-      redirect_to @restaurant
     else
       flash[:danger] = "Une erreur est survenue."
-      redirect_to @restaurant
     end
+    redirect_back fallback_location: @restaurant
   end
 
 
@@ -100,8 +101,7 @@ class RestaurantsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def restaurant_params
-      data = params.require(:restaurant).permit :name, :address, :zip_code, :city, :picture, :logo, :css, :logo_display,
-          :menus_picture_display, :dishes_picture_display, :posts_picture_display, :sections_picture_display, :slug
+      data = params.require(:restaurant).permit :name, :address, :zip_code, :city, :picture, :logo, :css, :picture_display, :slug
       data.delete :css if data['css'] and data['css'].empty?
       return data
     end

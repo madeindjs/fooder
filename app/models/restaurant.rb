@@ -25,6 +25,29 @@ class Restaurant < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: :slugged
 
+  MODULES = {
+      menus: {
+        title: 'Menus',
+        description: 'Créez des menus liées à vos produits',
+        glyphicon: 'cutlery',
+      },
+      blog: {
+        title: 'Blog',
+        description: 'Communiquez autour de vos nouveautés',
+        glyphicon: 'comment',
+      },
+      allergens: {
+        title: 'Allergènes',
+        description: 'Génerez automatiquement une carte des allergènes',
+        glyphicon: 'heart'
+      },
+      contact: {
+        title: 'Contact',
+        description: 'Un formulaire de contact rapide',
+        glyphicon: 'send'
+      }
+  }
+
   def complete_address
     "#{self.address}, #{self.zip_code}, #{self.city}"
   end
@@ -84,7 +107,7 @@ class Restaurant < ApplicationRecord
         opening_hour.save
       end
     end
-    
+
   end
 
 
