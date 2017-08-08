@@ -26,26 +26,26 @@ class Restaurant < ApplicationRecord
   friendly_id :name, use: :slugged
 
   MODULES = {
-      menus: {
-        title: 'Menus',
-        description: 'Créez des menus liées à vos produits',
-        glyphicon: 'cutlery',
-      },
-      blog: {
-        title: 'Blog',
-        description: 'Communiquez autour de vos nouveautés',
-        glyphicon: 'comment',
-      },
-      allergens: {
-        title: 'Allergènes',
-        description: 'Génerez automatiquement une carte des allergènes',
-        glyphicon: 'heart'
-      },
-      contact: {
-        title: 'Contact',
-        description: 'Un formulaire de contact rapide',
-        glyphicon: 'send'
-      }
+    menus: {
+      title: 'Menus',
+      description: 'Créez des menus liées à vos produits',
+      glyphicon: 'cutlery',
+    },
+    blog: {
+      title: 'Blog',
+      description: 'Communiquez autour de vos nouveautés',
+      glyphicon: 'comment',
+    },
+    allergens: {
+      title: 'Allergènes',
+      description: 'Génerez automatiquement une carte des allergènes',
+      glyphicon: 'heart'
+    },
+    contact: {
+      title: 'Contact',
+      description: 'Un formulaire de contact rapide',
+      glyphicon: 'send'
+    }
   }
 
   def complete_address
@@ -120,6 +120,12 @@ class Restaurant < ApplicationRecord
   # method to tell if friendly id should regenrate the slud
   def should_generate_new_friendly_id?
     slug.nil? || name_changed?
+  end
+
+  # Transform this object into an hash compatible to JSON-LD format
+  #
+  # @return [Hash]
+  def to_jsonld
   end
 
 end
