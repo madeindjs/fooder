@@ -13,14 +13,14 @@ module AdminHelper
         glyphicon: 'cutlery',
         objects: @restaurant.menus.select{ |d| d.activate },
         link: admin_menus_path,
-        module: 'menus'
+        'module': 'menus'
       },
       "Allèrgenes" => {
         color: 'danger',
         glyphicon: 'heart',
         objects: [],
         link: admin_allergens_path,
-        module: 'allergens'
+        'module': 'allergens'
       },
       "Liens" => {
         color: 'primary',
@@ -44,7 +44,7 @@ module AdminHelper
         glyphicon: 'comment',
         objects: @restaurant.posts,
         link: posts_path,
-        module: 'blog',
+        'module': 'blog',
       },
     }.select{|item, data| data[:module] == nil || @restaurant.send("module_"+data[:module])  }
   end
