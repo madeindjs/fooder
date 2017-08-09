@@ -28,11 +28,11 @@ module AdminHelper
         objects: @restaurant.links,
         link: admin_links_path,
       },
-      "Horraires d'ouverture" => {
-        color: 'info',
-        glyphicon: 'time',
-        link: admin_opening_hours_path,
-      },
+      # "Horraires d'ouverture" => {
+      #   color: 'info',
+      #   glyphicon: 'time',
+      #   link: admin_opening_hours_path,
+      # },
       "Catégories" => {
         color: 'warning',
         glyphicon: 'folder-open',
