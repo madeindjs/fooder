@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
   # restaurants area
-  resources :categories, only: [:create, :new, :edit, :update, :destroy]
   resources :restaurants # TODO: remove it
 
   constraints subdomain: /.+/  do
@@ -9,24 +8,38 @@ Rails.application.routes.draw do
 
     scope '/admin' do
       get '/' => 'admin#index', as: :admin
+
       match 'allergens' => "admin#allergens", as: :admin_allergens, via: [:get, :post]
+      # dishes
+      resources :dishes, only: [:create, :new, :edit, :update, :destroy]
       match 'dishes' => "admin#dishes", as: :admin_dishes, via: [:get, :post]
+      #post
+      resources :posts, only: [:create, :new, :edit, :update, :destroy]
+      # menus
+      resources :menus, only: [:create, :new, :edit, :update, :destroy]
       match 'menus' => "admin#menus", as: :admin_menus, via: [:get, :post]
-      match 'opening_hours' => "admin#opening_hours", as: :admin_opening_hours, via: [:get, :post]
+      # links
+      resources :links, only: [:create, :new, :edit, :update, :destroy]
       match 'links' => "admin#links", as: :admin_links, via: [:get, :post]
+      # openings hours
+      match 'opening_hours' => "admin#opening_hours", as: :admin_opening_hours, via: [:get, :post]
+      resources :opening_hours, only: [:create, :destroy]
+      # sections
+      resources :sections, only: [:create, :new, :edit, :update, :destroy]
       match 'sections' => "admin#sections", as: :admin_sections, via: [:get, :post]
+      # categories
       match 'categories' => "admin#categories", as: :admin_categories, via: [:get, :post]
+      resources :categories, only: [:create, :new, :edit, :update, :destroy]
+      patch 'activate_module' => "restaurants#activate_module"
     end
 
-    patch 'activate_module' => "restaurants#activate_module"
 
-    resources :opening_hours, only: [:create, :destroy]
-    resources :posts
-    resources :links
-    resources :sections
-    resources :menus
-    resources :dishes
+    resources :posts, only: [:index, :show]
+    resources :sections, only: [:index, :show]
+    resources :menus, only: [:index, :show]
+    resources :dishes, only: [:index, :show]
     resources :allergens, only: [:index]
+    resources :categories, only: [:index, :show]
     resources :categories
   end
 
