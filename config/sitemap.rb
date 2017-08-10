@@ -32,17 +32,21 @@ Restaurant.all.each do |restaurant|
     add dishes_path, priority: 0.9
     restaurant.dishes.all.each do |dish|
       add dish_path(dish), lastmod: dish.updated_at
-    end
+    end if restaurant.module_dishes
 
     add posts_path, priority: 0.8
     restaurant.posts.all.each do |post|
       add post_path(post), lastmod: post.updated_at
-    end
+    end if restaurant.module_blog
+
+    add allergens_path if restaurant.module_allergens
+
+    add contact_path if restaurant.module_contact
 
     add menus_path, priority: 0.9
     restaurant.menus.all.each do |menu|
       add menu_path(menu), lastmod: menu.updated_at
-    end
+    end if restaurant.module_blog
 
     add contact_path, changefreq: 'monthly', priority: 0.8
   end
