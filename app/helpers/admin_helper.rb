@@ -7,7 +7,6 @@ module AdminHelper
         glyphicon: 'apple',
         objects: @restaurant.dishes.select{ |d| d.activate },
         link: admin_dishes_path,
-        'module': 'dishes'
       },
       "Menus" => {
         color: 'success',
