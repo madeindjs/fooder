@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170809104644) do
+ActiveRecord::Schema.define(version: 20170810103202) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "name"
@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(version: 20170809104644) do
     t.text     "description",   limit: 65535
     t.text     "content",       limit: 65535
     t.string   "tags"
-    t.integer  "price"
+    t.float    "price",         limit: 24
     t.integer  "user_id"
     t.integer  "restaurant_id"
     t.datetime "created_at",                                 null: false
