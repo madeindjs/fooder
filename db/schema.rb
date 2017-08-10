@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170810103202) do
+ActiveRecord::Schema.define(version: 20170810104620) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "name"
@@ -185,6 +185,7 @@ ActiveRecord::Schema.define(version: 20170810103202) do
     t.boolean  "module_contact",      default: true
     t.boolean  "module_menus",        default: true
     t.string   "plain_opening_hours"
+    t.boolean  "module_dishes",       default: true
     t.index ["slug"], name: "index_restaurants_on_slug", unique: true, using: :btree
   end
 
