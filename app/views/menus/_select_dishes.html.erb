@@ -1,0 +1,23 @@
+<h2>Produits inclus</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Nom de la recette</th>
+      <th>Catégorie</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @restaurant.dishes.includes(:category).order(:category_id).each do |dish| %>
+      <tr>
+        <td><%= check_box_tag "[dishes][#{dish.id}]", true, menu.dishes.include?(dish) %></td>
+        <td><%= label_tag "[dishes][#{dish.id}]", dish.name %></td>
+        <td><%= label_tag "[dishes][#{dish.id}]", dish.category.name %></td>
+        <td>
+          <%= link_to 'Voir le produit' , dish, class: 'btn btn-default' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
