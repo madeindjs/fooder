@@ -1,38 +1,24 @@
 <h1 class="page-header">Gerez vos en-têtes</h1>
-
-
 <%= form_tag admin_sections_path do  %>
-
   <div class="sortable">
-
     <% @sections.order(:order).each_with_index do |section, order| %>
-
       <div id="<%= section.id %>" class="item col-xs-12">
-
         <div class="col-xs-1 handle">
           <span class="glyphicon glyphicon-sort"></span>
         </div>
-
         <%= hidden_field_tag "sections[#{section.id}][order]", order, class: 'order' %>
-
         <div class="col-xs-9">
           <%= text_field_tag "sections[#{section.id}][title]" , section.title, class: 'form-control' %>
         </div>
-
-
         <div class="col-xs-2">
           <div class="btn-group-vertical" role="group" aria-label="...">
             <%= link_to 'en voir plus' , edit_section_path(section) , class: 'btn btn-xs btn btn-default' %>
             <%= link_to 'supprimer', section, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger' %>
           </div>
         </div>
-
       </div>
-
     <% end %>
-
-  </div><!--/ .sortable -->
-
+  </div>
+  <!--/ .sortable -->
   <%= submit_tag 'Tout mettre à jour', class: 'btn btn-primary' %>
-
 <% end %>

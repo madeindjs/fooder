@@ -1,20 +1,13 @@
 <h1 class="page-header">Gerez vos horaires d'ouverture</h1>
-
 <%= render 'opening_hours/form', opening_hour: OpeningHour.new %>
-
-
 <div class="col-xs-12">
   <h2>Editer les horaires d'ouvertures</h2>
 </div>
-
 <%= form_tag admin_opening_hours_path do  %>
-
   <% @restaurant.opening_hours.each do |opening_hour| %>
     <%= render 'opening_hours/subform', opening_hour: opening_hour %>
   <% end %>
-
   <div class="col-xs-12">
     <%= submit_tag 'Tout mettre à jour', class: 'btn btn-primary' %>
   </div>
-
 <% end %>

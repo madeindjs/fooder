@@ -1,7 +1,6 @@
 <style>
   main-container{padding: 0}
 </style>
-
 <% if false and admin? %>
   <div class="row admin">
     <div class="col-xs-12"">
@@ -12,28 +11,20 @@
     </div>
   </div>
 <% end %>
-
 <div class="row restaurant-header tooltip-holder" style="background-image: url(<%= @restaurant.picture %>)"
   <%= tooltip 'Cette image de fond peut être changé dans la section  "editer le restaurant"' %> >
-
   <div class="col-xs-12">
     <h1 class="tooltip-holder" <%= tooltip 'Le nom de votre restaurant peut être changé dans la section "editer le restaurant"' %> ><%= logo_tag @restaurant %><%= @restaurant.name %></h1>
   </div>
 </div>
-
 <%= render 'sections/list', sections: @restaurant.sections %>
-
-
 <div class="row">
   <div class="col-xs-12">
-    <h2>Les horaires d'ouvertures</h2>
-    <%= render 'opening_hours/details', opening_hours: @restaurant.valid_opening_hours %>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-xs-12">
+    <h2>Informations</h2>
+    <h3>Horraires d'ouvertures</h3>
+    <%= @restaurant.plain_opening_hours #= render 'opening_hours/details', opening_hours: @restaurant.valid_opening_hours 
+    %>
+    <h3>Addresse</h3>
     <p><%= glyphicon 'home' %> <%= @restaurant.complete_address %></p>
-    <p><%= glyphicon 'user' %> <%= link_to @restaurant.user.complete_name, @restaurant.user %></p>
   </div>
 </div>

@@ -1,17 +1,13 @@
 <table class="table tooltip-holder" <%= tooltip 'Les horraires d\'ouvertures  peuvent êtres modifiés dans la section "editer les horraires d\'ouvertures"' %>>
-  
-    <% opening_hours.group_by{|op| op.day}.each do |k, opening_hours_grouped| %>
-      <tr>
-        <th><%= opening_hours_grouped.first.pretty_day %></th>
-
-        <td>
-          <% opening_hours_grouped.each do |opening_hour| %>
-            <%= opening_hour.pretty_hours %>
-            <%= ' et ' unless  opening_hours_grouped.last == opening_hour %>
-          <% end %>
-
-        </td>
-      </tr>
-    <% end %>
-  
+  <% opening_hours.group_by{|op| op.day}.each do |k, opening_hours_grouped| %>
+    <tr>
+      <th><%= opening_hours_grouped.first.pretty_day %></th>
+      <td>
+        <% opening_hours_grouped.each do |opening_hour| %>
+          <%= opening_hour.pretty_hours %>
+          <%= ' et ' unless  opening_hours_grouped.last == opening_hour %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
 </table>

@@ -34,8 +34,11 @@ class AdminController < ApplicationController
         # we get dish and verify author is the user
         if dish = Dish.find(id) and dish.user_id == current_user.id
           # update attributes
-          dish.assign_attributes data.permit(:name, :description, :category_id, :price, :tags, :picture, :activate,
-            :gluten_free, :crustacea_free, :egg_free, :fish_free, :peanut_free, :lactose_free, :nut_free, :sulphite_free)
+          params_sent = data.permit(:name, :description, :category_id, :price, :tags, :picture, :activate,
+                                    :gluten_free, :crustacea_free, :egg_free, :fish_free, :peanut_free, :lactose_free, :nut_free, :sulphite_free)
+          dish.assign_attributes params_sent
+          dish.activate = params_sent.key?(:activate)
+
           # save only if dish changed
           if dish.changed?
             # save dish and stor in array to display in flash message
@@ -202,7 +205,6 @@ class AdminController < ApplicationController
           if opening_hour.save
             updated_opening_hours << opening_hour
           else
-            puts opening_hour.errors.inspect
             fail_updated_opening_hours << opening_hour
           end
         end

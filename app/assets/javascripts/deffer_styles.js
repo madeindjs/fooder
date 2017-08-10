@@ -1,10 +1,12 @@
 // from https://developers.google.com/speed/docs/insights/OptimizeCSSDelivery
 var loadDeferredStyles = function() {
   var addStylesNode = document.getElementById("deferred-styles");
-  var replacement = document.createElement("div");
-  replacement.innerHTML = addStylesNode.textContent;
-  document.body.appendChild(replacement)
-  addStylesNode.parentElement.removeChild(addStylesNode);
+  if(addStylesNode){
+    var replacement = document.createElement("div");
+    replacement.innerHTML = addStylesNode.textContent;
+    document.body.appendChild(replacement)
+    addStylesNode.parentElement.removeChild(addStylesNode);
+  }
 };
 var raf = requestAnimationFrame || mozRequestAnimationFrame ||
     webkitRequestAnimationFrame || msRequestAnimationFrame;

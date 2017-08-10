@@ -26,6 +26,11 @@ class Restaurant < ApplicationRecord
   friendly_id :name, use: :slugged
 
   MODULES = {
+    dishes: {
+      title: 'Carte',
+      description: 'Proposez une carte de vos produits',
+      glyphicon: 'apple',
+    },
     menus: {
       title: 'Menus',
       description: 'Créez des menus liées à vos produits',
