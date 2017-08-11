@@ -80,7 +80,6 @@ class User < ApplicationRecord
       "@context" => "http://schema.org/",
       "@type": "Person",
       givenName: self.lastname,
-      image: self.gravatar_url,
       url: Rails.application.routes.url_helpers.user_url(self.id)
     }
   end

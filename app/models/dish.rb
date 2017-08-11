@@ -27,9 +27,5 @@ class Dish < ApplicationRecord
     sulphite_free: "Sans sulphite"
   }
 
-  # Transform this object into an hash compatible to JSON-LD format
-  #
-  # @return [Hash]
-  def to_jsonld
-  end
+  include JsonldProduct
 end

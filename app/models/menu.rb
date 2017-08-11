@@ -10,13 +10,9 @@ class Menu < ApplicationRecord
   mount_uploader :picture, PictureUploader
 
   include ImageFormat
+  include JsonldProduct
 
   extend FriendlyId
   friendly_id :name, use: :slugged
 
-  # Transform this object into an hash compatible to JSON-LD format
-  #
-  # @return [Hash]
-  def to_jsonld
-  end
 end
