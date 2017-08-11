@@ -127,10 +127,27 @@ class Restaurant < ApplicationRecord
     slug.nil? || name_changed?
   end
 
-  # Transform this object into an hash compatible to JSON-LD format
+  # Format to json_ld
   #
   # @return [Hash]
   def to_jsonld
+    logo = ApplicationController.helpers.image_url(self.picture)
+    return  {
+      "@context" => "http://schema.org/",
+      "@type": "Organization",
+
+      name: self.name,
+      founder: self.user.to_jsonld,
+
+      url: Rails.application.routes.url_helpers.restaurant_url(self.id, subdomain: self.slug),
+
+      brand: {
+        "@context" => "http://schema.org/",
+        "@type": "Brand",
+        logo: logo,
+      },
+      logo: logo,
+    }
   end
 
 end

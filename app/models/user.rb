@@ -43,22 +43,22 @@ class User < ApplicationRecord
 
   def paypal_url(return_path)
     values = {
-        business: "merchant@gotealeaf.com",
-        cmd: "_xclick",
-        upload: 1,
-        return: "#{Rails.application.secrets.app_host}#{return_path}",
-        invoice: id,
-        amount: course.price,
-        item_name: course.name,
-        item_number: course.id,
-        quantity: '1'
+      business: "merchant@gotealeaf.com",
+      cmd: "_xclick",
+      upload: 1,
+      return: "#{Rails.application.secrets.app_host}#{return_path}",
+      invoice: id,
+      amount: course.price,
+      item_name: course.name,
+      item_number: course.id,
+      quantity: '1'
     }
     "#{Rails.application.secrets.paypal_host}/cgi-bin/webscr?" + values.to_query
   end
 
   # activate account from user email token
   #
-  # Method imported from Authlogic::ActsAsAuthentic::EmailToken 
+  # Method imported from Authlogic::ActsAsAuthentic::EmailToken
   def activate
     self.activated = true
   end
@@ -70,6 +70,19 @@ class User < ApplicationRecord
 
   def add_to_newsletter
     Newsletter.create({email: self.email})
+  end
+
+  # Format to json_ld
+  #
+  # @return [Hash]
+  def to_jsonld
+    {
+      "@context" => "http://schema.org/",
+      "@type": "Person",
+      givenName: self.lastname,
+      image: self.gravatar_url,
+      url: Rails.application.routes.url_helpers.user_url(self.id)
+    }
   end
 
 end
