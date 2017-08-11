@@ -25,7 +25,7 @@ class MenusController < ApplicationController
   def show
     @title = @menu.name
     @description = "Un parmi les nombreux déliceux menus proposé par #{@restaurant.name}"
-    @jsonld = @menu.jsonld
+    @jsonld = @menu.to_jsonld
   end
 
   # GET /menus/new
