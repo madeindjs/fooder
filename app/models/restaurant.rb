@@ -64,7 +64,7 @@ class Restaurant < ApplicationRecord
   #
   # @return [Hash]
   def to_jsonld
-    logo = ApplicationController.helpers.image_url(self.picture)
+    logo = ApplicationController.helpers.image_url(self.picture, host: 'http://fooder.pro')
     return  {
       "@context" => "http://schema.org/",
       "@type": "Organization",

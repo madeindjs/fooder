@@ -1,17 +1,21 @@
 module AdminHelper
 
   def sidebar_data
+
+    dishes = @restaurant.dishes ? @restaurant.dishes.select{ |d| d.activate } : nil
+    menus = @restaurant.menus ? @restaurant.menus.select{ |d| d.activate } : nil
+
     {
       "Produits" => {
         color: 'primary',
         glyphicon: 'apple',
-        objects: @restaurant.dishes.select{ |d| d.activate },
+        objects: dishes,
         link: admin_dishes_path,
       },
       "Menus" => {
         color: 'success',
         glyphicon: 'cutlery',
-        objects: @restaurant.menus.select{ |d| d.activate },
+        objects: menus,
         link: admin_menus_path,
         'module': 'menus'
       },
