@@ -15,6 +15,7 @@ class UsersController < ApplicationController
   def show
     @title = @user.complete_name
     @description = "Informations relatives à #{@user.complete_name}"
+    @jsonld = @user.to_jsonld
   end
 
   # GET /users/new
@@ -89,17 +90,17 @@ class UsersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.friendly.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = User.friendly.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def user_params
-      params.require(:user).permit(:username, :firstname, :lastname, :email, :password, :password_confirmation)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def user_params
+    params.require(:user).permit(:username, :firstname, :lastname, :email, :password, :password_confirmation)
+  end
 
-    def check_owner
-      redirect_to root_path unless current_user == @user
-    end
+  def check_owner
+    redirect_to root_path unless current_user == @user
+  end
 end

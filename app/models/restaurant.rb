@@ -60,6 +60,28 @@ class Restaurant < ApplicationRecord
   def valid_opening_hours
     self.opening_hours.to_a.select{|h| h.actual? }
   end
+  # Format to json_ld
+  #
+  # @return [Hash]
+  def to_jsonld
+    logo = ApplicationController.helpers.image_url(self.picture)
+    return  {
+      "@context" => "http://schema.org/",
+      "@type": "Organization",
+
+      name: self.name,
+      founder: self.user.to_jsonld,
+
+      url: Rails.application.routes.url_helpers.restaurant_url(self.id, subdomain: self.slug),
+
+      brand: {
+        "@context" => "http://schema.org/",
+        "@type": "Brand",
+        logo: logo,
+      },
+      logo: logo,
+    }
+  end
 
   private
 
@@ -126,5 +148,6 @@ class Restaurant < ApplicationRecord
   def should_generate_new_friendly_id?
     slug.nil? || name_changed?
   end
+
 
 end

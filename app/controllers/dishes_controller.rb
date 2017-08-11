@@ -14,6 +14,11 @@ class DishesController < ApplicationController
     @description = "Carte des produits proposés par ce restaurant."
 
     @dishes = @restaurant.dishes.where(activate: true).order :order
+    @jsonld = {
+      "@context":"http://schema.org",
+      "@type":"ItemList",
+      "itemListElement": @dishes.map{|dish| dish.to_jsonld}
+    }
   end
 
   # GET /dishes/1
