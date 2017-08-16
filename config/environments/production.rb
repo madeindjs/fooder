@@ -97,6 +97,6 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.action_controller.asset_host = "fooder-cook.fr"
-  default_url_options[:host] = "fooder-cook.fr"
+  config.action_controller.asset_host = "fooder.fr"
+  default_url_options[:host] = "fooder.pro"
 end
