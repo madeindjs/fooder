@@ -1,44 +1,53 @@
 <h1 class="page-header">Gerez vos produits</h1>
 <%= form_tag admin_dishes_path do  %>
-  <div class="sortable">
-    <% @dishes.order(:order).each_with_index do |dish, order| %>
-      <div id="<%= dish.id %>" class="item col-xs-12">
-        <div class="col-xs-1 handle">
-          <span class="glyphicon glyphicon-sort"></span>
-        </div>
-        <%= hidden_field_tag "dish[#{dish.id}][category_id]", dish.category_id %>
-        <%= hidden_field_tag "dish[#{dish.id}][order]", order, class: 'order' %>
-        <!-- name -->
-        <div class="col-xs-4">
-          <%= text_field_tag "dish[#{dish.id}][name]" , dish.name, class: 'form-control' %>
-        </div>
-        <!-- price -->
-        <div class="col-xs-2">
-          <div class="input-group">
-            <%= text_field_tag "dish[#{dish.id}][price]" , dish.price, class: 'form-control text-right' %>
-            <span class="input-group-addon">€</span>
-          </div>
-        </div>
-        <!-- category -->
-        <div class="col-xs-2">
-          <%= collection_select "dish[#{dish.id}]", :category_id, @categories, :id, :name, {selected: dish.category_id}, { class: "form-control" }  %>
-        </div>
-        <!-- activate -->
-        <div class="col-xs-1 text-center">
-          <%= label_tag "dish[#{dish.id}][activate]" do %>
-            <%= check_box_tag "dish[#{dish.id}][activate]", 1, dish.activate %> Activer
-          <% end %>
-        </div>
-        <div class="col-xs-1">
-          <div class="btn-group-vertical" role="group" aria-label="...">
-            <%= link_to 'en voir plus' , edit_dish_path(dish) , class: 'btn btn-xs btn btn-default' %>
-            <%= link_to 'supprimer', dish, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger' %>
-          </div>
-        </div>
-      </div>
-    <% end %>
-  </div>
+  <table class="table table-hover table-condensed">
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Prix</th>
+        <th>Type</th>
+        <th>Visibilité</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @dishes.order(:category_id, :order).each_with_index do |dish, order| %>
+        <tr>
+          <!-- Nom -->
+          <td>
+            <%= text_field_tag "dish[#{dish.id}][name]" , dish.name, class: 'form-control' %>
+          </td>
+          <!-- Prix -->
+          <td>
+            <div class="input-group">
+              <%= text_field_tag "dish[#{dish.id}][price]" , dish.price, class: 'form-control text-right' %>
+              <span class="input-group-addon">€</span>
+            </div>
+          </td>
+          <!-- Type -->
+          <td>
+            <%= collection_select "dish[#{dish.id}]", :category_id, @categories, :id, :name, {selected: dish.category_id}, { class: "form-control" }  %>
+          </td>
+          <!-- Visibilié -->
+          <td>
+            <%= label_tag "dish[#{dish.id}][activate]" do %>
+              <%= check_box_tag "dish[#{dish.id}][activate]", 1, dish.activate %> Activer
+            <% end %>
+          </td>
+          <!-- Actions -->
+          <td>
+            <div class="btn-group" role="group" aria-label="...">
+              <%= link_to glyphicon('eye-open'), edit_dish_path(dish) , class: 'btn btn-default' %>
+              <%= link_to glyphicon('trash'), dish, method: :delete, data: { confirm: 'Etes-vous sûr?' }, class: 'btn btn-danger' %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
   <!--/ .sortable -->
   <%= submit_tag 'Tout mettre à jour', class: 'btn btn-primary' %>
-  <%= link_to 'Nouveau menu', new_dish_path, class: 'btn btn-primary' %>
+  <%= link_to new_dish_path, class: 'btn btn-default' do %>
+    <%= glyphicon 'plus' %> Nouveau produit
+  <% end %>
 <% end %>
