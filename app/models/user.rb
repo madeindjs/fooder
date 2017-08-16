@@ -76,11 +76,12 @@ class User < ApplicationRecord
   #
   # @return [Hash]
   def to_jsonld
+    url = Rails.application.routes.url_helpers.user_url(self.id, host: 'http://fooder.pro')
     {
       "@context" => "http://schema.org/",
       "@type": "Person",
       givenName: self.lastname,
-      url: Rails.application.routes.url_helpers.user_url(self.id)
+      url: url
     }
   end
 
