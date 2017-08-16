@@ -26,26 +26,31 @@ class Restaurant < ApplicationRecord
   friendly_id :name, use: :slugged
 
   MODULES = {
-      menus: {
-        title: 'Menus',
-        description: 'Créez des menus liées à vos produits',
-        glyphicon: 'cutlery',
-      },
-      blog: {
-        title: 'Blog',
-        description: 'Communiquez autour de vos nouveautés',
-        glyphicon: 'comment',
-      },
-      allergens: {
-        title: 'Allergènes',
-        description: 'Génerez automatiquement une carte des allergènes',
-        glyphicon: 'heart'
-      },
-      contact: {
-        title: 'Contact',
-        description: 'Un formulaire de contact rapide',
-        glyphicon: 'send'
-      }
+    dishes: {
+      title: 'Carte',
+      description: 'Proposez une carte de vos produits',
+      glyphicon: 'apple',
+    },
+    menus: {
+      title: 'Menus',
+      description: 'Créez des menus liées à vos produits',
+      glyphicon: 'cutlery',
+    },
+    blog: {
+      title: 'Blog',
+      description: 'Communiquez autour de vos nouveautés',
+      glyphicon: 'comment',
+    },
+    allergens: {
+      title: 'Allergènes',
+      description: 'Génerez automatiquement une carte des allergènes',
+      glyphicon: 'heart'
+    },
+    contact: {
+      title: 'Contact',
+      description: 'Un formulaire de contact rapide',
+      glyphicon: 'send'
+    }
   }
 
   def complete_address
@@ -54,6 +59,29 @@ class Restaurant < ApplicationRecord
 
   def valid_opening_hours
     self.opening_hours.to_a.select{|h| h.actual? }
+  end
+  # Format to json_ld
+  #
+  # @return [Hash]
+  def to_jsonld
+    logo = ApplicationController.helpers.image_url(self.picture, host: 'http://fooder.pro')
+    url  = Rails.application.routes.url_helpers.restaurant_url(self.id, subdomain: self.slug, host: 'http://fooder.pro')
+    return  {
+      "@context" => "http://schema.org/",
+      "@type": "Organization",
+
+      name: self.name,
+      founder: self.user.to_jsonld,
+
+      url: url,
+
+      brand: {
+        "@context" => "http://schema.org/",
+        "@type": "Brand",
+        logo: logo,
+      },
+      logo: logo,
+    }
   end
 
   private
@@ -121,5 +149,6 @@ class Restaurant < ApplicationRecord
   def should_generate_new_friendly_id?
     slug.nil? || name_changed?
   end
+
 
 end

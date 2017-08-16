@@ -13,6 +13,11 @@ class MenusController < ApplicationController
     @description = "Liste des menus proposés par #{@restaurant.name}."
 
     @menus = @restaurant.menus.where(activate: true).order :order
+    @jsonld = {
+      "@context":"http://schema.org",
+      "@type":"ItemList",
+      "itemListElement": @menus.map{|menu| menu.to_jsonld}
+    }
   end
 
   # GET /menus/1
@@ -20,6 +25,7 @@ class MenusController < ApplicationController
   def show
     @title = @menu.name
     @description = "Un parmi les nombreux déliceux menus proposé par #{@restaurant.name}"
+    @jsonld = @menu.to_jsonld
   end
 
   # GET /menus/new
@@ -82,17 +88,17 @@ class MenusController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_menu
-      @menu = Menu.includes(:dishes).friendly.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_menu
+    @menu = Menu.includes(:dishes).friendly.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def menu_params
-      params.require(:menu).permit(:name, :description, :content, :tags, :price, :picture, :activate)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def menu_params
+    params.require(:menu).permit(:name, :description, :content, :tags, :price, :picture, :activate)
+  end
 
-    def check_owner
-      redirect_to root_path unless current_user.menus.include? @menu
-    end
+  def check_owner
+    redirect_to root_path unless current_user.menus.include? @menu
+  end
 end

@@ -10,7 +10,9 @@ class Menu < ApplicationRecord
   mount_uploader :picture, PictureUploader
 
   include ImageFormat
+  include JsonldProduct
 
   extend FriendlyId
   friendly_id :name, use: :slugged
+
 end

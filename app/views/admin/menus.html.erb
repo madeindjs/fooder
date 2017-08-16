@@ -1,51 +1,47 @@
 <h1 class="page-header">Gerez vos menus</h1>
-
-
 <%= form_tag admin_menus_path do  %>
-
-  <div class="sortable">
-
-    <% @menus.order(:order).each_with_index do |menu, order| %>
-
-      <div id="<%= menu.id %>" class="item col-xs-12">
-
-        <div class="col-xs-1 handle">
-          <span class="glyphicon glyphicon-sort"></span>
-        </div>
-
-        <%= hidden_field_tag "menu[#{menu.id}][order]", order, class: 'order' %>
-
-        <div class="col-xs-4">
-          <%= text_field_tag "menu[#{menu.id}][name]" , menu.name, class: 'form-control' %>
-        </div>
-
-
-        <div class="col-xs-3">
-          <div class="input-group">
-            <%= text_field_tag "menu[#{menu.id}][price]" , menu.price, class: 'form-control text-right' %>
-            <span class="input-group-addon">€</span>
-          </div>
-        </div>
-
-        <div class="col-xs-2">
-          <%= label_tag "menu[#{menu.id}][activate]" do %>
-            <%= check_box_tag "menu[#{menu.id}][activate]", 1, menu.activate %> Activer
-          <% end %>
-        </div>
-
-        <div class="col-xs-2">
-          <div class="btn-group-vertical" role="group" aria-label="...">
-            <%= link_to 'en voir plus' , edit_menu_path(menu) , class: 'btn btn-xs btn btn-default' %>
-            <%= link_to 'supprimer', menu, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger' %>
-          </div>
-        </div>
-
-      </div>
-
-    <% end %>
-
-  </div><!--/ .sortable -->
-
-  <%= submit_tag 'Tout mettre à jour', class: 'btn btn-primary' %>
-
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Prix</th>
+        <th>Visibilité</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @menus.order(:order).each_with_index do |menu, order| %>
+        <tr>
+          <!-- Name of menu & hidden fields -->
+          <td>
+            <%= text_field_tag "menu[#{menu.id}][name]" , menu.name, class: 'form-control' %>
+          </td>
+          <!-- price -->
+          <td>
+            <div class="input-group">
+              <%= text_field_tag "menu[#{menu.id}][price]", menu.price, class: 'form-control text-right' %>
+              <span class="input-group-addon">€</span>
+            </div>
+          </td>
+          <!-- visibility -->
+          <td>
+            <%= label_tag "menu[#{menu.id}][activate]" do %>
+              <%= check_box_tag "menu[#{menu.id}][activate]", 1, menu.activate %> Activer
+            <% end %>
+          </td>
+          <!-- buttons -->
+          <td>
+            <div class="btn-group" role="group" aria-label="...">
+              <%= link_to glyphicon('eye-open'), edit_menu_path(menu) , class: 'btn btn-default' %>
+              <%= link_to glyphicon('trash'), menu, method: :delete, data: { confirm: 'Etes-vous sûr?' }, class: 'btn btn-danger' %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= submit_tag "Tout mettre à jour", class: 'btn btn-primary' %>
+  <%= link_to new_menu_path, class: 'btn btn-default' do %>
+    <%= glyphicon 'plus' %> Nouveau menu
+  <% end %>
 <% end %>

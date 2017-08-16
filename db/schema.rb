@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170519105150) do
+ActiveRecord::Schema.define(version: 20170810104620) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(version: 20170519105150) do
     t.text     "description"
     t.text     "content"
     t.string   "tags"
-    t.integer  "price"
+    t.float    "price"
     t.integer  "user_id"
     t.integer  "restaurant_id"
     t.datetime "created_at",                   null: false
@@ -173,17 +173,19 @@ ActiveRecord::Schema.define(version: 20170519105150) do
     t.string   "zip_code"
     t.string   "city"
     t.integer  "user_id"
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
-    t.boolean  "module_blog",      default: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.boolean  "module_blog",         default: false
     t.string   "logo"
     t.string   "picture"
-    t.boolean  "module_allergens", default: false
+    t.boolean  "module_allergens",    default: false
     t.string   "slug"
     t.string   "css"
-    t.integer  "picture_display",  default: 2
-    t.boolean  "module_contact",   default: true
-    t.boolean  "module_menus",     default: true
+    t.integer  "picture_display",     default: 2
+    t.boolean  "module_contact",      default: true
+    t.boolean  "module_menus",        default: true
+    t.string   "plain_opening_hours"
+    t.boolean  "module_dishes",       default: true
     t.index ["slug"], name: "index_restaurants_on_slug", unique: true
   end
 

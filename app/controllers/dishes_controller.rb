@@ -14,6 +14,11 @@ class DishesController < ApplicationController
     @description = "Carte des produits proposés par ce restaurant."
 
     @dishes = @restaurant.dishes.where(activate: true).order :order
+    @jsonld = {
+      "@context":"http://schema.org",
+      "@type":"ItemList",
+      "itemListElement": @dishes.map{|dish| dish.to_jsonld}
+    }
   end
 
   # GET /dishes/1
@@ -79,19 +84,19 @@ class DishesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_dish
-      @dish = Dish.friendly.find(params[:id])
-      redirect_to root_path unless @dish
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_dish
+    @dish = Dish.friendly.find(params[:id])
+    redirect_to root_path unless @dish
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def dish_params
-      params.require(:dish).permit :name, :description, :category_id, :price, :tags, :picture, :activate,
-        :gluten_free, :crustacea_free, :egg_free, :fish_free, :peanut_free, :lactose_free, :nut_free, :sulphite_free
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def dish_params
+    params.require(:dish).permit :name, :description, :category_id, :price, :tags, :picture, :activate,
+      :gluten_free, :crustacea_free, :egg_free, :fish_free, :peanut_free, :lactose_free, :nut_free, :sulphite_free
+  end
 
-    def check_owner
-      redirect_to root_path unless current_user.dishes.include? @dish
-    end
+  def check_owner
+    redirect_to root_path unless current_user.dishes.include? @dish
+  end
 end
