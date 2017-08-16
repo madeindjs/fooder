@@ -14,7 +14,6 @@
         <tr>
           <!-- Name of menu & hidden fields -->
           <td>
-            <%= hidden_field_tag "menu[#{menu.id}][order]", order, class: 'order' %>
             <%= text_field_tag "menu[#{menu.id}][name]" , menu.name, class: 'form-control' %>
           </td>
           <!-- price -->
@@ -41,6 +40,8 @@
       <% end %>
     </tbody>
   </table>
-  <%= submit_tag 'Tout mettre à jour', class: 'btn btn-primary' %>
-  <%= link_to 'Nouveau menu', new_menu_path, class: 'btn btn-primary' %>
+  <%= submit_tag "Tout mettre à jour", class: 'btn btn-primary' %>
+  <%= link_to new_menu_path, class: 'btn btn-default' do %>
+    <%= glyphicon 'plus' %> Nouveau menu
+  <% end %>
 <% end %>

@@ -47,5 +47,7 @@
   </table>
   <!--/ .sortable -->
   <%= submit_tag 'Tout mettre à jour', class: 'btn btn-primary' %>
-  <%= link_to 'Nouveau menu', new_dish_path, class: 'btn btn-primary' %>
+  <%= link_to new_dish_path, class: 'btn btn-default' do %>
+    <%= glyphicon 'plus' %> Nouveau produit
+  <% end %>
 <% end %>
