@@ -36,9 +36,9 @@
           </td>
           <!-- Actions -->
           <td>
-            <div class="btn-group-vertical" role="group" aria-label="...">
-              <%= link_to 'en voir plus' , edit_dish_path(dish) , class: 'btn btn-xs btn btn-default' %>
-              <%= link_to 'supprimer', dish, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger' %>
+            <div class="btn-group" role="group" aria-label="...">
+              <%= link_to glyphicon('eye-open'), edit_dish_path(dish) , class: 'btn btn-default' %>
+              <%= link_to glyphicon('trash'), dish, method: :delete, data: { confirm: 'Etes-vous sûr?' }, class: 'btn btn-danger' %>
             </div>
           </td>
         </tr>
