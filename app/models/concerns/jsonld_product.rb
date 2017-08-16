@@ -3,7 +3,7 @@ module JsonldProduct
   #
   # @return [Hash]
   def to_jsonld
-    logo = ApplicationController.helpers.image_url(self.picture)
+    logo = ApplicationController.helpers.image_url(self.picture, host: 'fooder.pro')
     return {
       "@context" => "http://schema.org/",
       "@type": "Product",
