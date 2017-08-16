@@ -19,15 +19,11 @@
       div.jumbotron.header{margin-bottom: 0; border: none;}
     </style>
   </head>
-  <body style="margin: 0">
+  <body style="margin-left: 0;margin-rigth: 0;margin-bottom: 0;margin-top: 40px;">
     <div class="container-fluid">
       <%= render 'layouts/navigation' %>
       <div class="row">
-        <div class="col-xs-12" >
-          <%= render 'shared/flash' %>
-          <%= yield %>
-        </div>
-        <!-- /.container -->
+        <%= yield %>
       </div>
     </div>
     <%= render 'layouts/footer' %>
@@ -36,10 +32,5 @@
     </noscript>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script type="text/javascript">
-      setTimeout(function(){
-        $(".navigation-hidden").fadeIn();
-      }, 3000)
-    </script>
   </body>
 </html>
