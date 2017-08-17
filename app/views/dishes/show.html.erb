@@ -2,36 +2,30 @@
   <h1><%= @dish.name %> <small><%= @dish.category.name if @dish.category%></small></h1>
   <%= picture_tag @dish, :picture_display, css_class: "dish-picture", size: 200 %>
 </div>
-
 <!-- tags -->
 <div class="col-xs-12">
-  <p><%= tags @dish.tags %><%= render 'dishes/allergens', dish: @dish %></p>
+  <p><%= tags @dish.tags %><%= render 'dishes/allergens', dish: @dish, cache: true %></p>
 </div>
-
 <!-- description & price -->
 <div class="col-xs-12">
-  <p><%= @dish.description %></p>  
+  <p><%= @dish.description %></p>
   <p class="text-right"><strong><%= price @dish.price %></strong><br/>
-</div>
-
-
-<% unless @menus.empty? %>
-  <div class="col-xs-12">
-    <h2>Inclus dans les menus</h2>
-    <ul>
-      <% @menus.each do |menu| %>
-        <li><%= link_to menu.name, menu %></li>
-      <% end %>
-    </ul>
   </div>
-<% end %>
-
-
-<% if admin? %>
-  <div class="col-xs-12">
-    <p class="text-right admin">
-      <%= link_to 'Editer', edit_dish_path(@dish), class: 'btn btn-warning' %>
-      <%= link_to 'Supprimer', @dish, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
-    </p>
-  </div>
-<% end %>
+  <% unless @menus.empty? %>
+    <div class="col-xs-12">
+      <h2>Inclus dans les menus</h2>
+      <ul>
+        <% @menus.each do |menu| %>
+          <li><%= link_to menu.name, menu %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <% if admin? %>
+    <div class="col-xs-12">
+      <p class="text-right admin">
+        <%= link_to 'Editer', edit_dish_path(@dish), class: 'btn btn-warning' %>
+        <%= link_to 'Supprimer', @dish, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+      </p>
+    </div>
+  <% end %>

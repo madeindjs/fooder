@@ -6,11 +6,10 @@
       <th></th>
     </tr>
   </thead>
-
   <tbody>
     <% restaurants.each do |restaurant| %>
       <tr>
-        <td><%= render 'restaurants/link', restaurant: restaurant %></td>
+        <td><%= render 'restaurants/link', restaurant: restaurant, cache: true %></td>
         <td><%= restaurant.complete_address %></td>
         <td>
           <% if current_user == restaurant.user %>
