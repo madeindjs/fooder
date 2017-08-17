@@ -7,6 +7,6 @@
   <%= f.text_area :content, label: 'Contenu' %>
   <%= f.text_field :tags %>
   <%= f.number_field :price, label: 'Prix' %>
-  <%= render 'select_dishes', menu: menu%>
+  <%= render 'select_dishes', menu: menu, cache: true %>
   <%= f.submit 'Confirmer' %>
 <% end %>

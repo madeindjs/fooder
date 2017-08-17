@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <%= render 'layouts/meta' %>
+    <%= render 'layouts/meta', cache: true %>
     <%= csrf_meta_tags %>
     <!-- Bootstrap core CSS -->
     <% if @restaurant && @restaurant.css %>
@@ -49,7 +49,7 @@
       </nav>
       <div class="row" style="padding-top: 80px">
         <div class="hidden-xs col-sm-3 col-md-2 col-lg-2">
-          <%= render 'shared/sidebar' %>
+          <%= render 'shared/sidebar', cache: true %>
         </div>
         <div class="col-xs-12 col-sm-9 col-md-10 col-lg-10">
           <%= render 'shared/flash' %>
