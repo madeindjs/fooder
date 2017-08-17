@@ -33,6 +33,7 @@
           <td>
             <div class="btn-group" role="group" aria-label="...">
               <%= link_to glyphicon('eye-open'), edit_menu_path(menu) , class: 'btn btn-default' %>
+              <%= link_to glyphicon('paste'), copy_menu_path(menu.id), class: "btn btn-default" %>
               <%= link_to glyphicon('trash'), menu, method: :delete, data: { confirm: 'Etes-vous sûr?' }, class: 'btn btn-danger' %>
             </div>
           </td>
