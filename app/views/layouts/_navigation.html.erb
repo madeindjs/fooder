@@ -7,7 +7,6 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-
       <% if @restaurant and @restaurant.name %>
         <%= link_to @restaurant.name, root_url(subdomain: @restaurant) , class: "navbar-brand",
           title:  ( admin? ? 'Le nom de votre restaurant peut être changé dans la section "editer le restaurant"' : nil ) %>
@@ -16,23 +15,21 @@
           <%= image_tag 'fooder.svg', size: 40 %>
         <% end # end of navbar-brand %>
       <% end %>
-    </div><!-- / .navbar-header -->
+    </div>
+    <!-- / .navbar-header -->
     <div id="navbar" class="collapse navbar-collapse">
-
       <ul class="nav navbar-nav nav navbar-left">
         <% if @restaurant %>
-          <%= render "layouts/navigation_restaurant" %>
+          <%= render "layouts/navigation_restaurant", cache: true %>
         <% else %>
           <li><%= link_to "Nos clients", restaurants_path %></li>
           <li><%= link_to "Contact", contact_path %></li>
         <% end %>
-
       </ul>
-
       <ul class="nav navbar-nav nav navbar-right">
         <% if @restaurant %>
           <% if admin? %>
-          <li><%= link_to 'Administration', admin_path %></li>
+            <li><%= link_to 'Administration', admin_path %></li>
             <li><button id="toggle-client-view" class="navbar-btn">Afficher la vue client</button></li>
           <% end %>
         <% else %>
@@ -48,9 +45,8 @@
             <li><%= link_to "créer un compte", signup_path %></li>
           <% end %>
         </ul>
-        <% end %>
-    </div><!--/.nav-collapse -->
-
-
+      <% end %>
+    </div>
+    <!--/.nav-collapse -->
   </div>
 </nav>
