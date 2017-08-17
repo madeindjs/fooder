@@ -4,7 +4,7 @@
       <div class="col-sm-offset-1 col-sm-3 col-xs-4 tooltip-holder" <%= tooltip "Le plan du site est généré automatiquement en fonction des modules activé." %> >
         <strong>Plan du site</strong>
         <ul class="list-unstyled">
-          <%= render "layouts/navigation_restaurant" %>
+          <%= render "layouts/navigation_restaurant", cache: true %>
         </ul>
       </div>
       <div class="col-sm-3 col-xs-4 tooltip-holder" <%= tooltip "Gérez les liens vers les résaux sociaux" %> >

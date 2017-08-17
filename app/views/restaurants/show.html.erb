@@ -2,8 +2,8 @@
   <div class="row admin">
     <div class="col-xs-12"">
       <div class="col-xs-12">
-        <%= render 'toolbars/sections' %>
-        <%= render 'toolbars/restaurant' %>
+        <%= render 'toolbars/sections', cache: true %>
+        <%= render 'toolbars/restaurant', cache: true %>
       </div>
     </div>
   </div>
@@ -15,7 +15,7 @@
     <h1 class="tooltip-holder" <%= tooltip 'Le nom de votre restaurant peut être changé dans la section "editer le restaurant"' %> ><%= logo_tag @restaurant %><%= @restaurant.name %></h1>
   </div>
 </div>
-<%= render 'sections/list', sections: @restaurant.sections %>
+<%= render 'sections/list', sections: @restaurant.sections, cache: true %>
 <div class="row">
   <div class="col-xs-12">
     <h2>Informations</h2>
