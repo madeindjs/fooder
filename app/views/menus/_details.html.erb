@@ -5,8 +5,15 @@
   <% end %>
   <% if admin? %>
     <p class="text-right admin">
-      <%= link_to 'editer', edit_menu_path(menu), class: "btn btn-default" %>
-      <%= link_to 'Supprimer', menu, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'  %>
+      <%= link_to edit_menu_path(menu), class: "btn btn-default" do %>
+        <%= glyphicon 'pencil' %> editer
+      <% end %>
+      <%= link_to copy_menu_path(menu.id), class: "btn btn-default" do %>
+        <%= glyphicon 'paste' %> copier cette recette
+      <% end %>
+      <%= link_to menu, method: :delete, data: { confirm: 'Êtes-vous sûr?' }, class: 'btn btn-danger' do %>
+        <%= glyphicon 'trash' %> Supprimer
+      <% end %>
     </p>
   <% end %>
 </div>

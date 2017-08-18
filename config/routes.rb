@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     resources :posts
     resources :links
     resources :sections
+    get '/menus/:id/copy' => "menus#copy", as: :copy_menu
     resources :menus
     resources :dishes
     resources :allergens, only: [:index]
