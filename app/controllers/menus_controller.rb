@@ -48,7 +48,7 @@ class MenusController < ApplicationController
     new_menu = @menu.dup
     new_menu.root_menu_id = @menu.id
     new_menu.name += " (copie)"
-    # TODO: copy also linked dishes
+    new_menu.dishes = @menu.dishes
     if new_menu.save
       flash[:success] = "Votre menu a été copié."
       redirect_to new_menu
