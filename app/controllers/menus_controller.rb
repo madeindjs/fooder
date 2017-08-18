@@ -1,8 +1,7 @@
 class MenusController < ApplicationController
-  before_action :set_menu, only: [:show, :edit, :update, :destroy]
-  before_action :check_login, only: [:new, :create, :edits, :edit, :update, :destroy]
-  before_action :check_owner, only: [:edit, :update, :destroy]
-  before_action :check_admin, only: [:edits]
+  before_action :set_menu, only: [:show, :edit, :update, :destroy, :copy]
+  before_action :check_login, only: [:new, :create, :edits, :edit, :update, :destroy, :copy]
+  before_action :check_owner, only: [:edit, :update, :destroy, :copy]
 
   layout 'admin', only: [:edit, :new]
 
@@ -42,6 +41,21 @@ class MenusController < ApplicationController
     @description = "Editer un menu déjà existant."
 
     render  '_form', locals: {menu: @menu}, layout:  false if request.xhr?
+  end
+
+  # GET /menus/1/copy
+  def copy
+    new_menu = @menu.dup
+    new_menu.root_menu_id = @menu.id
+    new_menu.name += " (copie)"
+    new_menu.dishes = @menu.dishes
+    if new_menu.save
+      flash[:success] = "Votre menu a été copié."
+      redirect_to new_menu
+    else
+      flash[:danger] = "Une erreur est survenue."
+      redirect_back fallback_location: menu_path(@menu)
+    end
   end
 
 
