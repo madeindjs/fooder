@@ -55,10 +55,8 @@ group :development do
   gem 'faker'
 
   # capistrano
-  gem 'capistrano',   require: false
-  gem 'capistrano-rvm',   require: false
-  gem 'capistrano-rails',   require: false
-  gem 'capistrano-bundler',   require: false
+  gem 'capistrano', '~> 3.6'
+  gem 'capistrano-rails', '~> 1.3'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
