@@ -92,7 +92,10 @@ class DishesController < ApplicationController
         data = line.split(';')
         category = Category.find_or_create data[3], @restaurant.id
 
-        Dish.create user_id: current_user.id, category_id: category.id,name: data[0], description: data[0]
+        Dish.create(
+          user_id: current_user.id, category_id: category.id, restaurant_id: @restaurant.id,
+          name: data[0], description: data[1], price: data[2]
+        )
       end
     end
   end

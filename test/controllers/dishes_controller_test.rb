@@ -56,7 +56,7 @@ class DishesControllerTest < ActionDispatch::IntegrationTest
     setup_restaurant_host
     login(users(:me))
     assert_difference('Category.count') do
-      post dishes_import_path, params: {csv: 'Salade;une bonne salade;10;Une nouvelle catégorie'}
+      post dishes_import_path, params: {csv: 'Salade;une bonne salade;10;Une nouvelle catégorie qui n\'existe pas'}
     end
     assert_response :success
   end
