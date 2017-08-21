@@ -1,0 +1,5 @@
+<h1>Importer des produits en masse</h1>
+<%= bootstrap_form_tag url: dishes_import_path, method: :post do |f| %>
+  <%= f.text_area :csv, placeholder: "Salade;une bonne salade;10;Entrée", value: "Salade;une bonne salade;10;Entrée" %>
+  <%= f.submit %>
+<% end %>

@@ -2,7 +2,7 @@ class DishesController < ApplicationController
   before_action :set_dish, only: [:show, :edit, :update, :destroy]
   before_action :check_login, only: [:new, :create, :edit, :edits, :update, :destroy]
   before_action :check_owner, only: [:edit, :update, :destroy]
-  before_action :check_admin, only: [:edits, :allergens]
+  before_action :check_admin, only: [:edits, :allergens, :import]
   before_action :check_restaurant
 
   layout 'admin', only: [:edit, :new]
@@ -87,6 +87,14 @@ class DishesController < ApplicationController
   # GET  /admin/dishes/import
   # POST /admin/dishes/import
   def import
+    if request.post?
+      params['csv'].each_line do |line|
+        data = line.split(';')
+        category = Category.find_or_create data[3], @restaurant.id
+
+        Dish.create user_id: current_user.id, category_id: category.id,name: data[0], description: data[0]
+      end
+    end
   end
 
   private
