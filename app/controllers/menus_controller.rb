@@ -58,8 +58,6 @@ class MenusController < ApplicationController
     end
   end
 
-
-
   # POST /menus
   # POST /menus.json
   def create
@@ -67,8 +65,10 @@ class MenusController < ApplicationController
     @menu.user_id = current_user.id
     @menu.restaurant_id = @restaurant.id
 
+    add_dishes
+
     if @menu.save
-      flash[:success] = "Votre menu a été supprimé."
+      flash[:success] = "Votre menu a été crée."
       redirect_to @menu
     else
       flash[:danger] = "Une erreur est survenue."
@@ -79,12 +79,7 @@ class MenusController < ApplicationController
   # PATCH/PUT /menus/1
   def update
     if @menu.update(menu_params)
-
-
-      params['dishes'].each_pair do |dish_id, boolean|
-        @menu.dishes << Dish.find(dish_id)
-      end if params['dishes']
-
+      add_dishes
       flash[:success] = "Votre menu a été mise à jour."
       redirect_to @menu
     else
@@ -98,7 +93,7 @@ class MenusController < ApplicationController
   def destroy
     @menu.destroy
     flash[:success] = "Votre categorie a été mise à jour."
-    redirect_back fallback_location: admin_menus_path
+    redirect_to admin_menus_path
   end
 
   private
@@ -114,5 +109,12 @@ class MenusController < ApplicationController
 
   def check_owner
     redirect_to root_path unless current_user.menus.include? @menu
+  end
+
+  # Add selected dishes to @menu
+  def add_dishes
+    params['dishes'].each_pair do |dish_id, boolean|
+      @menu.dishes << Dish.find(dish_id)
+    end if params['dishes']
   end
 end
