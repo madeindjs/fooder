@@ -58,8 +58,6 @@ class MenusController < ApplicationController
     end
   end
 
-
-
   # POST /menus
   # POST /menus.json
   def create

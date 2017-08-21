@@ -4,6 +4,7 @@
     <thead>
       <tr>
         <th>Nom</th>
+        <th>Description</th>
         <th>Prix</th>
         <th>Type</th>
         <th>Visibilité</th>
@@ -49,5 +50,8 @@
   <%= submit_tag 'Tout mettre à jour', class: 'btn btn-primary' %>
   <%= link_to new_dish_path, class: 'btn btn-default' do %>
     <%= glyphicon 'plus' %> Nouveau produit
+  <% end %>
+  <%= link_to dishes_import_path, class: 'btn btn-default' do %>
+    <%= glyphicon 'import' %> Importer des produits en masse
   <% end %>
 <% end %>
