@@ -83,6 +83,12 @@ class DishesController < ApplicationController
     @dishes = @restaurant.dishes
   end
 
+
+  # GET  /admin/dishes/import
+  # POST /admin/dishes/import
+  def import
+  end
+
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_dish
