@@ -51,6 +51,15 @@ class DishesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should import mutliples dishes" do
+    setup_restaurant_host
+    login(users(:me))
+    assert_difference('Dish.count', 2) do
+      post dishes_import_path, params: {csv: "Salade;une bonne salade;10;Entrée\nTourte;une bonne tourte;10;Entrée"}
+    end
+    assert_response :success
+  end
+
 
   test "should import dishes & create actegory" do
     setup_restaurant_host
