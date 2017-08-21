@@ -88,15 +88,25 @@ class DishesController < ApplicationController
   # POST /admin/dishes/import
   def import
     if request.post?
+      imported_dishes = []
+      failed_dishes = []
+
       params['csv'].each_line do |line|
         data = line.split(';')
         category = Category.find_or_create data[3], @restaurant.id
 
-        Dish.create(
+        dish = Dish.create(
           user_id: current_user.id, category_id: category.id, restaurant_id: @restaurant.id,
           name: data[0], description: data[1], price: data[2]
         )
+        if dish.id
+          imported_dishes << dish.name
+        else
+          failed_dishes << dish.name
+        end
       end
+      flash[:success] = "#{imported_dishes} ont été importé." unless imported_dishes.empty?
+      flash[:danger] = "La mise à jour de #{failed_dishes} n'ont pas été importé."  unless failed_dishes.empty?
     end
   end
 
