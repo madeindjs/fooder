@@ -24,7 +24,4 @@ $('#toggle-client-view').click(function(){
     $(el).fadeToggle();
   });
 
-  //
-  var mainContainer = $("#main-container");
-  
 });
