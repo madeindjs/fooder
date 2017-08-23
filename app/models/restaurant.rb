@@ -53,6 +53,11 @@ class Restaurant < ApplicationRecord
     }
   }
 
+  def complete_name
+    content = "#{self.name} - #{self.complete_address}"
+    # content += " - #{self.phone}" if self.phone and !self.phone.empty?
+  end
+
   def complete_address
     "#{self.address}, #{self.zip_code}, #{self.city}"
   end
@@ -60,6 +65,7 @@ class Restaurant < ApplicationRecord
   def valid_opening_hours
     self.opening_hours.to_a.select{|h| h.actual? }
   end
+
   # Format to json_ld
   #
   # @return [Hash]

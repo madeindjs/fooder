@@ -1,59 +1,15 @@
-<footer class="footer" style="margin-top: 200px">
-  <div class="container">
-    <% if @restaurant %>
-      <div class="col-sm-offset-1 col-sm-3 col-xs-4 tooltip-holder" <%= tooltip "Le plan du site est généré automatiquement en fonction des modules activé." %> >
-        <strong>Plan du site</strong>
-        <ul class="list-unstyled">
-          <%= render "layouts/navigation_restaurant", cache: true %>
-        </ul>
-      </div>
-      <div class="col-sm-3 col-xs-4 tooltip-holder" <%= tooltip "Gérez les liens vers les résaux sociaux" %> >
-        <strong>Sur internet</strong>
-        <ul class="list-unstyled">
-          <% @restaurant.links.each do |link| %>
-            <li><%= link_to  link.name, link.url %></li>
-          <% end %>
-        </ul>
-      </div>
-      <div class="col-sm-3 col-xs-4">
-        <strong>Informations</strong>
-        <ul class="list-unstyled">
-          <li><%= link_to  'Coordonnées', contact_path %></li>
-        </ul>
-      </div>
-    <% else %>
-      <div class="col-xs-4" >
-        <strong>Plan du site</strong>
-        <ul class="list-unstyled">
-          <li><%= link_to "Accueil", home_url(subdomain: nil) %></li>
-          <li><%= link_to "Nos clients", restaurants_path %></li>
-          <li><%= link_to "Tarifs", cost_path %></li>
-        </ul>
-      </div>
-      <div class="col-xs-4" >
-        <strong>Le projet</strong>
-        <ul class="list-unstyled">
-          <li><%= link_to 'Github' , "https://github.com/madeindjs/fooder" %></li>
-          <li><%= link_to 'Apache License 2.0' , "http://www.apache.org/licenses/LICENSE-2.0.html" %></li>
-        </ul>
-      </div>
-      <div class="col-xs-4" >
-        <strong>Contact</strong>
-        <ul class="list-unstyled">
-          <li><%= link_to "L'auteur" , "http://rousseau-alexandre.fr/" %></li>
-          <li><%= link_to 'Email' , "mailto:RousseauAlexandre.Lyon@gmail.com?subject=Fooder" %></li>
-        </ul>
-      </div>
-    <% end %>
-  </div>
-  <% if @restaurant and not @restaurant.user.premium? %>
-    <div class="container tooltip-holder" <%= tooltip "Basculez sur un compte premium pour faire disparaitre ce message." %> >
-      <p>Crée avec <%= link_to "fooder.pro" , "http://fooder.pro" %></p>
-    </div>
-  <% end %>
-</footer>
+<% if @restaurant  %>
+  <%= render 'layouts/footer_restaurant', cache: true %>
+<% else %>
+  <%= render 'layouts/footer_project', cache: true %>
+<% end %>
 <% if @jsonld %>
   <script type="application/ld+json">
     <%= @jsonld.to_json.html_safe %>
   </script>
 <% end %>
+<noscript id="deferred-styles">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+</noscript>
+<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>

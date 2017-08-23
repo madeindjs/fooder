@@ -12,7 +12,7 @@ class PagesController < ApplicationController
     @description = "Une question? N'hésitez pas à nous contacter par mail."
     if request.post?
       if @restaurant
-        RestaurantMailer.contact(contact_params.to_h, @restaurant.user.email).deliver_now
+        RestaurantMailer.contact(contact_params.to_h, @restaurant.email).deliver_now
         flash[:success] = 'Votre demande à été transmise au support'
       else
         UserMailer.contact(contact_params.to_h).deliver_now

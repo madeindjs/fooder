@@ -1,21 +1,13 @@
-<div class="row">
-  
-  <% sections.each do |section| %>
-
-    
-    <div class="jumbotron header">
-      <%= image_tag section.picture.thumb, class: 'img-circle section-img' if section.picture? %>
-      <h2><%= section.title %></h2>
-      <p><%= section.content %></p>
-      
-      <% if admin? %>
-        <p class="text-right admin">
-            <%= link_to 'editer', edit_section_path(section), class: "btn btn-default ajax-edit" %>
-            <%= link_to 'Supprimer', section, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'  %>
-        </p>
-      <% end %>
-    </div>
-
-
-  <% end %>
-</div>
+<% sections.each do |section| %>
+  <div class="jumbotron header">
+    <%= image_tag section.picture.thumb, class: 'img-circle section-img' if section.picture? %>
+    <h2><%= section.title %></h2>
+    <p><%= section.content %></p>
+    <% if admin? %>
+      <p class="text-right admin">
+        <%= link_to 'editer', edit_section_path(section), class: "btn btn-default ajax-edit" %>
+        <%= link_to 'Supprimer', section, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'  %>
+      </p>
+    <% end %>
+  </div>
+<% end %>
