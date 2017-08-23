@@ -2,13 +2,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-
 <!-- primary informations -->
 <title><%= @title %></title>
 <meta property="og:title" content="<%= @title %>">
 <meta name="description" content="<%= @description %>">
 <meta property="og:description" content="<%= @description %>" >
-
 <!-- specific informations -->
 <% if @restaurant and not @restaurant.logo.favicon.file.nil? %>
   <link rel="icon" type="image/png" href="<%= @restaurant.logo.favicon.url %>" />
@@ -16,15 +14,8 @@
 <% else %>
   <meta name="thumbnail" content="http://fooder.profooder.png" />
   <meta property="og:image" content="http://fooder.profooder.png" >
-  <link rel="icon" type="image/png" href="favicon.png" />
-
-  <meta property="og:image" content="http://raspberry-cook.frimages/og_image.png">
-  <meta name="thumbnail" content="http://raspberry-cook.frimages/og_image.png" />
-  <meta property="og:image:type" content="image/png">
-  <meta property="og:image:width" content="1000">
-  <meta property="og:image:height" content="1000">
+  <link rel="icon" type="image/png" href="<%= image_url 'favicon.png' %>" />
 <% end %>
-
 <!-- Basics meta tags -->
 <meta name="keywords" content="cms, restaurant, website, create, free, manager, open-source">
 <meta name="author" content="Rousseau Alexandre">
