@@ -1,0 +1,29 @@
+<footer class="footer" style="margin-top: 200px">
+  <div class="container">
+    <div class="col-sm-offset-1 col-sm-3 col-xs-4 tooltip-holder" <%= tooltip "Le plan du site est généré automatiquement en fonction des modules activé." %> >
+      <strong>Plan du site</strong>
+      <ul class="list-unstyled">
+        <%= render "layouts/navigation_restaurant", cache: true %>
+      </ul>
+    </div>
+    <div class="col-sm-3 col-xs-4 tooltip-holder" <%= tooltip "Gérez les liens vers les résaux sociaux" %> >
+      <strong>Sur internet</strong>
+      <ul class="list-unstyled">
+        <% @restaurant.links.each do |link| %>
+          <li><%= link_to  link.name, link.url %></li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="col-sm-3 col-xs-4">
+      <strong>Informations</strong>
+      <ul class="list-unstyled">
+        <li><%= link_to  'Coordonnées', contact_path %></li>
+      </ul>
+    </div>
+  </div>
+  <% if @restaurant.user.premium? %>
+    <div class="container tooltip-holder" <%= tooltip "Basculez sur un compte premium pour faire disparaitre ce message." %> >
+      <p>Crée avec <%= link_to "fooder.pro" , "http://fooder.pro" %></p>
+    </div>
+  <% end %>
+</footer>

@@ -1,0 +1,26 @@
+<footer class="footer" style="margin-top: 200px">
+  <div class="container">
+    <div class="col-xs-4" >
+      <strong>Plan du site</strong>
+      <ul class="list-unstyled">
+        <li><%= link_to "Accueil", home_url(subdomain: nil) %></li>
+        <li><%= link_to "Nos clients", restaurants_path %></li>
+        <li><%= link_to "Tarifs", cost_path %></li>
+      </ul>
+    </div>
+    <div class="col-xs-4" >
+      <strong>Le projet</strong>
+      <ul class="list-unstyled">
+        <li><%= link_to 'Github' , "https://github.com/madeindjs/fooder" %></li>
+        <li><%= link_to 'Apache License 2.0' , "http://www.apache.org/licenses/LICENSE-2.0.html" %></li>
+      </ul>
+    </div>
+    <div class="col-xs-4" >
+      <strong>Contact</strong>
+      <ul class="list-unstyled">
+        <li><%= link_to "L'auteur" , "http://rousseau-alexandre.fr/" %></li>
+        <li><%= link_to 'Email' , "mailto:RousseauAlexandre.Lyon@gmail.com?subject=Fooder" %></li>
+      </ul>
+    </div>
+  </div>
+</footer>
