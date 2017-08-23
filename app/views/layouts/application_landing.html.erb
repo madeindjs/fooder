@@ -22,11 +22,8 @@
         </div>
         <!-- /.container -->
       </div>
-      <div class="row">
-        <%= render 'layouts/footer', cache: true %>
-      </div>
     </div>
-    <%= render 'layouts/footer_restaurant', cache: true %>
+    <%= render 'layouts/footer_project', cache: true %>
     <% if @jsonld %>
       <script type="application/ld+json">
         <%= @jsonld.to_json.html_safe %>
