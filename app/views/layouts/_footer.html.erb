@@ -1,7 +1,7 @@
-<% if @restaurant %>
+<% if @restaurant  %>
   <%= render 'layouts/footer_restaurant', cache: true %>
 <% else %>
-  <%= render 'layouts/footer', cache: true %>
+  <%= render 'layouts/footer_project', cache: true %>
 <% end %>
 <% if @jsonld %>
   <script type="application/ld+json">
