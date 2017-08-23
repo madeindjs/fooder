@@ -53,6 +53,10 @@ class Restaurant < ApplicationRecord
     }
   }
 
+  def complete_name
+    "#{self.name} - #{self.complete_address}"
+  end
+
   def complete_address
     "#{self.address}, #{self.zip_code}, #{self.city}"
   end
