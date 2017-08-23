@@ -15,14 +15,19 @@
     <h1 class="tooltip-holder" <%= tooltip 'Le nom de votre restaurant peut être changé dans la section "editer le restaurant"' %> ><%= logo_tag @restaurant %><%= @restaurant.name %></h1>
   </div>
 </div>
-<%= render 'sections/list', sections: @restaurant.sections, cache: true %>
 <div class="row">
-  <div class="col-xs-12">
+  <%= render 'sections/list', sections: @restaurant.sections, cache: true %>
+  <div class="jumbotron header">
     <h2>Informations</h2>
-    <h3>Horraires d'ouvertures</h3>
-    <%= @restaurant.plain_opening_hours #= render 'opening_hours/details', opening_hours: @restaurant.valid_opening_hours 
+    <% unless @restaurant.plain_opening_hours.empty? %>
+      <h3>Horraires d'ouvertures</h3>
+      <%= @restaurant.plain_opening_hours #= render 'opening_hours/details', opening_hours: @restaurant.valid_opening_hours 
     %>
+    <% end %>
     <h3>Addresse</h3>
     <p><%= glyphicon 'home' %> <%= @restaurant.complete_address %></p>
+    <% if @restaurant.module_contact %>
+      <p><%= link_to "Contactez nous", contact_url(subdomain: @restaurant), class: 'btn btn-default' %></p>
+    <% end %>
   </div>
 </div>
