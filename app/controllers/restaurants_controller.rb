@@ -95,7 +95,7 @@ class RestaurantsController < ApplicationController
   def set_restaurant
     begin
       @restaurant = Restaurant.friendly.find(params[:id]) unless @restaurant
-    rescue ActiveRecord::RecordNotFound => e
+    rescue ActiveRecord::RecordNotFound
       flash[:danger] = "Ce restaurant n'existe pas, mais vous pouvez le créer."
       redirect_to new_restaurant_url(subdomain: '')
     end
@@ -103,7 +103,7 @@ class RestaurantsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def restaurant_params
-    data = params.require(:restaurant).permit :name, :address, :zip_code, :city, :picture, :logo, :css, :picture_display, :slug, :plain_opening_hours
+    data = params.require(:restaurant).permit :name, :address, :zip_code, :city, :picture, :logo, :css, :picture_display, :slug, :plain_opening_hours, :phone, :email
     data.delete :css if data['css'] and data['css'].empty?
     return data
   end
