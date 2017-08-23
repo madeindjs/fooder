@@ -16,6 +16,12 @@
         <div class="col-sm-6">
           <%= f.text_field :city, label: 'Ville' %>
         </div>
+        <div class="col-sm-12">
+          <%= f.text_field :phone, label: 'Numéro de télephone' %>
+        </div>
+        <div class="col-sm-12">
+          <%= f.text_field :email, label: 'Email', help: "L'email n'est pas affiché. Il sert de desinataire au formulaire de contact" %>
+        </div>
         <div class="col-xs-12">
           <%= alert 'info', 'Ces informations serviront à construire la section "contact" de votre site.' %>
         </div>
