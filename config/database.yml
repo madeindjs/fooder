@@ -19,5 +19,5 @@ production:
   pool: 5
   encoding: utf8
   username: root
-  password: ./usr/Alex
+  password: ****
   host:  localhost
