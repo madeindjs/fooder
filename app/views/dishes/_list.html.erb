@@ -5,6 +5,7 @@
     <h2 class="col-xs-12"><%= category.name %></h2>
     <% dishes.select{|d| d.category_id == category.id}.each do |dish| %>
       <article class="col-sm-6">
+        <!-- picture and title -->
         <%= link_to dish do %>
           <%= picture_tag dish, :picture_display, css_class: "dish-picture", size: 100 %>
         <% end %>

@@ -1,19 +1,6 @@
 <div class="col-sm-12">
   <%= picture_tag menu, :picture_display, css_class: 'section-img', size: 100 %>
   <% if @restaurant.module_menus and not menu.dishes.empty?%>
-    <%= render 'dishes/simple_list', dishes: menu.dishes, cache: true %>
-  <% end %>
-  <% if admin? %>
-    <p class="text-right admin">
-      <%= link_to edit_menu_path(menu), class: "btn btn-default" do %>
-        <%= glyphicon 'pencil' %> editer
-      <% end %>
-      <%= link_to copy_menu_path(menu.id), class: "btn btn-default" do %>
-        <%= glyphicon 'paste' %> copier cette recette
-      <% end %>
-      <%= link_to menu, method: :delete, data: { confirm: 'Êtes-vous sûr?' }, class: 'btn btn-danger' do %>
-        <%= glyphicon 'trash' %> Supprimer
-      <% end %>
-    </p>
+    <%= render 'dishes/list', dishes: menu.dishes, cache: true %>
   <% end %>
 </div>
