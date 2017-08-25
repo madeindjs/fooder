@@ -1,0 +1,29 @@
+<style type="text/css">
+  p{text-align: justify;}
+  img{max-height: 200px}
+</style>
+<p>Bonjour,</p>
+<p>J'ai récemment remarqué que votre site web pour votre restaurant "<%= @restaurant.name %>" n'a pas été mis à jour depuis un bon moment.</p>
+<p>Développeur passionné, j'ai crée une plateforme vous permettant de créer un site pour votre restaurant facilement et rapidement. Celle-ci héberge votre site et vous propose une interface permettant de mettre à jour vos produits facilement.</p>
+<p style="text-align: center">
+  <%= image_tag 'screenshots/macbook_home.png', alt: "Capture d'écran de la page d'un restaurant crée avec Fooder", class: "img-responsive screenshot" %>
+  <%= image_tag 'screenshots/macbook_edit.png', class: "img-responsive screenshot", alt: "Capture d'écran du formulaire d'édition d'un plat" %>
+  <%= image_tag 'screenshots/macbook_theme.png', class: "img-responsive screenshot", alt: "Un aperçu des thèmes proposés" %>
+</p>
+<p>J'ai donc importé vos produits et j'ai fais une simulation avec votre restaurant.</p>
+<p style="text-align: center">
+  <%= link_to root_url(@restaurant, subdomain: @restaurant.slug) do %>
+    <button>Accéder à votre site</button>
+  <% end %>
+</p>
+<p>Etant donnée que vous êtes mes premiers clients, n'hésitez pas à me contacter au <a href="tel:+33663549581">06 63 54 95 81</a> si vous avez la moindre question et/ou suggestion.</p>
+<p>Bien cordialement,</p>
+<hr/>
+<small>
+  <p>
+    ROUSSEAU Alexandre<br/>
+    Fondateur de <%= link_to 'Fooder', 'http://fooder.pro' %><br/>
+    <%= mail_to 'a.rousseau@fooder.pro' %><br/>
+    <%= link_to 'rousseau-alexandre.fr', 'http://rousseau-alexandre.fr/' %>
+  </p>
+</small>

@@ -1,6 +1,6 @@
 class RestaurantsController < ApplicationController
   before_action :check_login, only: [:activate, :new, :create, :edit, :update, :destroy, :opening_hours]
-  before_action :set_restaurant, only: [:activate, :show, :edit, :update, :destroy, :opening_hours]
+  before_action :set_restaurant, only: [:activate, :show, :edit, :update, :destroy, :opening_hours, :send_commercial_mail]
   before_action :check_owner, only: [:edit, :update, :destroy, :opening_hours]
   before_action :check_restaurant, only: [:contact]
 
@@ -87,6 +87,17 @@ class RestaurantsController < ApplicationController
       flash[:danger] = "Une erreur est survenue."
     end
     redirect_back fallback_location: @restaurant
+  end
+
+
+  def send_commercial_mail
+    if current_user.email == 'a.rousseau@fooder.pro'
+      RestaurantMailer.commercial(@restaurant).deliver_now
+      flash[:success] = "Le mail commercial a été envoyé."
+    else
+      flash[:danger] = "Une erreur est survenue."
+    end
+    redirect_to root_url
   end
 
 
