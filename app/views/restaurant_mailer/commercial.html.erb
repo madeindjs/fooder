@@ -4,19 +4,20 @@
 </style>
 <p>Bonjour,</p>
 <p>J'ai récemment remarqué que votre site web pour votre restaurant "<%= @restaurant.name %>" n'a pas été mis à jour depuis un bon moment.</p>
-<p>Développeur passionné, j'ai crée une plateforme vous permettant de créer un site pour votre restaurant facilement et rapidement. Celle-ci héberge votre site et vous propose une interface permettant de mettre à jour vos produits facilement.</p>
+<p>Développeur passionné, j'ai mis au point une plateforme vous permettant de créer un site pour votre restaurant facilement et rapidement. Celle-ci héberge votre site et vous propose une interface permettant de mettre à jour vos produits de façon intuitive.</p>
 <p style="text-align: center">
   <%= image_tag 'screenshots/macbook_home.png', alt: "Capture d'écran de la page d'un restaurant crée avec Fooder", class: "img-responsive screenshot" %>
   <%= image_tag 'screenshots/macbook_edit.png', class: "img-responsive screenshot", alt: "Capture d'écran du formulaire d'édition d'un plat" %>
   <%= image_tag 'screenshots/macbook_theme.png', class: "img-responsive screenshot", alt: "Un aperçu des thèmes proposés" %>
 </p>
-<p>J'ai donc importé vos produits et j'ai fais une simulation avec votre restaurant.</p>
+<p>J'ai donc importé vos produits via votre situe actuel et j'ai fait une simulation avec votre restaurant.</p>
 <p style="text-align: center">
   <%= link_to root_url(@restaurant, subdomain: @restaurant.slug) do %>
     <button>Accéder à votre site</button>
   <% end %>
 </p>
-<p>Etant donnée que vous êtes mes premiers clients, n'hésitez pas à me contacter au <a href="tel:+33663549581">06 63 54 95 81</a> si vous avez la moindre question et/ou suggestion.</p>
+<p>Si le site que je vous propose vous plait n'hésitez pas à l'utiliser, je vous joindrai vos identifiants que vous pourrez modifier afin que je n'y ai plus accès. <small>Si vous ne souhaitez pas utiliser ce site je supprimerai la page de votre restaurant.</small></p>
+<p>N'hésitez pas à me contacter par mail pour toute remarque ou question, c'est avec plaisir que je vous répondrai</p>
 <p>Bien cordialement,</p>
 <hr/>
 <small>
