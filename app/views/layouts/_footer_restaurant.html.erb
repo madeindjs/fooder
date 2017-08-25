@@ -25,9 +25,12 @@
       </ul>
     </div>
   </div>
-  <% if @restaurant.user.premium? %>
+  <% unless @restaurant.user.premium? %>
     <div class="container tooltip-holder" <%= tooltip "Basculez sur un compte premium pour faire disparaitre ce message." %> >
-      <p>Crée avec <%= link_to "fooder.pro" , "http://fooder.pro" %></p>
+      <p>Ce site web a été crée avec <%= glyphicon 'heart' %> sur <%= link_to "fooder.pro" , "http://fooder.pro" %>.</p>
+      <span class="admin">
+        <%= alert 'info', "Basculez sur un compte premium pour faire disparaitre ce message." if @restaurant.user == current_user %>
+      </span>
     </div>
   <% end %>
 </footer>

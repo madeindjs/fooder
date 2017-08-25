@@ -5,8 +5,23 @@
     <% if menu.tags %>
       <p><%= tags menu.tags %></p>
     <% end %>
+    <!-- see more buttons -->
     <% if menu.dishes.count != 0 %>
       <p class="text-right"><%= button_tag 'En savoir plus', type: 'button', class: 'menu-show-details btn btn-default', data: {id: menu.id} %></p>
+    <% end %>
+    <% if admin? %>
+      <!-- admin buttons -->
+      <p class="text-right admin">
+        <%= link_to edit_menu_path(menu), class: "btn btn-default" do %>
+          <%= glyphicon 'pencil' %> editer
+        <% end %>
+        <%= link_to copy_menu_path(menu.id), class: "btn btn-default" do %>
+          <%= glyphicon 'paste' %> copier
+        <% end %>
+        <%= link_to menu, method: :delete, data: { confirm: 'Êtes-vous sûr?' }, class: 'btn btn-danger' do %>
+          <%= glyphicon 'trash' %> Supprimer
+        <% end %>
+      </p>
     <% end %>
   </div>
   <p><%= menu.content %></p>
