@@ -27,28 +27,22 @@ class MailingsController < ApplicationController
   def create
     @mailing = Mailing.new(mailing_params)
 
-    respond_to do |format|
-      if @mailing.save
-        format.html { redirect_to @mailing, notice: 'Mailing was successfully created.' }
-        format.json { render :show, status: :created, location: @mailing }
-      else
-        format.html { render :new }
-        format.json { render json: @mailing.errors, status: :unprocessable_entity }
-      end
+    if @mailing.save
+      redirect_to @mailing, success: 'Mailing was successfully created.'
+    else
+      render :new
     end
   end
 
   # PATCH/PUT /mailings/1
   # PATCH/PUT /mailings/1.json
   def update
-    respond_to do |format|
-      if @mailing.update(mailing_params)
-        format.html { redirect_to @mailing, notice: 'Mailing was successfully updated.' }
-        format.json { render :show, status: :ok, location: @mailing }
-      else
-        format.html { render :edit }
-        format.json { render json: @mailing.errors, status: :unprocessable_entity }
-      end
+    if @mailing.update(mailing_params)
+      format.html { redirect_to @mailing, success: 'Mailing was successfully updated.' }
+      format.json { render :show, status: :ok, location: @mailing }
+    else
+      format.html { render :edit }
+      format.json { render json: @mailing.errors, status: :unprocessable_entity }
     end
   end
 
@@ -56,10 +50,7 @@ class MailingsController < ApplicationController
   # DELETE /mailings/1.json
   def destroy
     @mailing.destroy
-    respond_to do |format|
-      format.html { redirect_to mailings_url, notice: 'Mailing was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to mailings_url, success: 'Mailing was successfully destroyed.'
   end
 
   private
