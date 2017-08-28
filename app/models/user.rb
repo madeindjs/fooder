@@ -24,6 +24,8 @@ class User < ApplicationRecord
     c.crypto_provider = Authlogic::CryptoProviders::Sha512
   end
 
+  SUPER_USER = 'a.rousseau@fooder.pro'
+
 
   def complete_name
     "#{self.lastname} #{self.firstname}"
