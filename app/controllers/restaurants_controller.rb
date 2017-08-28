@@ -90,18 +90,9 @@ class RestaurantsController < ApplicationController
   end
 
 
-  def send_commercial_mail
-    if current_user.email == 'a.rousseau@fooder.pro'
-      RestaurantMailer.commercial(@restaurant).deliver_now
-      flash[:success] = "Le mail commercial a été envoyé."
-    else
-      flash[:danger] = "Une erreur est survenue."
-    end
-    redirect_to root_url
-  end
-
-
   private
+
+
   # Use callbacks to share common setup or constraints between actions.
   def set_restaurant
     begin

@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :mailings
   # restaurants area
   resources :categories, only: [:create, :new, :edit, :update, :destroy]
   resources :restaurants # TODO: remove it
-  get 'send_commercial_mail/:id' => "restaurants#send_commercial_mail", as: :send_commercial_mail
 
   constraints subdomain: /.+/  do
     get '/' => 'restaurants#show'

@@ -1,0 +1,21 @@
+<h1>Mailings</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Restaurant</th>
+      <th>Mailing</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @mailings.each do |mailing| %>
+      <tr>
+        <td><%= mailing.restaurant ? mailing.restaurant.name : "Le restaurant n'existe plus"  %></td>
+        <td><%= mailing.mail %></td>
+        <td><%= mailing.created_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<%= link_to 'New Mailing', new_mailing_path, class: 'btn btn-default' %>

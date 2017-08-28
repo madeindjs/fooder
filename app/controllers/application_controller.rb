@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
       elsif params[:restaurant_id]
         @restaurant = Restaurant.friendly.find params[:restaurant_id]
       end
-    rescue ActiveRecord::RecordNotFound => e
+    rescue ActiveRecord::RecordNotFound
     end
   end
 
@@ -40,6 +40,10 @@ class ApplicationController < ActionController::Base
 
   def check_admin
     redirect_to root_path unless current_user and current_user.restaurants.include? @restaurant
+  end
+
+  def check_super_user
+    redirect_to root_path unless current_user and current_user.email == User::SUPER_USER
   end
 
   helper_method :current_user_session, :current_user

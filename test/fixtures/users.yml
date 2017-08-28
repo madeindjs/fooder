@@ -12,7 +12,6 @@ me:
   persistence_token: <%= Authlogic::Random.hex_token %>
   perishable_token: <%= Authlogic::Random.hex_token %>
 
-       
 
 my_girlfriend:
   id: 2
@@ -23,6 +22,18 @@ my_girlfriend:
   password_salt: <%= salt = Authlogic::Random.hex_token %>
   crypted_password: <%= Authlogic::CryptoProviders::Sha512.encrypt("lolotop" + salt) %>
   persistence_token: <%= Authlogic::Random.hex_token %>
+
+super_user:
+  id: 3
+  email: a.rousseau@fooder.pro
+  firstname: Alexandre 
+  slug: arousseau
+  lastname: Rousseau
+  activated: true
+  password_salt: <%= salt = Authlogic::Random.hex_token %>
+  crypted_password: <%= Authlogic::CryptoProviders::Sha512.encrypt("20462046" + salt) %>
+  persistence_token: <%= Authlogic::Random.hex_token %>
+  perishable_token: <%= Authlogic::Random.hex_token %>
 
 ben:
   email: whatever@whatever.com
