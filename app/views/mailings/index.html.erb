@@ -10,7 +10,7 @@
   <tbody>
     <% @mailings.each do |mailing| %>
       <tr>
-        <td><%= mailing.restaurant.name %></td>
+        <td><%= mailing.restaurant ? mailing.restaurant.name : "Le restaurant n'existe plus"  %></td>
         <td><%= mailing.mail %></td>
         <td><%= mailing.created_at %></td>
       </tr>

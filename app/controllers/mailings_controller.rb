@@ -18,7 +18,7 @@ class MailingsController < ApplicationController
     @mailing = Mailing.new(mailing_params)
 
     if @mailing.save
-      redirect_to @mailing, success: 'Mailing was successfully created.'
+      redirect_to mailings_path, success: 'Mailing was successfully created.'
     else
       render :new
     end
