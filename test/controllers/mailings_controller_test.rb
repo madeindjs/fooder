@@ -30,7 +30,7 @@ class MailingsControllerTest < ActionDispatch::IntegrationTest
   test "should create mailing" do
     login(users(:super_user))
     assert_difference('Mailing.count') do
-      post mailings_url, params: { mailing: { restaurant_id: 1, mail: 'Test' } }
+      post mailings_url, params: { mailing: { restaurant_id: 1, mail: 'commercial' } }
     end
 
     assert_redirected_to mailings_url
