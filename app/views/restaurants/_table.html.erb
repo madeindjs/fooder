@@ -19,7 +19,6 @@
           <% else %>
             <%= link_to 'Voir le site', root_url(subdomain: restaurant), class: 'btn btn-primary' %>
           <% end %>
-          <%=  link_to 'Envoyer le mail commercial', send_commercial_mail_path(id: restaurant.id), class: 'btn btn-default' if current_user and current_user.email == 'a.rousseau@fooder.pro' %>
         </td>
       </tr>
     <% end %>
