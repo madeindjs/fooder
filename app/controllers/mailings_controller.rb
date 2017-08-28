@@ -10,16 +10,20 @@ class MailingsController < ApplicationController
   # GET /mailings/new
   def new
     @mailing = Mailing.new
+    @restaurants = Restaurant.where('email IS NOT NULL')
   end
 
 
   # POST /mailings
   def create
     @mailing = Mailing.new(mailing_params)
+    RestaurantMailer.send(@mailing.mail, @mailing.restaurant).deliver_now
 
     if @mailing.save
-      redirect_to mailings_path, success: 'Mailing was successfully created.'
+      flash['success'] = "Email was sent to #{@mailing.restaurant.email} ."
+      redirect_to mailings_path
     else
+      flash['danger'] = 'Mailing was not save (but email was sent).'
       render :new
     end
   end
