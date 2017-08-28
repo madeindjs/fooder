@@ -1,0 +1,2 @@
+class Mailing < ApplicationRecord
+end

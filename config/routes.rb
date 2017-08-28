@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :mailings
   # restaurants area
   resources :categories, only: [:create, :new, :edit, :update, :destroy]
   resources :restaurants # TODO: remove it

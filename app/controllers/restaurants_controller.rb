@@ -91,7 +91,7 @@ class RestaurantsController < ApplicationController
 
 
   def send_commercial_mail
-    if current_user.email == 'a.rousseau@fooder.pro'
+    if current_user.email == User::SUPER_USER
       RestaurantMailer.commercial(@restaurant).deliver_now
       flash[:success] = "Le mail commercial a été envoyé."
     else
