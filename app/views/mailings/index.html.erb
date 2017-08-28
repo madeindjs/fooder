@@ -1,25 +1,27 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Mailings</h1>
-
-<table>
+<table class="table">
   <thead>
     <tr>
-      <th colspan="3"></th>
+      <th>Restaurant</th>
+      <th>Mailing</th>
+      <th>Date</th>
+      <th>Actions</th>
     </tr>
   </thead>
-
   <tbody>
     <% @mailings.each do |mailing| %>
       <tr>
-        <td><%= link_to 'Show', mailing %></td>
-        <td><%= link_to 'Edit', edit_mailing_path(mailing) %></td>
-        <td><%= link_to 'Destroy', mailing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= mailing.restaurant.name %></td>
+        <td><%= mailing.mail %></td>
+        <td><%= mailing.created_at %></td>
+        <td>
+          <%= link_to 'Show', mailing, class: 'btn btn-xs btn-default' %>
+          <%= link_to 'Edit', edit_mailing_path(mailing), class: 'btn btn-xs btn-default' %>
+          <%= link_to 'Destroy', mailing, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
 <br>
-
-<%= link_to 'New Mailing', new_mailing_path %>
+<%= link_to 'New Mailing', new_mailing_path, class: 'btn btn-default' %>

@@ -5,7 +5,7 @@ class MailingsController < ApplicationController
   # GET /mailings
   # GET /mailings.json
   def index
-    @mailings = Mailing.all
+    @mailings = Mailing.includes(:restaurant).all
   end
 
   # GET /mailings/1
