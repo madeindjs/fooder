@@ -1,17 +1,7 @@
-<%= form_for(mailing) do |f| %>
-  <% if mailing.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(mailing.errors.count, "error") %> prohibited this mailing from being saved:</h2>
-
-      <ul>
-      <% mailing.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<%  %>
+<%= bootstrap_form_for mailing do |f| %>
+  <%= render 'shared/errors_form', model: mailing %>
+  <%= f.collection_select :restaurant_id, Restaurant.all, :id, :name %>
+  <%= f.select :mail, Mailing::mails %>
+  <%= f.submit %>
 <% end %>

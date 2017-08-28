@@ -70,6 +70,6 @@ class MailingsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def mailing_params
-    params.fetch(:mailing, {})
+    params.require(:mailing).permit(:restaurant_id, :mail)
   end
 end
