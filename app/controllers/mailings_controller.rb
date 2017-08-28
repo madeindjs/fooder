@@ -1,4 +1,5 @@
 class MailingsController < ApplicationController
+  before_action :check_super_user
   before_action :set_mailing, only: [:show, :edit, :update, :destroy]
 
   # GET /mailings
@@ -62,13 +63,13 @@ class MailingsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_mailing
-      @mailing = Mailing.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_mailing
+    @mailing = Mailing.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def mailing_params
-      params.fetch(:mailing, {})
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def mailing_params
+    params.fetch(:mailing, {})
+  end
 end
