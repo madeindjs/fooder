@@ -3,7 +3,7 @@ class MailingsController < ApplicationController
 
   # GET /mailings
   def index
-    @mailings = Mailing.includes(:restaurant).all
+    @mailings = Mailing.includes(:restaurant).all.order(created_at: :DESC)
   end
 
 
