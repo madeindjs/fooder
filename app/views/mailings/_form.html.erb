@@ -1,7 +1,6 @@
-<%  %>
 <%= bootstrap_form_for mailing do |f| %>
   <%= render 'shared/errors_form', model: mailing %>
   <%= f.collection_select :restaurant_id, @restaurants, :id, :name %>
-  <%= f.select :mail, Mailing::mails %>
+  <%= f.select :mail, CommercialMailer::all %>
   <%= f.submit %>
 <% end %>

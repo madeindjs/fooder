@@ -17,7 +17,7 @@ class MailingsController < ApplicationController
   # POST /mailings
   def create
     @mailing = Mailing.new(mailing_params)
-    RestaurantMailer.send(@mailing.mail, @mailing.restaurant).deliver_now
+    CommercialMailer.send(@mailing.mail, @mailing.restaurant).deliver_now
 
     if @mailing.save
       flash['success'] = "Email was sent to #{@mailing.restaurant.email} ."
