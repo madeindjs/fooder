@@ -28,7 +28,9 @@ Rails.application.configure do
   # Disable request forgery protection in test environment.
   config.action_controller.allow_forgery_protection = false
   config.action_mailer.perform_caching = false
-  config.action_mailer.default_url_options = { host: 'http://example.com'}
+  config.action_mailer.asset_host = 'http://example.com'
+  config.action_controller.asset_host = 'http://example.com'
+  config.action_mailer.default_url_options = { host: 'http://example.com', only_path: false}
 
   # don't forget to install maildev:  npm install -g maildev
   config.action_mailer.smtp_settings = {
