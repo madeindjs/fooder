@@ -1,0 +1,2 @@
+class CommercialMailer < ApplicationMailer
+end
