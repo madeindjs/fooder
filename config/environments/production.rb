@@ -57,13 +57,14 @@ Rails.application.configure do
   # Use a real queuing backend for Active Job (and separate queues per environment)
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "Fooder_#{Rails.env}"
+  config.action_mailer.asset_host = 'http://fooder.pro'
   config.action_mailer.perform_caching = false
-  config.action_mailer.default_url_options = { host: 'http://fooder.pro' }
+  config.action_mailer.default_url_options = { host: 'http://fooder.pro', only_path: false }
   config.action_mailer.smtp_settings = {
     address:              'ssl0.ovh.net',
     port:                 465,
     domain:               'ssl0.ovh.net',
-    user_name:            'support@fooder.pro',
+    user_name:            'a.rousseau@fooder.pro',
     password:             Rails.application.secrets.email_password,
     authentication:       :plain,
     enable_starttls_auto: true ,

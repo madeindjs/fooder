@@ -3,7 +3,7 @@ class MailingsController < ApplicationController
 
   # GET /mailings
   def index
-    @mailings = Mailing.includes(:restaurant).all
+    @mailings = Mailing.includes(:restaurant).all.order(created_at: :DESC)
   end
 
 
@@ -17,7 +17,8 @@ class MailingsController < ApplicationController
   # POST /mailings
   def create
     @mailing = Mailing.new(mailing_params)
-    RestaurantMailer.send(@mailing.mail, @mailing.restaurant).deliver_now
+    @mailing.email = @mailing.restaurant.email
+    CommercialMailer.send(@mailing.mail, @mailing.restaurant).deliver_now
 
     if @mailing.save
       flash['success'] = "Email was sent to #{@mailing.restaurant.email} ."
