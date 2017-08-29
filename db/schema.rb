@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170828103301) do
+ActiveRecord::Schema.define(version: 20170829111119) do
 
-  create_table "categories", force: :cascade do |t|
+  create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "name"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
@@ -20,37 +20,37 @@ ActiveRecord::Schema.define(version: 20170828103301) do
     t.integer  "order"
   end
 
-  create_table "dishes", force: :cascade do |t|
+  create_table "dishes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "name"
-    t.text     "description"
+    t.text     "description",    limit: 65535
     t.integer  "category_id"
     t.integer  "user_id"
     t.integer  "restaurant_id"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
-    t.float    "price"
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
+    t.float    "price",          limit: 24
     t.string   "tags"
     t.string   "picture"
-    t.integer  "gluten_free",    default: 0
-    t.integer  "crustacea_free", default: 0
-    t.integer  "egg_free",       default: 0
-    t.integer  "fish_free",      default: 0
-    t.integer  "peanut_free",    default: 0
-    t.integer  "lactose_free",   default: 0
-    t.integer  "nut_free",       default: 0
-    t.integer  "sulphite_free",  default: 0
+    t.integer  "gluten_free",                  default: 0
+    t.integer  "crustacea_free",               default: 0
+    t.integer  "egg_free",                     default: 0
+    t.integer  "fish_free",                    default: 0
+    t.integer  "peanut_free",                  default: 0
+    t.integer  "lactose_free",                 default: 0
+    t.integer  "nut_free",                     default: 0
+    t.integer  "sulphite_free",                default: 0
     t.string   "slug"
     t.integer  "order"
-    t.boolean  "activate",       default: true
-    t.index ["slug"], name: "index_dishes_on_slug", unique: true
+    t.boolean  "activate",                     default: true
+    t.index ["slug"], name: "index_dishes_on_slug", unique: true, using: :btree
   end
 
-  create_table "dishes_menus", id: false, force: :cascade do |t|
+  create_table "dishes_menus", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer "dish_id", null: false
     t.integer "menu_id", null: false
   end
 
-  create_table "links", force: :cascade do |t|
+  create_table "links", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "name"
     t.string   "url"
     t.datetime "created_at",    null: false
@@ -60,33 +60,34 @@ ActiveRecord::Schema.define(version: 20170828103301) do
     t.integer  "order"
   end
 
-  create_table "mailings", force: :cascade do |t|
+  create_table "mailings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer  "restaurant_id"
     t.integer  "user_id"
     t.string   "mail"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.string   "email"
   end
 
-  create_table "menus", force: :cascade do |t|
+  create_table "menus", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "name"
-    t.text     "description"
-    t.text     "content"
+    t.text     "description",   limit: 65535
+    t.text     "content",       limit: 65535
     t.string   "tags"
-    t.float    "price"
+    t.float    "price",         limit: 24
     t.integer  "user_id"
     t.integer  "restaurant_id"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
     t.string   "picture"
     t.string   "slug"
     t.integer  "order"
-    t.boolean  "activate",      default: true
+    t.boolean  "activate",                    default: true
     t.integer  "root_menu_id"
-    t.index ["slug"], name: "index_menus_on_slug", unique: true
+    t.index ["slug"], name: "index_menus_on_slug", unique: true, using: :btree
   end
 
-  create_table "newsletters", force: :cascade do |t|
+  create_table "newsletters", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "email"
@@ -95,7 +96,7 @@ ActiveRecord::Schema.define(version: 20170828103301) do
     t.string   "website"
   end
 
-  create_table "opening_hours", force: :cascade do |t|
+  create_table "opening_hours", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer  "restaurant_id"
     t.integer  "user_id"
     t.integer  "day"
@@ -107,14 +108,14 @@ ActiveRecord::Schema.define(version: 20170828103301) do
     t.datetime "updated_at",    null: false
   end
 
-  create_table "payements", force: :cascade do |t|
+  create_table "payements", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer  "user_id"
     t.string   "transaction_id"
     t.integer  "status"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
     t.integer  "product_id"
-    t.text     "notification_params"
+    t.text     "notification_params",    limit: 65535
     t.datetime "purchased_at"
     t.string   "mc_gross"
     t.string   "protection_eligibility"
@@ -154,29 +155,29 @@ ActiveRecord::Schema.define(version: 20170828103301) do
     t.string   "ipn_track_id"
   end
 
-  create_table "posts", force: :cascade do |t|
+  create_table "posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "title"
-    t.text     "content"
+    t.text     "content",       limit: 65535
     t.string   "tags"
     t.integer  "user_id"
     t.integer  "restaurant_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.string   "picture"
     t.string   "slug"
-    t.index ["slug"], name: "index_posts_on_slug", unique: true
+    t.index ["slug"], name: "index_posts_on_slug", unique: true, using: :btree
   end
 
-  create_table "products", force: :cascade do |t|
+  create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "name"
     t.integer  "months"
-    t.float    "price"
-    t.boolean  "activate",   default: true
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.float    "price",      limit: 24
+    t.boolean  "activate",              default: true
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
   end
 
-  create_table "restaurants", force: :cascade do |t|
+  create_table "restaurants", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "name"
     t.string   "address"
     t.string   "zip_code"
@@ -197,28 +198,29 @@ ActiveRecord::Schema.define(version: 20170828103301) do
     t.boolean  "module_dishes",       default: true
     t.string   "phone"
     t.string   "email"
-    t.index ["slug"], name: "index_restaurants_on_slug", unique: true
+    t.index ["slug"], name: "index_restaurants_on_slug", unique: true, using: :btree
   end
 
-  create_table "resumes", force: :cascade do |t|
+  create_table "resumes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "name"
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "sections", force: :cascade do |t|
+  create_table "sections", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "title"
-    t.text     "content"
+    t.text     "content",       limit: 65535
     t.integer  "user_id"
     t.integer  "restaurant_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.string   "picture"
     t.integer  "order"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.boolean  "activated",              default: false, null: false
     t.string   "email"
     t.string   "crypted_password"
     t.string   "password_salt"
@@ -241,11 +243,10 @@ ActiveRecord::Schema.define(version: 20170828103301) do
     t.string   "new_email"
     t.string   "email_token"
     t.datetime "email_token_updated_at"
-    t.boolean  "activated",              default: false, null: false
     t.string   "perishable_token",       default: "",    null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["perishable_token"], name: "index_users_on_perishable_token"
-    t.index ["slug"], name: "index_users_on_slug", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["perishable_token"], name: "index_users_on_perishable_token", using: :btree
+    t.index ["slug"], name: "index_users_on_slug", unique: true, using: :btree
   end
 
 end

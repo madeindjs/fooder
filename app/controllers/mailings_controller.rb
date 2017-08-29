@@ -17,6 +17,7 @@ class MailingsController < ApplicationController
   # POST /mailings
   def create
     @mailing = Mailing.new(mailing_params)
+    @mailing.email = @mailing.restaurant.email
     CommercialMailer.send(@mailing.mail, @mailing.restaurant).deliver_now
 
     if @mailing.save

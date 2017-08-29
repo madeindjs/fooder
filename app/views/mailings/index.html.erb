@@ -3,6 +3,7 @@
   <thead>
     <tr>
       <th>Restaurant</th>
+      <th>Email</th>
       <th>Mailing</th>
       <th>Date</th>
     </tr>
@@ -11,6 +12,7 @@
     <% @mailings.each do |mailing| %>
       <tr>
         <td><%= mailing.restaurant ? mailing.restaurant.name : "Le restaurant n'existe plus"  %></td>
+        <td><%= mailing.email %></td>
         <td><%= mailing.mail %></td>
         <td><%= mailing.created_at %></td>
       </tr>
