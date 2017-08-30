@@ -1,6 +1,6 @@
 <div class="col-sm-12">
   <%= picture_tag menu, :picture_display, css_class: 'section-img', size: 100 %>
   <% if @restaurant.module_menus and not menu.dishes.empty?%>
-    <%= render 'dishes/list', dishes: menu.dishes, cache: true %>
+    <%= render 'dishes/list', dishes: menu.dishes, display_price: false , cache: true %>
   <% end %>
 </div>
