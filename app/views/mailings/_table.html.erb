@@ -13,7 +13,11 @@
         <td><%= restaurant.email %></td>
         <td>
           <% restaurant.mailings.each do |mailing| %>
-            <span class="label label-info tooltip-holder" title="Sent on <%= mailing.created_at %>" ><%= tags mailing.mail %></span>
+            <span 
+              class="label label-info tooltip-holder" 
+              title="Sent on <%= mailing.created_at %> at <%= mailing.email %>">
+              <%= tags mailing.mail %>
+            </span>
           <% end %>
         </td>
       </tr>
