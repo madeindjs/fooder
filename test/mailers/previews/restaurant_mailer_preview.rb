@@ -9,4 +9,9 @@ class RestaurantMailerPreview < ActionMailer::Preview
     }, 'restaurant@free.fr')
   end
 
+  def commercial
+    restaurant = Restaurant.new id: 1, email: 'test@test.fr', name: "Saveurs de Py", slug: 'saveurs-de-py', user_id: 1
+    RestaurantMailer.commercial restaurant
+  end
+
 end
