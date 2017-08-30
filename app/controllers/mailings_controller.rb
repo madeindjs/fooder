@@ -3,12 +3,14 @@ class MailingsController < ApplicationController
 
   # GET /mailings
   def index
-    @mailings = Mailing.includes(:restaurant).all.order(created_at: :DESC)
+    @title = "Liste des emails envoyé"
   end
 
 
   # GET /mailings/new
   def new
+    @title = "Créer un email de communication"
+
     @mailing = Mailing.new
     @restaurants = Restaurant.where('email IS NOT NULL')
   end
