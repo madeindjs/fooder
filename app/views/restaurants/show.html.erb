@@ -38,4 +38,17 @@
       <p><%= link_to "Contactez nous", contact_url(subdomain: @restaurant), class: 'btn btn-default' %></p>
     <% end %>
   </section>
+  <!-- contact -->
+  <% if @restaurant.module_contact %>
+    <section id="section-contact" class="col-xs-12">
+      <h2>Contactez nous</h2>
+      <p>Vous avez un question? N'hesitez pas à nous contacter.</p>
+      <%= bootstrap_form_for contact_path do |f| %>
+        <%= f.text_field :object, label: 'Objet' %>
+        <%= f.text_field :email, label: 'Votre email' %>
+        <%= f.text_area :content, label: 'Contenu' %>
+        <%= f.submit 'Envoyer' %>
+      <% end %>
+    </section>
+  <% end %>
 </div>
