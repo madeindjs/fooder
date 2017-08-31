@@ -19,12 +19,14 @@
     </section>
   <% end %>
   <!-- products -->
-  <section class="col-xs-12">
-    <h2>Carte</h2>
-    <%= render 'dishes/list', dishes: @dishes, cache: true %>
-  </section>
+  <% if @restaurant.module_dishes %>
+    <section id="section-dishes" class="col-xs-12">
+      <h2>Carte</h2>
+      <%= render 'dishes/list', dishes: @dishes, cache: true %>
+    </section>
+  <% end %>
   <!-- menus -->
-  <section class="col-xs-12">
+  <section id="section-menus" class="col-xs-12">
     <h2>Menus</h2>
     <%= render 'menus/list', menus: @menus, cached: true %>
   </section>
