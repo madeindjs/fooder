@@ -21,6 +21,7 @@ class RestaurantsController < ApplicationController
     @description = "Un magnifique restaurant"
 
     @dishes = @restaurant.dishes.where(activate: true).order :order
+    @menus = @restaurant.menus.where(activate: true).order :order
 
     @jsonld = @restaurant.to_jsonld
 
