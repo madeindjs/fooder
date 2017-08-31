@@ -20,6 +20,8 @@ class RestaurantsController < ApplicationController
     @title = @restaurant.name
     @description = "Un magnifique restaurant"
 
+    @dishes = @restaurant.dishes.where(activate: true).order :order
+
     @jsonld = @restaurant.to_jsonld
 
     render layout: 'landing_restaurant'

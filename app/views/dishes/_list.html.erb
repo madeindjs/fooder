@@ -6,15 +6,13 @@ existing_categories_ids = dishes.map{|dish| dish.category_id }.uniq
 %>
 <% @restaurant.categories.order(:order).select{|c| existing_categories_ids.include? c.id }.each do |category| %>
   <div class="row">
-    <h2 class="col-xs-12"><%= category.name %></h2>
+    <h4 class="col-xs-12"><%= category.name %></h4>
     <% dishes.select{|d| d.category_id == category.id}.each do |dish| %>
-      <article class="col-sm-6">
+      <article class="dishes col-sm-6">
         <!-- picture and title -->
-        <%= link_to dish do %>
-          <%= picture_tag dish, :picture_display, css_class: "dish-picture", size: 100 %>
-        <% end %>
+        <%= picture_tag dish, :picture_display, css_class: "dish-picture", size: 100 %>
         <p>
-          <h3><%= link_to dish.name, dish %></h3>
+          <h5><%= dish.name %></h5>
           <%= dish.description %>
           <% if display_price %>
             <strong><%= price dish.price %></strong>

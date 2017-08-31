@@ -1,24 +1,34 @@
 <div class="row restaurant-header tooltip-holder" style="background-image: url(<%= @restaurant.picture %>)"
   <%= tooltip 'Cette image de fond peut être changé dans la section  "editer le restaurant"' %> >
-  <div class="col-xs-12">
+  <section class="col-xs-12">
     <%= render 'shared/flash' %>
     <h1 class="tooltip-holder" <%= tooltip 'Le nom de votre restaurant peut être changé dans la section "editer le restaurant"' %> ><%= logo_tag @restaurant %><%= @restaurant.name %></h1>
-  </div>
+  </section>
 </div>
-<div class="col-xs-12">
-  <h2 class="text-center">Le restaurant</h2>
-  <%= render 'sections/list', sections: @restaurant.sections, cache: true %>
-  <div class="jumbotron header">
-    <h2>Informations</h2>
-    <% if @restaurant and not @restaurant.plain_opening_hours %>
-      <h3>Horraires d'ouvertures</h3>
-      <%= @restaurant.plain_opening_hours #= render 'opening_hours/details', opening_hours: @restaurant.valid_opening_hours 
-    %>
-    <% end %>
-    <h3>Addresse</h3>
+<div class="row landing-restaurant">
+  <!-- text & blbla -->
+  <section class="col-xs-12">
+    <h2>Le restaurant</h2>
+    <%= render 'sections/list', sections: @restaurant.sections, cache: true %>
+  </section>
+  <!-- openings hours -->
+  <% if @restaurant.plain_opening_hours %>
+    <section class="col-xs-12">
+      <h2>On vous attend</h2>
+      <p><%= @restaurant.plain_opening_hours %></p>
+    </section>
+  <% end %>
+  <!-- products -->
+  <section class="col-xs-12">
+    <h2>Carte</h2>
+    <%= render 'dishes/list', dishes: @dishes, cache: true %>
+  </section>
+  <!-- address -->
+  <section class="col-xs-12">
+    <h2>Addresse</h2>
     <p><%= glyphicon 'home' %> <%= @restaurant.complete_address %></p>
     <% if @restaurant.module_contact %>
       <p><%= link_to "Contactez nous", contact_url(subdomain: @restaurant), class: 'btn btn-default' %></p>
     <% end %>
-  </div>
+  </section>
 </div>
