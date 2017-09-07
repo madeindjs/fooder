@@ -1,29 +1,36 @@
 <% menus.each do |menu| %>
-  <div class="col-xs-12">
-    <h3><%= menu.name %> <span class="label label-primary"><%= price menu.price %></span></h3>
-    <p><%= menu.description %></p>
-    <% if menu.tags %>
-      <p><%= tags menu.tags %></p>
-    <% end %>
-    <p class="text-right ">
-      <!-- see more buttons -->
-      <% if menu.dishes.count != 0 %>
-        <%= button_tag 'En savoir plus', type: 'button', class: 'menu-show-details btn btn-default', data: {id: menu.id} %>
+  <div class="row">
+    <!-- name & admin buttons -->
+    <div class="col-xs-12">
+      <h3>
+        <%= menu.name %>
+        <% if admin? %>
+          <%= link_to glyphicon('pencil'), edit_menu_path(menu), class: 'btn btn-default btn-xs admin' %>
+          <%= link_to glyphicon('paste'), copy_menu_path(menu.id), class: 'btn btn-default btn-xs admin' %>
+          <%= link_to glyphicon('trash'), menu, method: :delete, data: { confirm: 'Êtes-vous sûr?' }, class: 'btn btn-danger btn-xs admin' %>
+        <% end %>
+      </h3>
+    </div>
+    <div class="col-xs-12 col-sm-10">
+      <!-- price -->
+      <p class="lead"><span class="label label-primary"><%= price menu.price %></span></p>
+      <p><%= menu.description %></p>
+      <% if menu.tags %>
+        <p><%= tags menu.tags %></p>
       <% end %>
-      <!-- admin buttons -->
-      <%= link_to edit_menu_path(menu), class: "btn btn-default admin" do %>
-        <%= glyphicon 'pencil' %> editer
-      <% end if admin?%>
-      <%= link_to copy_menu_path(menu.id), class: "btn btn-default admin" do %>
-        <%= glyphicon 'paste' %> copier
-      <% end if admin?%>
-      <%= link_to menu, method: :delete, data: { confirm: 'Êtes-vous sûr?' }, class: 'btn btn-danger admin' do %>
-        <%= glyphicon 'trash' %> Supprimer
-      <% end if admin?%>
-    </p>
+    </div>
+    <!-- butons -->
+    <div class="col-xs-12 col-sm-2">
+      <p class="text-right ">
+        <!-- see more buttons -->
+        <% if menu.dishes.count != 0 %>
+          <%= button_tag 'En savoir plus', type: 'button', class: 'menu-show-details btn btn-default', data: {id: menu.id} %>
+        <% end %>
+      </p>
+    </div>
   </div>
-  <p><%= menu.content %></p>
   <div id="menu-details-<%= menu.id %>" style="display: none">
+    <p><%= menu.content %></p>
     <%= render 'menus/details', menu:  menu, cache: true %>
   </div>
 <% end %>
