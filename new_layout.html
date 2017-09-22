@@ -1,0 +1,299 @@
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Starter Template for Bootstrap</title>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Parisienne" rel="stylesheet">
+        <style type="text/css">
+        header#cover{
+        /*for vertical align*/
+        position: relative;
+        /*set background image*/
+        background-image: url(http://lorempixel.com/1200/600/food);
+        background-size: cover;
+        background-position: center;
+        text-align: center;
+        /*allign to bottom*/
+        height: 800px;
+        padding-top: 650px;
+        font-family: 'Parisienne', cursive;
+        }
+        #cover p{font-size: 24px}
+        div.cell-vertical-align{
+        /*vertical align*/
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        /*horizontal align*/
+        width: 100%;
+        }
+        div.cell-vertical-align h1,
+        div.cell-vertical-align p
+        {
+        padding: 2rem;
+        background: rgba(0, 0, 0, 0.5);
+        color: white;
+        display: inline-block;
+        width: auto;
+        margin: auto;
+        }
+        h1{font-size: 10rem;}
+        h2{font-size: 8rem;}
+        h3{font-size: 6rem;}
+        h4{font-size: 2rem;}
+        h1,h2,h3{font-family: 'Parisienne', cursive; margin-bottom: 4rem;margin-top: 6rem;text-align: center;}
+        span.price{
+        margin-left: 1rem;
+        color: lightgray;
+        }
+        section{padding-top: 5rem;padding-bottom: 5rem}
+        section:nth-child(even) {background-color: rgb(240,240,240)}
+        /*div.media>div.media-left{padding: 50px}*/
+        /*div.media>div.media-right{padding: 50px}*/
+        </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Le Moment</a>
+                </div>
+                <div id="navbar" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <header id="cover">
+            <div class="cell-vertical-align">
+                <h1>Le Moment</h1>
+                <hr>
+                <p>Adipisicing sit esse est amet.</p>
+            </div>
+        </header>
+        <div class="container">
+            <!-- products -->
+            <section class="row">
+                <div class="row">
+                    <h2>Notre carte</h2>
+                    <h3>Entrées</h3>
+                    <!-- product -->
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <h4>Lorem Ipsum <span class="price">12 €</span></h4>
+                        <p>Lorem ipsum ut id sint fugiat in quis occaecat in dolore deserunt dolor eiusmod labore.</p>
+                    </div>
+                    <!-- product -->
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <h4>Lorem Ipsum <span class="price">12 €</span></h4>
+                        <p>Lorem ipsum ut id sint fugiat in quis occaecat in dolore deserunt dolor eiusmod labore.</p>
+                    </div>
+                    <!-- product -->
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <h4>Lorem Ipsum <span class="price">12 €</span></h4>
+                        <p>Lorem ipsum ut id sint fugiat in quis occaecat in dolore deserunt dolor eiusmod labore.</p>
+                    </div>
+                    <!-- product -->
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <h4>Lorem Ipsum <span class="price">12 €</span></h4>
+                        <p>Lorem ipsum ut id sint fugiat in quis occaecat in dolore deserunt dolor eiusmod labore.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <h3>Plats</h3>
+                    <!-- product -->
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <h4>Lorem Ipsum <span class="price">12 €</span></h4>
+                        <p>Lorem ipsum ut id sint fugiat in quis occaecat in dolore deserunt dolor eiusmod labore.</p>
+                    </div>
+                    <!-- product -->
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <h4>Lorem Ipsum <span class="price">12 €</span></h4>
+                        <p>Lorem ipsum ut id sint fugiat in quis occaecat in dolore deserunt dolor eiusmod labore.</p>
+                    </div>
+                    <!-- product -->
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <h4>Lorem Ipsum <span class="price">12 €</span></h4>
+                        <p>Lorem ipsum ut id sint fugiat in quis occaecat in dolore deserunt dolor eiusmod labore.</p>
+                    </div>
+                    <!-- product -->
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <h4>Lorem Ipsum <span class="price">12 €</span></h4>
+                        <p>Lorem ipsum ut id sint fugiat in quis occaecat in dolore deserunt dolor eiusmod labore.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <h3>Desserts</h3>
+                    <!-- product -->
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <h4>Lorem Ipsum <span class="price">12 €</span></h4>
+                        <p>Lorem ipsum ut id sint fugiat in quis occaecat in dolore deserunt dolor eiusmod labore.</p>
+                    </div>
+                    <!-- product -->
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <h4>Lorem Ipsum <span class="price">12 €</span></h4>
+                        <p>Lorem ipsum ut id sint fugiat in quis occaecat in dolore deserunt dolor eiusmod labore.</p>
+                    </div>
+                    <!-- product -->
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <h4>Lorem Ipsum <span class="price">12 €</span></h4>
+                        <p>Lorem ipsum ut id sint fugiat in quis occaecat in dolore deserunt dolor eiusmod labore.</p>
+                    </div>
+                    <!-- product -->
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <h4>Lorem Ipsum <span class="price">12 €</span></h4>
+                        <p>Lorem ipsum ut id sint fugiat in quis occaecat in dolore deserunt dolor eiusmod labore.</p>
+                    </div>
+                </div>
+            </section>
+            <section class="row">
+                <div class="col-xs-12">
+                    <h2>Les menus</h2>
+                    <div class="col-xs-12 col-md-6 col-lg-4">
+                        <h3>Entrée + Plats + Dessert <span class="price">24 €</span><br/><small>Uniquement le midi</small></h3>
+                        <div class="col-xs-12">
+                            <h4>Lorem Ipsum <span class="price">12 €</span></h4>
+                            <p>Lorem ipsum ut id sint fugiat in quis occaecat in dolore deserunt dolor eiusmod labore.</p>
+                        </div>
+                        <!-- product -->
+                        <div class="col-xs-12">
+                            <h4>Lorem Ipsum <span class="price">12 €</span></h4>
+                            <p>Lorem ipsum ut id sint fugiat in quis occaecat in dolore deserunt dolor eiusmod labore.</p>
+                        </div>
+                        <!-- product -->
+                        <div class="col-xs-12">
+                            <h4>Lorem Ipsum <span class="price">12 €</span></h4>
+                            <p>Lorem ipsum ut id sint fugiat in quis occaecat in dolore deserunt dolor eiusmod labore.</p>
+                        </div>
+                        <!-- product -->
+                        <div class="col-xs-12">
+                            <h4>Lorem Ipsum <span class="price">12 €</span></h4>
+                            <p>Lorem ipsum ut id sint fugiat in quis occaecat in dolore deserunt dolor eiusmod labore.</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-6 col-lg-4">
+                        <h3>Entrée + Plats<span class="price">32 €</span></h3>
+                        <div class="col-xs-12">
+                            <h4>Lorem Ipsum <span class="price">12 €</span></h4>
+                            <p>Lorem ipsum ut id sint fugiat in quis occaecat in dolore deserunt dolor eiusmod labore.</p>
+                        </div>
+                        <!-- product -->
+                        <div class="col-xs-12">
+                            <h4>Lorem Ipsum <span class="price">12 €</span></h4>
+                            <p>Lorem ipsum ut id sint fugiat in quis occaecat in dolore deserunt dolor eiusmod labore.</p>
+                        </div>
+                        <!-- product -->
+                        <div class="col-xs-12">
+                            <h4>Lorem Ipsum <span class="price">12 €</span></h4>
+                            <p>Lorem ipsum ut id sint fugiat in quis occaecat in dolore deserunt dolor eiusmod labore.</p>
+                        </div>
+                        <!-- product -->
+                        <div class="col-xs-12">
+                            <h4>Lorem Ipsum <span class="price">12 €</span></h4>
+                            <p>Lorem ipsum ut id sint fugiat in quis occaecat in dolore deserunt dolor eiusmod labore.</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-6 col-lg-4">
+                        <h3>Plats + Dessert<span class="price">34 €</span></h3>
+                        <div class="col-xs-12">
+                            <h4>Lorem Ipsum <span class="price">12 €</span></h4>
+                            <p>Lorem ipsum ut id sint fugiat in quis occaecat in dolore deserunt dolor eiusmod labore.</p>
+                        </div>
+                        <!-- product -->
+                        <div class="col-xs-12">
+                            <h4>Lorem Ipsum <span class="price">12 €</span></h4>
+                            <p>Lorem ipsum ut id sint fugiat in quis occaecat in dolore deserunt dolor eiusmod labore.</p>
+                        </div>
+                        <!-- product -->
+                        <div class="col-xs-12">
+                            <h4>Lorem Ipsum <span class="price">12 €</span></h4>
+                            <p>Lorem ipsum ut id sint fugiat in quis occaecat in dolore deserunt dolor eiusmod labore.</p>
+                        </div>
+                        <!-- product -->
+                        <div class="col-xs-12">
+                            <h4>Lorem Ipsum <span class="price">12 €</span></h4>
+                            <p>Lorem ipsum ut id sint fugiat in quis occaecat in dolore deserunt dolor eiusmod labore.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- opening hours -->
+            <section class="row">
+                <div class="col-xs-12 col-sm-6">
+                    <h2>Nos horraires d'ouverture</h2>
+                    <table class="table table-hover">
+                        <tbody>
+                            <tr class="table-dark"> <th>Lundi</th> <td>Fermé</td> </tr>
+                            <tr> <th>Mardi</th> <td>09:00 – 18:30</td> </tr>
+                            <tr> <th>Mercredi</th> <td>09:00 – 12:00 et 14:00 – 18:30</td> </tr>
+                            <tr> <th>Jeudi</th> <td>09:00 – 18:30</td> </tr>
+                            <tr> <th>Vendredi</th> <td>09:00 – 18:30</td> </tr>
+                            <tr> <th>Samedi</th> <td>08:00 – 16:s00</td> </tr>
+                            <tr class="table-dark"> <th>Dimanche</th> <td>Fermé</td> </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-xs-12 col-sm-6 text-center">
+                    <img src="http://lorempixel.com/400/400/food" class="img img-circle" height="400">
+                </div>
+            </section>
+            
+            <!-- contact section -->
+            <section>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h2>Nous contacter</h2>
+                        <p class="lead">In non sed ut dolor culpa mollit aute sed tempor excepteur nostrud exercitation fugiat minim deserunt magna est elit irure ut sed incididunt est labore laborum sint ea sint cillum cillum dolore duis sed sit est adipisicing officia ut.</p>
+                        <p class="text-center">
+                            <a href="#" class="btn btn-lg btn-default">04.11.22.33.44</a>
+                            <a href="#" class="btn btn-lg btn-default">example@moment.fr</a>
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <!-- restaurant informations -->
+            <section>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h2>Notre restaurant</h2>
+                        <!-- media -->
+                        <div class="media text-center">
+                            <div class="media-left">
+                                <img src="http://lorempixel.com/200/200/nature" class="img" height="200">
+                            </div>
+                            <div class="media-body">
+                                <h3 class="media-heading">Lorem ipsum et ullamco ut commodo.</h3>
+                                <p class="lead">Deserunt in eu deserunt excepteur consequat nostrud cillum velit excepteur laborum consequat consequat veniam proident velit anim sunt veniam officia dolor ad dolore consequat velit laboris labore deserunt veniam incididunt ut minim sint.</p>
+                            </div>
+                        </div>
+                        <!-- media -->
+                        <div class="media text-center">
+                            <div class="media-body">
+                                <h3 class="media-heading">Amet culpa.</h3>
+                                <p class="lead">Deserunt in eu deserunt excepteur consequat nostrud cillum velit excepteur laborum consequat consequat veniam proident velit anim sunt veniam officia dolor ad dolore consequat velit laboris labore deserunt veniam incididunt ut minim sint.</p>
+                            </div>
+                            <div class="media-right">
+                                <img src="http://lorempixel.com/200/200/city" class="img" height="200">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                </div><!-- /.container -->
+                <!-- Bootstrap core JavaScript
+                ================================================== -->
+                <!-- Placed at the end of the document so the pages load faster -->
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"></script>
+                
+            </body>
+        </html>
