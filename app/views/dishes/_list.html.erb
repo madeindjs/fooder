@@ -1,37 +1,20 @@
 <%
-# if `display_price` is not specified, is equal to `true`
-display_price = !(display_price === false)
 # select only categories who contains at least one dish
 existing_categories_ids = dishes.map{|dish| dish.category_id }.uniq
 %>
 <% @restaurant.categories.order(:order).select{|c| existing_categories_ids.include? c.id }.each do |category| %>
-  <div class="row">
-    <div class="col-xs-12">
-      <h4><%= category.name %></h4>
-    </div>
-    <% dishes.select{|d| d.category_id == category.id}.each do |dish| %>
-      <div class="col-xs-12 col-sm-6">
-        <article class="dishes">
-          <!-- picture and title -->
-          <%= picture_tag dish, :picture_display, css_class: "dish-picture", size: 200 %>
-          <!-- name, butons & price -->
-          <p class="lead">
-            <strong><%= dish.name %></strong>
-            <% if admin? %>
-              <%= link_to glyphicon('pencil'), edit_dish_path(dish), class: 'btn btn-default btn-xs admin' %>
-              <%= link_to glyphicon('trash'), dish, method: :delete, data: { confirm: 'Êtes-vous sûr?' }, class: 'btn btn-danger btn-xs admin' %>
-            <% end %>
-          </p>
-          <p><%= dish.description %></p>
-          <p class="lead"><span class="label label-primary"><%= price dish.price %></span><%= tags dish.tags %></p>
-          <p>
-            <% if display_price %>
-              <strong></strong>
-            <% end %>
-          </p>
-        </article>
-      </div>
-    <% end # end of dishes %>
+  <div class="col-xs-12 col-sm-6 col-lg-4">
+    <h3><%= category.name %></h3>
+
+    <ul class="dishes list-unstyled">
+      <% dishes.select{|d| d.category_id == category.id}.each do |dish| %>
+        <li>
+          <strong><%= dish.name %> <span class="price">12 €</span></strong><br/>
+          <%= dish.description %>
+        </li>
+      <% end # end of dishes %>
+    </ul>
   </div>
+
 <% end # end of categories %>
 <!-- end of categories -->

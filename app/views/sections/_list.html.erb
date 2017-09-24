@@ -1,35 +1,23 @@
 <% align = 'left' %>
 <% sections.each do |section| %>
   <% picture = section.picture? ?  image_tag( section.picture.thumb, class: 'img-circle section-img') : '' %>
-  <div class="jumbotron header">
-    <% if section.picture? %>
-      <!-- display picture and text in two columns -->
-      <% if align == 'left' %>
-        <div class="col-sm-6 col-xs-12">
-          <%= image_tag section.picture.thumb, class: "img-responsive img-circle center-block", size: 250 %>
-        </div>
-      <% end %>
-      <div class="col-sm-6 col-xs-12">
-        <h3><%= section.title %></h3>
-        <p><%= section.content %></p>
-      </div>
-      <% if align == 'right' %>
-        <div class="col-sm-6 col-xs-12">
-          <%= image_tag section.picture.thumb, class: "img-responsive img-circle center-block", size: 250 %>
-        </div>
-      <% end %>
-    <% else %>
-      <div class="col-xs-12">
-        <h3><%= section.title %></h3>
-        <p><%= section.content %></p>
+  <div class="media text-center">
+    <!-- display picture and text in two columns -->
+    <% if section.picture? and align == 'left' %>
+      <div class="media-left">
+        <%= image_tag section.picture.thumb, class: "img", size: 200 %>
       </div>
     <% end %>
-    <% if false and admin? %>
-      <p class="admin">
-        <%= link_to 'editer', edit_section_path(section), class: "btn btn-default ajax-edit" %>
-        <%= link_to 'Supprimer', section, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'  %>
-      </p>
+    <div class="media-body">
+      <h3 class="media-heading"><%= section.title %></h3>
+      <p class="lead"><%= section.content %></p>
+    </div>
+    <% if section.picture? and align == 'right' %>
+      <div class="media-right">
+        <%= image_tag section.picture.thumb, class: "img", size: 200 %>
+      </div>
     <% end %>
+
     <% align = align == 'left' ? 'right' : 'left' %>
   </div>
 <% end %>
