@@ -1,6 +1,6 @@
 $('.editable').on('click', function(e){
 	var element = $(this);
-  var field = element.attr('data-field');
+  var fields = element.attr('data-fields');
   var url = element.attr('data-url');
 
   var dialog = $("#dialog");
@@ -10,7 +10,7 @@ $('.editable').on('click', function(e){
     url: url,
     method: 'GET',
     data: {
-      field: field
+      fields: fields
     },
     success : function(html, status){
       dialog.html(html);
