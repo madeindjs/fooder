@@ -1,5 +1,5 @@
-<%= bootstrap_form_for restaurant do |f| %>
-  <%= render 'shared/errors_form', model: restaurant %>
+<%= bootstrap_form_for model do |f| %>
+  <%= render 'shared/errors_form', model: model %>
   <% fields.each do |field| %>
     <%= f.text_field field %>
   <% end %>

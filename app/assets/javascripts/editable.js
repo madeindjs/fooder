@@ -4,7 +4,6 @@ $('.editable').on('click', function(e){
   var url = element.attr('data-url');
 
   var dialog = $("#dialog");
-  dialog.html("<p>Alex</p>");
 
   $.ajax({
     url: url,
