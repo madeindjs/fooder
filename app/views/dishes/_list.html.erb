@@ -8,7 +8,7 @@ existing_categories_ids = dishes.map{|dish| dish.category_id }.uniq
 
     <ul class="dishes list-unstyled">
       <% dishes.select{|d| d.category_id == category.id}.each do |dish| %>
-        <li>
+        <li class="editable">
           <strong><%= dish.name %> <span class="price">12 €</span></strong><br/>
           <%= dish.description %>
         </li>

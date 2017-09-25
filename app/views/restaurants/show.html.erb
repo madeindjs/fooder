@@ -3,7 +3,7 @@
   style="background-image: url(<%= @restaurant.picture %>)"
   >
   <div class="cell-vertical-align">
-    <h1><%= @restaurant.name %></h1>
+    <h1 class="editable"><%= @restaurant.name %></h1>
     <hr>
     <p>Adipisicing sit esse est amet.</p>
   </div>
@@ -30,13 +30,13 @@
       <h2>Nos horaires d'ouverture</h2>
       <table class="table table-hover">
         <tbody>
-          <tr class="table-dark"> <th>Lundi</th> <td>Fermé</td> </tr>
-          <tr> <th>Mardi</th> <td>09:00 – 18:30</td> </tr>
-          <tr> <th>Mercredi</th> <td>09:00 – 12:00 et 14:00 – 18:30</td> </tr>
-          <tr> <th>Jeudi</th> <td>09:00 – 18:30</td> </tr>
-          <tr> <th>Vendredi</th> <td>09:00 – 18:30</td> </tr>
-          <tr> <th>Samedi</th> <td>08:00 – 16:s00</td> </tr>
-          <tr class="table-dark"> <th>Dimanche</th> <td>Fermé</td> </tr>
+          <tr class="table-dark"> <th>Lundi</th> <td class="editable">Fermé</td> </tr>
+          <tr> <th>Mardi</th> <td class="editable">09:00 – 18:30</td> </tr>
+          <tr> <th>Mercredi</th> <td class="editable">09:00 – 12:00 et 14:00 – 18:30</td> </tr>
+          <tr> <th>Jeudi</th> <td class="editable">09:00 – 18:30</td> </tr>
+          <tr> <th>Vendredi</th> <td class="editable">09:00 – 18:30</td> </tr>
+          <tr> <th>Samedi</th> <td class="editable">08:00 – 16:s00</td> </tr>
+          <tr class="table-dark"> <th>Dimanche</th> <td class="editable">Fermé</td> </tr>
         </tbody>
       </table>
     </div>
@@ -75,7 +75,7 @@
       <h2>Addresse</h2>
       <p><%= glyphicon 'home' %> <%= @restaurant.complete_address %></p>
       <% if @restaurant.module_contact %>
-      <p><%= link_to "Contactez nous", contact_url(subdomain: @restaurant), class: 'btn btn-default' %></p>
+      <p><%= link_to "Contactez nous", '#section-contact', class: 'btn btn-default' %></p>
       <% end %>
     </div>
   </section>

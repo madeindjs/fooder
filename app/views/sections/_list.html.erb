@@ -1,7 +1,7 @@
 <% align = 'left' %>
 <% sections.each do |section| %>
   <% picture = section.picture? ?  image_tag( section.picture.thumb, class: 'img-circle section-img') : '' %>
-  <div class="media text-center">
+  <div class="media text-center editable">
     <!-- display picture and text in two columns -->
     <% if section.picture? and align == 'left' %>
       <div class="media-left">
