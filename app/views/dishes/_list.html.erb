@@ -8,8 +8,11 @@ existing_categories_ids = dishes.map{|dish| dish.category_id }.uniq
 
     <ul class="dishes list-unstyled">
       <% dishes.select{|d| d.category_id == category.id}.each do |dish| %>
-        <li class="editable">
-          <strong><%= dish.name %> <span class="price">12 €</span></strong><br/>
+        <li
+          class="editable"
+          data-url="<%= url_for edit_dish_path(dish) %>"
+        >
+          <strong><%= dish.name %> <span class="price"><%= dish.price %> €</span></strong><br/>
           <%= dish.description %>
         </li>
       <% end # end of dishes %>

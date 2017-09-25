@@ -7,13 +7,13 @@
   <%= collection_select :dish, :category_id, @restaurant.categories, :id, :name, {selected: dish.category_id}, { class: "form-control" }  %>
 
   <%= f.text_area :description %>
-  <%= render 'shared/form_input_picture.html', form: f, model: dish %>
-  <%= f.check_box :activate, label: 'Activer' %>
-  <%= f.text_field :tags %>
+  <%# = render 'shared/form_input_picture.html', form: f, model: dish %>
+  <%# = f.check_box :activate, label: 'Activer' %>
+  <%# = f.text_field :tags %>
   <%= f.number_field :price, label: 'Prix' %>
 
 
-  <% if @restaurant.module_allergens %>
+  <% if false and @restaurant.module_allergens %>
 
     <h2>Allergènes</h2>
 

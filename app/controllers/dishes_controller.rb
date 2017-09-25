@@ -42,6 +42,7 @@ class DishesController < ApplicationController
   def edit
     @title = "Editer #{@restaurant.name}"
     @description = "Editer une catégorie existante."
+    render layout: false
   end
 
 
