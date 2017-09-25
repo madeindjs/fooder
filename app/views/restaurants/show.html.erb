@@ -3,9 +3,11 @@
   style="background-image: url(<%= @restaurant.picture %>)"
   >
   <div class="cell-vertical-align">
-    <h1 class="editable"><%= @restaurant.name %></h1>
-    <hr>
-    <p>Adipisicing sit esse est amet.</p>
+    <h1 
+      class="editable" 
+      data-field="name"
+      data-url="<%= url_for edit_restaurant_path(@restaurant) %>"
+    ><%= @restaurant.name %></h1>
   </div>
 </header>
 <div class="container">
@@ -80,4 +82,8 @@
     </div>
   </section>
     
+</div>
+
+<div id="dialog" title="Editer les informations">
+  
 </div>

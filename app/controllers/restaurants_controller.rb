@@ -38,6 +38,9 @@ class RestaurantsController < ApplicationController
   def edit
     @title = "Editer votre restaurant"
     @description = "Editer les informations relatives à ce restaurant."
+    @field = params['field']
+
+    render layout: false
   end
 
   # POST /restaurants
