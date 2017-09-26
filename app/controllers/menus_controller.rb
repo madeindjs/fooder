@@ -81,7 +81,7 @@ class MenusController < ApplicationController
     if @menu.update(menu_params)
       add_dishes
       flash[:success] = "Votre menu a été mise à jour."
-      redirect_to @menu
+      redirect_to root_path
     else
       flash[:danger] = "Une erreur est survenue."
       render :edit

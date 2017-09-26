@@ -66,7 +66,7 @@ class DishesController < ApplicationController
   def update
     if @dish.update(dish_params)
       flash[:success] = "Votre plat a été mis à jour avec succès."
-      redirect_to @dish
+      redirect_to root_path
     else
       flash[:danger] = "Une erreur est survenue."
       render :edit

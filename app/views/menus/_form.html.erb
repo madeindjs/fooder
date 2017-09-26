@@ -2,11 +2,11 @@
   <%= render 'shared/errors_form', model: menu %>
   <%= f.text_field :name, label: 'Nom' %>
   <%= f.text_field :description %>
-  <%= render 'shared/form_input_picture.html', form: f, model: menu %>
-  <%= f.check_box :activate, label: 'Activer' %>
+  <%# = render 'shared/form_input_picture.html', form: f, model: menu %>
+  <%# = f.check_box :activate, label: 'Activer' %>
   <%= f.text_area :content, label: 'Contenu' %>
-  <%= f.text_field :tags %>
+  <%# = f.text_field :tags %>
   <%= f.number_field :price, label: 'Prix' %>
-  <%= render 'select_dishes', menu: menu, cache: true %>
+  <%# = render 'select_dishes', menu: menu, cache: true %>
   <%= f.submit 'Confirmer' %>
 <% end %>
