@@ -1,7 +1,18 @@
 class OpeningHoursController < ApplicationController
   before_action :set_opening_hour, only: [:update, :destroy]
-  before_action :check_login, only: [:create, :edits, :destroy]
-  before_action :check_owner, only: [:edits, :destroy]
+  before_action :check_login, only: [:create, :edit, :destroy]
+  before_action :check_owner, only: [:edit, :destroy]
+
+  # GET /menus/1/edit
+  def edit
+    begin
+      @opening_hour = OpeningHour.find(params[:id])  
+    rescue ActiveRecord::RecordNotFound
+      @opening_hour = OpeningHour.create(restaurant_id: params[:id])
+    end
+
+    render  '_form', locals: {opening_hour: @opening_hour}, layout:  false if request.xhr?
+  end
 
 
   # POST /restaurant/1/opening_hours/1

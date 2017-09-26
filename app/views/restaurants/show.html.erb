@@ -30,17 +30,7 @@
   <section id="section-opening-hours" class="row">
     <div class="col-xs-12 col-sm-6">
       <h2>Nos horaires d'ouverture</h2>
-      <table class="table table-hover">
-        <tbody>
-          <tr class="table-dark"> <th>Lundi</th> <td class="editable">Fermé</td> </tr>
-          <tr> <th>Mardi</th> <td class="editable">09:00 – 18:30</td> </tr>
-          <tr> <th>Mercredi</th> <td class="editable">09:00 – 12:00 et 14:00 – 18:30</td> </tr>
-          <tr> <th>Jeudi</th> <td class="editable">09:00 – 18:30</td> </tr>
-          <tr> <th>Vendredi</th> <td class="editable">09:00 – 18:30</td> </tr>
-          <tr> <th>Samedi</th> <td class="editable">08:00 – 16:s00</td> </tr>
-          <tr class="table-dark"> <th>Dimanche</th> <td class="editable">Fermé</td> </tr>
-        </tbody>
-      </table>
+      <%= render 'opening_hours/details', restaurant: @restaurant %>
     </div>
     <div class="col-xs-12 col-sm-6 text-center">
       <img src="http://lorempixel.com/400/400/food" class="img img-circle" height="400">
