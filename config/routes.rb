@@ -36,7 +36,7 @@ Rails.application.routes.draw do
   post "/hook" => "payements#hook", as: :payement_hook
   resources :payements
 
-  resources :opening_hours, only: [:create, :edit, :destroy]
+  resources :opening_hours, only: [:new, :create, :update, :edit, :destroy]
   # session
   resources :users
   resources :user_sessions, only: [:create, :destroy]

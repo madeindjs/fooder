@@ -4,17 +4,26 @@
 
     <tr class="table-dark">
       <th><%= field %></th>
-      <td
-        class="editable"
-        data-fields="<%= field %>"
-        data-url="<%= url_for edit_opening_hour_path(restaurant.id) %>"
-      >
-        <% if restaurant.opening_hour %>
-          <%= restaurant.opening_hour.send(field)  %>
-        <% else %>
+
+
+      <% if @restaurant.opening_hours.first %>
+        <% opening_hour = @restaurant.opening_hours.first %>
+        <td
+          class="editable"
+          data-fields="<%= field %>"
+          data-url="<%= url_for edit_opening_hour_path(opening_hour.id) %>"
+        >
+            <%= opening_hour.send(field) || "fermé"  %>
+        </td>
+      <% else %>
+        <td
+          class="editable"
+          data-fields="<%= field %>"
+          data-url="<%= url_for new_opening_hour_path %>"
+        >
           fermé
-        <% end %>
-      </td>
+        </td>
+      <% end %>
     </tr>
 
   <% end %>

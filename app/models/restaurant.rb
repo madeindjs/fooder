@@ -2,7 +2,7 @@ require 'yaml'
 
 class Restaurant < ApplicationRecord
   belongs_to :user
-  belongs_to :opening_hour
+  has_many :opening_hours
   has_many :dishes
   has_many :menus
   has_many :sections
