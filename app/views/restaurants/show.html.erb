@@ -16,7 +16,9 @@
   <% if @restaurant.module_dishes %>
     <section id="section-dishes" class="row">
       <h2>Notre carte</h2>
-      <%= render 'dishes/list', dishes: @dishes, cache: true %>
+      <div id="dishes-list">
+        <%= render 'dishes/list', dishes: @dishes, cache: true %>
+      </div>
     </section>
   <% end %>
 

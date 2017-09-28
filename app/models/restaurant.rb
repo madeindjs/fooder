@@ -91,6 +91,15 @@ class Restaurant < ApplicationRecord
     }
   end
 
+
+  def menus_ordered
+    self.menus.where(activate: true).order :order
+  end
+
+  def dishes_ordered
+    self.dishes.where(activate: true).order :order
+  end
+
   private
 
   def generate_dishes

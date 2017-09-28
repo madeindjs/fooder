@@ -20,8 +20,8 @@ class RestaurantsController < ApplicationController
     @title = @restaurant.name
     @description = "Un magnifique restaurant"
 
-    @dishes = @restaurant.dishes.where(activate: true).order :order
-    @menus = @restaurant.menus.where(activate: true).order :order
+    @dishes = @restaurant.dishes_ordered
+    @menus = @restaurant.menus_ordered
 
     @jsonld = @restaurant.to_jsonld
 
