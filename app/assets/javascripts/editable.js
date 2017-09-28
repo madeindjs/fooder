@@ -1,9 +1,11 @@
-$('.editable').on('click', function(e){
+$(document).on('click', '.editable', function(e){
 	var element = $(this);
   var fields = element.attr('data-fields');
   var url = element.attr('data-url');
 
-  var dialog = $("#dialog");
+  var div = document.createElement('div');
+  document.body.appendChild(div);
+  var dialog = $(div);
 
   $.ajax({
     url: url,
