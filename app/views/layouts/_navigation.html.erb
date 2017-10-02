@@ -27,12 +27,7 @@
         <% end %>
       </ul>
       <ul class="nav navbar-nav nav navbar-right">
-        <% if @restaurant %>
-          <% if admin? %>
-            <li><%= link_to 'Administration', admin_path %></li>
-            <li><button id="toggle-client-view" class="navbar-btn">Afficher la vue client</button></li>
-          <% end %>
-        <% else %>
+        <% unless @restaurant %>
           <% if current_user %>
             <% if current_user.email == User::SUPER_USER %>
               <li><%= link_to "mailing", mailings_path %></li>
