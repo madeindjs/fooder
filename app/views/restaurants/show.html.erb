@@ -56,7 +56,9 @@
   <section class="row">
     <div class="col-xs-12">
       <h2>Notre restaurant</h2>
-      <%= render 'sections/list', sections: @restaurant.sections, cache: true %>
+      <div id="sections-list">
+        <%= render 'sections/list', sections: @restaurant.sections, cache: true %>
+      </div>
     </div>
   </section>
   <!-- address -->
