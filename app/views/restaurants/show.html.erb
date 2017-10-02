@@ -11,7 +11,6 @@
   </div>
 </header>
 <div class="container">
-
   <!-- products -->
   <% if @restaurant.module_dishes %>
     <section id="section-dishes" class="row">
@@ -21,13 +20,13 @@
       </div>
     </section>
   <% end %>
-
   <!-- menus -->
   <section id="section-menus" class="row">
     <h2>Menus</h2>
-    <%= render 'menus/list', menus: @menus, cached: true %>
+    <div id="menus-list">
+      <%= render 'menus/list', menus: @menus, cached: true %>
+    </div>
   </section>
-
   <!-- opening hours -->
   <section id="section-opening-hours" class="row">
     <div class="col-xs-12 col-sm-6">
@@ -38,7 +37,6 @@
       <img src="http://lorempixel.com/400/400/food" class="img img-circle" height="400">
     </div>
   </section>
-  
   <!-- contact -->
   <% if @restaurant.module_contact %>
     <section id="section-contact" class="row">
@@ -46,15 +44,14 @@
         <h2>Contactez nous</h2>
         <p class="lead text-center">Vous avez un question? N'hesitez pas à nous contacter.</p>
         <%= bootstrap_form_for contact_path do |f| %>
-        <%= f.text_field :object, label: 'Objet' %>
-        <%= f.text_field :email, label: 'Votre email' %>
-        <%= f.text_area :content, label: 'Contenu' %>
-        <%= f.submit 'Envoyer' %>
+          <%= f.text_field :object, label: 'Objet' %>
+          <%= f.text_field :email, label: 'Votre email' %>
+          <%= f.text_area :content, label: 'Contenu' %>
+          <%= f.submit 'Envoyer' %>
         <% end %>
       </div>
     </section>
   <% end %>
-
   <!-- restaurant informations -->
   <section class="row">
     <div class="col-xs-12">
@@ -62,7 +59,6 @@
       <%= render 'sections/list', sections: @restaurant.sections, cache: true %>
     </div>
   </section>
- 
   <!-- address -->
   <section class="row">
     <div class="col-xs-12">
@@ -75,9 +71,8 @@
         <%= glyphicon 'home' %> <%= @restaurant.complete_address %>
       </p>
       <% if @restaurant.module_contact %>
-      <p><%= link_to "Contactez nous", '#section-contact', class: 'btn btn-default' %></p>
+        <p><%= link_to "Contactez nous", '#section-contact', class: 'btn btn-default' %></p>
       <% end %>
     </div>
   </section>
-    
 </div>

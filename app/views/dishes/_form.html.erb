@@ -1,44 +1,15 @@
 <%= bootstrap_form_for dish do |f| %>
-
   <%= render 'shared/errors_form', model: dish %>
   <%= f.text_field :name, label: 'Nom' %>
-
   <%= f.label :category_id, 'Catégorie' %>
   <%= collection_select :dish, :category_id, @restaurant.categories, :id, :name, {selected: dish.category_id}, { class: "form-control" }  %>
-
   <%= f.text_area :description %>
   <%# = render 'shared/form_input_picture.html', form: f, model: dish %>
   <%# = f.check_box :activate, label: 'Activer' %>
   <%# = f.text_field :tags %>
   <%= f.number_field :price, label: 'Prix' %>
-
-
-  <% if false and @restaurant.module_allergens %>
-
-    <h2>Allergènes</h2>
-
-    <table class="table table-striped">
-    
-      <% Dish::ALLERGENS.each do |sym, allergen| %>
-        <tr>
-            <td><%= f.label sym, allergen  %></td>
-          <% Dish::ALLERGEN_VALUES.each do |value, label| %>
-          <td>
-            <div class="radio">
-              <%= f.radio_button sym, value , label: label %>
-            </div>
-          </td>
-          <% end %>
-        </tr>
-      <% end %>
-
-    </table>
-
-  <% end %>
-
   <%= f.submit 'Confirmer' %>
 <% end %>
-
 <script type="text/javascript">
   $('form.edit_dish').on('submit', function(e){
     e.preventDefault();

@@ -1,31 +1,31 @@
 class MenusController < ApplicationController
   before_action :set_menu, only: [:show, :edit, :update, :destroy, :copy]
-  before_action :check_login, only: [:new, :create, :edits, :edit, :update, :destroy, :copy]
-  before_action :check_owner, only: [:edit, :update, :destroy, :copy]
-
-  layout 'admin', only: [:edit, :new]
+  before_action :check_login, only: [:new, :create, :edit, :edits, :update, :destroy]
+  before_action :check_owner, only: [:edit, :update, :destroy]
+  before_action :check_admin, only: [:edits, :allergens, :import]
+  before_action :check_restaurant
 
   # GET /menus
   # GET /menus.json
-  def index
-    @title = "Menus"
-    @description = "Liste des menus proposés par #{@restaurant.name}."
+  # def index
+  #   @title = "Menus"
+  #   @description = "Liste des menus proposés par #{@restaurant.name}."
 
-    @menus = @restaurant.menus.where(activate: true).order :order
-    @jsonld = {
-      "@context":"http://schema.org",
-      "@type":"ItemList",
-      "itemListElement": @menus.map{|menu| menu.to_jsonld}
-    }
-  end
+  #   @menus = @restaurant.menus.where(activate: true).order :order
+  #   @jsonld = {
+  #     "@context":"http://schema.org",
+  #     "@type":"ItemList",
+  #     "itemListElement": @menus.map{|menu| menu.to_jsonld}
+  #   }
+  # end
 
   # GET /menus/1
   # GET /menus/1.json
-  def show
-    @title = @menu.name
-    @description = "Un parmi les nombreux déliceux menus proposé par #{@restaurant.name}"
-    @jsonld = @menu.to_jsonld
-  end
+  # def show
+  #   @title = @menu.name
+  #   @description = "Un parmi les nombreux déliceux menus proposé par #{@restaurant.name}"
+  #   @jsonld = @menu.to_jsonld
+  # end
 
   # GET /menus/new
   def new
@@ -40,7 +40,7 @@ class MenusController < ApplicationController
     @title = "Editer #{@menu.name}"
     @description = "Editer un menu déjà existant."
 
-    render  '_form', locals: {menu: @menu}, layout:  false if request.xhr?
+    render  '_form', locals: {menu: @menu}, layout: false
   end
 
   # GET /menus/1/copy
@@ -79,12 +79,10 @@ class MenusController < ApplicationController
   # PATCH/PUT /menus/1
   def update
     if @menu.update(menu_params)
-      add_dishes
-      flash[:success] = "Votre menu a été mise à jour."
-      redirect_to root_path
+      # add_dishes
+      render  'menus/_list', locals: {menus: @restaurant.menus_ordered}, layout: false
     else
-      flash[:danger] = "Une erreur est survenue."
-      render :edit
+      render plain: "Une erreur est survenue."
     end
   end
 

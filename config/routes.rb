@@ -10,14 +10,14 @@ Rails.application.routes.draw do
 
     scope '/admin' do
       get '/' => 'admin#index', as: :admin
-    #   match 'allergens' => "admin#allergens", as: :admin_allergens, via: [:get, :post]
-    #   match 'dishes/import' => "dishes#import", via: [:get, :post]
-    #   match 'dishes' => "admin#dishes", as: :admin_dishes, via: [:get, :post]
-    #   match 'menus' => "admin#menus", as: :admin_menus, via: [:get, :post]
-    #   match 'opening_hours' => "admin#opening_hours", as: :admin_opening_hours, via: [:get, :post]
-    #   match 'links' => "admin#links", as: :admin_links, via: [:get, :post]
-    #   match 'sections' => "admin#sections", as: :admin_sections, via: [:get, :post]
-    #   match 'categories' => "admin#categories", as: :admin_categories, via: [:get, :post]
+      #   match 'allergens' => "admin#allergens", as: :admin_allergens, via: [:get, :post]
+      #   match 'dishes/import' => "dishes#import", via: [:get, :post]
+      #   match 'dishes' => "admin#dishes", as: :admin_dishes, via: [:get, :post]
+      #   match 'menus' => "admin#menus", as: :admin_menus, via: [:get, :post]
+      #   match 'opening_hours' => "admin#opening_hours", as: :admin_opening_hours, via: [:get, :post]
+      #   match 'links' => "admin#links", as: :admin_links, via: [:get, :post]
+      #   match 'sections' => "admin#sections", as: :admin_sections, via: [:get, :post]
+      #   match 'categories' => "admin#categories", as: :admin_categories, via: [:get, :post]
     end
 
     patch 'activate_module' => "restaurants#activate_module"
@@ -26,9 +26,9 @@ Rails.application.routes.draw do
     resources :links
     resources :sections
     get '/menus/:id/copy' => "menus#copy", as: :copy_menu
-    resources :menus
-    resources :dishes
-    resources :allergens, only: [:index]
+    resources :menus, :only => [ :new, :create, :edit, :update ]
+    resources :dishes, :only => [ :new, :create, :edit, :update ]
+    # resources :allergens, only: [:index]
     resources :categories
   end
 

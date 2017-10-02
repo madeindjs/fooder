@@ -5,30 +5,28 @@ class DishesController < ApplicationController
   before_action :check_admin, only: [:edits, :allergens, :import]
   before_action :check_restaurant
 
-  layout 'admin', only: [:edit, :new]
-
   # GET /dishes
   # GET /dishes.json
-  def index
-    @title = "Carte"
-    @description = "Carte des produits proposés par ce restaurant."
+  # def index
+  #   @title = "Carte"
+  #   @description = "Carte des produits proposés par ce restaurant."
 
-    @dishes = @restaurant.dishes.where(activate: true).order :order
-    @jsonld = {
-      "@context":"http://schema.org",
-      "@type":"ItemList",
-      "itemListElement": @dishes.map{|dish| dish.to_jsonld}
-    }
-  end
+  #   @dishes = @restaurant.dishes.where(activate: true).order :order
+  #   @jsonld = {
+  #     "@context":"http://schema.org",
+  #     "@type":"ItemList",
+  #     "itemListElement": @dishes.map{|dish| dish.to_jsonld}
+  #   }
+  # end
 
   # GET /dishes/1
   # GET /dishes/1.json
-  def show
-    @title = @dish.name
-    @description = "Un parmi les nombreux déliceux produits proposé par #{@restaurant.name}"
+  # def show
+  #   @title = @dish.name
+  #   @description = "Un parmi les nombreux déliceux produits proposé par #{@restaurant.name}"
 
-    @menus = @dish.menus.uniq
-  end
+  #   @menus = @dish.menus.uniq
+  # end
 
   # GET /dishes/new
   def new
@@ -42,7 +40,7 @@ class DishesController < ApplicationController
   def edit
     @title = "Editer #{@restaurant.name}"
     @description = "Editer une catégorie existante."
-    render layout: false
+    render  '_form', locals: {dish: @dish}, layout:  false
   end
 
 
@@ -65,11 +63,9 @@ class DishesController < ApplicationController
   # PATCH/PUT /dishes/1
   def update
     if @dish.update(dish_params)
-      flash[:success] = "Votre plat a été mis à jour avec succès."
-      render  'dishes/_list', locals: {dishes: @restaurant.dishes_ordered}, layout:  false if request.xhr?
+      render  'dishes/_list', locals: {dishes: @restaurant.dishes_ordered}, layout: false
     else
-      flash[:danger] = "Une erreur est survenue."
-      render :edit
+      render plain: "Une erreur est survenue."
     end
   end
 

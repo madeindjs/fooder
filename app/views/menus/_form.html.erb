@@ -10,3 +10,25 @@
   <%# = render 'select_dishes', menu: menu, cache: true %>
   <%= f.submit 'Confirmer' %>
 <% end %>
+<!-- re-render dish list on form send -->
+<script type="text/javascript">
+  $('form.edit_menu').on('submit', function(e){
+    e.preventDefault();
+    var form = $(this);
+    $.ajax({
+       url : form.attr('action'),
+       type : form.attr('method'),
+       data : form.serialize(),
+       dataType : 'html',
+       success : function(result, status){
+        $('#menus-list').html(result);
+       },
+       error : function(result, statut, error){
+        console.log(result);
+       },
+       complete : function(result, status){
+        $('.ui-dialog').remove();
+       }
+    });
+  });
+</script>
