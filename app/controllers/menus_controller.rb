@@ -83,8 +83,7 @@ class MenusController < ApplicationController
   # DELETE /menus/1.json
   def destroy
     @menu.destroy
-    flash[:success] = "Votre categorie a été mise à jour."
-    redirect_to admin_menus_path
+    render 'menus/_list', locals: {menus: @restaurant.menus_ordered}, layout: false
   end
 
   private

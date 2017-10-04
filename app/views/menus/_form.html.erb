@@ -9,6 +9,9 @@
   <%= f.number_field :price, label: 'Prix' %>
   <%# = render 'select_dishes', menu: menu, cache: true %>
   <%= f.submit 'Confirmer' %>
+  <% if menu.id %>
+    <button id="delete_menu" class="btn btn-danger">Supprimer</button>
+  <% end %>
 <% end %>
 <!-- re-render dish list on form send -->
 <script type="text/javascript">
@@ -31,4 +34,24 @@
        }
     });
   });
+  <% if menu.id %>
+    // remove and refresh view
+    $('#delete_menu').on('click', function(e){
+      e.preventDefault();
+      $.ajax({
+         url : '<%= url_for menu %>',
+         type : 'delete',
+         dataType : 'html',
+         success : function(result, status){
+          $('#menus-list').html(result);
+         },
+         error : function(result, statut, error){
+          console.log(result);
+         },
+         complete : function(result, status){
+          $('.ui-dialog').remove();
+         }
+      });
+    });
+  <% end %>
 </script>
