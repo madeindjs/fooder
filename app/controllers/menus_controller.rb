@@ -29,18 +29,13 @@ class MenusController < ApplicationController
 
   # GET /menus/new
   def new
-    @title = "Nouveau menu"
-    @description = "Créez un nouveau menu que vos clients pourons déguster."
-
     @menu = Menu.new
+    render '_form', locals: {menu: Menu.new}, layout:  false
   end
 
   # GET /menus/1/edit
   def edit
-    @title = "Editer #{@menu.name}"
-    @description = "Editer un menu déjà existant."
-
-    render  '_form', locals: {menu: @menu}, layout: false
+    render '_form', locals: {menu: @menu}, layout: false
   end
 
   # GET /menus/1/copy
@@ -68,11 +63,9 @@ class MenusController < ApplicationController
     add_dishes
 
     if @menu.save
-      flash[:success] = "Votre menu a été crée."
-      redirect_to @menu
+      render 'menus/_list', locals: {menus: @restaurant.menus_ordered}, layout: false
     else
-      flash[:danger] = "Une erreur est survenue."
-      render :new
+      render plain: "Une erreur est survenue."
     end
   end
 

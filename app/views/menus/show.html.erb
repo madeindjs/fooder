@@ -1,7 +1,0 @@
-<h1><%= link_to @menu.name, @menu %> <span class="label label-primary"><%= price @menu.price %></span></h1>
-<p><%= @menu.description %></p>
-<% if @menu.tags %>
-  <p><%= tags @menu.tags %></p>
-<% end %>
-<p><%= @menu.content %></p>
-<%= render 'details', menu:  @menu, cache: true %>

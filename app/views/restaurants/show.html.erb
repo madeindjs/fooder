@@ -15,11 +15,11 @@
   <% if @restaurant.module_dishes %>
     <section id="section-dishes" class="row">
       <h2>Notre carte</h2>
-      <div id="dishes-list">
+      <div id="dishes-list" class="col-xs-12">
         <%= render 'dishes/list', dishes: @dishes, cache: true %>
       </div>
+      <%# button to create dish %>
       <% if admin? %>
-        <!-- button to create dish -->
         <p class="col-xs-12 text-center">
           <%= link_to new_dish_path, class: 'btn btn-default btn-lg creable' do %>
             <%= glyphicon 'plus' %> ajouter un nouveau produit
@@ -31,9 +31,17 @@
   <!-- menus -->
   <section id="section-menus" class="row">
     <h2>Menus</h2>
-    <div id="menus-list">
+    <div id="menus-list" class="col-xs-12">
       <%= render 'menus/list', menus: @menus, cached: true %>
     </div>
+    <%# button to create menu %>
+    <% if admin? %>
+      <p class="col-xs-12 text-center">
+        <%= link_to new_menu_path, class: 'btn btn-default btn-lg creable' do %>
+          <%= glyphicon 'plus' %> créer un menu
+        <% end %>
+      </p>
+    <% end %>
   </section>
   <!-- opening hours -->
   <section id="section-opening-hours" class="row">

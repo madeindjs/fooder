@@ -12,7 +12,7 @@
 <% end %>
 <!-- re-render dish list on form send -->
 <script type="text/javascript">
-  $('form.edit_menu').on('submit', function(e){
+  $('form.new_menu, form.edit_menu').on('submit', function(e){
     e.preventDefault();
     var form = $(this);
     $.ajax({
