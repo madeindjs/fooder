@@ -18,6 +18,14 @@
       <div id="dishes-list">
         <%= render 'dishes/list', dishes: @dishes, cache: true %>
       </div>
+      <% if admin? %>
+        <!-- button to create dish -->
+        <p class="col-xs-12 text-center">
+          <%= link_to new_dish_path, class: 'btn btn-default btn-lg creable' do %>
+            <%= glyphicon 'plus' %> ajouter un nouveau produit
+          <% end %>
+        </p>
+      <% end %>
     </section>
   <% end %>
   <!-- menus -->

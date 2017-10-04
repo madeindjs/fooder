@@ -9,9 +9,15 @@
   <%# = f.text_field :tags %>
   <%= f.number_field :price, label: 'Prix' %>
   <%= f.submit 'Confirmer' %>
+  <%# add delete button only if update form %>
+  <% if dish.id %>
+    <button id="delete_dish" class="btn btn-danger">Supprimer</button>
+  <% end %>
+  <%# = link_to 'Supprimer', dish, method: :delete, remote: true, data: { confirm: 'Are you sure?', disable_with: 'loading...' }, class: 'btn btn-danger' if f.options[:html][:class] == "edit_dish" %>
 <% end %>
 <script type="text/javascript">
-  $('form.edit_dish').on('submit', function(e){
+  // on form send, close window & refresh view
+  $('form.new_dish, form.edit_dish').on('submit', function(e){
     e.preventDefault();
     var form = $(this);
     $.ajax({
@@ -30,4 +36,24 @@
        }
     });
   });
+  <% if dish.id %>
+    // remove and refresh view
+    $('#delete_dish').on('click', function(e){
+      e.preventDefault();
+      $.ajax({
+         url : '<%= url_for dish %>',
+         type : 'delete',
+         dataType : 'html',
+         success : function(result, status){
+          $('#dishes-list').html(result);
+         },
+         error : function(result, statut, error){
+          console.log(result);
+         },
+         complete : function(result, status){
+          $('.ui-dialog').remove();
+         }
+      });
+    });
+  <% end %>
 </script>

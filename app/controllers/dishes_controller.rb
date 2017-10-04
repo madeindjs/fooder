@@ -1,6 +1,6 @@
 class DishesController < ApplicationController
-  before_action :set_dish, only: [:show, :edit, :update, :destroy]
-  before_action :check_login, only: [:new, :create, :edit, :edits, :update, :destroy]
+  before_action :set_dish, only: [:edit, :update, :destroy]
+  before_action :check_login
   before_action :check_owner, only: [:edit, :update, :destroy]
   before_action :check_admin, only: [:edits, :allergens, :import]
   before_action :check_restaurant
@@ -30,17 +30,12 @@ class DishesController < ApplicationController
 
   # GET /dishes/new
   def new
-    @title = "Nouveau produit"
-    @description = "Créer un nouveau plat que les clients pourons déguster."
-
-    @dish = Dish.new
+    render '_form', locals: {dish: Dish.new}, layout:  false
   end
 
   # GET /dishes/1/edit
   def edit
-    @title = "Editer #{@restaurant.name}"
-    @description = "Editer une catégorie existante."
-    render  '_form', locals: {dish: @dish}, layout:  false
+    render '_form', locals: {dish: @dish}, layout:  false
   end
 
 
@@ -52,18 +47,16 @@ class DishesController < ApplicationController
     @dish.restaurant_id = @restaurant.id
 
     if @dish.save
-      flash[:success] = "Votre plat a l'air délicieux!"
-      redirect_to @dish
+      render 'dishes/_list', locals: {dishes: @restaurant.dishes_ordered}, layout: false
     else
-      flash[:danger] = "Une erreur est survenue."
-      render :new
+      render plain: "Une erreur est survenue."
     end
   end
 
   # PATCH/PUT /dishes/1
   def update
     if @dish.update(dish_params)
-      render  'dishes/_list', locals: {dishes: @restaurant.dishes_ordered}, layout: false
+      render 'dishes/_list', locals: {dishes: @restaurant.dishes_ordered}, layout: false
     else
       render plain: "Une erreur est survenue."
     end
@@ -72,7 +65,7 @@ class DishesController < ApplicationController
   # DELETE /dishes/1
   def destroy
     @dish.destroy
-    redirect_back fallback_location: dishes_path
+    render 'dishes/_list', locals: {dishes: @restaurant.dishes_ordered}, layout: false
   end
 
   # PATCH /dishes/1/sort/1

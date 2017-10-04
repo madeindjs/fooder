@@ -1,4 +1,4 @@
-$('.ajax-edit').click(function(e){
+$('.ajax-new, .ajax-edit').click(function(e){
   e.preventDefault();
 
   var button = $(this);
