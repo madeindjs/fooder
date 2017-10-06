@@ -8,6 +8,7 @@ class Dish < ApplicationRecord
   validates_presence_of :user_id
   validates_presence_of :category_id
   validates_presence_of :restaurant_id
+  validates_presence_of :name
   validates_presence_of :price
 
   mount_uploader :picture, PictureUploader

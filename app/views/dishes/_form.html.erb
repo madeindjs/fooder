@@ -1,4 +1,4 @@
-<%= bootstrap_form_for dish do |f| %>
+<%= bootstrap_form_for dish, remote: true do |f| %>
   <%= render 'shared/errors_form', model: dish %>
   <%= f.text_field :name, hide_label: true, placeholder: 'Nom' %>
   <div class="form-group">
@@ -17,26 +17,6 @@
   <%# = link_to 'Supprimer', dish, method: :delete, remote: true, data: { confirm: 'Are you sure?', disable_with: 'loading...' }, class: 'btn btn-danger' if f.options[:html][:class] == "edit_dish" %>
 <% end %>
 <script type="text/javascript">
-  // on form send, close window & refresh view
-  $('form.new_dish, form.edit_dish').on('submit', function(e){
-    e.preventDefault();
-    var form = $(this);
-    $.ajax({
-       url : form.attr('action'),
-       type : form.attr('method'),
-       data : form.serialize(),
-       dataType : 'html',
-       success : function(result, status){
-        $('#dishes-list').html(result);
-       },
-       error : function(result, statut, error){
-        console.log(result);
-       },
-       complete : function(result, status){
-        $('.ui-dialog').remove();
-       }
-    });
-  });
   <% if dish.id %>
     // remove and refresh view
     $('#delete_dish').on('click', function(e){

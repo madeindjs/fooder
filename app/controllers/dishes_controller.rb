@@ -49,7 +49,7 @@ class DishesController < ApplicationController
     if @dish.save
       render 'dishes/_list', locals: {dishes: @restaurant.dishes_ordered}, layout: false
     else
-      render plain: "Une erreur est survenue."
+      render '_form', locals: {dish: @dish}, layout:  false, status: :unprocessable_entity
     end
   end
 
@@ -58,7 +58,7 @@ class DishesController < ApplicationController
     if @dish.update(dish_params)
       render 'dishes/_list', locals: {dishes: @restaurant.dishes_ordered}, layout: false
     else
-      render plain: "Une erreur est survenue."
+      render '_form', locals: {dish: @dish}, layout:  false, status: :unprocessable_entity
     end
   end
 
