@@ -1,5 +1,5 @@
-<%= bootstrap_form_for  menu do |f| %>
-  <%= render 'shared/errors_form', model: menu %>
+<%= bootstrap_form_for  menu, remote: true do |f| %>
+  <%# = render 'shared/errors_form', model: menu %>
   <%= f.text_field :name, hide_label: true, placeholder: 'Nom' %>
   <%= f.text_field :description, hide_label: true, placeholder: 'Description' %>
   <%# = render 'shared/form_input_picture.html', form: f, model: menu %>
@@ -15,25 +15,6 @@
 <% end %>
 <!-- re-render dish list on form send -->
 <script type="text/javascript">
-  $('form.new_menu, form.edit_menu').on('submit', function(e){
-    e.preventDefault();
-    var form = $(this);
-    $.ajax({
-       url : form.attr('action'),
-       type : form.attr('method'),
-       data : form.serialize(),
-       dataType : 'html',
-       success : function(result, status){
-        $('#menus-list').html(result);
-       },
-       error : function(result, statut, error){
-        console.log(result);
-       },
-       complete : function(result, status){
-        $('.ui-dialog').remove();
-       }
-    });
-  });
   <% if menu.id %>
     // remove and refresh view
     $('#delete_menu').on('click', function(e){

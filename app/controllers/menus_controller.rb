@@ -65,7 +65,7 @@ class MenusController < ApplicationController
     if @menu.save
       render 'menus/_list', locals: {menus: @restaurant.menus_ordered}, layout: false
     else
-      render plain: "Une erreur est survenue."
+      render '_form', locals: {menu: @menu}, layout:  false, status: :unprocessable_entity
     end
   end
 
@@ -75,7 +75,7 @@ class MenusController < ApplicationController
       # add_dishes
       render  'menus/_list', locals: {menus: @restaurant.menus_ordered}, layout: false
     else
-      render plain: "Une erreur est survenue."
+      render '_form', locals: {menu: @menu}, layout:  false, status: :unprocessable_entity
     end
   end
 

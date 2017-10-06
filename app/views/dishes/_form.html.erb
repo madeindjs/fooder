@@ -1,5 +1,5 @@
 <%= bootstrap_form_for dish, remote: true do |f| %>
-  <%= render 'shared/errors_form', model: dish %>
+  <%# = render 'shared/errors_form', model: dish %>
   <%= f.text_field :name, hide_label: true, placeholder: 'Nom' %>
   <div class="form-group">
     <%= collection_select :dish, :category_id, @restaurant.categories, :id, :name, {selected: dish.category_id}, { class: "form-control" }  %>
