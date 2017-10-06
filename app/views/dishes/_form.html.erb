@@ -11,30 +11,5 @@
   <%= f.number_field :price, hide_label: true, append: '€', placeholder: 'prix' %>
   <%= f.submit 'Confirmer' %>
   <%# add delete button only if update form %>
-  <% if dish.id %>
-    <button id="delete_dish" class="btn btn-danger">Supprimer</button>
-  <% end %>
-  <%# = link_to 'Supprimer', dish, method: :delete, remote: true, data: { confirm: 'Are you sure?', disable_with: 'loading...' }, class: 'btn btn-danger' if f.options[:html][:class] == "edit_dish" %>
+  <%= button_to('Supprimer', @dish, method: :delete, remote: true, id: 'delete_dish', class: 'btn btn-danger') if dish.id%>
 <% end %>
-<script type="text/javascript">
-  <% if dish.id %>
-    // remove and refresh view
-    $('#delete_dish').on('click', function(e){
-      e.preventDefault();
-      $.ajax({
-         url : '<%= url_for dish %>',
-         type : 'delete',
-         dataType : 'html',
-         success : function(result, status){
-          $('#dishes-list').html(result);
-         },
-         error : function(result, statut, error){
-          console.log(result);
-         },
-         complete : function(result, status){
-          $('.ui-dialog').remove();
-         }
-      });
-    });
-  <% end %>
-</script>
