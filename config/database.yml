@@ -3,8 +3,8 @@ development:
   database: fooder
   pool: 5
   encoding: utf8
-  username: root
-  password: root
+  username: pi
+  password: pi
   host:  localhost
 
 test:
