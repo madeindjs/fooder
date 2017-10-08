@@ -10,5 +10,5 @@
   <%# = render 'select_dishes', menu: menu, cache: true %>
   <%= f.submit 'Confirmer' %>
   <%# add delete button only if update form %>
-  <%= button_to('Supprimer', @menu, method: :delete, remote: true, id: 'delete_menu', class: 'btn btn-danger') if menu.id%>
 <% end %>
+<%= button_to('Supprimer', @menu, method: :delete, remote: true, form_class: 'delete_menu', class: 'btn btn-danger') if menu.id %>
