@@ -1,28 +1,8 @@
-<%= bootstrap_form_for section do |f| %>
+<%= bootstrap_form_for section, remote: true do |f| %>
   <%= render 'shared/errors_form', model: section %>
   <%= f.text_field :title, label: 'Titre' %>
   <%= f.text_area :content, label: 'Contenu' %>
   <%# = render 'shared/form_input_picture.html', form: f, model: section %>
   <%= f.submit 'Confirmer' %>
 <% end %>
-<script type="text/javascript">
-  $('form.edit_section').on('submit', function(e){
-    e.preventDefault();
-    var form = $(this);
-    $.ajax({
-       url : form.attr('action'),
-       type : form.attr('method'),
-       data : form.serialize(),
-       dataType : 'html',
-       success : function(result, status){
-        $('#sections-list').html(result);
-       },
-       error : function(result, statut, error){
-        console.log(result);
-       },
-       complete : function(result, status){
-        $('.ui-dialog').remove();
-       }
-    });
-  });
-</script>
+<%= button_to('Supprimer', @section, method: :delete, remote: true, form_class: 'delete_section', class: 'btn btn-danger') if section.id %>

@@ -28,11 +28,9 @@ class SectionsController < ApplicationController
     @section.restaurant_id = @restaurant.id
 
     if @section.save
-      flash[:success] = "Votre texte d'accueil a été créé."
-      redirect_to root_url
+      render 'sections/_list', locals: {sections: @restaurant.sections}, layout: false
     else
-      flash[:danger] = "Une erreur est survenue."
-      render :new
+      render '_form', locals: {section: @section}, layout:  false, status: :unprocessable_entity
     end
   end
 
@@ -41,15 +39,14 @@ class SectionsController < ApplicationController
     if @section.update(section_params)
       render  'sections/_list', locals: {sections: @restaurant.sections}, layout: false
     else
-      render plain: "Une erreur est survenue."
+      render '_form', locals: {section: @section}, layout:  false, status: :unprocessable_entity
     end
   end
 
   # DELETE /sections/1
   def destroy
     @section.destroy
-    flash[:success] = "Votre texte d'accueil a été supprimé."
-    redirect_to root_url
+    render 'sections/_list', locals: {sections: @restaurant.sections}, layout: false
   end
 
   private
