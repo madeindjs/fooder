@@ -18,6 +18,10 @@ $(document).on('click', '.editable', function(e){
     success : function(html, status){
       dialog.html(html);
       dialog.dialog();
+    },
+    error : function(xhr, status, errorThrown ){
+      dialog.html('<div class="alert alert-danger" role="alert">' + errorThrown + '</div>');
+      dialog.dialog();
     }
   });
 });

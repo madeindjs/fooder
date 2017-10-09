@@ -113,6 +113,6 @@ class RestaurantsController < ApplicationController
   end
 
   def check_owner
-    redirect_to root_path unless current_user.restaurants.include? @restaurant
+    render_alert unless current_user.restaurants.include? @restaurant
   end
 end

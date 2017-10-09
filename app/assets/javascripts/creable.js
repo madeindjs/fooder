@@ -12,8 +12,12 @@ $(document).on('click', '.creable', function(e){
   $.ajax({
     url: url,
     method: 'GET',
-    success : function(html, status){
+    complete : function(html, status){
       dialog.html(html);
+      dialog.dialog();
+    },
+    error : function(xhr, status, errorThrown ){
+      dialog.html('<div class="alert alert-danger" role="alert">' + errorThrown + '</div>');
       dialog.dialog();
     }
   });
