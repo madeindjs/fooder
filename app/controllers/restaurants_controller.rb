@@ -35,11 +35,8 @@ class RestaurantsController < ApplicationController
 
   # GET /restaurants/1/edit
   def edit
-    @title = "Editer votre restaurant"
-    @description = "Editer les informations relatives à ce restaurant."
-    @fields = params['fields'].split('.')
-
-    render layout: false
+    fields = params['fields'].split('.')
+    render 'shared/_form_field', locals: {model: @restaurant, fields: fields}, layout:  false
   end
 
   # POST /restaurants
@@ -61,7 +58,7 @@ class RestaurantsController < ApplicationController
   def update
     if @restaurant.update(restaurant_params)
       flash[:success] = "Votre restaurant a été mis à jour."
-      redirect_to @restaurant
+      redirect_to root_url(subdomain: @restaurant.slug)
     else
       flash[:danger] = "Une erreur est survenue."
       render :edit
