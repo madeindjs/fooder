@@ -6,6 +6,7 @@ $(document).on('click', '.editable', function(e){
   var div = document.createElement('div');
   document.body.appendChild(div);
   var dialog = $(div);
+  dialog.attr('class', 'dialog');
   dialog.attr('title', "Editer l'élement")
 
   $.ajax({

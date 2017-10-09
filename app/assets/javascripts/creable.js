@@ -6,7 +6,8 @@ $(document).on('click', '.creable', function(e){
   var div = document.createElement('div');
   document.body.appendChild(div);
   var dialog = $(div);
-  dialog.attr('title', "Créer l'élement")
+  dialog.attr('class', 'dialog');
+  dialog.attr('title', "Créer l'élement");
 
   $.ajax({
     url: url,
