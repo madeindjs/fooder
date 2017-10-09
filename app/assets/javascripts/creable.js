@@ -12,7 +12,7 @@ $(document).on('click', '.creable', function(e){
   $.ajax({
     url: url,
     method: 'GET',
-    complete : function(html, status){
+    success : function(html, status){
       dialog.html(html);
       dialog.dialog();
     },
