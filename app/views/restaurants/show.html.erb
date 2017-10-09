@@ -4,9 +4,11 @@
   >
   <div class="cell-vertical-align">
     <h1 
-      class="editable" 
-      data-fields="name"
-      data-url="<%= url_for edit_restaurant_path(@restaurant) %>"
+      <% if admin? %>
+        class="editable" 
+        data-fields="name"
+        data-url="<%= url_for edit_restaurant_path(@restaurant) %>"
+      <% end %>
     ><%= @restaurant.name %></h1>
   </div>
 </header>

@@ -2,8 +2,10 @@
 <% sections.each do |section| %>
   <% picture = section.picture? ?  image_tag( section.picture.thumb, class: 'img-circle section-img') : '' %>
   <div 
-    class="media text-center editable"
-    data-url="<%= url_for edit_section_path(section) %>"
+    class="media text-center <%= 'editable' if admin? %>"
+    <% if admin? %>
+      data-url="<%= url_for edit_section_path(section) %>"
+    <% end %>
   >
     <!-- display picture and text in two columns -->
     <% if section.picture? and align == 'left' %>
@@ -20,7 +22,6 @@
         <%= image_tag section.picture.thumb, class: "img", size: 200 %>
       </div>
     <% end %>
-
     <% align = align == 'left' ? 'right' : 'left' %>
   </div>
 <% end %>

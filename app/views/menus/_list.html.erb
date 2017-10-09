@@ -1,7 +1,9 @@
 <% menus.each do |menu| %>
   <div
-    class="col-xs-12 col-md-6 col-lg-4 editable"
-    data-url="<%= url_for edit_menu_path(menu) %>"
+    class="col-xs-12 col-md-6 col-lg-4 <%= 'editable' if admin? %>"
+    <% if admin? %>
+      data-url="<%= url_for edit_menu_path(menu) %>"
+    <% end %>
   >
     <h3 class="menu"><%= menu.name %> <span class="price"><%= menu.price %> €</span></h3>
     <p class="text-justify"><%= menu.description %></p>

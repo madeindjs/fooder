@@ -1,31 +1,29 @@
 <table class="table table-hover">
-
   <% OpeningHour::DAYS.each do |field| %>
-
     <tr class="table-dark">
       <th><%= field %></th>
-
-
       <% if @restaurant.opening_hours.first %>
         <% opening_hour = @restaurant.opening_hours.first %>
         <td
-          class="editable"
-          data-fields="<%= field %>"
-          data-url="<%= url_for edit_opening_hour_path(opening_hour.id) %>"
+          <% if admin? %>
+            class="editable"
+            data-fields="<%= field %>"
+            data-url="<%= url_for edit_opening_hour_path(opening_hour.id) %>"
+          <% end %>
         >
-            <%= opening_hour.send(field) || "fermé"  %>
+          <%= opening_hour.send(field) || "fermé"  %>
         </td>
       <% else %>
         <td
-          class="editable"
-          data-fields="<%= field %>"
-          data-url="<%= url_for new_opening_hour_path %>"
+          <% if admin? %>
+            class="editable"
+            data-fields="<%= field %>"
+            data-url="<%= url_for new_opening_hour_path %>"
+          <% end %>
         >
           fermé
         </td>
       <% end %>
     </tr>
-
   <% end %>
-    
 </table>
