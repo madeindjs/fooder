@@ -15,6 +15,12 @@ class SectionsController < ApplicationController
   #   @section = Section.new
   # end
 
+
+  # GET /dishes/new
+  def new
+    render '_form', locals: {section: Section.new}, layout:  false
+  end
+
   # GET /sections/1/edit
   def edit
     render  '_form', locals: {section: @section}, layout:  false

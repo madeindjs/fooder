@@ -75,6 +75,14 @@
       <div id="sections-list">
         <%= render 'sections/list', sections: @restaurant.sections, cache: true %>
       </div>
+      <%# button to create dish %>
+      <% if admin? %>
+        <p class="col-xs-12 text-center">
+          <%= link_to new_section_path, class: 'btn btn-default btn-lg creable' do %>
+            <%= glyphicon 'plus' %> ajouter une nouvelle section
+          <% end %>
+        </p>
+      <% end %>
     </div>
   </section>
   <!-- address -->
