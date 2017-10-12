@@ -2,7 +2,7 @@
   <%= render 'shared/errors_form', model: section %>
   <%= f.text_field :title, label: 'Titre' %>
   <%= f.text_area :content, label: 'Contenu' %>
-  <%# = render 'shared/form_input_picture.html', form: f, model: section %>
+  <%= render 'shared/form_input_picture.html', form: f, model: section %>
   <%= f.submit 'Confirmer' %>
 <% end %>
 <%= button_to('Supprimer', @section, method: :delete, remote: true, form_class: 'delete_section', class: 'btn btn-danger') if section.id %>
