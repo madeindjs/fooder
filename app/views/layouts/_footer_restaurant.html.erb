@@ -1,18 +1,13 @@
 <footer class="footer" style="margin-top: 200px">
   <div class="container">
-    <p 
-      class="col-xs-12 editable"
+    <%# address  %>
+    <p class="col-xs-12 editable"
       data-fields="address.zip_code.city"
       data-url="<%= url_for edit_restaurant_path(@restaurant) %>"
-    >
-      <%= glyphicon 'home' %> <%= @restaurant.complete_address %>
-    </p>
+    ><%= glyphicon 'home' %> <%= @restaurant.complete_address %></p>
+    <%# phone %>
     <% if @restaurant.phone %> 
-      <p>
-        <%= link_to '#section-contact' do %>
-          <%= glyphicon 'earphone' %> <%= @restaurant.phone %>
-        <% end  %>
-      </p>
+      <p><%= link_to '#section-contact' do %><%= glyphicon 'earphone' %> <%= @restaurant.phone %><% end  %></p>
     <% end %>
     <!-- display list of usefull links -->
     <div class="col-xs-12" <%= tooltip "Le plan du site est généré automatiquement en fonction des modules activé." %> >
@@ -21,14 +16,20 @@
         <%= render "layouts/navigation_restaurant", cache: true %>
       </ul>
     </div>
-    <% if @restaurant.links.count != 0 %>
+    <% if @restaurant.links.count != 0 || admin? %>
       <div class="col-xs-12 tooltip-holder" <%= tooltip "Gérez les liens vers les résaux sociaux" %> >
         <strong>Sur internet</strong>
-        <ul class="list-unstyled">
-          <% @restaurant.links.each do |link| %>
-            <li><%= link_to  link.name, link.url %></li>
-          <% end %>
-        </ul>
+        <div id="links-list">
+          <%= render 'links/list', links: @restaurant.links %>
+        </div>
+        <%# new link %>
+        <% if admin? %>
+          <p>
+            <%= link_to new_link_path, class: 'btn btn-default btn-warning creable' do %>
+              <%= glyphicon 'plus' %> ajouter un lien externe
+            <% end %>
+          </p>
+        <% end %>
       </div>
     <% end %>
   </div>
