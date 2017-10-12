@@ -4,6 +4,8 @@
 <% if @restaurant.module_menus %>
   <li><%= link_to "Menus", '#section-menus' %></li>
 <% end %>
+<li><%= link_to "Le restaurant", '#section-informations' %></li>
+
 <% if @restaurant.module_blog %>
   <li><%= link_to "Actualités", posts_url(subdomain: @restaurant) %></li>
 <% end %>

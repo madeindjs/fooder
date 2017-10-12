@@ -23,7 +23,7 @@
       <%# button to create dish %>
       <% if admin? %>
         <p class="col-xs-12 text-center">
-          <%= link_to new_dish_path, class: 'btn btn-default btn-lg creable' do %>
+          <%= link_to new_dish_path, class: 'btn btn-default btn-lg btn-warning creable' do %>
             <%= glyphicon 'plus' %> ajouter un nouveau produit
           <% end %>
         </p>
@@ -39,11 +39,31 @@
     <%# button to create menu %>
     <% if admin? %>
       <p class="col-xs-12 text-center">
-        <%= link_to new_menu_path, class: 'btn btn-default btn-lg creable' do %>
+        <%= link_to new_menu_path, class: 'btn btn-default btn-lg btn-warning creable' do %>
           <%= glyphicon 'plus' %> créer un menu
         <% end %>
       </p>
     <% end %>
+  </section>
+  <!-- information, address, etc.. -->
+  <section id="section-informations" class="row">
+    <div class="col-xs-12">
+      <h2>Notre restaurant</h2>
+      
+      <div id="sections-list">
+        <%= render 'sections/list', sections: @restaurant.sections, cache: true %>
+      </div>
+      <%# button to create dish %>
+      <% if admin? %>
+        <p class="col-xs-12 text-center">
+          <%= link_to new_section_path, class: 'btn btn-default btn-lg btn-warning creable' do %>
+            <%= glyphicon 'plus' %> ajouter une nouvelle section
+          <% end %>
+        </p>
+      <% end %>
+    </div>
+
+
   </section>
   <!-- opening hours -->
   <section id="section-opening-hours" class="row">
@@ -62,45 +82,12 @@
         <h2>Contactez nous</h2>
         <p class="lead text-center">Vous avez un question? N'hesitez pas à nous contacter.</p>
         <%= bootstrap_form_for contact_path do |f| %>
-          <%= f.text_field :object, label: 'Objet' %>
-          <%= f.text_field :email, label: 'Votre email' %>
-          <%= f.text_area :content, label: 'Contenu' %>
+          <%= f.text_field :email, placeholder: 'Votre email', hide_label: true %>
+          <%= f.text_field :object, placeholder: 'Objet', hide_label: true %>
+          <%= f.text_area :content, placeholder: 'Contenu', hide_label: true %>
           <%= f.submit 'Envoyer' %>
         <% end %>
       </div>
     </section>
   <% end %>
-  <!-- restaurant informations -->
-  <section class="row">
-    <div class="col-xs-12">
-      <h2>Notre restaurant</h2>
-      <div id="sections-list">
-        <%= render 'sections/list', sections: @restaurant.sections, cache: true %>
-      </div>
-      <%# button to create dish %>
-      <% if admin? %>
-        <p class="col-xs-12 text-center">
-          <%= link_to new_section_path, class: 'btn btn-default btn-lg creable' do %>
-            <%= glyphicon 'plus' %> ajouter une nouvelle section
-          <% end %>
-        </p>
-      <% end %>
-    </div>
-  </section>
-  <!-- address -->
-  <section class="row">
-    <div class="col-xs-12">
-      <h2>Addresse</h2>
-      <p 
-        class="editable"
-        data-fields="address.zip_code.city"
-        data-url="<%= url_for edit_restaurant_path(@restaurant) %>"
-      >
-        <%= glyphicon 'home' %> <%= @restaurant.complete_address %>
-      </p>
-      <% if @restaurant.module_contact %>
-        <p><%= link_to "Contactez nous", '#section-contact', class: 'btn btn-default' %></p>
-      <% end %>
-    </div>
-  </section>
 </div>
