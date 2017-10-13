@@ -65,6 +65,16 @@ class DishesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+
+  test "should create category" do
+    setup_restaurant_host
+    login(users(:me))
+    assert_difference('Category.count') do
+      post dishes_url, params: { dish: { category_name: 'New category name', description: @dish.description, name: @dish.name, restaurant_id: @dish.restaurant_id, user_id: @dish.user_id, price: 1 } }
+    end
+    assert_response :success
+  end
+
   test "should not create dish" do
     setup_restaurant_host
     assert_no_difference('Dish.count') do
