@@ -17,7 +17,6 @@ Rails.application.routes.draw do
     resources :menus, :only => [ :new, :create, :edit, :update, :destroy]
     resources :dishes, :only => [ :new, :create, :edit, :update, :destroy]
     # resources :allergens, only: [:index]
-    resources :categories
   end
 
   # payements area
