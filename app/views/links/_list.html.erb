@@ -1,5 +1,11 @@
 <ul class="list-inline">
   <% links.each do |link| %>
-    <li><%= link_to  link.name, link.url %></li>
+    <li>
+    	<%
+    	# set special options for admin user
+    	options = admin? ? { class: 'editable', onclick: 'return false', data: { url: url_for(edit_link_path(link)) } } : {}
+    	%>
+    	<%= link_to  link.name, link.url, options %>
+    </li>
   <% end %>
 </ul>

@@ -1,10 +1,11 @@
 <%= bootstrap_form_for link, remote: true do |f| %>
   <%# = render 'shared/errors_form', model: link %>
 
-  <%= f.text_field :name, label: 'Nom' %>
-  <%= f.text_field :url, label: 'url' %>
+  <%= f.text_field :name, placeholder: 'Nom', hide_label: true %>
+  <%= f.text_field :url, placeholder: 'url', hide_label: true %>
 
   <%# = render 'shared/form_input_logo.html', form: f, model: link %>
 
   <%= f.submit 'Confirmer' %>
 <% end %>
+<%= button_to('Supprimer', link, method: :delete, remote: true, form_class: 'delete_link', class: 'btn btn-danger') if link.id %>
