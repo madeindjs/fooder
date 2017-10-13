@@ -8,3 +8,11 @@ $(document).on('ajax:error', 'form.new_dish, form.edit_dish, form.delete_dish', 
   var form = $(this);
   form.parent().html(xhr.responseText);
 });
+
+$(document).on('click', '#new-category-button', function(e){
+    e.preventDefault();
+    $('input[name="category[name]"]').toggle();
+    $('select[name="dish[category_id]"]').toggle();
+});
+
+

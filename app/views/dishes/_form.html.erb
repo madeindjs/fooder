@@ -2,7 +2,10 @@
   <%# = render 'shared/errors_form', model: dish %>
   <%= f.text_field :name, hide_label: true, placeholder: 'Nom' %>
   <div class="form-group">
+      
     <%= collection_select :dish, :category_id, @restaurant.categories, :id, :name, {selected: dish.category_id}, { class: "form-control" }  %>
+    <%= text_field_tag 'category[name]', nil, style: 'display: none', class: 'form-control', placeholder: 'Nom de la catégorie' %>
+    <button id="new-category-button" class="btn btn-xs btn-default pull-right"><%= glyphicon 'plus' %></button>
   </div>
   <%= f.text_area :description, hide_label: true, placeholder: 'Description' %>
   <%# = render 'shared/form_input_picture.html', form: f, model: dish %>

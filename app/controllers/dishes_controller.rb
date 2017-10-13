@@ -46,6 +46,13 @@ class DishesController < ApplicationController
     @dish.user_id = current_user.id
     @dish.restaurant_id = @restaurant.id
 
+    # create category if don't exist
+    if params[:category] and params[:category][:name]
+      category = Category.create(name: params[:category][:name], restaurant_id: @restaurant.id)
+      @dish.category_id = category.id
+    end
+
+
     if @dish.save
       render 'dishes/_list', locals: {dishes: @restaurant.dishes_ordered}, layout: false
     else
@@ -112,8 +119,9 @@ class DishesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def dish_params
-    params.require(:dish).permit :name, :description, :category_id, :price, :tags, :picture, :activate,
-      :gluten_free, :crustacea_free, :egg_free, :fish_free, :peanut_free, :lactose_free, :nut_free, :sulphite_free
+    params.require(:dish).permit :name, :description, :category_id, :price, :category_name
+      # :tags, :picture, :activate,
+      # :gluten_free, :crustacea_free, :egg_free, :fish_free, :peanut_free, :lactose_free, :nut_free, :sulphite_free
   end
 
   def check_owner
