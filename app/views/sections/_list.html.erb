@@ -9,17 +9,17 @@
   >
     <!-- display picture and text in two columns -->
     <% if section.picture? and align == 'left' %>
-      <div class="media-left">
-        <%= image_tag section.picture.thumb, class: "img", size: 200 %>
+      <div class="media-left media-middle">
+        <%= image_tag section.picture.thumb, class: "img img-circle", size: 200 %>
       </div>
     <% end %>
-    <div class="media-body">
+    <div class="media-body media-middle">
       <h3 class="media-heading"><%= section.title %></h3>
       <p class="lead"><%= section.content %></p>
     </div>
     <% if section.picture? and align == 'right' %>
       <div class="media-right">
-        <%= image_tag section.picture.thumb, class: "img", size: 200 %>
+        <%= image_tag section.picture.thumb, class: "img img-circle", size: 200 %>
       </div>
     <% end %>
     <% align = align == 'left' ? 'right' : 'left' %>
