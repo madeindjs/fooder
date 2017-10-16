@@ -14,7 +14,7 @@ class RestaurantsControllerTest < ActionDispatch::IntegrationTest
 
   test "should redirect on get new" do
     get new_restaurant_url
-    assert_response 302
+    assert_response :forbidden
   end
 
   test "should get new" do
@@ -27,8 +27,7 @@ class RestaurantsControllerTest < ActionDispatch::IntegrationTest
     assert_no_difference('Restaurant.count') do
       post restaurants_url, params: { restaurant: { address: @restaurant.address, city: @restaurant.city, name: @restaurant.name, zip_code: @restaurant.zip_code } }
     end
-
-    assert_redirected_to root_path
+    assert_response :forbidden
   end
 
   test "should create restaurant" do
@@ -37,6 +36,7 @@ class RestaurantsControllerTest < ActionDispatch::IntegrationTest
     assert_difference('Restaurant.count') do
       post restaurants_url, params: { restaurant: { address: @restaurant.address, city: @restaurant.city, name: "new restaurant", zip_code: @restaurant.zip_code } }
     end
+    assert_response :redirect
   end
 
   test "should show restaurant" do
@@ -52,26 +52,25 @@ class RestaurantsControllerTest < ActionDispatch::IntegrationTest
 
   test "should redirect on get edit" do
     get edit_restaurant_url(@restaurant)
-    assert_response 302
+    assert_response :forbidden
   end
 
   test "should update restaurant" do
     login(users(:me))
     patch restaurant_url(@restaurant), params: { restaurant: { address: @restaurant.address, city: @restaurant.city, name: @restaurant.name, user_id: @restaurant.user_id, zip_code: @restaurant.zip_code } }
-    assert_redirected_to restaurant_url(@restaurant)
+    assert_response :redirect
   end
 
   test "should not update restaurant" do
     patch restaurant_url(@restaurant), params: { restaurant: { address: @restaurant.address, city: @restaurant.city, name: @restaurant.name, user_id: @restaurant.user_id, zip_code: @restaurant.zip_code } }
-    assert_redirected_to root_path
+    assert_response :forbidden
   end
 
   test "should not destroy restaurant" do
     assert_no_difference('Restaurant.count') do
       delete restaurant_url(@restaurant)
     end
-
-    assert_redirected_to root_path
+    assert_response :forbidden
   end
 
   test "should destroy restaurant" do
@@ -79,8 +78,7 @@ class RestaurantsControllerTest < ActionDispatch::IntegrationTest
     assert_difference('Restaurant.count', -1) do
       delete restaurant_url(@restaurant)
     end
-
-    assert_redirected_to @restaurant.user
+    assert_response :redirect
   end
 
 end
