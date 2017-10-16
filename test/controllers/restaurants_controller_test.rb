@@ -50,6 +50,12 @@ class RestaurantsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should get edit field" do
+    login(users(:me))
+    get edit_restaurant_url(@restaurant, params: { field: 'name'})
+    assert_response :success
+  end
+
   test "should redirect on get edit" do
     get edit_restaurant_url(@restaurant)
     assert_response :forbidden

@@ -35,8 +35,12 @@ class RestaurantsController < ApplicationController
 
   # GET /restaurants/1/edit
   def edit
-    fields = params['fields'].split('.')
-    render 'shared/_form_field', locals: {model: @restaurant, fields: fields}, layout:  false
+    if params['fields']
+      fields = params['fields'].split('.')
+      render 'shared/_form_field', locals: {model: @restaurant, fields: fields}, layout:  false
+    else
+      render 'restaurants/_form', locals: {restaurant: @restaurant}, layout:  false
+    end
   end
 
   # POST /restaurants
