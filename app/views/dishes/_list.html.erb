@@ -13,7 +13,7 @@ existing_categories_ids = dishes.map{|dish| dish.category_id }.uniq
             data-url="<%= url_for edit_dish_path(dish) %>"
           <% end %>
         >
-          <strong><%= dish.name %> <span class="price"><%= dish.price %> €</span></strong><br/>
+          <strong><%= dish.name %> <span class="price"><%= dish.price %> €</span></strong>
           <%= dish.description %>
         </li>
       <% end # end of dishes %>

@@ -24,7 +24,7 @@ class RestaurantsController < ApplicationController
 
     @jsonld = @restaurant.to_jsonld
 
-    render layout: 'landing_restaurant'
+    render layout: 'restaurant_landing'
   end
 
   # GET /restaurants/new

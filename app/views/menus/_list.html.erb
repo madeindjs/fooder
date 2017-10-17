@@ -6,14 +6,6 @@
     <% end %>
   >
     <h3 class="menu"><%= menu.name %> <span class="price"><%= menu.price %> €</span></h3>
-    <p class="text-justify"><%= menu.description %></p>
-    <ul class="list-unstyled">
-      <% menu.dishes.each do |dish| %>
-        <li>
-          <strong><%= dish.name %></strong><br/>
-          <%= dish.description %>
-        </li>
-      <% end %>
-    </ul>
+    <p class="text-justify"><%= menu.content %></p>
   </div>
 <% end %>

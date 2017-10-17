@@ -18,20 +18,10 @@
     <link href="https://fonts.googleapis.com/css?family=Parisienne" rel="stylesheet">
   </head>
   <body>
-    <div id="navigation-holder">
-      <%= render 'layouts/navigation', cache: true %>
+    <%= render 'layouts/navigation', cache: true %>
+    <div class="container" style="padding-top: 5rem">
+      <%= yield %>
     </div>
-    <%= yield %>
     <%= render 'layouts/footer', cached: true %>
-    <script type="text/javascript">
-      $(document).scroll(function() {
-        var y = $(this).scrollTop();
-        if (y > 750) {
-          $('#navigation-holder').fadeIn();
-        } else {
-          $('#navigation-holder').fadeOut();
-        }
-      });
-    </script>
   </body>
 </html>

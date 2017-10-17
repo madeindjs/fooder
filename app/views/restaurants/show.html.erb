@@ -33,7 +33,7 @@
   <!-- menus -->
   <section id="section-menus" class="row">
     <h2>Menus</h2>
-    <div id="menus-list" class="col-xs-12">
+    <div id="menus-list" class="col-xs-12 ">
       <%= render 'menus/list', menus: @menus, cached: true %>
     </div>
     <%# button to create menu %>
@@ -67,12 +67,9 @@
   </section>
   <!-- opening hours -->
   <section id="section-opening-hours" class="row">
-    <div class="col-xs-12 col-sm-6">
+    <div class="col-xs-12">
       <h2>Nos horaires d'ouverture</h2>
       <%= render 'opening_hours/details', restaurant: @restaurant %>
-    </div>
-    <div class="col-xs-12 col-sm-6 text-center">
-      <img src="http://lorempixel.com/400/400/food" class="img img-circle" height="400">
     </div>
   </section>
   <!-- contact -->

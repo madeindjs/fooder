@@ -1,7 +1,7 @@
 <%= bootstrap_form_for  menu, remote: true do |f| %>
   <%# = render 'shared/errors_form', model: menu %>
   <%= f.text_field :name, hide_label: true, placeholder: 'Nom' %>
-  <%= f.text_field :description, hide_label: true, placeholder: 'Description' %>
+  <%# = f.text_field :description, hide_label: true, placeholder: 'Description' %>
   <%# = render 'shared/form_input_picture.html', form: f, model: menu %>
   <%# = f.check_box :activate, label: 'Activer' %>
   <%= f.text_area :content, hide_label: true, placeholder: 'Contenu' %>
