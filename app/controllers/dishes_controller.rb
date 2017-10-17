@@ -47,11 +47,10 @@ class DishesController < ApplicationController
     @dish.restaurant_id = @restaurant.id
 
     # create category if don't exist
-    if params[:category] and params[:category][:name]
+    if params[:category] and params[:category][:name] and not params[:category][:name].empty?
       category = Category.create(name: params[:category][:name], restaurant_id: @restaurant.id)
       @dish.category_id = category.id
     end
-
 
     if @dish.save
       render 'dishes/_list', locals: {dishes: @restaurant.dishes_ordered}, layout: false
