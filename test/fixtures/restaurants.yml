@@ -9,6 +9,7 @@ one:
   city: MyString
   email: test@test.fr
   user_id: 1
+  module_blog: true
 
 two:
   name: Pzeria les trois saucisses
