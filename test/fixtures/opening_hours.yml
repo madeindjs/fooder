@@ -1,9 +1,9 @@
 one:
   id: 1
   restaurant_id: 1
-  user_id: 1
-  day: 1
-  closes: '9:00'
-  opens: '8:00'
-  valid_from: nil
-  valid_through: nil
+  tuesday: 11:30 ~ 14:00 et 19:00 ~ 22:30
+  wednesday: 11:30 ~ 14:00 et 19:00 ~ 22:30
+  thursday: 11:30 ~ 14:00 et 19:00 ~ 22:30
+  friday: 11:30 ~ 14:00 et 19:00 ~ 22:30
+  saturday: 11:30 ~ 14:00 et 19:00 ~ 22:30
+  sunday: 11:30 ~ 14:00

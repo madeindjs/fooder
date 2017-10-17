@@ -35,15 +35,20 @@ class ApplicationController < ActionController::Base
   end
 
   def check_login
-    redirect_to root_path  unless current_user
+    render_alert unless current_user
   end
 
   def check_admin
-    redirect_to root_path unless current_user and current_user.restaurants.include? @restaurant
+    render_alert unless current_user and current_user.restaurants.include? @restaurant
   end
 
   def check_super_user
-    redirect_to root_path unless current_user and current_user.email == User::SUPER_USER
+    render_alert unless current_user and current_user.email == User::SUPER_USER
+  end
+
+
+  def render_alert
+    render plain: '<div class="alert alert-danger">Vous n\'avez pas le droit d\'accéder à cette page</div>', status: 403
   end
 
   helper_method :current_user_session, :current_user

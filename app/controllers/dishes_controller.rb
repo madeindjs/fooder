@@ -1,47 +1,41 @@
 class DishesController < ApplicationController
-  before_action :set_dish, only: [:show, :edit, :update, :destroy]
-  before_action :check_login, only: [:new, :create, :edit, :edits, :update, :destroy]
+  before_action :set_dish, only: [:edit, :update, :destroy]
+  before_action :check_login
   before_action :check_owner, only: [:edit, :update, :destroy]
   before_action :check_admin, only: [:edits, :allergens, :import]
   before_action :check_restaurant
 
-  layout 'admin', only: [:edit, :new]
-
   # GET /dishes
   # GET /dishes.json
-  def index
-    @title = "Carte"
-    @description = "Carte des produits proposés par ce restaurant."
+  # def index
+  #   @title = "Carte"
+  #   @description = "Carte des produits proposés par ce restaurant."
 
-    @dishes = @restaurant.dishes.where(activate: true).order :order
-    @jsonld = {
-      "@context":"http://schema.org",
-      "@type":"ItemList",
-      "itemListElement": @dishes.map{|dish| dish.to_jsonld}
-    }
-  end
+  #   @dishes = @restaurant.dishes.where(activate: true).order :order
+  #   @jsonld = {
+  #     "@context":"http://schema.org",
+  #     "@type":"ItemList",
+  #     "itemListElement": @dishes.map{|dish| dish.to_jsonld}
+  #   }
+  # end
 
   # GET /dishes/1
   # GET /dishes/1.json
-  def show
-    @title = @dish.name
-    @description = "Un parmi les nombreux déliceux produits proposé par #{@restaurant.name}"
+  # def show
+  #   @title = @dish.name
+  #   @description = "Un parmi les nombreux déliceux produits proposé par #{@restaurant.name}"
 
-    @menus = @dish.menus.uniq
-  end
+  #   @menus = @dish.menus.uniq
+  # end
 
   # GET /dishes/new
   def new
-    @title = "Nouveau produit"
-    @description = "Créer un nouveau plat que les clients pourons déguster."
-
-    @dish = Dish.new
+    render '_form', locals: {dish: Dish.new}, layout:  false
   end
 
   # GET /dishes/1/edit
   def edit
-    @title = "Editer #{@restaurant.name}"
-    @description = "Editer une catégorie existante."
+    render '_form', locals: {dish: @dish}, layout:  false
   end
 
 
@@ -52,30 +46,32 @@ class DishesController < ApplicationController
     @dish.user_id = current_user.id
     @dish.restaurant_id = @restaurant.id
 
+    # create category if don't exist
+    if params[:category] and params[:category][:name] and not params[:category][:name].empty?
+      category = Category.create(name: params[:category][:name], restaurant_id: @restaurant.id)
+      @dish.category_id = category.id
+    end
+
     if @dish.save
-      flash[:success] = "Votre plat a l'air délicieux!"
-      redirect_to @dish
+      render 'dishes/_list', locals: {dishes: @restaurant.dishes_ordered}, layout: false
     else
-      flash[:danger] = "Une erreur est survenue."
-      render :new
+      render '_form', locals: {dish: @dish}, layout:  false, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /dishes/1
   def update
     if @dish.update(dish_params)
-      flash[:success] = "Votre plat a été mis à jour avec succès."
-      redirect_to @dish
+      render 'dishes/_list', locals: {dishes: @restaurant.dishes_ordered}, layout: false
     else
-      flash[:danger] = "Une erreur est survenue."
-      render :edit
+      render '_form', locals: {dish: @dish}, layout:  false, status: :unprocessable_entity
     end
   end
 
   # DELETE /dishes/1
   def destroy
     @dish.destroy
-    redirect_back fallback_location: dishes_path
+    render 'dishes/_list', locals: {dishes: @restaurant.dishes_ordered}, layout: false
   end
 
   # PATCH /dishes/1/sort/1
@@ -122,8 +118,9 @@ class DishesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def dish_params
-    params.require(:dish).permit :name, :description, :category_id, :price, :tags, :picture, :activate,
-      :gluten_free, :crustacea_free, :egg_free, :fish_free, :peanut_free, :lactose_free, :nut_free, :sulphite_free
+    params.require(:dish).permit :name, :description, :category_id, :price, :category_name
+      # :tags, :picture, :activate,
+      # :gluten_free, :crustacea_free, :egg_free, :fish_free, :peanut_free, :lactose_free, :nut_free, :sulphite_free
   end
 
   def check_owner

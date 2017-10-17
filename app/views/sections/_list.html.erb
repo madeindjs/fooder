@@ -1,13 +1,27 @@
+<% align = 'left' %>
 <% sections.each do |section| %>
-  <div class="jumbotron header">
-    <%= image_tag section.picture.thumb, class: 'img-circle section-img' if section.picture? %>
-    <h2><%= section.title %></h2>
-    <p><%= section.content %></p>
+  <% picture = section.picture? ?  image_tag( section.picture.thumb, class: 'img-circle section-img') : '' %>
+  <div 
+    class="media text-center <%= 'editable' if admin? %>"
     <% if admin? %>
-      <p class="text-right admin">
-        <%= link_to 'editer', edit_section_path(section), class: "btn btn-default ajax-edit" %>
-        <%= link_to 'Supprimer', section, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'  %>
-      </p>
+      data-url="<%= url_for edit_section_path(section) %>"
     <% end %>
+  >
+    <!-- display picture and text in two columns -->
+    <% if section.picture? and align == 'left' %>
+      <div class="media-left media-middle">
+        <%= image_tag section.picture.thumb, class: "img img-circle", size: 200 %>
+      </div>
+    <% end %>
+    <div class="media-body media-middle">
+      <h3 class="media-heading"><%= section.title %></h3>
+      <p class="lead"><%= section.content %></p>
+    </div>
+    <% if section.picture? and align == 'right' %>
+      <div class="media-right">
+        <%= image_tag section.picture.thumb, class: "img img-circle", size: 200 %>
+      </div>
+    <% end %>
+    <% align = align == 'left' ? 'right' : 'left' %>
   </div>
 <% end %>

@@ -35,6 +35,7 @@ gem 'coffee-rails', '~> 4.2' # Use CoffeeScript for .coffee assets and views
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'momentjs-rails'
+gem 'remotipart', '~> 1.2'
 
 # AUTHENTIFICATION
 gem 'authlogic', '>= 3.5'

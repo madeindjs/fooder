@@ -21,13 +21,14 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
 
   test "should redirect get new" do
     get new_post_url
-    assert_response 302
+    assert_response :forbidden
   end
 
   test "should not create post" do
     assert_no_difference('Post.count') do
       post posts_url, params: { post: { content: @post.content, tags: @post.tags, title: @post.title } }
     end
+    assert_response :forbidden
   end
 
   test "should create post" do
@@ -46,7 +47,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
 
   test "should redirect on get edit" do
     get edit_post_url(@post)
-    assert_response 302
+    assert_response :forbidden
   end
 
   test "should get edit" do
@@ -57,7 +58,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
 
   test "should recirect update post" do
     patch post_url(@post), params: { post: { content: @post.content, tags: @post.tags, title: @post.title } }
-    assert_redirected_to root_url
+    assert_response :forbidden
   end
 
   test "should update post" do
@@ -70,8 +71,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_no_difference('Post.count') do
       delete post_url(@post)
     end
-
-    assert_redirected_to root_url
+    assert_response :forbidden
   end
 
   test "should destroy post" do
@@ -79,7 +79,6 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_difference('Post.count', -1) do
       delete post_url(@post)
     end
-
     assert_redirected_to posts_url
   end
 end

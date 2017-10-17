@@ -2,12 +2,12 @@ require 'yaml'
 
 class Restaurant < ApplicationRecord
   belongs_to :user
+  has_many :opening_hours
   has_many :dishes
   has_many :menus
   has_many :sections
   has_many :posts
   has_many :categories
-  has_many :opening_hours
   has_many :links
   has_many :mailings
 
@@ -42,11 +42,11 @@ class Restaurant < ApplicationRecord
       description: 'Communiquez autour de vos nouveautés',
       glyphicon: 'comment',
     },
-    allergens: {
-      title: 'Allergènes',
-      description: 'Génerez automatiquement une carte des allergènes',
-      glyphicon: 'heart'
-    },
+    # allergens: {
+    #   title: 'Allergènes',
+    #   description: 'Génerez automatiquement une carte des allergènes',
+    #   glyphicon: 'heart'
+    # },
     contact: {
       title: 'Contact',
       description: 'Un formulaire de contact rapide',
@@ -91,6 +91,15 @@ class Restaurant < ApplicationRecord
     }
   end
 
+
+  def menus_ordered
+    self.menus.where(activate: true).order :order
+  end
+
+  def dishes_ordered
+    self.dishes.where(activate: true).order :order
+  end
+
   private
 
   def generate_dishes
@@ -130,19 +139,15 @@ class Restaurant < ApplicationRecord
   end
 
   def generate_opening_hours
-
-    (1..6).each do |day_number|
-      {'12:00:00'=>'14:00:00','19:30:00'=>'22:30:00'}.each do |open, close|
-        opening_hour = OpeningHour.create day: day_number,
-          user_id: self.user_id,
-          restaurant_id: self.id,
-          opens: open,
-          closes: close
-
-        opening_hour.save
-      end
-    end
-
+    OpeningHour.create(
+      restaurant_id: self.id,
+      tuesday: '11:30 ~ 14:00 et 19:00 ~ 22:30',
+      wednesday: '11:30 ~ 14:00 et 19:00 ~ 22:30',
+      thursday: '11:30 ~ 14:00 et 19:00 ~ 22:30',
+      friday: '11:30 ~ 14:00 et 19:00 ~ 22:30',
+      saturday: '11:30 ~ 14:00 et 19:00 ~ 22:30',
+      sunday: '11:30 ~ 14:00',
+    )
   end
 
 

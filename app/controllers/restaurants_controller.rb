@@ -4,7 +4,6 @@ class RestaurantsController < ApplicationController
   before_action :check_owner, only: [:edit, :update, :destroy, :opening_hours]
   before_action :check_restaurant, only: [:contact]
 
-  layout 'admin', only: [:edit]
 
   # GET /restaurants
   def index
@@ -20,9 +19,12 @@ class RestaurantsController < ApplicationController
     @title = @restaurant.name
     @description = "Un magnifique restaurant"
 
+    @dishes = @restaurant.dishes_ordered
+    @menus = @restaurant.menus_ordered
+
     @jsonld = @restaurant.to_jsonld
 
-    render layout: 'landing_restaurant'
+    render layout: 'restaurant_landing'
   end
 
   # GET /restaurants/new
@@ -33,8 +35,12 @@ class RestaurantsController < ApplicationController
 
   # GET /restaurants/1/edit
   def edit
-    @title = "Editer votre restaurant"
-    @description = "Editer les informations relatives à ce restaurant."
+    if params['fields']
+      fields = params['fields'].split('.')
+      render 'shared/_form_field', locals: {model: @restaurant, fields: fields}, layout:  false
+    else
+      render 'restaurants/_form', locals: {restaurant: @restaurant}, layout:  false
+    end
   end
 
   # POST /restaurants
@@ -56,7 +62,7 @@ class RestaurantsController < ApplicationController
   def update
     if @restaurant.update(restaurant_params)
       flash[:success] = "Votre restaurant a été mis à jour."
-      redirect_to @restaurant
+      redirect_to root_url(subdomain: @restaurant.slug)
     else
       flash[:danger] = "Une erreur est survenue."
       render :edit
@@ -111,6 +117,6 @@ class RestaurantsController < ApplicationController
   end
 
   def check_owner
-    redirect_to root_path unless current_user.restaurants.include? @restaurant
+    render_alert unless current_user.restaurants.include? @restaurant
   end
 end

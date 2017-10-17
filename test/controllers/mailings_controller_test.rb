@@ -13,7 +13,7 @@ class MailingsControllerTest < ActionDispatch::IntegrationTest
 
   test "should redirect on get index" do
     get mailings_url
-    assert_response 302
+    assert_response :forbidden
   end
 
   test "should get new" do
@@ -24,7 +24,7 @@ class MailingsControllerTest < ActionDispatch::IntegrationTest
 
   test "should redirect on get new" do
     get new_mailing_url
-    assert_response 302
+    assert_response :forbidden
   end
 
   test "should create mailing" do
@@ -32,7 +32,6 @@ class MailingsControllerTest < ActionDispatch::IntegrationTest
     assert_difference('Mailing.count') do
       post mailings_url, params: { mailing: { restaurant_id: 1, mail: 'presentation' } }
     end
-
     assert_redirected_to mailings_url
   end
 
@@ -40,8 +39,7 @@ class MailingsControllerTest < ActionDispatch::IntegrationTest
     assert_no_difference('Mailing.count') do
       post mailings_url, params: { mailing: {  } }
     end
-
-    assert_response 302
+    assert_response :forbidden
   end
 
 end

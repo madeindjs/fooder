@@ -1,13 +1,29 @@
-<table class="table tooltip-holder" <%= tooltip 'Les horraires d\'ouvertures  peuvent êtres modifiés dans la section "editer les horraires d\'ouvertures"' %>>
-  <% opening_hours.group_by{|op| op.day}.each do |k, opening_hours_grouped| %>
-    <tr>
-      <th><%= opening_hours_grouped.first.pretty_day %></th>
-      <td>
-        <% opening_hours_grouped.each do |opening_hour| %>
-          <%= opening_hour.pretty_hours %>
-          <%= ' et ' unless  opening_hours_grouped.last == opening_hour %>
-        <% end %>
-      </td>
+<table class="table table-hover">
+  <% OpeningHour::DAYS.each do |field| %>
+    <tr class="table-dark">
+      <th><%= field %></th>
+      <% if @restaurant.opening_hours.first %>
+        <% opening_hour = @restaurant.opening_hours.first %>
+        <td
+          <% if admin? %>
+            class="editable"
+            data-fields="<%= field %>"
+            data-url="<%= url_for edit_opening_hour_path(opening_hour.id) %>"
+          <% end %>
+        >
+          <%= opening_hour.send(field) || "fermé"  %>
+        </td>
+      <% else %>
+        <td
+          <% if admin? %>
+            class="editable"
+            data-fields="<%= field %>"
+            data-url="<%= url_for new_opening_hour_path %>"
+          <% end %>
+        >
+          fermé
+        </td>
+      <% end %>
     </tr>
   <% end %>
 </table>

@@ -1,9 +1,10 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :check_module
   before_action :check_login, only: [:new, :create, :edit, :update, :destroy]
   before_action :check_owner, only: [:edit, :update, :destroy]
 
-  layout 'admin', only: [:edit, :new]
+  layout 'restaurant'
 
   # GET /posts
   # GET /posts.json
@@ -81,5 +82,9 @@ class PostsController < ApplicationController
 
     def check_owner
       redirect_to root_path unless current_user.posts.include? @post
+    end
+
+    def check_module
+      redirect_to root_path unless @restaurant.module_blog
     end
 end

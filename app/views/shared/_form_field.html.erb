@@ -1,0 +1,7 @@
+<%= bootstrap_form_for model do |f| %>
+  <%# = render 'shared/errors_form', model: model %>
+  <% fields.each do |field| %>
+    <%= f.text_field field, hide_label: true, placeholder: field %>
+  <% end %>
+  <%= f.submit 'Confirmer' %>
+<% end %>
