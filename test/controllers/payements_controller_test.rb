@@ -8,7 +8,7 @@ class PayementsControllerTest < ActionDispatch::IntegrationTest
 
   test "should redirect on get index" do
     get payements_url
-    assert_response 302
+    assert_response :forbidden
   end
 
   test "should get index" do
@@ -19,7 +19,7 @@ class PayementsControllerTest < ActionDispatch::IntegrationTest
 
   test "should redirect on get new" do
     get new_payement_url
-    assert_response 302
+    assert_response :forbidden
   end
 
   test "should get new" do
@@ -47,7 +47,7 @@ class PayementsControllerTest < ActionDispatch::IntegrationTest
 
   test "should redirect show payement" do
     get payement_url(@payement)
-    assert_response 302
+    assert_response :forbidden
   end
 
   test "should show payement" do
