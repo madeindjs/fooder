@@ -1,0 +1,4 @@
+<%= bootstrap_form_for(Restaurant.new) do |f| %>
+  <%= f.text_field :name, label: 'Nom' %>
+  <%= f.submit 'Créer ce magnifique restaurant' %>
+<% end %>
