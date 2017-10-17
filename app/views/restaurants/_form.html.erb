@@ -1,16 +1,18 @@
-<h4><%= image_tag 'icons/settings', height: 30 %> Paramètres</h4>
 
 <%= bootstrap_form_for restaurant do |f| %>
+  <h4><%= image_tag 'icons/settings', height: 30 %> Paramètres</h4>
   <%#= f.text_field :name, label: 'Nom' %>
   <%#= f.text_field :address, label: 'Adresse' %>
   <%#= f.text_field :zip_code, label: 'Code Postal' %>
   <%#= f.text_field :city, label: 'Ville' %>
   <%#= f.text_field :phone, label: 'Numéro de télephone' %>
-  <%= f.text_field :email, label: 'Email', help: "L'email n'est pas affiché. Il sert de desinataire au formulaire de contact" %>
   <%= f.text_field :slug, label: "Préfixe de l'URL gratuite", append: ".fooder.pro", prepend: 'http://' %>
+  <%= f.text_field :email, label: 'Email', help: "L'email n'est pas affiché. Il sert de desinataire au formulaire de contact" %>
+  <%= f.submit 'Confirmer' %>
+<% end %>
 
+<%= bootstrap_form_for restaurant do |f| %>
   <h4><%= image_tag 'icons/paint-brush', height: 30 %> Design</h4>
-
   <%= render 'shared/form_input_logo.html', form: f, model: restaurant %>
   <%= render 'shared/form_input_picture.html', form: f, model: restaurant %>
   <%# = f.select :picture_display,  display_options(restaurant.picture_display), {label: "Affichage des images"} %>
