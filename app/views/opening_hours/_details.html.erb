@@ -1,7 +1,7 @@
 <table class="table table-hover">
-  <% OpeningHour::DAYS.each do |field| %>
+  <% OpeningHour::DAYS.each do |field, name| %>
     <tr class="table-dark">
-      <th><%= field %></th>
+      <th><%= name %></th>
       <% if @restaurant.opening_hours.first %>
         <% opening_hour = @restaurant.opening_hours.first %>
         <td

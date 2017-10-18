@@ -55,7 +55,7 @@ class Restaurant < ApplicationRecord
   }
 
   def complete_name
-    content = "#{self.name} - #{self.complete_address}"
+    "#{self.name} - #{self.complete_address}"
     # content += " - #{self.phone}" if self.phone and !self.phone.empty?
   end
 
