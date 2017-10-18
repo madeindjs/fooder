@@ -93,11 +93,11 @@ class Restaurant < ApplicationRecord
 
 
   def menus_ordered
-    self.menus.where(activate: true).order :order
+    self.menus.where(activate: true).order :price
   end
 
   def dishes_ordered
-    self.dishes.where(activate: true).order :order
+    self.dishes.where(activate: true).order :price
   end
 
   private
