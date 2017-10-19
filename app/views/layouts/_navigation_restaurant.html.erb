@@ -18,17 +18,13 @@
       <% if admin? %>
         <ul class="nav navbar-nav nav navbar-right">
           <!-- design -->
-          <li>
-            <%= link_to edit_restaurant_path(@restaurant, what: 'design'), class: 'settings', remote: true do %>
-              <%= glyphicon 'tint' %> Design
-            <% end %>
-          </li>
+          <li><%= link_to glyphicon('tint'), edit_restaurant_path(@restaurant, what: 'design'), class: 'settings', title: 'Design', remote: true %></li>
           <!-- settings -->
-          <li>
-            <%= link_to edit_restaurant_path(@restaurant, what: 'settings'), class: 'settings', remote: true do %>
-              <%= glyphicon 'cog' %> Paramètres
-            <% end %>
-          </li>
+          <li><%= link_to glyphicon('cog'), edit_restaurant_path(@restaurant, what: 'settings'), class: 'settings', title: 'Paramètres', remote: true %></li>
+          <!-- account -->
+          <li><%= link_to glyphicon('user'), current_user, title: 'mon compte' %></li>
+          <!-- signout -->
+          <li><%= link_to glyphicon('log-out'), signout_path, title: 'déconnexion' %></li>
         </ul>
       <% end %>
       <!--/ nav navbar-nav nav navbar-right -->
