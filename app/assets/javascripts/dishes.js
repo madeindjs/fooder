@@ -11,11 +11,16 @@ $(document).on('ajax:error', 'form.new_dish, form.edit_dish, form.delete_dish', 
 
 $(document).on('click', '#new-category-button', function(e){
     e.preventDefault();
-    var input = $('input[name="category[name]"]');
-    var select = $('select[name="dish[category_id]"]');
-    input.val(select.find('option:selected').text())
+    var form = $(this).parents('form');
+    var input = form.find('input[name="category[name]"]');
+    var select = form.find('select[name="dish[category_id]"]');
+    input.val(select.find('option:selected').text());
     input.toggle();
     select.toggle();
+
+    if(!input.is(":visible")){
+      input.val('');
+    }
 });
 
 
