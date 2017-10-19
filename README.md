@@ -14,12 +14,5 @@ Objectif
 
 L'interface permet au restaurateur de mettre à jour ses produits et ses menus directement via son propre site, simplement.
 
-Licence
--------
 
-[Apache License 2.0](https://choosealicense.com/licenses/apache-2.0/#)
-
-Author
-------
-
-[Rousseau Alexandre](http:µ//rousseau-alexandre.fr)
+[Apache License 2.0](https://choosealicense.com/licenses/apache-2.0/#) | [Rousseau Alexandre](http:µ//rousseau-alexandre.fr)
