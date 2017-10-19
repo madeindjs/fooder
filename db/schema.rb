@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170829111119) do
+ActiveRecord::Schema.define(version: 20171019104211) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -55,9 +55,7 @@ ActiveRecord::Schema.define(version: 20170829111119) do
     t.string   "url"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.string   "logo"
     t.integer  "restaurant_id"
-    t.integer  "order"
   end
 
   create_table "mailings", force: :cascade do |t|
@@ -98,14 +96,15 @@ ActiveRecord::Schema.define(version: 20170829111119) do
 
   create_table "opening_hours", force: :cascade do |t|
     t.integer  "restaurant_id"
-    t.integer  "user_id"
-    t.integer  "day"
-    t.time     "closes"
-    t.time     "opens"
-    t.datetime "valid_from"
-    t.datetime "valid_through"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.string   "monday"
+    t.string   "tuesday"
+    t.string   "wednesday"
+    t.string   "thursday"
+    t.string   "friday"
+    t.string   "saturday"
+    t.string   "sunday"
   end
 
   create_table "payements", force: :cascade do |t|
@@ -179,23 +178,22 @@ ActiveRecord::Schema.define(version: 20170829111119) do
 
   create_table "restaurants", force: :cascade do |t|
     t.string   "name"
-    t.string   "address"
-    t.string   "zip_code"
-    t.string   "city"
+    t.string   "address",          default: "1 rue de la République"
+    t.string   "zip_code",         default: "69001"
+    t.string   "city",             default: "Lyon"
     t.integer  "user_id"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-    t.boolean  "module_blog",         default: false
+    t.datetime "created_at",                                          null: false
+    t.datetime "updated_at",                                          null: false
+    t.boolean  "module_blog",      default: false
     t.string   "logo"
     t.string   "picture"
-    t.boolean  "module_allergens",    default: false
+    t.boolean  "module_allergens", default: false
     t.string   "slug"
     t.string   "css"
-    t.integer  "picture_display",     default: 2
-    t.boolean  "module_contact",      default: true
-    t.boolean  "module_menus",        default: true
-    t.string   "plain_opening_hours"
-    t.boolean  "module_dishes",       default: true
+    t.integer  "picture_display",  default: 2
+    t.boolean  "module_contact",   default: true
+    t.boolean  "module_menus",     default: true
+    t.boolean  "module_dishes",    default: true
     t.string   "phone"
     t.string   "email"
     t.index ["slug"], name: "index_restaurants_on_slug", unique: true

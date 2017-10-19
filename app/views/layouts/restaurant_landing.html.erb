@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%= render 'layouts/meta', cache: true %>
+    <%= csrf_meta_tags %>
+    <!-- Bootstrap core CSS -->
+    <% if @restaurant && @restaurant.css %>
+      <%= stylesheet_link_tag @restaurant.css %>
+    <% else %>
+      <%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' %>
+    <% end %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link href="https://fonts.googleapis.com/css?family=Parisienne" rel="stylesheet">
+  </head>
+  <body>
+    <%= render 'layouts/navigation_restaurant', cache: true %>
+    <%= yield %>
+    <%= render 'layouts/footer', cached: true %>
+  </body>
+</html>

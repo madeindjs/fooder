@@ -4,12 +4,12 @@
   <h1>Créez votre site internet pour votre restaurant.</h1>
   <ul>
     <li>sans connaissances</li>
-    <li>en moins de 5 minutes</li>
-    <li>gratuitement sans limite d'essai</li>
+    <li>gratuitement</li>
+    <li>sans limite d'essai</li>
   </ul>
   <p>Essayez dès maintenant, ressentez le pouvoir.</p>
   <p><%= link_to "C'est parti!", signup_url, class: 'btn btn-lg btn-primary' %></p>
-  <p class="alert alert-warning">Le projet est en cours de construction. Vous pouvez tout de même l'utiliser normalement.</p>
+  <p class="alert alert-warning">Le projet est en cours de construction</p>
 </div>
 <div class="col-sm-6 hidden-xs text-right" style="padding-top: 200px">
   <%= image_tag 'screenshots/macbook_home.png', alt: "Capture d'écran de la page d'un restaurant crée avec Fooder", class: "img-responsive screenshot" %>
@@ -20,35 +20,39 @@
   <div class="row step">
     <!-- description -->
     <div class="col-sm-offset-3 col-sm-6 col-xs-12 text-center">
-      <h3>1. Inscrivez vous</h3>
-      <p><%= link_to 'Créez votre compte', signup_path %> sur Fooder. C'est totalement gratuit.</p>
-      <p>Aucun frais n'est à prévoir et aucune carte bancaire n'est requise.</p>
-      <p>Une fois votre compte activé, vous pouvez créez votre premier site!</p>
     </div>
   </div>
   <div class="row">
-    <!-- picure -->
-    <div class="col-sm-6 col-xs-12">
-      <%= image_tag 'screenshots/macbook_edit.png', class: "img-responsive screenshot", alt: "Capture d'écran du formulaire d'édition d'un plat" %>
-    </div>
-    <!-- description -->
-    <div class="col-sm-6 col-xs-12">
-      <h3>2. Ajoutez vos produits</h3>
-      <p>Une fois votre restaurant crée, rendez-vous dans l'interface d'administration et ajoutez vos produits.</p>
-      <p>Un formulaire simple vous demande les informations de base.</p>
-      <p>Votre carte est générée automatiquement.</p>
-    </div>
-  </div>
-  <div class="row step">
-    <!-- description -->
-    <div class="col-sm-6 col-xs-12">
-      <h3>3. Personnalisez votre site</h3>
-      <p>Utilisez toutes les options disponnibles pour rendre votre site unique.</p>
-      <p>Sélectionnez un thème parmis les nombreux proposés</p>
-    </div>
-    <!-- picure -->
-    <div class="col-sm-6 col-xs-12">
-      <%= image_tag 'screenshots/macbook_theme.png', class: "img-responsive screenshot", alt: "Un aperçu des thèmes proposés" %>
+    <div class="col-xs-12">
+      <ul class="media-list">
+        <!-- inscrivez vous  -->
+        <li class="media">
+          <div class="media-left media-middle">
+            <%= image_tag 'tutorial/new_restaurant', class: "media-object thumbnail", width: 500 ,alt: "Capture d'écran du formulaire d'édition d'un plat" %>
+          </div>
+          <div class="media-body media-middle">
+            <p class="lead"><%= link_to 'Inscrivez vous', signup_path %> sur Fooder créez votre site en moins d'une minute.</p>
+          </div>
+        </li>
+        <!-- add dishes -->
+        <li class="media">
+          <div class="media-body media-middle">
+            <p class="lead"><strong>Ajoutez vos produits</strong>. votre carte est générée automatiquement.</p>
+          </div>
+          <div class="media-right media-middle">
+            <%= image_tag 'tutorial/add_dishes', class: "media-object thumbnail", width: 500 ,alt: "CRéation" %>
+          </div>
+        </li>
+        <!-- edit restaurant -->
+        <li class="media">
+          <div class="media-left media-middle">
+            <%= image_tag 'tutorial/edit_section', class: "media-object thumbnail", width: 500 ,alt: "Capture d'écran du formulaire d'édition d'un plat" %>
+          </div>
+          <div class="media-body media-middle">
+            <p class="lead"><strong>Personalisez</strong> votre site en temps réel.</p>
+          </div>
+        </li>
+      </ul>
     </div>
   </div>
   <p class="text-center"><%= link_to "Commencez dès maintenant", signup_url, class: 'btn btn-lg btn-default' %></p>
@@ -61,34 +65,14 @@
       <p>Votre site est compatible pour les smartphones, tablettes et orinateurs.</p>
     </div>
     <div class="feature col-lg-4 col-sm-6 col-xs-12">
-      <h3><%= image_tag 'icons/pantone.svg', alt: 'Pantones', size: 100 %> Thèmes.</h3>
-      <p>De nombreux thèmes vous sont proposés. Vous trouverez forcément votre bonheur.</p>
-    </div>
-    <div class="feature col-lg-4 col-sm-6 col-xs-12">
       <h3><%= image_tag 'icons/box.svg', alt: 'Modules', size: 100 %> Modules.</h3>
       <p>Vous souhaitez désactiver une fonctionnalité? Pas de problème.</p>
-    </div>
-    <div class="feature col-lg-4 col-sm-6 col-xs-12">
-      <h3><%= image_tag 'icons/magician.svg', alt: 'Magie', size: 100 %> Menu.</h3>
-      <p>Vos produits peuvent s'assembler pour composer des menus riches en contenu.</p>
-    </div>
-    <div class="feature col-lg-4 col-sm-6 col-xs-12">
-      <h3><%= image_tag 'icons/heart.svg', alt: 'Coeur', size: 100 %> Allergènes.</h3>
-      <p>Proposez  une carte des allergènes intéractive accessible à partir de chaque produits.</p>
-    </div>
-    <div class="feature col-lg-4 col-sm-6 col-xs-12">
-      <h3><%= image_tag 'icons/letter.svg', alt: 'Lettre', size: 100 %> Contact.</h3>
-      <p>Laissez vos client vous contactez à traver un formulaire de contact.</p>
     </div>
     <div class="feature col-lg-4 col-sm-6 col-xs-12">
       <h3><%= image_tag 'icons/megaphone.svg', alt: 'Magie', size: 100 %> Blog.</h3>
       <p>Communiquez autour de l'actualité de votre restaurant.</p>
     </div>
-    <div class="feature col-lg-4 col-sm-6 col-xs-12">
-      <h3><%= image_tag 'icons/pencil.svg', alt: 'Stylo', size: 100 %> Evaluations.</h3>
-      <p>Choisissez un thème parmi les nombreux proposés.</p>
-    </div>
-    <div class="feature col-lg-4 col-sm-6 col-xs-12">
+    <div class="feature col-xs-12">
       <p class="alert alert-info"><strong>D'autres idées?</strong> Nous sommes à l'écoute pour toutes propositions de nouvelles fonctionnalités.</p>
     </div>
   </div>

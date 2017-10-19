@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.remotipart
 //= require jquery-ui/widgets/accordion
 //= require jquery-ui/widgets/tooltip
 //= require jquery-ui/widgets/sortable

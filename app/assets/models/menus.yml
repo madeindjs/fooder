@@ -1,3 +1,7 @@
+- name: Menu du jour (midi)
+  content: Choisissiez une entrée et un plat (ou un plat et un dessert) parmi les suggestions du chef.
+  price: 17
+
 - name: Spécial sans gluten
-  description: Une pause gourmande, un moment dégustation, nous avons concocté des menus pour toutes les envies
+  content: Nous pouvons adapter nos produits en fonction de vos allergies. N’hésitez pas à nous demander pour plus d'informations.
   price: 25.5

@@ -1,36 +1,23 @@
 <%
-# if `display_price` is not specified, is equal to `true`
-display_price = !(display_price === false)
 # select only categories who contains at least one dish
 existing_categories_ids = dishes.map{|dish| dish.category_id }.uniq
 %>
 <% @restaurant.categories.order(:order).select{|c| existing_categories_ids.include? c.id }.each do |category| %>
-  <div class="row">
-    <h2 class="col-xs-12"><%= category.name %></h2>
-    <% dishes.select{|d| d.category_id == category.id}.each do |dish| %>
-      <article class="col-sm-6">
-        <!-- picture and title -->
-        <%= link_to dish do %>
-          <%= picture_tag dish, :picture_display, css_class: "dish-picture", size: 100 %>
-        <% end %>
-        <p>
-          <h3><%= link_to dish.name, dish %></h3>
-          <%= dish.description %>
-          <% if display_price %>
-            <strong><%= price dish.price %></strong>
+  <div class="col-xs-12 col-sm-6 col-lg-4">
+    <h3><%= category.name %></h3>
+    <ul class="dishes list-unstyled">
+      <% dishes.select{|d| d.category_id == category.id}.each do |dish| %>
+        <li
+          <% if admin? %>
+            class="editable"
+            data-url="<%= url_for edit_dish_path(dish) %>"
           <% end %>
-          <br/>
-          <%= tags dish.tags %>
-        </p>
-        <% if admin? %>
-          <p class="text-right admin">
-            <%= link_to "Editer", edit_dish_path( dish), class: 'btn btn-default btn-xs' %>
-            <%= link_to "Supprimer",  dish, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-warning btn-xs' %>
-          </p>
-        <% end %>
-      </article>
-      <!--! .col-xs-6 -->
-    <% end # end of dishes %>
+        >
+          <strong><%= dish.name %> <span class="price"><%= dish.price %> €</span></strong>
+          <%= dish.description %>
+        </li>
+      <% end # end of dishes %>
+    </ul>
   </div>
 <% end # end of categories %>
 <!-- end of categories -->

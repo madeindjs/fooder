@@ -1,33 +1,87 @@
-<% if false and admin? %>
-  <div class="row admin">
-    <div class="col-xs-12"">
-      <div class="col-xs-12">
-        <%= render 'toolbars/sections', cache: true %>
-        <%= render 'toolbars/restaurant', cache: true %>
+<header
+  id="cover"
+  style="background-image: url(<%= @restaurant.picture %>)"
+  >
+  <div class="cell-vertical-align">
+    <h1 
+      <% if admin? %>
+        class="editable" 
+        data-fields="name"
+        data-url="<%= url_for edit_restaurant_path(@restaurant) %>"
+      <% end %>
+    ><%= @restaurant.name %></h1>
+  </div>
+</header>
+<div class="container">
+  <!-- products -->
+  <% if @restaurant.module_dishes %>
+    <section id="section-dishes" class="row">
+      <h2>Notre carte</h2>
+      <div id="dishes-list" class="col-xs-12">
+        <%= render 'dishes/list', dishes: @dishes, cache: true %>
       </div>
+      <%# button to create dish %>
+      <% if admin? %>
+        <p class="col-xs-12 text-center">
+          <%= link_to new_dish_path, class: 'btn btn-default btn-lg btn-warning creable' do %>
+            <%= glyphicon 'plus' %> ajouter un nouveau produit
+          <% end %>
+        </p>
+      <% end %>
+    </section>
+  <% end %>
+  <!-- menus -->
+  <section id="section-menus" class="row">
+    <h2>Menus</h2>
+    <div id="menus-list" class="col-xs-12 ">
+      <%= render 'menus/list', menus: @menus, cached: true %>
     </div>
-  </div>
-<% end %>
-<div class="row restaurant-header tooltip-holder" style="background-image: url(<%= @restaurant.picture %>)"
-  <%= tooltip 'Cette image de fond peut être changé dans la section  "editer le restaurant"' %> >
-  <div class="col-xs-12">
-    <%= render 'shared/flash' %>
-    <h1 class="tooltip-holder" <%= tooltip 'Le nom de votre restaurant peut être changé dans la section "editer le restaurant"' %> ><%= logo_tag @restaurant %><%= @restaurant.name %></h1>
-  </div>
-</div>
-<div class="row">
-  <%= render 'sections/list', sections: @restaurant.sections, cache: true %>
-  <div class="jumbotron header">
-    <h2>Informations</h2>
-    <% if @restaurant and not @restaurant.plain_opening_hours %>
-      <h3>Horraires d'ouvertures</h3>
-      <%= @restaurant.plain_opening_hours #= render 'opening_hours/details', opening_hours: @restaurant.valid_opening_hours 
-    %>
+    <%# button to create menu %>
+    <% if admin? %>
+      <p class="col-xs-12 text-center">
+        <%= link_to new_menu_path, class: 'btn btn-default btn-lg btn-warning creable' do %>
+          <%= glyphicon 'plus' %> créer un menu
+        <% end %>
+      </p>
     <% end %>
-    <h3>Addresse</h3>
-    <p><%= glyphicon 'home' %> <%= @restaurant.complete_address %></p>
-    <% if @restaurant.module_contact %>
-      <p><%= link_to "Contactez nous", contact_url(subdomain: @restaurant), class: 'btn btn-default' %></p>
-    <% end %>
-  </div>
+  </section>
+  <!-- information, address, etc.. -->
+  <section id="section-informations" class="row">
+    <div class="col-xs-12">
+      <h2>Notre restaurant</h2>
+      <div id="sections-list">
+        <%= render 'sections/list', sections: @restaurant.sections, cache: true %>
+      </div>
+      <%# button to create dish %>
+      <% if admin? %>
+        <p class="col-xs-12 text-center">
+          <%= link_to new_section_path, class: 'btn btn-default btn-lg btn-warning creable' do %>
+            <%= glyphicon 'plus' %> ajouter une nouvelle section
+          <% end %>
+        </p>
+      <% end %>
+    </div>
+  </section>
+  <!-- opening hours -->
+  <section id="section-opening-hours" class="row">
+    <div class="col-xs-12">
+      <h2>Nos horaires d'ouverture</h2>
+      <%= render 'opening_hours/details', restaurant: @restaurant %>
+    </div>
+  </section>
+  <!-- contact -->
+  <% if @restaurant.module_contact %>
+    <section id="section-contact" class="row">
+      <div class="col-xs-12">
+        <h2>Contactez nous</h2>
+        <p class="lead text-center">Vous avez un question? N'hesitez pas à nous contacter.</p>
+        <%= bootstrap_form_for contact_path do |f| %>
+          <%= f.text_field :email, placeholder: 'Votre email', hide_label: true %>
+          <%= f.text_field :object, placeholder: 'Objet', hide_label: true %>
+          <%= f.text_area :content, placeholder: 'Contenu', hide_label: true %>
+          <%= f.submit 'Envoyer' %>
+        <% end %>
+      </div>
+    </section>
+  <% end %>
 </div>

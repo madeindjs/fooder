@@ -1,0 +1,8 @@
+<%= bootstrap_form_for restaurant do |f| %>
+  <h4><%= image_tag 'icons/paint-brush', height: 30 %> Design</h4>
+  <%= render 'shared/form_input_logo.html', form: f, model: restaurant, help: 'Le logo est utilisé en tant que favicon.' %>
+  <%= render 'shared/form_input_picture.html', form: f, model: restaurant, help: "L'image est affichée sur la page principale." %>
+  <%# = f.select :picture_display,  display_options(restaurant.picture_display), {label: "Affichage des images"} %>
+  <%# = f.select :css, { "Sélectionnez un theme" => nil }, {label: 'Thème'}, {id: 'themes'} %>
+  <%= f.submit 'Confirmer' %>
+<% end %>

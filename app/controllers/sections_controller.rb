@@ -9,18 +9,21 @@ class SectionsController < ApplicationController
 
 
   # GET /sections/new
+  # def new
+  #   @title = "Nouveau contenu"
+  #   @description = "Ajouter du contenu à la page d'accueil de ce restaurant."
+  #   @section = Section.new
+  # end
+
+
+  # GET /dishes/new
   def new
-    @title = "Nouveau contenu"
-    @description = "Ajouter du contenu à la page d'accueil de ce restaurant."
-    @section = Section.new
+    render '_form', locals: {section: Section.new}, layout:  false
   end
 
   # GET /sections/1/edit
   def edit
-    @title = "Editer le contenu."
-    @description = "Editer le contenu de la page d'accueil."
-
-    render  '_form', locals: {section: @section}, layout:  false if request.xhr?
+    render  '_form', locals: {section: @section}, layout:  false
   end
 
 
@@ -31,44 +34,39 @@ class SectionsController < ApplicationController
     @section.restaurant_id = @restaurant.id
 
     if @section.save
-      flash[:success] = "Votre texte d'accueil a été créé."
-      redirect_to root_url
+      render 'sections/_list', locals: {sections: @restaurant.sections}, layout: false
     else
-      flash[:danger] = "Une erreur est survenue."
-      render :new
+      render '_form', locals: {section: @section}, layout:  false, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /sections/1
   def update
     if @section.update(section_params)
-      flash[:success] = "Votre texte d'accueil a été supprimé."
-      redirect_to root_url
+      render  'sections/_list', locals: {sections: @restaurant.sections}, layout: false
     else
-      flash[:danger] = "Une erreur est survenue."
-      render :edit
+      render '_form', locals: {section: @section}, layout:  false, status: :unprocessable_entity
     end
   end
 
   # DELETE /sections/1
   def destroy
     @section.destroy
-    flash[:success] = "Votre texte d'accueil a été supprimé."
-    redirect_to root_url
+    render 'sections/_list', locals: {sections: @restaurant.sections}, layout: false
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_section
-      @section = Section.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_section
+    @section = Section.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def section_params
-      params.require(:section).permit(:title, :content, :picture)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def section_params
+    params.require(:section).permit(:title, :content, :picture)
+  end
 
-    def check_owner
-      redirect_to root_path unless current_user.sections.include? @section
-    end
+  def check_owner
+    redirect_to root_path unless current_user.sections.include? @section
+  end
 end

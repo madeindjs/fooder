@@ -11,8 +11,8 @@
 
 # Plats
 
-- name: Pâtes au chou kale, pancetta et gorgonzola
-  description: Une recette simple mais efficace
+- name: Purée / Knackies
+  description: Parfait pour les grands enfants
   price: 12.00
   category_name: Plats
   tags: sans gluten

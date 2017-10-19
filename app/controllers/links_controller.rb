@@ -9,16 +9,12 @@ class LinksController < ApplicationController
 
   # GET /links/new
   def new
-    @title = "Créer un Lien"
-    @description = "Créer un nouveau lien vers votre restaurant."
-
-    @link = Link.new
+    render '_form', locals: {link: Link.new}, layout:  false
   end
 
   # GET /links/1/edit
   def edit
-    @title = "Editer un lien"
-    @description = "Editer le lien nommé #{@link.name}."
+    render '_form', locals: {link: @link}, layout:  false
   end
 
   # POST /links
@@ -27,30 +23,25 @@ class LinksController < ApplicationController
     @link.restaurant_id = @restaurant.id
 
     if @link.save
-      flash[:success] = "Votre lien a été crée!"
-      redirect_to admin_links_path
+      render 'links/_list', locals: {links: @restaurant.links}, layout: false
     else
-      flash[:danger] = "Une erreur est survenue."
-      render :new
+      render '_form', locals: {link: @link}, layout:  false, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /links/1
   def update
     if @link.update(link_params)
-      flash[:success] = "Votre lien a été mis à jour!"
-      redirect_to admin_links_path
+      render 'links/_list', locals: {links: @restaurant.links}, layout: false
     else
-      flash[:danger] = "Une erreur est survenue."
-      render :edit
+      render '_form', locals: {link: @link}, layout:  false, status: :unprocessable_entity
     end
   end
 
   # DELETE /links/1
   def destroy
     @link.destroy
-    flash[:success] = "Votre lien a été supprimé"
-    redirect_to admin_links_path
+    render 'links/_list', locals: {links: @restaurant.links}, layout: false
   end
 
   private

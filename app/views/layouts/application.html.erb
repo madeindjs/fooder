@@ -18,11 +18,11 @@
   </head>
   <body>
     <div class="container main-container container-fluid">
-      <%= render 'layouts/navigation', cache: true %>
+      <%= render 'layouts/navigation_application', cache: true %>
       <div class="row">
         <div
           id="main-container"
-          style="padding-top: 50px">
+          style="padding-top: 3rem">
           <%= render 'shared/flash' %>
           <%= yield %>
         </div>

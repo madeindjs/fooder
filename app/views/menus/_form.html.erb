@@ -1,12 +1,14 @@
-<%= bootstrap_form_for  menu do |f| %>
-  <%= render 'shared/errors_form', model: menu %>
-  <%= f.text_field :name, label: 'Nom' %>
-  <%= f.text_field :description %>
-  <%= render 'shared/form_input_picture.html', form: f, model: menu %>
-  <%= f.check_box :activate, label: 'Activer' %>
-  <%= f.text_area :content, label: 'Contenu' %>
-  <%= f.text_field :tags %>
-  <%= f.number_field :price, label: 'Prix' %>
-  <%= render 'select_dishes', menu: menu, cache: true %>
+<%= bootstrap_form_for  menu, remote: true do |f| %>
+  <%# = render 'shared/errors_form', model: menu %>
+  <%= f.text_field :name, hide_label: true, placeholder: 'Nom' %>
+  <%# = f.text_field :description, hide_label: true, placeholder: 'Description' %>
+  <%# = render 'shared/form_input_picture.html', form: f, model: menu %>
+  <%# = f.check_box :activate, label: 'Activer' %>
+  <%= f.text_area :content, hide_label: true, placeholder: 'Contenu' %>
+  <%# = f.text_field :tags %>
+  <%= f.number_field :price, hide_label: true, append: '€', placeholder: 'prix' %>
+  <%# = render 'select_dishes', menu: menu, cache: true %>
   <%= f.submit 'Confirmer' %>
+  <%# add delete button only if update form %>
 <% end %>
+<%= button_to('Supprimer', @menu, method: :delete, remote: true, form_class: 'delete_menu', class: 'btn btn-danger') if menu.id %>
