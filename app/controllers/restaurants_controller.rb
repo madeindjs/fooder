@@ -38,6 +38,15 @@ class RestaurantsController < ApplicationController
     if params['fields']
       fields = params['fields'].split('.')
       render 'shared/_form_field', locals: {model: @restaurant, fields: fields}, layout:  false
+    elsif params['what']
+
+      case params['what']
+      when "settings"
+        render 'restaurants/_form_settings', locals: {restaurant: @restaurant}, layout:  false
+      when "design"
+        render 'restaurants/_form_design', locals: {restaurant: @restaurant}, layout:  false
+      end
+
     else
       render 'restaurants/_form', locals: {restaurant: @restaurant}, layout:  false
     end

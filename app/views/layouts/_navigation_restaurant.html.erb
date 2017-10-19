@@ -15,15 +15,22 @@
       <ul class="nav navbar-nav nav navbar-left">
         <%= render "layouts/navigation_item_restaurant", cache: true %>
       </ul>
-      <ul class="nav navbar-nav nav navbar-right">
-        <% if admin? %>
+      <% if admin? %>
+        <ul class="nav navbar-nav nav navbar-right">
+          <!-- design -->
           <li>
-            <%= link_to edit_restaurant_path(@restaurant), id: 'edit-restaurant-link', remote: true do %>
+            <%= link_to edit_restaurant_path(@restaurant, what: 'design'), class: 'settings', remote: true do %>
+              <%= glyphicon 'tint' %> Design
+            <% end %>
+          </li>
+          <!-- settings -->
+          <li>
+            <%= link_to edit_restaurant_path(@restaurant, what: 'settings'), class: 'settings', remote: true do %>
               <%= glyphicon 'cog' %> Paramètres
             <% end %>
           </li>
-        <% end %>
-      </ul>
+        </ul>
+      <% end %>
       <!--/ nav navbar-nav nav navbar-right -->
     </div>
     <!--/.nav-collapse -->

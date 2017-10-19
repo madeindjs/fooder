@@ -1,12 +1,12 @@
-$(document).on('ajax:success', '#edit-restaurant-link', function(e, data, status, xhr){
-  console.log("hello");
+$(document).on('ajax:success', 'a.settings', function(e, data, status, xhr){
   // create dialog
   var div = document.createElement('div');
   var dialog = $(div);
   dialog.attr('class', 'dialog');
   dialog.attr('title', "Editer votre restaurant");
   dialog.html(xhr.responseText);
-  dialog.dialog();
+  var component = dialog.dialog();
+  component.dialog("option", "width", 500)
 });
 
 // // dish has been updated / created
