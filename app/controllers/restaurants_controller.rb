@@ -62,7 +62,12 @@ class RestaurantsController < ApplicationController
   def update
     if @restaurant.update(restaurant_params)
       flash[:success] = "Votre restaurant a été mis à jour."
-      redirect_to root_url(subdomain: @restaurant.slug)
+      # redirect on restaurant and if URL changed, redirect to new restaurant & connect user
+      if restaurant_params[:name]
+        redirect_to helpers.restaurant_with_session_key_url(@restaurant)
+      else
+        redirect_to root_url(subdomain: @restaurant.slug)
+      end
     else
       flash[:danger] = "Une erreur est survenue."
       render :edit
