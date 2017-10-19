@@ -20,39 +20,29 @@
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav nav navbar-left">
         <% if @restaurant %>
-          <%= render "layouts/navigation_item_restaurant", cache: true %>
+          <%= render "layouts/navigation_restaurant", cache: true %>
         <% else %>
           <li><%= link_to "Nos clients", restaurants_path %></li>
           <li><%= link_to "Contact", contact_path %></li>
         <% end %>
       </ul>
       <ul class="nav navbar-nav nav navbar-right">
-        <% if @restaurant %>
-          <% if admin? %>
-            <li>
-              <%= link_to edit_restaurant_path(@restaurant), id: 'edit-restaurant-link', remote: true do %>
-                <%= glyphicon 'cog' %> Paramètres
-              <% end %>
-            </li>
+        <% if current_user %>
+          <% if current_user.email == User::SUPER_USER # mailing link%>
+            <li><%= link_to "mailing", mailings_path %></li>
           <% end %>
-        <% else %>
-          <% if current_user %>
-            <% if current_user.email == User::SUPER_USER # mailing link%>
-              <li><%= link_to "mailing", mailings_path %></li>
-            <% end %>
-            <% if current_user.premium? # premium link%>
-              <li><%= image_tag 'icons/certificate.svg', alt: 'utilisateur premium', size: 50 %></li>
-            <% else %>
-              <li><%= link_to "Passer premium", new_payement_path %></li>
-            <% end %>
-            <li><%= link_to current_user.email, current_user %></li>
-          <% else # %>
-            <li><%= link_to "se connecter", signin_path %></li>
-            <li><%= link_to "créer un compte", signup_path %></li>
+          <% if current_user.premium? # premium link%>
+            <li><%= image_tag 'icons/certificate.svg', alt: 'utilisateur premium', size: 50 %></li>
+          <% else %>
+            <li><%= link_to "Passer premium", new_payement_path %></li>
           <% end %>
-        </ul>
-        <!--/ nav navbar-nav nav navbar-right -->
-      <% end %>
+          <li><%= link_to current_user.email, current_user %></li>
+        <% else # %>
+          <li><%= link_to "se connecter", signin_path %></li>
+          <li><%= link_to "créer un compte", signup_path %></li>
+        <% end %>
+      </ul>
+      <!--/ nav navbar-nav nav navbar-right -->
     </div>
     <!--/.nav-collapse -->
   </div>

@@ -1,0 +1,17 @@
+<% if @restaurant.module_dishes %>
+  <li><%=  link_to "Carte", root_path(anchor: 'section-dishes') %></li>
+<% end %>
+<% if @restaurant.module_menus %>
+  <li><%= link_to "Menus", root_path(anchor: 'section-menus') %></li>
+<% end %>
+<li><%= link_to "Le restaurant", root_path(anchor: 'section-informations') %></li>
+
+<% if @restaurant.module_blog %>
+  <li><%= link_to "Actualités", posts_url(subdomain: @restaurant) %></li>
+<% end %>
+<% if @restaurant.module_allergens %>
+  <li><%= link_to "Allergènes", allergens_url(subdomain: @restaurant) %></li>
+<% end %>
+<% if @restaurant.module_contact %>
+  <li><%= link_to "Contact", root_path(anchor: 'section-contact') %></li>
+<% end %>

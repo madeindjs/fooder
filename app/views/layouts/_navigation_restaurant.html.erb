@@ -1,17 +1,31 @@
-<% if @restaurant.module_dishes %>
-  <li><%=  link_to "Carte", root_path(anchor: 'section-dishes') %></li>
-<% end %>
-<% if @restaurant.module_menus %>
-  <li><%= link_to "Menus", root_path(anchor: 'section-menus') %></li>
-<% end %>
-<li><%= link_to "Le restaurant", root_path(anchor: 'section-informations') %></li>
-
-<% if @restaurant.module_blog %>
-  <li><%= link_to "Actualités", posts_url(subdomain: @restaurant) %></li>
-<% end %>
-<% if @restaurant.module_allergens %>
-  <li><%= link_to "Allergènes", allergens_url(subdomain: @restaurant) %></li>
-<% end %>
-<% if @restaurant.module_contact %>
-  <li><%= link_to "Contact", root_path(anchor: 'section-contact') %></li>
-<% end %>
+<nav id="navigation" class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to @restaurant.name, root_url(subdomain: @restaurant, anchor: 'cover') , class: "navbar-brand",
+          title:  ( admin? ? 'Le nom de votre restaurant peut être changé dans la section "editer le restaurant"' : nil ) %>
+    </div>
+    <!-- / .navbar-header -->
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav nav navbar-left">
+        <%= render "layouts/navigation_item_restaurant", cache: true %>
+      </ul>
+      <ul class="nav navbar-nav nav navbar-right">
+        <% if admin? %>
+          <li>
+            <%= link_to edit_restaurant_path(@restaurant), id: 'edit-restaurant-link', remote: true do %>
+              <%= glyphicon 'cog' %> Paramètres
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+      <!--/ nav navbar-nav nav navbar-right -->
+    </div>
+    <!--/.nav-collapse -->
+  </div>
+</nav>
