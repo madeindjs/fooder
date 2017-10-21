@@ -1,6 +1,6 @@
 # Set the host name for URL creation
 
-SitemapGenerator::Sitemap.default_host = "http://fooder.pro"
+SitemapGenerator::Sitemap.default_host = "http://votre.restaurant"
 SitemapGenerator::Sitemap.create do
 
   add signout_path
@@ -21,33 +21,11 @@ SitemapGenerator::Sitemap.create do
 end
 
 
+# restaurants area
 Restaurant.all.each do |restaurant|
-  SitemapGenerator::Sitemap.default_host = "http://#{restaurant.slug}.fooder.pro"
+  SitemapGenerator::Sitemap.default_host = "http://#{restaurant.slug}.votre.restaurant"
   SitemapGenerator::Sitemap.sitemaps_path = "sitemaps/#{restaurant.slug}"
   SitemapGenerator::Sitemap.create do
-    # restaurants area
-
     add root_path, priority: 0.9
-
-    add dishes_path, priority: 0.9
-    restaurant.dishes.all.each do |dish|
-      add dish_path(dish), lastmod: dish.updated_at
-    end if restaurant.module_dishes
-
-    add posts_path, priority: 0.8
-    restaurant.posts.all.each do |post|
-      add post_path(post), lastmod: post.updated_at
-    end if restaurant.module_blog
-
-    add allergens_path if restaurant.module_allergens
-
-    add contact_path if restaurant.module_contact
-
-    add menus_path, priority: 0.9
-    restaurant.menus.all.each do |menu|
-      add menu_path(menu), lastmod: menu.updated_at
-    end if restaurant.module_blog
-
-    add contact_path, changefreq: 'monthly', priority: 0.8
   end
 end

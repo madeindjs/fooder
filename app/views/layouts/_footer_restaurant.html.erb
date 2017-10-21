@@ -35,7 +35,7 @@
   </div>
   <% unless @restaurant.user.premium? %>
     <div class="container tooltip-holder" <%= tooltip "Basculez sur un compte premium pour faire disparaitre ce message." %> >
-      <p>Ce site web a été crée avec <%= glyphicon 'heart' %> sur <%= link_to "fooder.pro" , root_url(subdomain: nil) %>.</p>
+      <p>Ce site web a été crée avec <%= glyphicon 'heart' %> sur <%= link_to "Votre.Restaurant" , root_url(subdomain: nil) %>.</p>
       <span class="admin">
         <%= alert 'info', "Basculez sur un compte premium pour faire disparaitre ce message." if @restaurant.user == current_user %>
       </span>
