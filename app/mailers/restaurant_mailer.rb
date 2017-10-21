@@ -8,7 +8,7 @@ class RestaurantMailer < ApplicationMailer
   end
 
   def commercial restaurant
-    @email   = 'a.rousseau@fooder.pro'
+    @email   = 'a.rousseau@votre.restaurant'
     @object  = 'Bienvenue sur Fooder'
     @restaurant  = restaurant
     mail(to: restaurant.email, subject: @object)

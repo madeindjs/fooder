@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'support@fooder.pro'
+  default from: 'support@votre.restaurant'
   layout 'mailer'
 end

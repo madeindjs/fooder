@@ -1,5 +1,5 @@
 class CommercialMailer < ApplicationMailer
-  default from: 'a.rousseau@fooder.pro'
+  default from: 'a.rousseau@votre.restaurant'
 
 
   def self.all

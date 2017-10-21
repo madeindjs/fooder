@@ -1,6 +1,6 @@
 Rails.application.configure do
 
-  default_url_options[:host] = 'fooder.pro'
+  default_url_options[:host] = 'votre.restaurant'
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
@@ -57,14 +57,14 @@ Rails.application.configure do
   # Use a real queuing backend for Active Job (and separate queues per environment)
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "Fooder_#{Rails.env}"
-  config.action_mailer.asset_host = 'http://fooder.pro'
+  config.action_mailer.asset_host = 'votre.restaurant'
   config.action_mailer.perform_caching = false
-  config.action_mailer.default_url_options = { host: 'http://fooder.pro', only_path: false }
+  config.action_mailer.default_url_options = { host: 'votre.restaurant', only_path: false }
   config.action_mailer.smtp_settings = {
     address:              'ssl0.ovh.net',
     port:                 465,
     domain:               'ssl0.ovh.net',
-    user_name:            'a.rousseau@fooder.pro',
+    user_name:            'a.rousseau@votre.restaurant',
     password:             Rails.application.secrets.email_password,
     authentication:       :plain,
     enable_starttls_auto: true ,
@@ -98,6 +98,6 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.action_controller.asset_host = "http://fooder.pro"
-  default_url_options[:host] = "http://fooder.pro"
+  config.action_controller.asset_host = "http://votre.restaurant"
+  default_url_options[:host] = "http://votre.restaurant"
 end

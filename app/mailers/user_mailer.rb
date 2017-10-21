@@ -10,7 +10,7 @@ class UserMailer < ApplicationMailer
     @content = data['content']
     @email   = data['email']
     @object  = data['content']
-    mail(to: 'support@fooder.pro', subject: @object)
+    mail(to: 'support@votre.restaurant', subject: @object)
   end
 
   def password_reset user

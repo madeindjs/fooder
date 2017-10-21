@@ -24,7 +24,7 @@ class User < ApplicationRecord
     c.crypto_provider = Authlogic::CryptoProviders::Sha512
   end
 
-  SUPER_USER = 'a.rousseau@fooder.pro'
+  SUPER_USER = 'a.rousseau@votre.restaurant'
 
 
   def complete_name
@@ -78,7 +78,7 @@ class User < ApplicationRecord
   #
   # @return [Hash]
   def to_jsonld
-    url = Rails.application.routes.url_helpers.user_url(self.id, host: 'http://fooder.pro')
+    url = Rails.application.routes.url_helpers.user_url self.id, host: 'votre.restaurant'
     {
       "@context" => "http://schema.org/",
       "@type": "Person",
