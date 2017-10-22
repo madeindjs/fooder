@@ -7,7 +7,7 @@ class CommercialMailer < ApplicationMailer
   end
 
   def presentation restaurant
-    @object  = 'Bienvenue sur Fooder'
+    @object  = 'Bienvenue sur Votre.Restaurant'
     @restaurant  = restaurant
     mail(to: restaurant.email, subject: @object)
   end
