@@ -7,7 +7,7 @@ $(document).on('click', '.editable', function(e){
   document.body.appendChild(div);
   var dialog = $(div);
   dialog.attr('class', 'dialog');
-  dialog.attr('title', "Editer l'élement")
+  dialog.attr('title', "Editer l'élément")
 
   $.ajax({
     url: url,
@@ -17,7 +17,8 @@ $(document).on('click', '.editable', function(e){
     },
     success : function(html, status){
       dialog.html(html);
-      dialog.dialog();
+      var component = dialog.dialog();
+      component.dialog("option", "width", 500);
     },
     error : function(xhr, status, errorThrown ){
       dialog.html('<div class="alert alert-danger" role="alert">' + errorThrown + '</div>');

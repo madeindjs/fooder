@@ -1,6 +1,8 @@
 class CommercialMailer < ApplicationMailer
   default from: 'a.rousseau@votre.restaurant'
 
+  helper RestaurantsHelper
+
 
   def self.all
     return CommercialMailer.instance_methods(false)

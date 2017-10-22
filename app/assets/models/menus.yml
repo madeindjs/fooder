@@ -1,5 +1,5 @@
 - name: Menu du jour (midi)
-  content: Choisissiez une entrée et un plat (ou un plat et un dessert) parmi les suggestions du chef.
+  content: Choisissez une entrée et un plat (ou un plat et un dessert) parmi les suggestions du chef.
   price: 17
 
 - name: Spécial sans gluten
