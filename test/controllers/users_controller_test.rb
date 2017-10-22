@@ -20,7 +20,20 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
       post users_url, params: { user: { email: 'test@test.fr', firstname: @user.firstname, lastname: @user.lastname, password: 20462046, password_confirmation: 20462046 } }
     end
 
+    created_user = User.last
     assert_redirected_to user_url(User.last)
+    assert_not created_user.activated
+  end
+
+
+  test "should create activated user when logged as super_user" do
+    login(users(:super_user))
+    assert_difference('User.count') do
+      post users_url, params: { user: { email: 'test@test.fr', firstname: @user.firstname, lastname: @user.lastname, password: 20462046, password_confirmation: 20462046 } }
+    end
+    created_user = User.last
+    assert_redirected_to user_url(created_user)
+    assert created_user.activated
   end
 
   test "should not create user because password don't match" do
@@ -28,6 +41,13 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
       post users_url, params: { user: { email: 'test@test.fr', firstname: @user.firstname, lastname: @user.lastname } }
     end
   end
+
+  test "should show connected user" do
+    login(users(:me))
+    get user_url(@user)
+    assert_response :success
+  end
+
 
   test "should show user" do
     get user_url(@user)
