@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @title = "Créer un nouveau compte"
-    @description = "Formulaire de création de compte sur Fooder"
+    @description = "Formulaire de création de compte sur Votre.Restaurant"
 
     @user = User.new
   end

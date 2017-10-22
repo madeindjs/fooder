@@ -5,7 +5,7 @@
   </head>
   <body>
 
-    <h1>Bienvenue sur <%= link_to 'Fooder' , root_url %></h1>
+    <h1>Bienvenue sur <%= link_to 'Votre.Restaurant' , root_url %></h1>
     <p><strong>Votre compte a été crée avec succès</strong>. Votre iddentifiant est <strong><%= @user.email %></strong>, connectez vous via <%= link_to nil, signin_url %>.</p>
 
 
@@ -13,7 +13,7 @@
     <p>Confirmez votre addresse mail en cliquant sur ce lien: <%= link_to nil, @url %>.</p>
 
     <h2>Deuxième étape</h2>
-    <p>Commencez à <%= link_to "créer votre restaurant", new_restaurant_url %> sur Fooder et communiquez votre site.</p>
+    <p>Commencez à <%= link_to "créer votre restaurant", new_restaurant_url %> sur Votre.Restaurant et communiquez votre site.</p>
 
     <br>
 
