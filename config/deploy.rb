@@ -37,10 +37,10 @@ append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/syst
 namespace :deploy do
 
   after :updated, :bundle_install do
-    # invoke "sitemap:refresh"
-    # invoke "ruby_on_rails:bundle_install"
-    # invoke "ruby_on_rails:db_migrate"
-    # invoke "ruby_on_rails:assets_precompile"
+    invoke "sitemap:refresh"
+    invoke "ruby_on_rails:bundle_install"
+    invoke "ruby_on_rails:db_migrate"
+    invoke "ruby_on_rails:assets_precompile"
   end
 
 end
