@@ -29,6 +29,13 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test "should show connected user" do
+    login(users(:me))
+    get user_url(@user)
+    assert_response :success
+  end
+
+
   test "should show user" do
     get user_url(@user)
     assert_response :success
