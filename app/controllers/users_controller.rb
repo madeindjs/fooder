@@ -39,8 +39,16 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      @user.maybe_deliver_email_confirmation! self
-      flash[:success] = "Votre compte a été créé avec succès, un email de confirmation vous a été envoyé."
+      # if super user create something, do not send confirmation, activate tis account & login as this user 
+      if current_user and current_user.super_user?
+        @user.confirm_email!
+        UserSession.create(@user)
+        flash[:success] = "Votre compte a été créé avec succès."
+      else
+        @user.maybe_deliver_email_confirmation! self
+        flash[:success] = "Votre compte a été créé avec succès, un email de confirmation vous a été envoyé."
+      end
+
       redirect_to @user
     else
       flash[:danger] = "Une erreur est survenue."

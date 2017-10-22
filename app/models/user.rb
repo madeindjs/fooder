@@ -74,6 +74,10 @@ class User < ApplicationRecord
     Newsletter.create({email: self.email})
   end
 
+  def super_user?
+    self.email == User::SUPER_USER
+  end
+
   # Format to json_ld
   #
   # @return [Hash]
