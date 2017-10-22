@@ -5,7 +5,7 @@
     Le mail sera envoyé à <%= current_user.email %>.
   </div>
 <% end %>
-<p>Vous avez un question? N'hesitez pas à nous contacter.</p>
+<p>Vous avez une question? N'hésitez pas à nous contacter.</p>
 <%= bootstrap_form_for contact_path do |f| %>
   <%= f.text_field :object, label: 'Objet' %>
   <%= f.text_field :email, label: 'Votre email' %>
