@@ -2,7 +2,6 @@
   <%# = render 'shared/errors_form', model: dish %>
   <%= f.text_field :name, hide_label: true, placeholder: 'Nom' %>
   <div class="form-group">
-      
     <%= collection_select :dish, :category_id, @restaurant.categories, :id, :name, {selected: dish.category_id}, { class: "form-control" }  %>
     <%= text_field_tag 'category[name]', nil, style: 'display: none', class: 'form-control', placeholder: 'Nom de la catégorie' %>
     <button id="new-category-button" class="btn btn-xs btn-default pull-right"><%= glyphicon 'plus' %></button>
@@ -11,7 +10,7 @@
   <%# = render 'shared/form_input_picture.html', form: f, model: dish %>
   <%# = f.check_box :activate, label: 'Activer' %>
   <%# = f.text_field :tags %>
-  <%= f.number_field :price, hide_label: true, append: '€', placeholder: 'prix' %>
+  <%= f.number_field :price, hide_label: true, step: 0.1, append: '€', placeholder: 'prix' %>
   <%= f.submit 'Confirmer' %>
   <%# add delete button only if update form %>
 <% end %>

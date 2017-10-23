@@ -80,8 +80,8 @@ class DishesController < ApplicationController
   end
 
 
-  # GET  /admin/dishes/import
-  # POST /admin/dishes/import
+  # GET  /dishes/import
+  # POST /dishes/import
   def import
     if request.post?
       imported_dishes = []
@@ -119,8 +119,8 @@ class DishesController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def dish_params
     params.require(:dish).permit :name, :description, :category_id, :price, :category_name
-      # :tags, :picture, :activate,
-      # :gluten_free, :crustacea_free, :egg_free, :fish_free, :peanut_free, :lactose_free, :nut_free, :sulphite_free
+    # :tags, :picture, :activate,
+    # :gluten_free, :crustacea_free, :egg_free, :fish_free, :peanut_free, :lactose_free, :nut_free, :sulphite_free
   end
 
   def check_owner

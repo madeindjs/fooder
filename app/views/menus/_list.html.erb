@@ -6,6 +6,10 @@
     <% end %>
   >
     <h3 class="menu"><%= menu.name %> <span class="price"><%= menu.price %> €</span></h3>
-    <p class="text-justify"><%= menu.content %></p>
+    <p>
+      <%= menu.content.each_line do |line| %>
+        <%= line %> <br>
+      <% end %>
+    </p>
   </div>
 <% end %>
