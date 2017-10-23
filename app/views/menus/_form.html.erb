@@ -6,7 +6,7 @@
   <%# = f.check_box :activate, label: 'Activer' %>
   <%= f.text_area :content, hide_label: true, placeholder: 'Contenu' %>
   <%# = f.text_field :tags %>
-  <%= f.number_field :price, hide_label: true, append: '€', placeholder: 'prix' %>
+  <%= f.number_field :price, hide_label: true, step: 0.1, append: '€', placeholder: 'prix' %>
   <%# = render 'select_dishes', menu: menu, cache: true %>
   <%= f.submit 'Confirmer' %>
   <%# add delete button only if update form %>
