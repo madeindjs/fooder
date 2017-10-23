@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :sections
     get '/menus/:id/copy' => "menus#copy", as: :copy_menu
     resources :menus, :only => [ :new, :create, :edit, :update, :destroy]
+    match 'dishes/import' => 'dishes#import', via: [:get, :post]
     resources :dishes, :only => [ :new, :create, :edit, :update, :destroy]
     # resources :allergens, only: [:index]
   end
